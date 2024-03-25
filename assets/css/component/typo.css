@@ -1,0 +1,55 @@
+@layer utilities {
+    .h1 {
+      @apply text-4xl lg:text-7xl font-medium;
+    }
+  
+    .h2 {
+      @apply font-medium text-3xl lg:text-5xl;
+    }
+  
+    .h3 {
+      @apply font-medium text-2xl lg:text-3xl;
+    }
+  
+    .h4 {
+      @apply font-medium text-xl lg:text-2xl;
+    }
+  
+    .h5 {
+      @apply font-medium text-lg lg:text-xl;
+    }
+  
+    .h6 {
+      @apply font-medium text-base lg:text-lg;
+    }
+  }
+  
+  @layer base {
+    p {
+      @apply text-base font-sans;
+    }
+  
+    a {
+      @apply tracking-wider font-medium active:text-purple-500 hover:text-link-hover transition-all duration-500 ease-out;
+    }
+
+    .menu-wrapper a {
+      @apply text-white text-[11px] lg:text-sm hover:text-link-hover uppercase;
+    }
+
+   .lang-switcher {
+      @apply shadow-lg rounded-[4px] bg-white text-base-black w-20 h-auto absolute right-0
+    }
+
+    .menu-wrapper .lang-switcher a {
+      @apply text-base-black hover:text-link-hover;
+    }
+
+    .active-link {
+      @apply text-purple-500 hover:text-blue-300;
+    }
+    
+    .home {
+      @apply border-none relative top-1 pb-0;
+    }
+  }

@@ -1,0 +1,115 @@
+{ 
+  "widgetID": 1,
+  "widgetType": "footer",
+  "content": {
+    "siteUrl": "https://www.new.hungary-vignette.eu",
+    "newsTitle": "News",
+    "aboutTitle": "About",
+    "sitesTitle": "Sites",
+    "socialMediaTitle": "Follow us:",
+    "footerLogo": {
+      "src": "/Content/header/logo-en-EN.png",
+      "alt": "Highway",
+      "title": "Vignette"
+    },
+    "description": "Voxinfo Kft. was founded in 1996 and is a completely Hungarian-owned company. We have been an active part of the infocommunications environment since 2000. We provide a wide range of online payment solutions for our partners. We support the online trade of our partners by serving individual needs and at low costs, whether it is a webshop or web services.",
+    "sites": [
+      {
+        "title": "GTCC - Terms & Conditions",
+        "url": "/gtcc"
+      },
+      {
+        "title": "GDPR - Privacy policy",
+        "url": "/privacy"
+      },
+      {
+        "title": "Combined monthly stickers",
+        "url": "/combined-monthly-stickers"
+      },
+      {
+        "title": "Pre-purchase annual vignette",
+        "url": "/pre-purchase-highway-vignette-2023"
+      },
+      {
+        "title": "Resend",
+        "url": "/resend"
+      }
+    ],
+    "news": [
+      {
+        "title": "What happens on Hungarian highways in spring?",
+        "url": "/news/what-happens-on-hungarian-highways-in-spring"
+      },
+      {
+        "title": "Everything You Need to Know Before Traveling to Hungary",
+        "url": "/news/everything-you-need-to-know-before-traveling-to-hungary"
+      },
+      {
+        "title": "European Highway Toll Rates in 2024",
+        "url": "/news/european-highway-toll-rates-in-2024"
+      },
+      {
+        "title": "Everything about the Hungarian one-day highway vignette",
+        "url": "/news/everything-about-the-hungarian-one-day-highway-vignette"
+      }
+    ],
+    "about": [
+      {
+        "title": "About us",
+        "url": "/about-us"
+      },
+      {
+        "title": "Contact",
+        "url": "/contact"
+      }
+    ],
+    "appLinks": {
+      "android": "/Home/Android?utm_source=AndroidGomb&utm_campaign=oldalsav%20box&utm_medium=APP",
+      "iOS": "/Home/IOS?utm_source=IOSGomb&utm_campaign=oldalsav%20box&utm_medium=APP"
+    },
+    "appImages": {
+      "androidSrc": "/Content/footer/google-play-hu-HU.png",
+      "iOSSrc": "/Content/footer/app-store-hu-HU.webp",
+      "androidAlt": "androidAlt",
+      "iosAlt": "iosAlt"
+    },
+    "paymentOptions": [
+      {
+        "title": "otp-card",
+        "url": "https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato_EN.pdf",
+        "src": "/Content/otpcards2.webp"
+      },
+      {
+        "title": "borgun-card",
+        "url": "http://dev.voxinfo.hu/VoxPayAdmin/Contents#",
+        "src": "/Content/Borgun_logos_v1_200px.jpg"
+      },
+      {
+        "title": "barion-card",
+        "url": "#",
+        "src": "/Content/barion-card.png"
+      }
+    ],
+    "socialMedia": [
+      {
+        "platform": "facebook",
+        "url": "https://www.facebook.com/autopalyamatrica.hu",
+        "src": "/Content/footer/facebook.png",
+        "ID": "facebook"
+      },
+      {
+        "platform": "instagram",
+        "url": "https://www.instagram.com/voxpay_hungary/",
+        "src": "/Content/footer/instagram.png",
+        "ID": "instagram"
+      },
+      {
+        "platform": "tiktok",
+        "url": "https://www.tiktok.com/@autopalyamatrica",
+        "src": "/Content/footer/tik-tok.png",
+        "ID": "tik-tok"
+      }
+    ],
+    "copyRight": "hungary-vignette.eu 2024"
+  }  
+}
