@@ -168,7 +168,7 @@ export default defineComponent({
   onMounted(async () => {
     try {
       const data = await import("@/static/FooterWidget.json");
-      footerWidget.value = data;
+      footerWidget.value = data.default;
     } catch (error) {
       console.error("Error loading footer data:", error);
     }

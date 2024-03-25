@@ -30,11 +30,15 @@
     }
   
     a {
-      @apply tracking-wider font-medium active:text-purple-500 hover:text-link-hover transition-all duration-500 ease-out;
+      @apply tracking-wider font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
     }
 
     .menu-wrapper a {
       @apply text-white text-[11px] lg:text-sm hover:text-link-hover uppercase;
+    }
+
+    .footer-txt a {
+      @apply hover:text-link-hover;
     }
 
    .lang-switcher {

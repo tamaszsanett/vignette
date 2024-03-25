@@ -5,26 +5,23 @@
       <!-- <h1>Főoldal</h1> -->
 
       <div class="flex flex-col lg:flex-row gap-8 xl:gap-40 my-16 xl:my-28">
-       <!--  <div v-for="card in cards" :key="card.id">
+        <!--  <div v-for="card in cards" :key="card.id">
           <Card v-bind="card" />
         </div> -->
       </div>
       <!-- <h1>HTML kártyák</h1> -->
-
+      <h2>Recent news</h2>
       <div class="flex flex-col lg:flex-row gap-8 xl:gap-40 my-16 xl:my-28">
-        <!-- <div v-for="card in cardsWithHTML" :key="card.id">
-          <Card v-bind="card" />
-        </div> -->
+        <div v-for="item in newsWidget.content" :key="item.ID">
+          <WidgetNews :contentItem="item" :siteUrl="siteUrl" />
+        </div>
       </div>
     </section>
   </main>
 </template>
 <script setup>
-import { ref } from 'vue';
-import cardsData from '@/static/cardsData.json';
-import cardsDataWithHTML from '@/static/cardsDataHTML.json';
-
-const cards = ref(cardsData);
-
-const cardsWithHTML = ref(cardsDataWithHTML);
+import { ref } from "vue";
+import newsWidgetData from "@/static/newsWidget.json";
+const newsWidget = ref(newsWidgetData);
+const siteUrl = ref(newsWidget.value.siteUrl); //
 </script>
