@@ -1,6 +1,17 @@
+/* tailwind components css */
 @import "./component/typo.css";
+@import "./component/accordion.css";
+@import "./component/buttons.css";
+
+/* tailwind custom base css */
 @import "base.css";
+
+/* old css  */
 @import "cms.css";
+
+/* primevue icons css  */
+@import 'primeicons/primeicons.css';
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

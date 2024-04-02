@@ -25,36 +25,22 @@
       </div>
       <!-- Language Selector -->
       <div class="relative ml-auto">
-        <button
-          @click="toggleLanguageDropdown"
-          class="flex items-center bg-white rounded-[4px] text-sm px-2 py-1 font-medium"
+        <Button
+          @click="visible = true"
+          class="btn-sm btn lang-btn"
         >
           <span>{{ currentLanguage.title }}</span>
           <img
-            :src="`${menuWidget.content.siteUrl}${menuWidget.content.langArrowSrc}`"
+            :src="currentLanguage.src"
             alt="Language"
             class="ml-2"
           />
-        </button>
-        <transition name="drop-down">
-          <div v-if="isLanguageDropdownOpen" class="lang-switcher mt-5">
-            <a
-              v-for="lang in menuWidget.content.languageSelection"
-              :href="lang.url"
-              :key="lang.title"
-              class="cursor-pointer block px-4 py-2 text-xs text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1"
-            >
-              <span>{{ lang.title }}</span>
-              <img
-                :src="`${menuWidget.content.siteUrl}${lang.imgSrc}`"
-                :alt="lang.alt"
-                class="inline-block ml-2 w-5 h-5"
-              />
-            </a>
-          </div>
-        </transition>
+        </Button>
+        <!--   <transition name="drop-down">
+          <Button v-if="isLanguageDropdownOpen" label="show" @click="visible = true" class="lang-switcher mt-5">
+          </Button>
+        </transition> -->
       </div>
-
       <button type="button" class="md:hidden p-4" @click="toggleMobileMenu">
         <!-- Menu Icon -->
         <svg
@@ -118,13 +104,56 @@
           </div>
         </div>
       </transition>
+      <Dialog
+        v-model:visible="visible"
+        modal dismissableMask
+        :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
+        class="max-w-sm w-full top-40 absolute rounded-md"
+      >
+        <template #header>
+          <div class="inline-flex items-center gap-2 pb-2 border-b w-full">
+            <img :src="currentLanguage.src" />
+            <span class="font-bold whitespace-nowrap">{{
+              currentLanguage.title
+            }}</span>
+          </div>
+        </template>
+        <div class="grid grid-cols-2 justify-between gap-2">
+          <a
+            v-for="lang in menuWidget.content.languageSelection"
+            :href="lang.url"
+            :key="lang.title"
+            class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1"
+          >
+            <span>{{ lang.title }}</span>
+            <img
+              :src="`${menuWidget.content.siteUrl}${lang.imgSrc}`"
+              :alt="lang.alt"
+              class="inline-block ml-2 w-5 h-5"
+            />
+          </a>
+        </div>
+        <template #footer>
+         <div class="border-t pt-5 w-full">
+          <Button class="btn primary-btn btn-sm mx-auto"
+            label="Bezárás"
+            icon="pi pi-check"
+            @click="visible = false"
+            autofocus
+          />
+         </div>
+        </template>
+      </Dialog>
     </nav>
   </header>
 </template>
 
 <script lang="ts">
+import Dialog from "primevue/dialog";
+import Button from "primevue/button";
 import { defineComponent, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
+
 interface MenuWidget {
   content: {
     siteUrl: string;
@@ -155,11 +184,11 @@ export default defineComponent({
     const isMobileMenuOpen = ref(false);
     const isLanguageDropdownOpen = ref(false);
     const menuWidget = ref<MenuWidget | null>(null);
-
+    const visible = ref(false);
     const currentLanguage = ref({
       title: "EN",
       url: "#",
-      imgSrc: "path/to/english-flag.png",
+      src: "https://www.autopalyamatrica.hu/Content/Flag_of_the_United_Kingdom.svg",
       alt: "English",
     });
 
@@ -175,9 +204,9 @@ export default defineComponent({
 
     const changeLanguage = (lang: any) => {
       currentLanguage.value = lang;
+
       // where the logic of changing the language can come in, e.g. Set i18n or reload page with selected language
       //console.log(`Nyelv váltva: ${lang.title}`);
-      toggleLanguageDropdown();
     };
 
     onMounted(async () => {
@@ -190,6 +219,7 @@ export default defineComponent({
     });
 
     return {
+      visible,
       isMobileMenuOpen,
       toggleMobileMenu,
       isActive,
