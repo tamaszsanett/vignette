@@ -1,32 +1,32 @@
 @layer utilities {
-    .h1 {
-      @apply text-4xl lg:text-7xl font-medium;
+   h1, .h1 {
+      @apply text-4xl lg:text-6xl font-medium;
     }
   
-    .h2 {
+    h2, .h2 {
       @apply font-medium text-3xl lg:text-5xl;
     }
   
-    .h3 {
+   h3,  .h3 {
       @apply font-medium text-2xl lg:text-3xl;
     }
   
-    .h4 {
+    h4, .h4 {
       @apply font-medium text-xl lg:text-2xl;
     }
   
-    .h5 {
+    h5, .h5 {
       @apply font-medium text-lg lg:text-xl;
     }
   
-    .h6 {
+    h6, .h6 {
       @apply font-medium text-base lg:text-lg;
     }
   }
   
   @layer base {
     p {
-      @apply text-base font-sans;
+      @apply text-base text-title-black my-4;
     }
   
     a {

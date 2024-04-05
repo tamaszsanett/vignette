@@ -18,3 +18,13 @@
 .p-component {
   font-family: 'Roboto Condensed';
 }
+
+body {
+  font-family: "Roboto Condensed";
+}
+
+@layer base {
+  .widget img {
+    @apply max-w-[inherit];
+  }
+}

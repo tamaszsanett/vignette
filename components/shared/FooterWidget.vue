@@ -30,7 +30,7 @@
         <b>{{ footerWidgetContent?.newsTitle }}</b
         ><br />
         <a
-          v-for="item in footerWidgetContent?.news"
+          v-for="item in footerWidgetContent?.topNewsLinks"
           :key="item.url"
           :href="`${item.url}`"
           >{{ item.title }}</a
@@ -83,14 +83,14 @@
         {{ footerWidgetContent?.copyRight }}
       </div>
       <div class="col-5">
-        <div style="display: flex; align-items: center; width: max-content">
+        <div class="flex flex-col sm:flex-row items-center gap-2" style="width: max-content">
           <a
             v-for="option in footerWidgetContent?.paymentOptions"
             :key="option.url"
             :href="option.url"
           >
             <img
-              class="w-full max-w-[230px] h-[21px]"
+              class="w-full max-w-[inherit] h-[21px]"
               :src="`${option.src}`"
               :alt="option.title"
               :title="option.title"
@@ -120,13 +120,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
+import { useAsyncData } from "nuxt/app";
 
 const api =
   "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
 const pageUri = "%2F&";
 const lang = "en";
-const targetWidgetId = "b28592aa-220a-4c8c-be83-da8aa2a9132b"; // Cseréld le a kívánt widget ID-jére
+const targetWidgetId = "b28592aa-220a-4c8c-be83-da8aa2a9132b";
 
 interface FooterLogo {
   src: string;
@@ -173,7 +174,7 @@ interface FooterWidgetContent {
   footerLogo: FooterLogo;
   description: string;
   menu: MenuItem[];
-  news: MenuItem[];
+  topNewsLinks: MenuItem[];
   about: MenuItem[];
   appLinks: AppLink;
   appImages: AppImage;
@@ -188,46 +189,60 @@ interface FooterWidget {
   content: FooterWidgetContent;
 }
 
-const footerWidget = ref<FooterWidget | null>(null);
-const footerWidgetContent = ref<FooterWidgetContent | null>(null);
+interface Widget {
+  widgetId: string;
+  widgetType: string;
+  content: string; 
+}
 
-const camelCaseKeys = (obj: any): any => {
-  if (!obj || typeof obj !== "object") return obj;
+interface ApiResponse {
+  value: {
+    widgets: FooterWidget[];
+  };
+}
 
-  if (Array.isArray(obj)) return obj.map((v) => camelCaseKeys(v));
+const footerWidget = computed(() =>
+  widgetData.value ? widgetData.value : null
+);
+const footerWidgetContent = computed(() =>
+  widgetData.value ? widgetData.value.content : null
+);
 
-  return Object.keys(obj).reduce((acc: Record<string, any>, key: string) => {
-    const camelKey = key.charAt(0).toLowerCase() + key.slice(1);
-    acc[camelKey] = camelCaseKeys(obj[key]);
-    return acc;
-  }, {});
-};
+const { data: widgetData, error: widgetError } = useAsyncData(
+  "widget",
+  async () => {
+    try {
+      const response = await fetch(
+        `${api}?PageUri=${pageUri}&Localization=${lang}`
+      );
+      if (!response.ok) {
+        throw new Error("Hiba a szerver válaszában");
+      }
 
-const fetchData = async () => {
-  try {
-    const response = await fetch(
-      `${api}?PageUri=${pageUri}Localization=${lang}`
-    );
-    const data = await response.json();
+      const jsonResponse: ApiResponse = await response.json();
 
-    // if data in 'value.widgets' array
-    const widget = data.value.widgets.find(
-      (widget: FooterWidget) => widget.widgetId === targetWidgetId
-    );
+      const widget = jsonResponse.value.widgets.find(
+        (widget) => widget.widgetId === targetWidgetId
+      );
+      
+      if (!widget || typeof widget.content !== "string") {
+        throw new Error("Hibás vagy hiányzó widget adatok");
+      }
 
-    if (widget && typeof widget.content === "string") {
       const parsedContent = JSON.parse(widget.content);
-
-      //transformed data, camelCase and parse
-      footerWidget.value = widget;
-      footerWidgetContent.value = camelCaseKeys(parsedContent);
-
-      console.log(footerWidgetContent.value);
+      return {
+        widgetId: widget.widgetId,
+        widgetType: widget.widgetType,
+        content: parsedContent,
+      };
+    } catch (error) {
+      console.error("Hiba a widget lekérdezése során:", error);
+      return null;
     }
-  } catch (error) {
-    console.error("Fetch error:", error);
   }
-};
+);
 
-onMounted(fetchData);
+if (widgetError.value) {
+  console.error("Hiba történt a widget lekérdezése során:", widgetError.value);
+}
 </script>
