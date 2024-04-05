@@ -3,10 +3,13 @@
   <main class="">
     <section class="min-h-[700px] container mx-auto px-4 pt-6">
       <div class="flex flex-col gap-8 xl:gap-20 my-16 xl:my-28">
-<!--         <WidgetWhyYouBuyHere />
- -->      </div>
-      <div class="flex flex-col gap-8 xl:gap-20 my-16 xl:my-28">
         <WidgetVignetteAccordion />
+      </div>
+      <div class="flex flex-col gap-8 xl:gap-20 my-16 xl:my-28">
+        <WidgetPurchaseProcess />
+      </div>
+      <div class="flex flex-col gap-8 xl:gap-20 my-16 xl:my-28">
+        <WidgetTypeOfBaseTime />
       </div>
       <div class="flex flex-col gap-8 xl:gap-20 my-16 xl:my-28">
         <WidgetFaq />
@@ -29,10 +32,6 @@ import { ref } from "vue";
 import newsWidgetData from "@/static/newsWidget.json";
 const newsWidget = ref(newsWidgetData);
 const siteUrl = ref(newsWidget.value.siteUrl); //
-
-import Dialog from "primevue/dialog";
-import Button from "primevue/button";
-import Calendar from "primevue/calendar";
 
 const visible = ref(false);
 </script>
