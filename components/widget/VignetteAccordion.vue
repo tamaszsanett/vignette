@@ -1,32 +1,26 @@
 <template>
-  <AccordionComponent
-    :content="accordionContent.content"
-    :mainTitle="accordionContent.mainTitle"
-    containerClass="max-w-[1100px] mx-auto w-full"
-    titleClass="bg-green-grad"
-    descClass="text-white text-sm md:text-lg font-medium"
-    iconClass="green-arrow"
-    :secondaryIconSrc="accordionContent.secondaryIconSrc"
-    :secondaryIconAlt="accordionContent.secondaryIconAlt"
-    :preTitle="accordionContent.preTitle"
-    gridContentClass="grid sm:grid-cols-2 gap-2 sm:gap-4"
-  ></AccordionComponent>
+  <div v-if="accordionContent" class="widget">
+    <AccordionComponent
+      :content="accordionContent.content"
+      containerClass="max-w-[1100px] mx-auto w-full"
+      titleClass="bg-green-grad"
+      descClass="text-white text-sm md:text-lg font-medium"
+      iconClass="green-arrow"
+      gridContentClass="grid sm:grid-cols-2 gap-2 sm:gap-4"
+    ></AccordionComponent>
+  </div>
 </template>
 
 <script setup lang="ts">
 const accordionContent = ref({
   widgetID: "1",
   widgetType: "VignetteAccordion",
-  mainTitle: "Motorway vignette Hungary - Highway sticker purchase 2023",
-  mainIconSrc:
-    "/Content/new-site-content/!_icon.svg",
-  mainIconAlt:
-    "/Content/new-site-content/!_icon.svg",
+  mainIconSrc: "/Content/new-site-content/!_icon.svg",
+  mainIconAlt: "/Content/new-site-content/!_icon.svg",
   content: [
     {
       preTitle: "D1",
-      secondaryIconSrc:
-        "/Content/new-site-content/d1_icon_light.svg",
+      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
       secondaryIconAlt: "asdf",
       title: "When should the highway sticker be purchased?",
       buttons: [
@@ -52,8 +46,7 @@ const accordionContent = ref({
     },
     {
       preTitle: "D2",
-      secondaryIconSrc:
-        "/Content/new-site-content/d1_icon_light.svg",
+      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
       secondaryIconAlt: "asdf",
       title: "When should the highway sticker be purchased?",
       buttons: [
@@ -67,8 +60,7 @@ const accordionContent = ref({
     },
     {
       preTitle: "D1m",
-      secondaryIconSrc:
-        "/Content/new-site-content/d1_icon_light.svg",
+      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
       secondaryIconAlt: "asdf",
       title: "When should the highway sticker be purchased?",
       buttons: [
@@ -88,8 +80,7 @@ const accordionContent = ref({
     },
     {
       preTitle: "U",
-      secondaryIconSrc:
-        "/Content/new-site-content/d1_icon_light.svg",
+      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
       secondaryIconAlt: "asdf",
       title: "When should the highway sticker be purchased?",
       buttons: [

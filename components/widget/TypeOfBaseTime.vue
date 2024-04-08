@@ -1,5 +1,5 @@
 <template>
-  <section class="widget">
+  <section v-if="widgetContent" class="widget">
     <div :id="targetWidgetId" class="widget-content" v-html="widgetContent"></div>
   </section>
 </template>
@@ -24,10 +24,10 @@ const api =
 const pageUri = "%2F&";
 const lang = "en";
 const targetWidgetId = "5706c8ae-36b2-493c-bbba-8410ffb2ea5a";
-
+const uniqueKey = `widgetContent-${targetWidgetId}`;
 // UseAsyncData reactive update
 const { data: widgetData } = useAsyncData(
-  "`widgetContent-${targetWidgetId}`",
+  uniqueKey,
   async () => {
     const url = `${api}?PageUri=${pageUri}Localization=${lang}`;
 

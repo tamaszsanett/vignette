@@ -1,5 +1,5 @@
 <template>
-  <h2>{{ mainTitle }}</h2>
+  <h2 v-if="mainTitle">{{ mainTitle }}</h2>
   <Accordion :class="containerClass" :activeIndex="0">
     <AccordionTab v-for="item in content" :key="item.title">
       <template #header>
@@ -37,7 +37,7 @@
         </div>
       </template>
       <div v-if="item.desc" class="m-0 px-4">
-        <p v-html="item.desc"></p>
+        <div v-html="item.desc"></div>
       </div>
       <div v-if="gridContentClass" :class="gridContentClass">
         <NuxtLink
@@ -72,8 +72,17 @@ interface Button {
   iconAlt?: string;
 }
 
+interface ContentItem {
+  preTitle?: string;
+  title: string;
+  desc: string;
+  secondaryIconSrc?: string;
+  secondaryIconAlt?: string;
+  buttons: Button[];
+}
+
 interface AccordionComponent {
-  mainTitle: string;
+  mainTitle?: string;
   mainIconSrc?: string;
   mainIconAlt?: string;
   containerClass?: string;
@@ -81,14 +90,7 @@ interface AccordionComponent {
   descClass?: string;
   titleClass?: string;
   iconClass?: string;
-  content: Array<{
-    preTitle?: string;
-    title: string;
-    desc: string;
-    secondaryIconSrc?: string;
-    secondaryIconAlt?: string;
-    buttons: Button[];
-  }>;
+  content:ContentItem[];
 }
 
 defineProps<AccordionComponent>();

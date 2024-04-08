@@ -1,19 +1,21 @@
 <template>
-  <AccordionComponent
-    :content="accordionContent.content"
-    :mainTitle="accordionContent.mainTitle"
-    :mainIconSrc="accordionContent.mainIconSrc"
-    :mainIconAlt="accordionContent.mainIconAlt"
-    containerClass="max-w-[888px] mx-auto w-full"
-    titleClass="gray-grad-bg"
-    descClass="text-faq-title-gray"
-    iconClass="orange-arrow"
-  ></AccordionComponent>
+  <div v-if="accordionContent" class="widget">
+    <AccordionComponent
+      :content="accordionContent.content"
+      :mainTitle="accordionContent.mainTitle"
+      :mainIconSrc="accordionContent.mainIconSrc"
+      :mainIconAlt="accordionContent.mainIconAlt"
+      containerClass="max-w-[888px] mx-auto w-full"
+      titleClass="gray-grad-bg"
+      descClass="text-faq-title-gray"
+      iconClass="orange-arrow"
+    ></AccordionComponent>
+  </div>
 </template>
 
 <script setup lang="ts">
 import { useAsyncData } from "nuxt/app";
-import { computed } from "vue";
+import { computed, ref, onMounted } from "vue";
 
 interface AccordionItem {
   title: string;
@@ -32,21 +34,23 @@ interface ApiResponse {
   };
 }
 
-const api = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+const api =
+  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
 const pageUri = "%2F&";
 const lang = "en";
 const targetWidgetId = "33068e0f-cdf0-4911-b0b1-d9dd5139f13f";
+const uniqueKey = `accordionContent-${targetWidgetId}`;
 
 // UseAsyncData reactive update
 const { data: accordionData } = useAsyncData<AccordionContent | null>(
-  `accordionContent-${targetWidgetId}`,
+  uniqueKey,
   async () => {
     try {
-      const url = `${api}?PageUri=${pageUri}&Localization=${lang}`;
+      const url = `${api}?PageUri=${pageUri}Localization=${lang}`;
       const response = await $fetch<ApiResponse>(url);
-      // our widget 
+
       const widget = response.value.widgets.find(
-        widget => widget.widgetId === targetWidgetId
+        (widget) => widget.widgetId === targetWidgetId
       );
 
       if (!widget) {
@@ -54,27 +58,23 @@ const { data: accordionData } = useAsyncData<AccordionContent | null>(
         return null;
       }
 
-      // 'content' record JSON string parse
       const parsedContent = JSON.parse(widget.content);
 
-      console.log(parsedContent);
-
-      // return a parse content
       return {
         mainIconSrc: parsedContent.items[0].iconSrc,
         mainIconAlt: parsedContent.items[0].iconAlt,
-        content: parsedContent.items.map(item => ({
+        content: parsedContent.items.map((item) => ({
           title: item.title,
-          desc: item.desc
+          desc: item.desc,
         })),
-        mainTitle: parsedContent.mainTitle
+        mainTitle: parsedContent.mainTitle,
       };
     } catch (error) {
-      console.error('API fetch error:', error);
+      console.error("API fetch error:", error);
       return null;
     }
   }
 );
 
-const accordionContent = computed(() => accordionData.value ? accordionData.value : {});
+const accordionContent = computed(() => accordionData.value);
 </script>
