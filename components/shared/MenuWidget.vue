@@ -4,16 +4,16 @@
       class="container mx-auto flex justify-between items-center p-4 text-white menu-wrapper"
     >
       <div class="flex justify-start items-center">
-        <a :href="menuWidget.content.siteUrl">
+        <a :href="menuWidget.siteUrl">
           <img
-            :src="`${menuWidget.content.siteUrl}${menuWidget.content.logo.src}`"
-            :alt="menuWidget.content.logo.alt"
+            :src="`${menuWidget.logo.src}`"
+            :alt="menuWidget.logo.alt"
             class="w-28 h-10 sm:w-[196px] sm:h-[69px] md:w-28 md:h-10 xl:w-[196px] xl:h-[69px]"
           />
         </a>
         <div class="hidden md:flex space-x-4 ml-5">
           <a
-            v-for="item in menuWidget.content.menu"
+            v-for="item in menuWidget.menu"
             :href="item.url"
             :key="item.url"
             :class="{ 'active-link': isActive(item.url) }"
@@ -25,16 +25,9 @@
       </div>
       <!-- Language Selector -->
       <div class="relative ml-auto">
-        <Button
-          @click="visible = true"
-          class="btn-sm btn lang-btn"
-        >
+        <Button @click="visible = true" class="btn-sm btn lang-btn">
           <span>{{ currentLanguage.title }}</span>
-          <img
-            :src="currentLanguage.src"
-            alt="Language"
-            class="ml-2"
-          />
+          <img :src="currentLanguage.src" alt="Language" class="ml-2" />
         </Button>
         <!--   <transition name="drop-down">
           <Button v-if="isLanguageDropdownOpen" label="show" @click="visible = true" class="lang-switcher mt-5">
@@ -81,18 +74,15 @@
                 />
               </svg>
             </button>
-            <a
-              :href="menuWidget.content.siteUrl"
-              class="text-2xl font-bold mb-5"
-            >
+            <a :href="menuWidget.siteUrl" class="text-2xl font-bold mb-5">
               <img
-                :src="`${menuWidget.content.siteUrl}${menuWidget.content.logo.src}`"
-                :alt="menuWidget.content.logo.alt"
-                class="h-8 opacity-60 w-[196px] h-[69px]"
+                :src="`${menuWidget.logo.src}`"
+                :alt="menuWidget.logo.alt"
+                class="opacity-60 w-[196px] h-[69px]"
               />
             </a>
             <a
-              v-for="item in menuWidget.content.menu"
+              v-for="item in menuWidget.menu"
               :href="item.url"
               :key="item.url"
               :class="{ 'active-link': isActive(item.url) }"
@@ -106,7 +96,8 @@
       </transition>
       <Dialog
         v-model:visible="visible"
-        modal dismissableMask
+        modal
+        dismissableMask
         :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
         class="max-w-sm w-full top-40 absolute rounded-md"
       >
@@ -120,117 +111,143 @@
         </template>
         <div class="grid grid-cols-2 justify-between gap-2">
           <a
-            v-for="lang in menuWidget.content.languageSelection"
+            v-for="lang in menuWidget.languageSelection"
             :href="lang.url"
             :key="lang.title"
             class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1"
           >
             <span>{{ lang.title }}</span>
             <img
-              :src="`${menuWidget.content.siteUrl}${lang.imgSrc}`"
+              :src="`${lang.imgSrc}`"
               :alt="lang.alt"
               class="inline-block ml-2 w-5 h-5"
             />
           </a>
         </div>
         <template #footer>
-         <div class="border-t pt-5 w-full">
-          <Button class="btn primary-btn btn-sm mx-auto"
-            label="Bezárás"
-            icon="pi pi-check"
-            @click="visible = false"
-            autofocus
-          />
-         </div>
+          <div class="border-t pt-5 w-full">
+            <Button
+              class="btn primary-btn btn-sm mx-auto"
+              label="Bezárás"
+              icon="pi pi-check"
+              @click="visible = false"
+              autofocus
+            />
+          </div>
         </template>
       </Dialog>
     </nav>
   </header>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
-import { defineComponent, onMounted, ref } from "vue";
+import { ref } from "vue";
 import { useRoute } from "vue-router";
+import { useAsyncData } from "nuxt/app";
 
-interface MenuWidget {
-  content: {
-    siteUrl: string;
-    logo: {
-      src: string;
-      alt: string;
-      title: string;
-    };
-    menu: Array<{
-      title: string;
-      url: string;
-    }>;
-    langArrowSrc: string;
-    languageSelection: Array<Language>;
-  };
+interface MenuLogo {
+  src: string;
+  alt: string;
+  title: string;
 }
 
-interface Language {
+interface MenuItem {
+  title: string;
+  url: string;
+}
+
+interface LanguageSelectionItem {
   title: string;
   url: string;
   imgSrc: string;
   alt: string;
 }
 
-export default defineComponent({
-  setup() {
-    const route = useRoute();
-    const isMobileMenuOpen = ref(false);
-    const isLanguageDropdownOpen = ref(false);
-    const menuWidget = ref<MenuWidget | null>(null);
-    const visible = ref(false);
-    const currentLanguage = ref({
-      title: "EN",
-      url: "#",
-      src: "https://www.autopalyamatrica.hu/Content/Flag_of_the_United_Kingdom.svg",
-      alt: "English",
-    });
+interface MenuWidgetContent {
+  siteUrl: string;
+  logo: MenuLogo;
+  menu: MenuItem[];
+  langArrowSrc: string;
+  languageSelection: LanguageSelectionItem[];
+}
 
-    const toggleLanguageDropdown = () => {
-      isLanguageDropdownOpen.value = !isLanguageDropdownOpen.value;
-    };
+interface MenuWidget {
+  widgetId: string;
+  widgetType: string;
+  content: string;
+}
 
-    const toggleMobileMenu = () => {
-      isMobileMenuOpen.value = !isMobileMenuOpen.value;
-    };
+interface ApiResponse {
+  value: {
+    widgets: MenuWidget[];
+  };
+}
 
-    const isActive = (path: string) => route.path === path;
+const api =
+  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+const pageUri = "%2F&";
+const lang = "en";
+const targetWidgetId = "2112036c-bbf0-4d3f-bb77-24dbffed8b37";
+const uniqueKey = `menuWidget-${targetWidgetId}`;
 
-    const changeLanguage = (lang: any) => {
-      currentLanguage.value = lang;
-
-      // where the logic of changing the language can come in, e.g. Set i18n or reload page with selected language
-      //console.log(`Nyelv váltva: ${lang.title}`);
-    };
-
-    onMounted(async () => {
-      try {
-        const data = await import("@/static/menuWidget.json");
-        menuWidget.value = data.default;
-      } catch (error) {
-        console.error("Error loading menu data:", error);
+// UseAsyncData reactive update
+const { data: menuWidgetData, error: menuWidgetError } =
+  useAsyncData<MenuWidgetContent | null>(uniqueKey, async () => {
+    try {
+      const response = await fetch(
+        `${api}?PageUri=${pageUri}Localization=${lang}`
+      );
+      if (!response.ok) {
+        throw new Error("Server response error");
       }
-    });
 
-    return {
-      visible,
-      isMobileMenuOpen,
-      toggleMobileMenu,
-      isActive,
-      isLanguageDropdownOpen,
-      toggleLanguageDropdown,
-      menuWidget,
-      currentLanguage,
-      changeLanguage,
-    };
-  },
+      const jsonResponse: ApiResponse = await response.json();
+      const widget = jsonResponse.value.widgets.find(
+        (widget) => widget.widgetId === targetWidgetId
+      );
+
+      if (!widget) {
+        throw new Error("Widget not found");
+      }
+
+      const parsedContent = JSON.parse(widget.content);
+      return parsedContent;
+
+    } catch (error) {
+      console.error("Error fetching menu widget:", error);
+      return null;
+    }
+  });
+
+const isMobileMenuOpen = ref(false);
+const visible = ref(false);
+const route = useRoute();
+
+// `currentLanguage` and `isActive` logic with default values and implementation
+const currentLanguage = ref({
+  title: "English",
+  src: "https://www.autopalyamatrica.hu/Content/Flag_of_the_United_Kingdom.svg",
+  alt: "English",
 });
+
+const isActive = (url: string) => {
+  return route.path === url;
+};
+
+const toggleMobileMenu = () => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+const menuWidget = computed(() => menuWidgetData.value);
+
+if (menuWidgetError.value) {
+  console.error(
+    "Error occurred while fetching the menu widget:",
+    menuWidgetError.value
+  );
+}
 </script>
 
 <style scoped>
