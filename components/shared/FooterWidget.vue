@@ -1,5 +1,5 @@
 <template>
-  <div class="black-desing row">
+  <div v-if="footerWidget" class="black-desing row widget">
     <div class="col-10 horizontal-set">
       <div class="col-5">
         <div>
