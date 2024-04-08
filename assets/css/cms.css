@@ -4631,10 +4631,10 @@ td {
   margin: 5px 0;
 }
 
-.set-img-sizeL {
+/* .set-img-sizeL {
   width: 110%;
   height: 200px;
-}
+} */
 
 .set-img-sizeM {
   width: 120%;
@@ -5343,6 +5343,7 @@ td {
 }
 
 .mainPageWhichVignetteBlock {
+  width: 100%;
 }
 
 .mainPageWhichVignetteBlock amp-img {

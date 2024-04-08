@@ -1,29 +1,40 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 @layer utilities {
   .container {
     @apply md:max-w-[1245px];
   }
 
   .bg-green-grad {
-    background: #5CCC94;
-    background: linear-gradient(0deg,#5CCC94 0,#8CCAAE 100%)
+    background: #5ccc94;
+    background: linear-gradient(0deg, #5ccc94 0, #8ccaae 100%);
   }
   /* base css */
 }
 
 .footer-txt a {
-
   @apply font-medium text-sm tracking-normal;
 }
-.p-component {
-  font-family: 'Roboto Condensed';
-}
 
-body {
-  font-family: "Roboto Condensed";
+@layer components {
+  /* WhyYouBuyhere .vue */
+  .why-buy-here .col-9 {
+    @apply w-full;
+  }
 }
 
 @layer base {
+  .p-component {
+    font-family: "Roboto Condensed";
+  }
+
+  body {
+    font-family: "Roboto Condensed";
+  }
+
+  .widget {
+    @apply my-8 clear-both;
+  }
+
   .widget img {
     @apply max-w-[inherit];
   }
