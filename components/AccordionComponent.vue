@@ -7,7 +7,7 @@
           :class="titleClass"
           class="flex items-center justify-between w-full py-5 shadow-sm rounded-md"
         >
-          <h1 v-if="item.preTitle" class="ml-3 md:ml-[6.5rem] text-white">
+          <h1 v-if="item.preTitle" class="ml-3 md:ml-[6.5rem] text-white my-0">
             {{ item.preTitle }}
           </h1>
           <img
