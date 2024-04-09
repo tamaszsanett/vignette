@@ -23,6 +23,10 @@
 }
 
 @layer base {
+  table {
+    @apply w-fit;
+  }
+
   .p-component {
     font-family: "Roboto Condensed";
   }
