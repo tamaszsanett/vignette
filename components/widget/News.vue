@@ -65,12 +65,16 @@ interface TopNewsItem {
   url: string;
 }
 
+interface TopNews {
+  mainTitle: string;
+  items: TopNewsItem[]
+}
+
 interface ApiResponse {
   value: {
     widgets: {
       widgetId: string;
       widgetType: string;
-      mainTitle: string;
       content: string;
     }[];
   };
@@ -83,7 +87,7 @@ const lang = "en";
 const targetWidgetId = "e4dea5f4-63cd-444a-890a-b1cff3523599";
 const uniqueKey = `topNewsItemsData-${targetWidgetId}`;
 
-const { data: topNewsItemsData } = useAsyncData<TopNewsItem[] | null>(
+const { data: topNewsData } = useAsyncData<TopNews | null>(
   uniqueKey,
   async () => {
     try {
@@ -98,8 +102,13 @@ const { data: topNewsItemsData } = useAsyncData<TopNewsItem[] | null>(
         return null;
       }
 
+      // parse the content string into an object
       const parsedContent = JSON.parse(widget.content);
-      return parsedContent.topNews;
+      return {
+        mainTitle: parsedContent.topNews.mainTitle,
+        items: parsedContent.topNews.items
+      };
+
     } catch (error) {
       console.error("API fetch error:", error);
       return null;
@@ -107,5 +116,6 @@ const { data: topNewsItemsData } = useAsyncData<TopNewsItem[] | null>(
   }
 );
 
-const topNewsItems = computed(() => topNewsItemsData.value || []);
+const topNewsItems = computed(() => topNewsData.value?.items || []);
+const mainTitle = computed(() => topNewsData.value?.mainTitle || '');
 </script>
