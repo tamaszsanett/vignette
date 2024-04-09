@@ -4188,13 +4188,7 @@ p {
   color: #f58221;
 }
 
-.btn-orange {
-  background: #ffffff;
-  border-radius: 5px;
-  border: 1px solid #f57d21;
-  color: #f57d21;
-  width: fit-content;
-}
+
 
 input[type="checkbox"] {
   accent-color: #e77600;
@@ -4210,15 +4204,6 @@ input[type="checkbox"] {
   margin-inline: 37px;
 }
 
-.btn-orange:hover {
-  background: linear-gradient(180deg, #f58c1f 0%, #f57d21 100%);
-  color: white;
-  border: 1px solid #f57d21;
-  /*background: #FFFFFF;
-            border-radius: 5px;
-            border: 1px solid #F57D21;
-            color: #F57D21;*/
-}
 
 /*.btn-green {
     background: linear-gradient(0deg, #5CCC94 0%, #8CCAAE 100%);
@@ -4424,6 +4409,14 @@ td {
   font-size: 16px;
   line-height: 24px;
   text-align: justify;
+  position: relative;
+  top: 10px;
+}
+
+@media all and (min-width: 768px) {
+  .title-desc {
+    left: -17px;
+  }
 }
 
 .line-text {
@@ -4538,7 +4531,7 @@ td {
 .title-img-text:before {
   content: "";
   position: absolute;
-  right: -10px;
+  right: -9px;
   height: 0;
   width: 0;
   border-top: 18px solid transparent;
@@ -4636,10 +4629,7 @@ td {
   height: 200px;
 } */
 
-.set-img-sizeM {
-  width: 120%;
-  height: 120%;
-}
+
 
 .set-img-sizeS {
   width: 100%;
@@ -5352,13 +5342,6 @@ td {
   margin-inline: 0;
 }
 
-.mainPageWhichVignetteBlock > div:nth-child(2),
-.mainPageWhichVignetteBlock > div:nth-child(3) {
-  column-gap: 10em;
-  display: flex;
-  justify-content: center;
-}
-
 .mainPageWhichVignetteBlock > div:nth-child(2) .col-3 .col-12,
 .mainPageWhichVignetteBlock > div:nth-child(3) .col-3 .col-12 {
   padding: 0;
@@ -5623,28 +5606,10 @@ mark {
     width: 100%;
   }
 
-  .mobilePadding {
-    padding: 0 40px;
-  }
-
-  .mobilePadding2 {
-    padding: 0 35px;
-  }
-
   .mobileTextCenter {
     text-align: center !important;
   }
 
-  .btn-orange {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .mainPageTopTitle {
-    font-size: 20px;
-    padding: 0 40px;
-    line-height: 24px;
-  }
 
   .menu-toggle {
     display: inline-block;
@@ -5774,10 +5739,7 @@ mark {
     margin: 10px 0 0 0;
   }
 
-  .mainPageWhichVignetteBlock {
-    width: 100%;
-    padding: 0 25px;
-  }
+
 
   .mainPageWhichVignetteBlock amp-img {
     width: 100% !important;
@@ -5807,11 +5769,6 @@ mark {
     justify-content: center;
     margin-bottom: 20px;
     margin-top: 10px;
-  }
-
-  .mobileTitle {
-    font-size: 32px;
-    line-height: 40px;
   }
 
   .whyToBuyHere > div {
@@ -5936,7 +5893,7 @@ mark {
   }
 
   .stickerTypesMainPage .titleImg .title-img-text:before {
-    right: -15px;
+    right: -14px;
     border-top: 39px solid transparent;
     border-bottom: 39px solid transparent;
     border-left: 15px solid #78caa3;
@@ -5944,7 +5901,7 @@ mark {
   }
 
   .stickerTypesMainPage .titleImg .title-img-text span {
-    width: 140px;
+    width: 100%;
   }
 
   .stickerTypesMainPage .titleImg amp-img {
@@ -7304,10 +7261,6 @@ mark {
   }
 }
 
-.topMarginUnderQuickBuyButton {
-  margin-top: 100px !important;
-}
-
 .underVignetteTypeForm .countyView {
   clear: both;
   position: relative;
@@ -7460,10 +7413,6 @@ mark {
   .vignetteHeaderSetter > div:nth-child(1) amp-img {
     width: 710px !important;
     height: 61px !important;
-  }
-
-  .mobilePadding {
-    padding: 0 20px;
   }
 
   .container {
@@ -7678,11 +7627,6 @@ mark {
 
   .mainPageWhichVignetteBlock amp-img {
     height: 95px !important;
-  }
-
-  .btn-orange {
-    font-size: 13px;
-    padding: 10px 0px;
   }
 
   .vignette-accordion .vignette-holder .vig-item {

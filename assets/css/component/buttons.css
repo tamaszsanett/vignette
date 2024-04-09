@@ -1,30 +1,27 @@
-.btn {
-  @apply text-center flex border justify-center items-center focus:ring-1 font-medium rounded-md text-base px-6 py-2.5 focus:outline-none transition-all duration-500;
-}
+@layer utilities {
+  .btn {
+    @apply text-center flex border justify-center items-center focus:ring-1 font-medium rounded-md text-base px-6 py-2.5 focus:outline-none transition-all duration-500;
+  }
 
-.btn-sm {
+  .btn-sm {
     @apply py-1 px-4;
-}
+  }
 
-.primary-btn,
-[type="button"].primary-btn {
-  @apply bg-base-orange text-white hover:text-base-orange hover:bg-white border-base-orange focus:ring-base-orange;
-}
+  .primary-btn,
+  [type="button"].primary-btn {
+    @apply bg-base-orange text-white hover:text-base-orange hover:bg-white border-base-orange focus:ring-base-orange;
+  }
 
-.primary-btn-outline {
-  @apply bg-white text-base-orange hover:text-white hover:bg-base-orange border-base-orange focus:ring-base-orange;
-}
+  .primary-btn-outline {
+    @apply bg-white text-base-orange hover:text-white hover:bg-base-orange border-base-orange focus:ring-base-orange;
+  }
 
-.primary-btn-outline:hover .read-img {
-  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(470%)
-    hue-rotate(357deg) brightness(109%) contrast(101%);
-}
+  .primary-btn-outline:hover .read-img {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(470%)
+      hue-rotate(357deg) brightness(109%) contrast(101%);
+  }
 
-[type="button"].lang-btn {
-    @apply flex items-center bg-white rounded-[4px] text-sm px-2 py-1 font-medium hover:bg-transparent hover:text-white;
-}
-
-.stretched-link::after {
+  .stretched-link::after {
     position: absolute;
     top: 0;
     right: 0;
@@ -34,6 +31,15 @@
     pointer-events: auto;
     content: "";
     background-color: rgba(0, 0, 0, 0);
+  }
+}
+
+.btn-orange {
+  @apply btn primary-btn w-fit;
+}
+
+[type="button"].lang-btn {
+  @apply flex items-center bg-white rounded-[4px] text-sm px-2 py-1 font-medium hover:bg-transparent hover:text-white;
 }
 
 .p-dialog-footer {
