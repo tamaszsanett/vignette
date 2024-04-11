@@ -15,7 +15,11 @@ export default defineNuxtConfig({
     global: true,
     dirs: ["~/components"],
   },
-
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
   app: {
     head: {
       title: "Hungarian Motorway vignette sale online &#128663; 2023!",

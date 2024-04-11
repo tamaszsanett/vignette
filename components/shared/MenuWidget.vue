@@ -4,7 +4,7 @@
       class="container mx-auto flex justify-between items-center p-4 text-white menu-wrapper"
     >
       <div class="flex justify-start items-center">
-        <a :href="menuWidget.siteUrl">
+        <a href="/">
           <img
             :src="`${menuWidget.logo.src}`"
             :alt="menuWidget.logo.alt"
@@ -207,6 +207,8 @@ const { data: menuWidgetData, error: menuWidgetError } =
       const widget = jsonResponse.value.widgets.find(
         (widget) => widget.widgetId === targetWidgetId
       );
+
+      //console.log(widget);
 
       if (!widget) {
         throw new Error("Widget not found");

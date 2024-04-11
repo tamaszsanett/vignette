@@ -3813,7 +3813,7 @@ a {
   vertical-align: middle;
 }
 
-.stickerTypesMainPage .purchasedVignetteText {
+.vignetteTypesMainPage .purchasedVignetteText {
   font-size: 18px;
   font-weight: unset;
   line-height: 20px;
@@ -5489,23 +5489,23 @@ td {
   max-width: 300px;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow {
+.vignetteTypesMainPage .vignetteTypesMainPageRow {
   margin-top: 50px;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow,
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg > div {
+.vignetteTypesMainPage .vignetteTypesMainPageRow,
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg > div {
   position: relative;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg {
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg {
   position: absolute;
   top: -55px;
   left: -50px;
   margin: 0;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg .stickerTypeLabel {
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .vignetteTypeLabel {
   position: absolute;
   z-index: 12;
   top: 47%;
@@ -5519,7 +5519,7 @@ td {
   width: 114px;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg .title-img-text {
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .title-img-text {
   top: 42px;
   left: -15px;
   margin-left: 0;
@@ -5844,29 +5844,29 @@ mark {
     padding: 10px 40px !important;
   }
 
-  .stickerTypesMainPage > div.col-9 {
+  .vignetteTypesMainPage > div.col-9 {
     width: 100%;
   }
 
-  .stickerTypesMainPage h1 {
+  .vignetteTypesMainPage h1 {
     margin-bottom: 2rem;
   }
 
-  .stickerTypesMainPage .titleImg {
+  .vignetteTypesMainPage .titleImg {
     left: -20px !important;
   }
 
-  .stickerTypesMainPage .stickerTypeLabel {
+  .vignetteTypesMainPage .vignetteTypeLabel {
     font-size: 23px !important;
     line-height: 25px !important;
     width: 87px !important;
   }
 
-  .stickerTypesMainPage .stickerTypesMainPageRow {
+  .vignetteTypesMainPage .vignetteTypesMainPageRow {
     margin-top: 35px;
   }
 
-  .stickerTypesMainPage .titleImg .title-img-text {
+  .vignetteTypesMainPage .titleImg .title-img-text {
     width: 250px;
     left: -55px !important;
     top: 16px !important;
@@ -5879,20 +5879,20 @@ mark {
     justify-content: center;
   }
 
-  .stickerTypesMainPage .bg-vignette-type {
+  .vignetteTypesMainPage .bg-vignette-type {
     margin: 0 -12px 0 14px;
     padding: 60px 30px 30px 30px;
   }
 
-  .stickerTypesMainPage .bg-vignette-type .purchasedVignetteText {
+  .vignetteTypesMainPage .bg-vignette-type .purchasedVignetteText {
     padding: 10px 0;
   }
 
-  .stickerTypesMainPage .titleImg {
+  .vignetteTypesMainPage .titleImg {
     margin-inline: 0;
   }
 
-  .stickerTypesMainPage .titleImg .title-img-text:before {
+  .vignetteTypesMainPage .titleImg .title-img-text:before {
     right: -14px;
     border-top: 39px solid transparent;
     border-bottom: 39px solid transparent;
@@ -5900,11 +5900,11 @@ mark {
     margin-top: 0;
   }
 
-  .stickerTypesMainPage .titleImg .title-img-text span {
+  .vignetteTypesMainPage .titleImg .title-img-text span {
     width: 100%;
   }
 
-  .stickerTypesMainPage .titleImg amp-img {
+  .vignetteTypesMainPage .titleImg amp-img {
     width: 110px !important;
     height: 111px !important;
     left: 20px;
@@ -7585,20 +7585,20 @@ mark {
 }
 
 @media only screen and (max-width: 380px) {
-  .stickerTypesMainPage .titleImg amp-img {
+  .vignetteTypesMainPage .titleImg amp-img {
     left: 5px;
   }
 
-  .stickerTypesMainPage .stickerTypeLabel {
+  .vignetteTypesMainPage .vignetteTypeLabel {
     left: calc(50% + 5px) !important;
   }
 
-  .stickerTypesMainPage .titleImg .title-img-text {
+  .vignetteTypesMainPage .titleImg .title-img-text {
     font-size: 12px !important;
     width: 160px;
   }
 
-  .stickerTypesMainPage .titleImg .title-img-text:before {
+  .vignetteTypesMainPage .titleImg .title-img-text:before {
     right: -14px;
   }
 
