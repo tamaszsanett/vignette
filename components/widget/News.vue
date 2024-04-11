@@ -62,6 +62,7 @@ interface TopNewsItem {
   desc: string;
   buttonText?: string;
   buttonIconSrc?: string;
+  buttonTitle?: string;
   url: string;
 }
 
