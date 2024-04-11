@@ -12,108 +12,7 @@
 </template>
 
 <script setup lang="ts">
-const accordionContent = ref({
-  widgetID: "1",
-  widgetType: "VignetteAccordion",
-  mainIconSrc: "/Content/new-site-content/!_icon.svg",
-  mainIconAlt: "/Content/new-site-content/!_icon.svg",
-  content: [
-    {
-      preTitle: "D1",
-      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
-      secondaryIconAlt: "asdf",
-      title: "When should the highway sticker be purchased?",
-      buttons: [
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-      ],
-    },
-    {
-      preTitle: "D2",
-      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
-      secondaryIconAlt: "asdf",
-      title: "When should the highway sticker be purchased?",
-      buttons: [
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-      ],
-    },
-    {
-      preTitle: "D1m",
-      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
-      secondaryIconAlt: "asdf",
-      title: "When should the highway sticker be purchased?",
-      buttons: [
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-      ],
-    },
-    {
-      preTitle: "U",
-      secondaryIconSrc: "/Content/new-site-content/d1_icon_light.svg",
-      secondaryIconAlt: "asdf",
-      title: "When should the highway sticker be purchased?",
-      buttons: [
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-        {
-          title: "Daily e-vignette -  18,29 €",
-          iconSrc: "/Content/cart.svg",
-          iconAlt: "icon alt",
-          url: "vignette/D1/1day/type",
-        },
-      ],
-    },
-  ],
-});
-
-/* import { useAsyncData } from "nuxt/app";
+import { useAsyncData } from "nuxt/app";
 import { computed } from "vue";
 
 interface Button {
@@ -124,48 +23,69 @@ interface Button {
 }
 
 interface AccordionItem {
-  preTitle: string;
-  secondaryIconSrc: string;
-  secondaryIconAlt: string;
+  preTitle?: string;
+  secondaryIconSrc?: string;
+  secondaryIconAlt?: string;
   title: string;
+  desc?: string;
   buttons: Button[];
 }
 
 interface AccordionContent {
-  widgetID: string;
-  widgetType: string;
-  mainTitle: string;
-  mainIconSrc: string;
-  mainIconAlt: string;
   content: AccordionItem[];
 }
 
 interface ApiResponse {
   value: {
-    widgets: AccordionContent[];
+    widgets: Array<{
+      widgetId: string;
+      content: string; 
+    }>;
   };
 }
 
-const api =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+const api = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
 const pageUri = "%2F&";
 const lang = "en";
-const targetWidgetId = "5706c8ae-36b2-493c-bbba-8410ffb2ea5a";
+const targetWidgetId = "97ac617f-14c6-4e3a-8ae9-075ddf1f853c";
+const uniqueKey = `accordionContent-${targetWidgetId}`;
 
 // UseAsyncData reactive update
-const { data: widgetData } = useAsyncData(
-  "`widgetContent-${targetWidgetId}`",
+const { data: accordionData } = useAsyncData<AccordionContent | null>(
+  uniqueKey,
   async () => {
-    const url = `${api}?PageUri=${pageUri}Localization=${lang}`;
-    // `$fetch` explicit type
-    const response = await $fetch<ApiResponse>(url);
-    const widget = response.value.widgets.find(
-      (widget) => widget.widgetId === targetWidgetId
-    );
+    try {
+      const url = `${api}?PageUri=${pageUri}Localization=${lang}`;
+      const response = await $fetch<ApiResponse>(url);
 
-    return widget ? widget.content : null;
+      const widget = response.value.widgets.find(
+        (widget) => widget.widgetId === targetWidgetId
+      );
+
+      if (!widget) {
+        console.log("Widget not found");
+        return null;
+      }
+
+      const parsedContent = JSON.parse(widget.content);
+
+      const vignetteTypes = parsedContent.vignetteTypes.map((item: AccordionItem) => ({
+        preTitle: item.preTitle,
+        secondaryIconSrc: item.secondaryIconSrc,
+        secondaryIconAlt: item.secondaryIconAlt,
+        title: item.title,
+        buttons: item.buttons,
+      }));
+
+      return {
+        content: vignetteTypes,
+      };
+    } catch (error) {
+      console.error("API fetch error:", error);
+      return null;
+    }
   }
 );
 
-const widgetContent = computed(() => widgetData.value); */
+const accordionContent = computed(() => accordionData.value);
 </script>
