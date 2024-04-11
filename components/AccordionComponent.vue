@@ -75,7 +75,7 @@ interface Button {
 interface ContentItem {
   preTitle?: string;
   title: string;
-  desc: string;
+  desc?: string; 
   secondaryIconSrc?: string;
   secondaryIconAlt?: string;
   buttons: Button[];
@@ -90,7 +90,7 @@ interface AccordionComponent {
   descClass?: string;
   titleClass?: string;
   iconClass?: string;
-  content:ContentItem[];
+  content: ContentItem[];
 }
 
 defineProps<AccordionComponent>();
