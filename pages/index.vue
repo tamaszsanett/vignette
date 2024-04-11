@@ -3,6 +3,7 @@
     <section class="container mx-auto px-4 lg:px-0 pt-6">
       <WidgetMainTextBox />
       <WidgetVignetteAccordion />
+      <WidgetPurchaseFlow />
       <WidgetPurchaseProcess />
       <WidgetTypeOfBaseTime />
       <WidgetTypeCategory />
