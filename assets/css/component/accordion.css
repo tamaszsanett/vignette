@@ -1,0 +1,87 @@
+@layer components {
+  /*   .arrow {
+    margin: 2em;
+  }
+
+  .arrow::before {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 0.8em solid transparent;
+    border-radius: 5px;
+    border-left-color: #0a8f4f;
+    transform-origin: 0 50%;
+    transition: transform 0.25s;
+    transform: rotate(180deg);
+  }
+
+  .arrow.down::before {
+    transform: rotate(90deg);
+    transition: transform 0.25s;
+  }
+
+  .arrow.up::before {
+    transition: transform 0.25s;
+  } */
+
+  .gray-grad-bg {
+    background: #efefef;
+    background-image: linear-gradient(to right, rgba(238, 238, 243, 0), #fff);
+  }
+
+  svg.p-icon.p-accordion-toggle-icon {
+    @apply hidden;
+  }
+
+  .p-accordion-tab .orange-arrow::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 0.8em solid transparent;
+    border-radius: 5px;
+    border-left-color: #f58c1f;
+    transform-origin: 0 50%;
+    transition: transform 0.25s;
+    transform: rotate(90deg);
+  }
+
+  .p-accordion-tab .green-arrow::after {
+    position: absolute;
+    content: "";
+    width: 0;
+    height: 0;
+    border: 0.8em solid transparent;
+    border-radius: 5px;
+    border-left-color: #0A8F4F;
+    transform-origin: 0 50%;
+    transition: transform 0.25s;
+    transform: rotate(90deg);
+  }
+
+  .p-accordion
+    .p-accordion-header
+    .p-accordion-header-link
+    .p-accordion-toggle-icon {
+    transition: transform 0.25s;
+  }
+
+  .p-accordion
+    .p-accordion-header
+    .p-accordion-header-link
+    .p-accordion-toggle-icon {
+    transform: rotate(90deg);
+  }
+  .p-accordion .p-accordion-header.p-highlight .p-accordion-toggle-icon {
+    transform: rotate(0deg);
+    top: -15px;
+    position: relative;
+  }
+  .p-accordion
+    .p-accordion-header
+    .p-accordion-header-link
+    .p-accordion-toggle-icon {
+    @apply mt-[1rem] md:mr-[6.5rem];
+  }
+}

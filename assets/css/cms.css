@@ -9,13 +9,7 @@ a {
 body {
   font-family: "Roboto Condensed";
   line-height: 1.4em;
-  overflow-x: hidden;
 }
-
-/*h1 {
-            font-size: 32px;
-            text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,0.4);
-        }*/
 
 .num {
   float: left;
@@ -221,7 +215,6 @@ button {
   cursor: pointer;
   border: 0px solid #999;
   border-radius: 8px;
-  padding: 5px 10px;
 }
 
 .logo {
@@ -2511,7 +2504,7 @@ img.olTileImage {
   color: white;
 }
 
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: 768px) {
   #mapContainer {
     position: initial;
     top: 0;
@@ -3820,7 +3813,7 @@ a {
   vertical-align: middle;
 }
 
-.stickerTypesMainPage .purchasedVignetteText {
+.vignetteTypesMainPage .purchasedVignetteText {
   font-size: 18px;
   font-weight: unset;
   line-height: 20px;
@@ -3870,36 +3863,9 @@ a {
   height: 39px !important;
 }
 
-.vignette-accordion .hdr {
-  padding: 7px;
-  border-radius: 10px;
-  background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
-  border-radius: 5px;
-}
-
 .vignette-accordion section {
   margin-top: 10px;
   line-height: normal;
-}
-
-.vignette-title-text {
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 70px;
-  line-height: 70px;
-  text-align: center;
-  color: #ffffff;
-}
-
-.vignette-title-desc {
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 26px;
-  color: #ffffff;
-  margin: inherit;
 }
 
 .dashed-hr {
@@ -4193,21 +4159,6 @@ p {
   font-size: 16px;
 }
 
-.btn {
-  cursor: pointer;
-  border-radius: 5px;
-  border: 0;
-  font-size: 16px;
-  font-weight: bold;
-  text-align: center;
-  /*margin-bottom: 5px;*/
-  white-space: nowrap;
-  display: inline-block;
-  padding: 11px 20px;
-  text-decoration: none;
-  line-height: normal;
-}
-
 .green-shadow {
   box-shadow: 6.53571px 6.53571px 28.7571px rgba(10, 143, 79, 0.2);
 }
@@ -4237,33 +4188,7 @@ p {
   color: #f58221;
 }
 
-.btn-orange {
-  background: #ffffff;
-  border-radius: 5px;
-  border: 1px solid #f57d21;
-  color: #f57d21;
-  padding: 10px 25px;
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 20px;
-  width: 150px;
-  height: 41px;
-  margin-inline: 20px;
-  /*background: linear-gradient(180deg, #F58C1F 0%, #F57D21 100%);
-            color: white;
-            padding: 10px 25px;
-            font-family: 'Roboto Condensed';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 24px;
-            width: 150px;
-            height: 41px;
-            margin-inline: 20px;
-            border: 1px solid #F57D21;*/
-}
+
 
 input[type="checkbox"] {
   accent-color: #e77600;
@@ -4279,15 +4204,6 @@ input[type="checkbox"] {
   margin-inline: 37px;
 }
 
-.btn-orange:hover {
-  background: linear-gradient(180deg, #f58c1f 0%, #f57d21 100%);
-  color: white;
-  border: 1px solid #f57d21;
-  /*background: #FFFFFF;
-            border-radius: 5px;
-            border: 1px solid #F57D21;
-            color: #F57D21;*/
-}
 
 /*.btn-green {
     background: linear-gradient(0deg, #5CCC94 0%, #8CCAAE 100%);
@@ -4468,59 +4384,6 @@ td {
   text-align: center;
 }
 
-.arrow {
-  margin: 2em;
-}
-
-.arrow::before {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 0;
-  border: 0.8em solid transparent;
-  border-radius: 5px;
-  border-left-color: #0a8f4f;
-  transform-origin: 0 50%;
-  transition: transform 0.25s;
-  transform: rotate(180deg);
-}
-
-.arrow.down::before {
-  transform: rotate(90deg);
-  transition: transform 0.25s;
-}
-
-.arrow.up::before {
-  transition: transform 0.25s;
-}
-
-.orange-arrow {
-  margin: 2em;
-  float: right;
-}
-
-.orange-arrow::before {
-  position: absolute;
-  content: "";
-  width: 0;
-  height: 0;
-  border: 0.8em solid transparent;
-  border-radius: 5px;
-  border-left-color: #f58c1f;
-  transform-origin: 0 50%;
-  transition: transform 0.25s;
-  transform: rotate(180deg);
-}
-
-.orange-arrow.down::before {
-  transform: rotate(90deg);
-  transition: transform 0.25s;
-}
-
-.orange-arrow.up::before {
-  transition: transform 0.25s;
-}
-
 .menu li a {
   display: inline-block;
   padding: 10px 7px;
@@ -4546,6 +4409,14 @@ td {
   font-size: 16px;
   line-height: 24px;
   text-align: justify;
+  position: relative;
+  top: 10px;
+}
+
+@media all and (min-width: 768px) {
+  .title-desc {
+    left: -17px;
+  }
 }
 
 .line-text {
@@ -4644,7 +4515,7 @@ td {
   margin-top: -7px;
 }
 
-.title-amp-img-text {
+.title-img-text {
   margin-top: 56px;
   margin-left: -42px;
   z-index: 7;
@@ -4657,10 +4528,10 @@ td {
   float: left;
 }
 
-.title-amp-img-text:before {
+.title-img-text:before {
   content: "";
   position: absolute;
-  right: -10px;
+  right: -9px;
   height: 0;
   width: 0;
   border-top: 18px solid transparent;
@@ -4668,48 +4539,6 @@ td {
   border-left: 10px solid #78caa3;
   border-radius: 4px;
   margin-top: -8px;
-}
-
-.gyik h3 {
-  height: 85px;
-  display: flex;
-}
-
-.gyik_header {
-  margin-left: 20px;
-  max-width: 85%;
-  font-size: 20px;
-  line-height: 71px;
-}
-
-.gyik_img,
-.gyik_amp-img,
-.orange-arrow {
-  height: 71px;
-  display: flex;
-  align-items: center;
-}
-
-.gyik_img,
-.gyik_amp-img,
-.gyik_header {
-  float: left;
-}
-
-.orange-arrow {
-  float: right;
-  margin: 0;
-}
-
-.i-amphtml-accordion-header {
-  cursor: pointer;
-  background-image: linear-gradient(to right, rgba(238, 238, 243, 0), #fff);
-  padding-right: 20px;
-  border: 0;
-}
-
-.gyik_text {
-  padding: 10px;
 }
 
 .user-menu {
@@ -4754,7 +4583,7 @@ td {
   color: #ffffff;
 }
 
-.title-amp-img-text {
+.title-img-text {
   vertical-align: middle;
   padding: 19px -14px;
   width: 300px;
@@ -4795,15 +4624,12 @@ td {
   margin: 5px 0;
 }
 
-.set-img-sizeL {
+/* .set-img-sizeL {
   width: 110%;
   height: 200px;
-}
+} */
 
-.set-img-sizeM {
-  width: 120%;
-  height: 120%;
-}
+
 
 .set-img-sizeS {
   width: 100%;
@@ -5117,16 +4943,15 @@ td {
 
 .whyToBuyHere > div {
   display: inline-grid;
-  grid-template-columns: minmax(auto, 285px) minmax(auto, 285px) minmax(
-      auto,
-      285px
-    ) minmax(auto, 285px);
+  grid-template-columns:
+    minmax(auto, 285px) minmax(auto, 285px) minmax(auto, 285px)
+    minmax(auto, 285px);
   grid-gap: 20px;
   justify-content: center;
 }
 
 .whyToBuyHere .whyToBuyHereElement {
-  background-image: url(/Content/miert_nalunk_vasarold_alap.svg);
+  background-image: url(https://www.new.hungary-vignette.eu/Content/miert_nalunk_vasarold_alap.svg);
   background-repeat: no-repeat;
   height: 133px;
   display: flex;
@@ -5279,10 +5104,6 @@ td {
   background-position: 48vw top;
 }
 
-.buttonAutoWidth {
-  width: auto;
-}
-
 .orderedListStyleFix li {
   list-style: decimal;
 }
@@ -5340,14 +5161,14 @@ td {
   margin-inline: 37px;
 }
 
-.orange-h3-inline-none {
+/* .orange-h3-inline-none {
   font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
   color: #f58c1f;
-}
+} */
 
 .fontWeightBold {
   font-weight: 700;
@@ -5512,19 +5333,13 @@ td {
 }
 
 .mainPageWhichVignetteBlock {
+  width: 100%;
 }
 
 .mainPageWhichVignetteBlock amp-img {
   width: 100%;
   margin-block: 0;
   margin-inline: 0;
-}
-
-.mainPageWhichVignetteBlock > div:nth-child(2),
-.mainPageWhichVignetteBlock > div:nth-child(3) {
-  column-gap: 10em;
-  display: flex;
-  justify-content: center;
 }
 
 .mainPageWhichVignetteBlock > div:nth-child(2) .col-3 .col-12,
@@ -5674,37 +5489,37 @@ td {
   max-width: 300px;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow {
+.vignetteTypesMainPage .vignetteTypesMainPageRow {
   margin-top: 50px;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow,
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg > div {
+.vignetteTypesMainPage .vignetteTypesMainPageRow,
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg > div {
   position: relative;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg {
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg {
   position: absolute;
-  top: -42px;
+  top: -55px;
   left: -50px;
   margin: 0;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg .stickerTypeLabel {
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .vignetteTypeLabel {
   position: absolute;
   z-index: 12;
   top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #ffffff;
-  font-size: 30px;
+  font-size: 26px;
   line-height: 40px;
   font-weight: 700;
   text-align: center;
   width: 114px;
 }
 
-.stickerTypesMainPage .stickerTypesMainPageRow .titleImg .title-amp-img-text {
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .title-img-text {
   top: 42px;
   left: -15px;
   margin-left: 0;
@@ -5791,28 +5606,10 @@ mark {
     width: 100%;
   }
 
-  .mobilePadding {
-    padding: 0 40px;
-  }
-
-  .mobilePadding2 {
-    padding: 0 35px;
-  }
-
   .mobileTextCenter {
     text-align: center !important;
   }
 
-  .btn-orange {
-    margin-left: 0;
-    margin-right: 0;
-  }
-
-  .mainPageTopTitle {
-    font-size: 20px;
-    padding: 0 40px;
-    line-height: 24px;
-  }
 
   .menu-toggle {
     display: inline-block;
@@ -5936,31 +5733,13 @@ mark {
     display: none;
   }
 
-  .vignette-accordion .hdr .vignette-title-desc {
-    width: 70%;
-    font-size: 15px;
-    line-height: 17px;
-    font-weight: 500;
-    margin-top: 0;
-  }
-
-  .vignette-accordion .hdr .vignette-title-text {
-    font-size: 48px;
-    text-align: left;
-    padding-left: 15px;
-    width: fit-content;
-  }
-
   .vignette-accordion .vignette-holder .vig-item {
     font-size: 16px;
     padding: 18px 22px 10px 20px;
     margin: 10px 0 0 0;
   }
 
-  .mainPageWhichVignetteBlock {
-    width: 100%;
-    padding: 0 25px;
-  }
+
 
   .mainPageWhichVignetteBlock amp-img {
     width: 100% !important;
@@ -5990,11 +5769,6 @@ mark {
     justify-content: center;
     margin-bottom: 20px;
     margin-top: 10px;
-  }
-
-  .mobileTitle {
-    font-size: 32px;
-    line-height: 40px;
   }
 
   .whyToBuyHere > div {
@@ -6070,27 +5844,29 @@ mark {
     padding: 10px 40px !important;
   }
 
-  .stickerTypesMainPage > div.col-9 {
+  .vignetteTypesMainPage > div.col-9 {
     width: 100%;
-    padding: 0 40px;
   }
 
-  .stickerTypesMainPage .titleImg {
-    left: 0px !important;
+  .vignetteTypesMainPage h1 {
+    margin-bottom: 2rem;
   }
 
-  .stickerTypesMainPage .stickerTypeLabel {
-    left: calc(50% + 20px) !important;
+  .vignetteTypesMainPage .titleImg {
+    left: -20px !important;
+  }
+
+  .vignetteTypesMainPage .vignetteTypeLabel {
     font-size: 23px !important;
     line-height: 25px !important;
     width: 87px !important;
   }
 
-  .stickerTypesMainPage .stickerTypesMainPageRow {
+  .vignetteTypesMainPage .vignetteTypesMainPageRow {
     margin-top: 35px;
   }
 
-  .stickerTypesMainPage .titleImg .title-amp-img-text {
+  .vignetteTypesMainPage .titleImg .title-img-text {
     width: 250px;
     left: -55px !important;
     top: 16px !important;
@@ -6103,32 +5879,32 @@ mark {
     justify-content: center;
   }
 
-  .stickerTypesMainPage .bg-vignette-type {
+  .vignetteTypesMainPage .bg-vignette-type {
     margin: 0 -12px 0 14px;
     padding: 60px 30px 30px 30px;
   }
 
-  .stickerTypesMainPage .bg-vignette-type .purchasedVignetteText {
+  .vignetteTypesMainPage .bg-vignette-type .purchasedVignetteText {
     padding: 10px 0;
   }
 
-  .stickerTypesMainPage .titleImg {
+  .vignetteTypesMainPage .titleImg {
     margin-inline: 0;
   }
 
-  .stickerTypesMainPage .titleImg .title-amp-img-text:before {
-    right: -15px;
+  .vignetteTypesMainPage .titleImg .title-img-text:before {
+    right: -14px;
     border-top: 39px solid transparent;
     border-bottom: 39px solid transparent;
     border-left: 15px solid #78caa3;
     margin-top: 0;
   }
 
-  .stickerTypesMainPage .titleImg .title-amp-img-text span {
-    width: 140px;
+  .vignetteTypesMainPage .titleImg .title-img-text span {
+    width: 100%;
   }
 
-  .stickerTypesMainPage .titleImg amp-img {
+  .vignetteTypesMainPage .titleImg amp-img {
     width: 110px !important;
     height: 111px !important;
     left: 20px;
@@ -6289,7 +6065,7 @@ mark {
 
   .black-desing.row > .col-10 {
     width: 100%;
-    padding: 5px 40px;
+    padding: 5px 16px;
   }
 
   .black-desing.row > div:nth-child(1) .footer-txt {
@@ -6361,8 +6137,8 @@ mark {
     text-align: center;
   }
 
-  .black-desing.row > div:nth-child(3) > .col-5 > div > a:nth-child(3) > img {
-    width: 185px;
+  .black-desing.row img {
+    width: 100%;
   }
 
   .newsPageCardGrid,
@@ -7485,10 +7261,6 @@ mark {
   }
 }
 
-.topMarginUnderQuickBuyButton {
-  margin-top: 100px !important;
-}
-
 .underVignetteTypeForm .countyView {
   clear: both;
   position: relative;
@@ -7641,10 +7413,6 @@ mark {
   .vignetteHeaderSetter > div:nth-child(1) amp-img {
     width: 710px !important;
     height: 61px !important;
-  }
-
-  .mobilePadding {
-    padding: 0 20px;
   }
 
   .container {
@@ -7817,20 +7585,20 @@ mark {
 }
 
 @media only screen and (max-width: 380px) {
-  .stickerTypesMainPage .titleImg amp-img {
+  .vignetteTypesMainPage .titleImg amp-img {
     left: 5px;
   }
 
-  .stickerTypesMainPage .stickerTypeLabel {
+  .vignetteTypesMainPage .vignetteTypeLabel {
     left: calc(50% + 5px) !important;
   }
 
-  .stickerTypesMainPage .titleImg .title-amp-img-text {
+  .vignetteTypesMainPage .titleImg .title-img-text {
     font-size: 12px !important;
     width: 160px;
   }
 
-  .stickerTypesMainPage .titleImg .title-amp-img-text:before {
+  .vignetteTypesMainPage .titleImg .title-img-text:before {
     right: -14px;
   }
 
@@ -7859,11 +7627,6 @@ mark {
 
   .mainPageWhichVignetteBlock amp-img {
     height: 95px !important;
-  }
-
-  .btn-orange {
-    font-size: 13px;
-    padding: 10px 0px;
   }
 
   .vignette-accordion .vignette-holder .vig-item {

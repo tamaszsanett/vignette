@@ -1,0 +1,12 @@
+.flow-card {
+    @apply text-base-black h-full px-4 py-2 w-full rounded-md md:w-[200px] 
+ text-center flex flex-col justify-center items-center font-normal;
+}
+
+.flow-card > img {
+    @apply max-w-[110px] h-[110px]
+}
+
+.flow-card-body {
+    @apply max-w-[300px] text-center;
+}

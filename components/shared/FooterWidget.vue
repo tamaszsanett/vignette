@@ -1,70 +1,73 @@
 <template>
-  <div v-if="footerWidget" class="black-desing row">
+  <div v-if="footerWidget" class="black-desing row widget">
     <div class="col-10 horizontal-set">
       <div class="col-5">
         <div>
-          <img class="w-[197px] h-[70px]"
-            :src="`${footerWidget.content.siteUrl}${footerWidget.content.footerLogo.src}`"
-            :alt="footerWidget.content.footerLogo.alt"
-            :title="footerWidget.content.footerLogo.title"
+          {{ footerWidget?.widgetId }}
+          {{ footerWidget?.widgetType }}
+          <img
+            class="w-[197px] h-[70px]"
+            :src="`${footerWidgetContent?.footerLogo.src}`"
+            :alt="footerWidgetContent?.footerLogo.alt"
+            :title="footerWidgetContent?.footerLogo.title"
           />
         </div>
         <div class="footer-txt" style="width: 80%">
-          {{ footerWidget.content.description }}
+          {{ footerWidgetContent?.description }}
         </div>
       </div>
       <div class="col-2 footer-txt">
-        <b>{{ footerWidget.content.sitesTitle }}</b
+        <b>{{ footerWidgetContent?.sitesTitle }}</b
         ><br />
         <a
-          v-for="item in footerWidget.content.sites"
+          v-for="item in footerWidgetContent?.menu"
           :key="item.url"
-          :href="`${footerWidget.content.siteUrl}${item.url}`"
+          :href="`${item.url}`"
           >{{ item.title }}</a
         ><br />
       </div>
       <div class="col-2 footer-txt">
-        <b>{{ footerWidget.content.newsTitle }}</b
+        <b>{{ footerWidgetContent?.newsTitle }}</b
         ><br />
         <a
-          v-for="item in footerWidget.content.news"
+          v-for="item in footerWidgetContent?.topNewsLinks"
           :key="item.url"
-          :href="`${footerWidget.content.siteUrl}${item.url}`"
+          :href="`${item.url}`"
           >{{ item.title }}</a
         ><br />
       </div>
       <div class="col-2 footer-txt">
         <div class="about-section">
-          <b>{{ footerWidget.content.aboutTitle }}</b
+          <b>{{ footerWidgetContent?.aboutTitle }}</b
           ><br />
           <a
-            v-for="item in footerWidget.content.about"
+            v-for="item in footerWidgetContent?.about"
             :key="item.url"
-            :href="`${footerWidget.content.siteUrl}${item.url}`"
+            :href="`${item.url}`"
             >{{ item.title }}</a
           ><br />
         </div>
         <div class="about-section">
           <a
-            :href="`${footerWidget.content.siteUrl}${footerWidget.content.appLinks.android}`"
+            :href="`${footerWidgetContent?.appLinks.android}`"
             rel="noreferrer"
-            :alt="footerWidget.content.appImages.androidAlt"
+            :alt="footerWidgetContent?.appImages.androidAlt"
           >
             <img
               class="w-[124px] h-[33px]"
-              :src="`${footerWidget.content.siteUrl}${footerWidget.content.appImages.androidSrc}`"
-              :alt="footerWidget.content.appImages.androidAlt"
+              :src="`${footerWidgetContent?.appImages.androidSrc}`"
+              :alt="footerWidgetContent?.appImages.androidAlt"
             />
           </a>
           <br />
           <a
-            :href="`${footerWidget.content.siteUrl}${footerWidget.content.appLinks.iOS}`"
+            :href="`${footerWidgetContent?.appLinks.iOS}`"
             rel="noreferrer"
-            :alt="footerWidget.content.appImages.iosAlt"
+            :alt="footerWidgetContent?.appImages.iosAlt"
           >
             <img
-              :src="`${footerWidget.content.siteUrl}${footerWidget.content.appImages.iOSSrc}`"
-              :alt="footerWidget.content.appImages.iosAlt"
+              :src="`${footerWidgetContent?.appImages.iOSSrc}`"
+              :alt="footerWidgetContent?.appImages.iosAlt"
               width="124"
               height="33"
             />
@@ -77,18 +80,18 @@
     </div>
     <div class="col-10 horizontal-set">
       <div class="col-3">
-        {{ footerWidget.content.copyRight }}
+        {{ footerWidgetContent?.copyRight }}
       </div>
       <div class="col-5">
-        <div style="display: flex; align-items: center; width: max-content">
+        <div class="flex flex-col sm:flex-row items-center gap-2" style="width: max-content">
           <a
-            v-for="option in footerWidget.content.paymentOptions"
+            v-for="option in footerWidgetContent?.paymentOptions"
             :key="option.url"
             :href="option.url"
           >
             <img
-              class="w-full max-w-[230px] h-[21px]"
-              :src="`${footerWidget.content.siteUrl}${option.src}`"
+              class="w-full max-w-[inherit] h-[21px]"
+              :src="`${option.src}`"
               :alt="option.title"
               :title="option.title"
             />
@@ -96,17 +99,17 @@
         </div>
       </div>
       <div class="col-4 flex items-center gap-6">
-        {{ footerWidget.content.socialMediaTitle }}
+        {{ footerWidgetContent?.socialMediaTitle }}
         <a
-          v-for="media in footerWidget.content.socialMedia"
+          v-for="media in footerWidgetContent?.socialMedia"
           :key="media.url"
           :href="media.url"
         >
           <img
-            :id="media.ID"
+            :id="media.id"
             class="w-[28px] h-[28px]"
             style="padding: 0"
-            :src="`${footerWidget.content.siteUrl}${media.src}`"
+            :src="`${media.src}`"
             :alt="media.platform"
             :title="media.platform"
           />
@@ -116,67 +119,130 @@
   </div>
 </template>
 
-<script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+<script setup lang="ts">
+import { ref, onMounted, computed } from "vue";
+import { useAsyncData } from "nuxt/app";
 
-// json data types
+const api =
+  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+const pageUri = "%2F&";
+const lang = "en";
+const targetWidgetId = "b28592aa-220a-4c8c-be83-da8aa2a9132b";
+
+interface FooterLogo {
+  src: string;
+  alt: string;
+  title: string;
+}
+
+interface MenuItem {
+  title: string;
+  url: string;
+}
+
+interface AppLink {
+  android: string;
+  iOS: string;
+}
+
+interface AppImage {
+  androidSrc: string;
+  iOSSrc: string;
+  androidAlt: string;
+  iosAlt: string;
+}
+
+interface PaymentOption {
+  title: string;
+  url: string;
+  src: string;
+}
+
+interface SocialMedia {
+  platform: string;
+  url: string;
+  src: string;
+  id: string;
+}
+
+interface FooterWidgetContent {
+  siteUrl: string;
+  newsTitle: string;
+  aboutTitle: string;
+  sitesTitle: string;
+  socialMediaTitle: string;
+  footerLogo: FooterLogo;
+  description: string;
+  menu: MenuItem[];
+  topNewsLinks: MenuItem[];
+  about: MenuItem[];
+  appLinks: AppLink;
+  appImages: AppImage;
+  paymentOptions: PaymentOption[];
+  socialMedia: SocialMedia[];
+  copyRight: string;
+}
+
 interface FooterWidget {
-  content: {
-    siteUrl: string;
-    socialMediaTitle: string;
-    newsTitle: string;
-    sitesTitle: string;
-    aboutTitle: string;
-    footerLogo: {
-      src: string;
-      alt: string;
-      title: string;
-    };
-    description: string;
-    sites: Array<{ title: string; url: string }>;
-    about: Array<{ title: string; url: string }>;
-    news: Array<{ title: string; url: string }>;
-    appLinks: {
-      android: string;
-      iOS: string;
-    };
-    appImages: {
-      androidSrc: string;
-      iOSSrc: string;
-      androidAlt: string;
-      iosAlt: string;
-    };
-    paymentOptions: Array<{
-      title: string;
-      url: string;
-      src: string;
-    }>;
-    socialMedia: Array<{
-      platform: string;
-      url: string;
-      src: string;
-      ID: string;
-    }>;
-    copyRight: string;
+  widgetId: string;
+  widgetType: string;
+  content: FooterWidgetContent;
+}
+
+interface Widget {
+  widgetId: string;
+  widgetType: string;
+  content: string; 
+}
+
+interface ApiResponse {
+  value: {
+    widgets: FooterWidget[];
   };
 }
 
-export default defineComponent({
-  setup() {
-  const footerWidget = ref<FooterWidget | null>(null);
+const footerWidget = computed(() =>
+  widgetData.value ? widgetData.value : null
+);
+const footerWidgetContent = computed(() =>
+  widgetData.value ? widgetData.value.content : null
+);
 
-  onMounted(async () => {
+const { data: widgetData, error: widgetError } = useAsyncData(
+  "widget",
+  async () => {
     try {
-      const data = await import("@/static/FooterWidget.json");
-      footerWidget.value = data;
-    } catch (error) {
-      console.error("Error loading footer data:", error);
-    }
-  });
+      const response = await fetch(
+        `${api}?PageUri=${pageUri}&Localization=${lang}`
+      );
+      if (!response.ok) {
+        throw new Error("Hiba a szerver válaszában");
+      }
 
-  return {
-    footerWidget,
-  };
-},
-});
+      const jsonResponse: ApiResponse = await response.json();
+
+      const widget = jsonResponse.value.widgets.find(
+        (widget) => widget.widgetId === targetWidgetId
+      );
+      
+      if (!widget || typeof widget.content !== "string") {
+        throw new Error("Hibás vagy hiányzó widget adatok");
+      }
+
+      const parsedContent = JSON.parse(widget.content);
+      return {
+        widgetId: widget.widgetId,
+        widgetType: widget.widgetType,
+        content: parsedContent,
+      };
+    } catch (error) {
+      console.error("Hiba a widget lekérdezése során:", error);
+      return null;
+    }
+  }
+);
+
+if (widgetError.value) {
+  console.error("Hiba történt a widget lekérdezése során:", widgetError.value);
+}
 </script>

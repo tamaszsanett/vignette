@@ -1,8 +1,80 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 @layer utilities {
-
   .container {
     @apply md:max-w-[1245px];
   }
+
+  .bg-green-grad {
+    background: #5ccc94;
+    background: linear-gradient(0deg, #5ccc94 0, #8ccaae 100%);
+  }
   /* base css */
+}
+
+.footer-txt a {
+  @apply font-medium text-sm tracking-normal;
+}
+
+@layer components {
+  /* WhyYouBuyhere .vue */
+  .why-buy-here .col-9 {
+    @apply w-full;
+  }
+}
+
+@layer base {
+  table {
+    @apply w-fit;
+  }
+
+  .p-component {
+    font-family: "Roboto Condensed";
+  }
+
+  body {
+    font-family: "Roboto Condensed";
+  }
+
+  .widget {
+    @apply clear-both py-8;
+  }
+
+  .widget img {
+    @apply max-w-[inherit];
+  }
+
+  .mobilePadding {
+    @apply px-2 lg:px-4;
+  }
+
+  .mobilePadding2 {
+    @apply px-4 lg:px-8;
+  }
+
+  .widget .set-img-sizeM {
+    @apply w-full h-full md:max-w-[210px] md:w-[revert-layer] lg:max-w-[300px];
+  }
+}
+
+@layer components {
+  .widget .mainPageWhichVignetteBlock {
+    @apply w-full px-4 lg:px-0;
+  }
+
+  .widget .mainPageWhichVignetteBlock h3 {
+    @apply text-sm my-3.5 font-normal mb-10;
+  }
+
+  .widget .p-accordion .p-accordion-header .p-accordion-header-link {
+    @apply px-0 py-2 lg:py-3;
+  }
+
+  .widget .p-accordion-content {
+    @apply px-2;
+  }
+
+  .widget .mainPageWhichVignetteBlock > div:nth-child(2),
+  .widget .mainPageWhichVignetteBlock > div:nth-child(3) {
+    @apply flex justify-center gap-8 md:gap-28 mb-4;
+  }
 }

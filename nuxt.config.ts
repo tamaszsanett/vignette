@@ -1,7 +1,10 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
-  css: ["~/assets/css/main.css"],
+  css: [
+    "~/assets/css/main.css",
+    "primevue/resources/themes/aura-light-lime/theme.css",
+  ],
   postcss: {
     plugins: {
       tailwindcss: {},
@@ -12,7 +15,11 @@ export default defineNuxtConfig({
     global: true,
     dirs: ["~/components"],
   },
-
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
   app: {
     head: {
       title: "Hungarian Motorway vignette sale online &#128663; 2023!",
@@ -22,12 +29,13 @@ export default defineNuxtConfig({
         lang: "hu",
         class: "scroll-smooth",
       },
-      
+
       meta: [
         {
           hid: "description",
           name: "description",
-          content: "Buy a highway vignette&#128077; Weekly, monthly, annual county and national e-vignette. Even without registration, with bank card or transfer! D1, D2, U, B2, D1M",
+          content:
+            "Buy a highway vignette&#128077; Weekly, monthly, annual county and national e-vignette. Even without registration, with bank card or transfer! D1, D2, U, B2, D1M",
         },
         { name: "format-detection", content: "telephone=no" },
         {
@@ -38,7 +46,8 @@ export default defineNuxtConfig({
         {
           hid: "og:description",
           property: "og:description",
-          content: "Buy a highway vignette&#128077; Weekly, monthly, annual county and national e-vignette. Even without registration, with bank card or transfer! D1, D2, U, B2, D1M",
+          content:
+            "Buy a highway vignette&#128077; Weekly, monthly, annual county and national e-vignette. Even without registration, with bank card or transfer! D1, D2, U, B2, D1M",
         },
         {
           hid: "og:image",
@@ -60,6 +69,6 @@ export default defineNuxtConfig({
     "@nuxtjs/sitemap",
     "nuxt-simple-robots",
     "nuxt-aos",
-    "nuxt-primevue"
+    "nuxt-primevue",
   ],
 });
