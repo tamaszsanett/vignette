@@ -1,12 +1,12 @@
 <template>
   <header v-if="menuWidget" class="w-full z-40 top-0 bg-base-black">
     <nav
-      class="container mx-auto flex justify-between items-center p-4 text-white menu-wrapper"
+      class="mx-auto flex justify-between items-center p-4 text-white menu-wrapper"
     >
       <div class="flex justify-start items-center">
-        <a href="/">
+        <a v-if="menuWidget.logo" href="/">
           <img
-            :src="`${menuWidget.logo.src}`"
+            :src="menuWidget.logo.src"
             :alt="menuWidget.logo.alt"
             class="w-28 h-10 sm:w-[196px] sm:h-[69px] md:w-28 md:h-10 xl:w-[196px] xl:h-[69px]"
           />
@@ -141,87 +141,13 @@
 </template>
 
 <script setup lang="ts">
+import type { MenuWidget } from "~/types/types";
+import type { PropType } from "vue";
+import { onMounted } from "vue";
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
 import { ref } from "vue";
 import { useRoute } from "vue-router";
-import { useAsyncData } from "nuxt/app";
-
-interface MenuLogo {
-  src: string;
-  alt: string;
-  title: string;
-}
-
-interface MenuItem {
-  title: string;
-  url: string;
-}
-
-interface LanguageSelectionItem {
-  title: string;
-  url: string;
-  imgSrc: string;
-  alt: string;
-}
-
-interface MenuWidgetContent {
-  siteUrl: string;
-  logo: MenuLogo;
-  menu: MenuItem[];
-  langArrowSrc: string;
-  languageSelection: LanguageSelectionItem[];
-}
-
-interface MenuWidget {
-  widgetId: string;
-  widgetType: string;
-  content: string;
-}
-
-interface ApiResponse {
-  value: {
-    widgets: MenuWidget[];
-  };
-}
-
-const api =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-const pageUri = "%2F&";
-const lang = "en";
-const targetWidgetId = "2112036c-bbf0-4d3f-bb77-24dbffed8b37";
-const uniqueKey = `menuWidget-${targetWidgetId}`;
-
-// UseAsyncData reactive update
-const { data: menuWidgetData, error: menuWidgetError } =
-  useAsyncData<MenuWidgetContent | null>(uniqueKey, async () => {
-    try {
-      const response = await fetch(
-        `${api}?PageUri=${pageUri}Localization=${lang}`
-      );
-      if (!response.ok) {
-        throw new Error("Server response error");
-      }
-
-      const jsonResponse: ApiResponse = await response.json();
-      const widget = jsonResponse.value.widgets.find(
-        (widget) => widget.widgetId === targetWidgetId
-      );
-
-      //console.log(widget);
-
-      if (!widget) {
-        throw new Error("Widget not found");
-      }
-
-      const parsedContent = JSON.parse(widget.content);
-      return parsedContent;
-
-    } catch (error) {
-      console.error("Error fetching menu widget:", error);
-      return null;
-    }
-  });
 
 const isMobileMenuOpen = ref(false);
 const visible = ref(false);
@@ -242,14 +168,17 @@ const toggleMobileMenu = () => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
 
-const menuWidget = computed(() => menuWidgetData.value);
 
-if (menuWidgetError.value) {
-  console.error(
-    "Error occurred while fetching the menu widget:",
-    menuWidgetError.value
-  );
-}
+const props = defineProps({
+  menuWidget: {
+    type: Object as PropType<MenuWidget>,
+    required: true,
+  },
+});
+
+/* onMounted(() => {
+  console.log(props.menuWidget);
+}); */
 </script>
 
 <style scoped>

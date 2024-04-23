@@ -5334,6 +5334,7 @@ td {
 
 .mainPageWhichVignetteBlock {
   width: 100%;
+  clear: both;
 }
 
 .mainPageWhichVignetteBlock amp-img {
@@ -7246,7 +7247,7 @@ mark {
 
   #desing-table {
     margin: 0px;
-    width: max-content;
+    width: 100%;
   }
 
   .table-container {

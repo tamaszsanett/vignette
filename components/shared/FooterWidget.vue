@@ -3,8 +3,6 @@
     <div class="col-10 horizontal-set">
       <div class="col-5">
         <div>
-          {{ footerWidget?.widgetId }}
-          {{ footerWidget?.widgetType }}
           <img
             class="w-[197px] h-[70px]"
             :src="`${footerWidgetContent?.footerLogo.src}`"
