@@ -4,7 +4,7 @@
       class="mx-auto flex justify-between items-center p-4 text-white menu-wrapper"
     >
       <div class="flex justify-start items-center">
-        <a v-if="menuWidget.logo" href="/">
+        <a v-if="menuWidget.logo" :href="`/${langSelection?.code}`">
           <img
             :src="menuWidget.logo.src"
             :alt="menuWidget.logo.alt"
@@ -25,7 +25,11 @@
       </div>
       <!-- Language Selector -->
       <div class="relative ml-auto">
-        <Button @click="visible = true" class="btn-sm btn lang-btn">
+        <Button
+          @click="visible = true"
+          class="btn-sm btn lang-btn"
+          v-if="langSelection"
+        >
           <span>{{ langSelection.title }}</span>
           <img :src="langSelection.imgSrc" alt="Language" class="ml-2" />
         </Button>
@@ -101,7 +105,7 @@
         :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
         class="max-w-sm w-full top-40 absolute rounded-md"
       >
-        <template #header>
+        <template #header v-if="langSelection">
           <div class="inline-flex items-center gap-2 pb-2 border-b w-full">
             <img :src="langSelection.imgSrc" />
             <span class="font-bold whitespace-nowrap">{{
@@ -151,6 +155,8 @@ import { useRoute, useRouter } from "vue-router";
 import { useWidgets } from "~/composables/useWidgets";
 const route = useRoute();
 const router = useRouter();
+const isMobileMenuOpen = ref(false);
+const visible = ref(false);
 
 const props = defineProps({
   menuWidget: {
@@ -160,35 +166,33 @@ const props = defineProps({
 });
 
 const { currentLanguage } = useWidgets();
-
-const isMobileMenuOpen = ref(false);
-const visible = ref(false);
-
-
-
-// `currentLanguage` and `isActive` logic with default values and implementation
-const langSelection = ref<LanguageSelectionItem>(props.menuWidget.languageSelection[1]);
+const langSelection = ref<LanguageSelectionItem>();
 
 const changeLanguage = (langCode: string): void => {
-  const newPath = `/${langCode}${route.path.replace(/^\/[^/]+/, '')}`; // Replaces the existing language code with the newly selected one
+  const newPath = `/${langCode}${route.path.replace(/^\/[^/]+/, "")}`; // Replaces the existing language code with the newly selected one
   currentLanguage.value = langCode;
-  const newLang = props.menuWidget.languageSelection.find((lang: { code: string; }) => lang.code === langCode);
+  const newLang = props.menuWidget.languageSelection.find(
+    (lang: { code: string }) => lang.code === langCode
+  );
   if (newLang) {
     langSelection.value = newLang;
   }
   router.replace(newPath);
 };
- 
+
 const isActive = (url: string): boolean => route.path === url;
 
 const toggleMobileMenu = (): void => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
 };
 
+// Initialize langSelection based on the current language in the URL
 onMounted(() => {
-  if (!props.menuWidget.languageSelection || props.menuWidget.languageSelection.length === 0) {
-    console.error('Language selection data is missing or empty');
-  }
+  const langCode = route.params.lang || "en"; // Default to 'en' if no language code is provided
+  const language = props.menuWidget.languageSelection.find(
+    (lang: { code: string | string[] }) => lang.code === langCode
+  );
+  langSelection.value = language || props.menuWidget.languageSelection[0]; // Default to the first language if the specified language is not found
 });
 </script>
 

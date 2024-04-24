@@ -9,8 +9,9 @@ export function useWidgets() {
   const currentLanguage = ref('en');
 
   // Update currentLanguage 
+
   watch(() => route.params.lang, (newLang) => {
-    currentLanguage.value = newLang || 'en';
+    currentLanguage.value = Array.isArray(newLang) ? newLang[0] : newLang || 'en';
   }, { immediate: true });
 
   const pageUri = computed(() => {
