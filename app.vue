@@ -1,22 +1,22 @@
 <script setup lang="ts">
-import { onMounted } from 'vue';
+import { onMounted } from "vue";
 
 // Exchange image URLs only in test mode
 
 // when the page loads
-onMounted(() => {
-  replaceImageUrls('https://www.new.hungary-vignette.eu');
+/* onMounted(() => {
+  replaceImageUrls("https://www.new.hungary-vignette.eu");
 });
 
 function replaceImageUrls(baseUrl: string) {
-  const images = document.querySelectorAll('img');
-  
+  const images = document.querySelectorAll("img");
+
   images.forEach((img: HTMLImageElement) => {
-    if (img.src.includes('Content/')) {
-      img.src = baseUrl + img.getAttribute('src');
+    if (img.src.includes("Content/")) {
+      img.src = baseUrl + img.getAttribute("src");
     }
   });
-}
+} */
 </script>
 
 <template>
