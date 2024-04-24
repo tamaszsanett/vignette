@@ -70,7 +70,7 @@ export type MenuItem = {
 
 export type LanguageSelectionItem = {
   title: string;
-  url: string;
+  code: string;
   imgSrc: string;
   alt: string;
 };
@@ -84,7 +84,10 @@ export type MenuWidgetContent = {
 };
 
 export type MenuWidget = {
-[x: string]: any;
+logo: any;
+menu: any;
+siteUrl: string | undefined;
+languageSelection: any;
   widgetId: string;
   widgetType: string;
   content: string;

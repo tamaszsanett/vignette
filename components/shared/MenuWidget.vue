@@ -14,7 +14,7 @@
         <div class="hidden md:flex space-x-4 ml-5">
           <a
             v-for="item in menuWidget.menu"
-            :href="item.url"
+            :href="`/${currentLanguage}${item.url}`"
             :key="item.url"
             :class="{ 'active-link': isActive(item.url) }"
             class="home"
@@ -26,8 +26,8 @@
       <!-- Language Selector -->
       <div class="relative ml-auto">
         <Button @click="visible = true" class="btn-sm btn lang-btn">
-          <span>{{ currentLanguage.title }}</span>
-          <img :src="currentLanguage.src" alt="Language" class="ml-2" />
+          <span>{{ langSelection.title }}</span>
+          <img :src="langSelection.imgSrc" alt="Language" class="ml-2" />
         </Button>
         <!--   <transition name="drop-down">
           <Button v-if="isLanguageDropdownOpen" label="show" @click="visible = true" class="lang-switcher mt-5">
@@ -83,7 +83,7 @@
             </a>
             <a
               v-for="item in menuWidget.menu"
-              :href="item.url"
+              :href="`/${currentLanguage}${item.url}`"
               :key="item.url"
               :class="{ 'active-link': isActive(item.url) }"
               class="block py-2 hover:text-gray-300"
@@ -103,26 +103,26 @@
       >
         <template #header>
           <div class="inline-flex items-center gap-2 pb-2 border-b w-full">
-            <img :src="currentLanguage.src" />
+            <img :src="langSelection.imgSrc" />
             <span class="font-bold whitespace-nowrap">{{
-              currentLanguage.title
+              langSelection.title
             }}</span>
           </div>
         </template>
         <div class="grid grid-cols-2 justify-between gap-2">
-          <a
-            v-for="lang in menuWidget.languageSelection"
-            :href="lang.url"
-            :key="lang.title"
+          <div
+            v-for="item in menuWidget.languageSelection"
+            @click="() => changeLanguage(item.code)"
+            :key="item.title"
             class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1"
           >
-            <span>{{ lang.title }}</span>
+            <span>{{ item.title }}</span>
             <img
-              :src="`${lang.imgSrc}`"
-              :alt="lang.alt"
+              :src="`${item.imgSrc}`"
+              :alt="item.alt"
               class="inline-block ml-2 w-5 h-5"
             />
-          </a>
+          </div>
         </div>
         <template #footer>
           <div class="border-t pt-5 w-full">
@@ -141,33 +141,16 @@
 </template>
 
 <script setup lang="ts">
-import type { MenuWidget } from "~/types/types";
+import type { MenuWidget, LanguageSelectionItem } from "~/types/types";
+
 import type { PropType } from "vue";
-import { onMounted } from "vue";
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
-import { ref } from "vue";
-import { useRoute } from "vue-router";
-
-const isMobileMenuOpen = ref(false);
-const visible = ref(false);
+import { ref, onMounted, reactive } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useWidgets } from "~/composables/useWidgets";
 const route = useRoute();
-
-// `currentLanguage` and `isActive` logic with default values and implementation
-const currentLanguage = ref({
-  title: "English",
-  src: "https://www.autopalyamatrica.hu/Content/Flag_of_the_United_Kingdom.svg",
-  alt: "English",
-});
-
-const isActive = (url: string) => {
-  return route.path === url;
-};
-
-const toggleMobileMenu = () => {
-  isMobileMenuOpen.value = !isMobileMenuOpen.value;
-};
-
+const router = useRouter();
 
 const props = defineProps({
   menuWidget: {
@@ -176,9 +159,37 @@ const props = defineProps({
   },
 });
 
-/* onMounted(() => {
-  console.log(props.menuWidget);
-}); */
+const { currentLanguage } = useWidgets();
+
+const isMobileMenuOpen = ref(false);
+const visible = ref(false);
+
+
+
+// `currentLanguage` and `isActive` logic with default values and implementation
+const langSelection = ref<LanguageSelectionItem>(props.menuWidget.languageSelection[1]);
+
+const changeLanguage = (langCode: string): void => {
+  const newPath = `/${langCode}${route.path.replace(/^\/[^/]+/, '')}`; // Replaces the existing language code with the newly selected one
+  currentLanguage.value = langCode;
+  const newLang = props.menuWidget.languageSelection.find((lang: { code: string; }) => lang.code === langCode);
+  if (newLang) {
+    langSelection.value = newLang;
+  }
+  router.replace(newPath);
+};
+ 
+const isActive = (url: string): boolean => route.path === url;
+
+const toggleMobileMenu = (): void => {
+  isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+onMounted(() => {
+  if (!props.menuWidget.languageSelection || props.menuWidget.languageSelection.length === 0) {
+    console.error('Language selection data is missing or empty');
+  }
+});
 </script>
 
 <style scoped>
