@@ -123,3 +123,66 @@ export type VignetteAccordionItem = {
 export type VignetteAccordionContent = {
   content: VignetteAccordionItem[];
 };
+
+
+// footer.vue 
+
+export type FooterLogo = {
+  src: string;
+  alt: string;
+  title: string;
+};
+
+export type FooterMenuItem = {
+  title: string;
+  url: string;
+};
+
+export type AppLink = {
+  android: string;
+  iOS: string;
+};
+
+export type AppImage = {
+  androidSrc: string;
+  iOSSrc: string;
+  androidAlt: string;
+  iosAlt: string;
+};
+
+export type PaymentOption = {
+  title: string;
+  url: string;
+  src: string;
+};
+
+export type SocialMedia = {
+  platform: string;
+  url: string;
+  src: string;
+  id: string;
+};
+
+export type FooterWidgetContent = {
+  siteUrl: string;
+  newsTitle: string;
+  aboutTitle: string;
+  sitesTitle: string;
+  socialMediaTitle: string;
+  footerLogo: FooterLogo;
+  description: string;
+  menu: FooterMenuItem[];
+  topNewsLinks: FooterMenuItem[];
+  about: FooterMenuItem[];
+  appLinks: AppLink;
+  appImages: AppImage;
+  paymentOptions: PaymentOption[];
+  socialMedia: SocialMedia[];
+  copyRight: string;
+};
+
+export type FooterWidget = {
+  widgetId: string;
+  widgetType: string;
+  content: FooterWidgetContent;
+};

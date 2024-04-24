@@ -9,7 +9,7 @@
       </div>
       <div v-if="widget.widgetType === 'footerwidget'">
         <SharedFooterWidget
-          :widget-data="widget.content"
+          :footer-widget="widget" :footer-widget-content="widget.content"
           :class="{ 'bottom-section': widget.section === 'main', 'hidden': widget.section !== 'main' }"
         />
       </div>
@@ -17,7 +17,7 @@
         v-if="widget.widgetType === 'menuwidget'"
         :class="{ 'top-menu': widget.section === 'top' }"
       >
-        <SharedMenuWidget :widget-data="widget.content" />
+        <SharedMenuWidget :menu-widget="widget.content" />
       </div>
     </template>
   </main>

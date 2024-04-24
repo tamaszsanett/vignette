@@ -18,7 +18,7 @@
       </div>
       <div v-if="widget.widgetType === 'footerwidget'">
         <SharedFooterWidget
-          :widget-data="widget.content"
+          :footer-widget="widget" :footer-widget-content="widget.content"
           :class="{ 'bottom-section': widget.section === 'main', 'hidden': widget.section !== 'main' }"
         />
       </div>
