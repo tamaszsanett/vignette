@@ -14,12 +14,16 @@
         <WidgetFaq :widget-data="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'vignettenewswidget'">
-        <WidgetNews :widget-data="widget.content" />
+        <WidgetNews :news-widget="widget" :top-news-content="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'footerwidget'">
         <SharedFooterWidget
-          :footer-widget="widget" :footer-widget-content="widget.content"
-          :class="{ 'bottom-section': widget.section === 'main', 'hidden': widget.section !== 'main' }"
+          :footer-widget="widget"
+          :footer-widget-content="widget.content"
+          :class="{
+            'bottom-section': widget.section === 'main',
+            hidden: widget.section !== 'main',
+          }"
         />
       </div>
       <div

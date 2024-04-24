@@ -45,6 +45,17 @@ export type TopNews = {
   items: TopNewsItem[];
 };
 
+export type TopNewsContent = {
+  topNews: TopNews;
+};
+
+export type NewsWidget = {
+  widgetId: string;
+  widgetType: string;
+  content: TopNewsContent;
+};
+
+
 // Menu (menu.vue)
 export type MenuLogo = {
   src: string;

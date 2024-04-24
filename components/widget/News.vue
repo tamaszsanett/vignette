@@ -1,11 +1,11 @@
 <template>
-  <section v-if="topNewsItems" class="my-16 lg:my-28">
-    <h2 v-if="mainTitle">{{ mainTitle }}</h2>
+  <section v-if="newsWidget" class="mt-16">
+    <h2>{{ newsWidget.content.topNews.mainTitle }}</h2>
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 content-center gap-8 xl:gap-10"
     >
       <div
-        v-for="item in topNewsItems"
+        v-for="item in topNewsContent?.topNews.items"
         :key="item.id"
         class="shadow-md drop-shadow-md hover:shadow-none transition-shadow text-white h-full px-4 py-2 rounded-md"
       >
@@ -51,72 +51,23 @@
   </section>
 </template>
 <script setup lang="ts">
-import { computed } from "vue";
-import { useAsyncData } from "nuxt/app";
+import type { NewsWidget, TopNewsContent } from '~/types/types';
 
-interface TopNewsItem {
-  id: string;
-  src?: string;
-  alt?: string;
-  title: string;
-  desc: string;
-  buttonText?: string;
-  buttonIconSrc?: string;
-  buttonTitle?: string;
-  url: string;
-}
+const props = defineProps({
+  newsWidget: {
+    type: Object as PropType<NewsWidget>,
+    required: true,
+  },
+  topNewsContent: {
+    type: Object as PropType<TopNewsContent>,
+    required: true,
+  },
+});
 
-interface TopNews {
-  mainTitle: string;
-  items: TopNewsItem[]
-}
+/* onMounted(() => {
+  console.log("Widgets Loaded:", props.newsWidget.content);
 
-interface ApiResponse {
-  value: {
-    widgets: {
-      widgetId: string;
-      widgetType: string;
-      content: string;
-    }[];
-  };
-}
+  console.log("widget: " + props.topNewsContent);
+}); */
 
-const api =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-const pageUri = "%2F&";
-const lang = "en";
-const targetWidgetId = "e4dea5f4-63cd-444a-890a-b1cff3523599";
-const uniqueKey = `topNewsItemsData-${targetWidgetId}`;
-
-const { data: topNewsData } = useAsyncData<TopNews | null>(
-  uniqueKey,
-  async () => {
-    try {
-      const url = `${api}?PageUri=${pageUri}Localization=${lang}`;
-      const response = await $fetch<ApiResponse>(url);
-      const widget = response.value.widgets.find(
-        (widget) => widget.widgetId === targetWidgetId
-      );
-
-      if (!widget) {
-        console.log("Widget not found");
-        return null;
-      }
-
-      // parse the content string into an object
-      const parsedContent = JSON.parse(widget.content);
-      return {
-        mainTitle: parsedContent.topNews.mainTitle,
-        items: parsedContent.topNews.items
-      };
-
-    } catch (error) {
-      console.error("API fetch error:", error);
-      return null;
-    }
-  }
-);
-
-const topNewsItems = computed(() => topNewsData.value?.items || []);
-const mainTitle = computed(() => topNewsData.value?.mainTitle || '');
 </script>

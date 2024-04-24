@@ -7,6 +7,9 @@
       <div v-if="widget.widgetType === 'faqwidget'">
         <WidgetFaq :widget-data="widget.content" />
       </div>
+      <div v-if="widget.widgetType === 'newswidget'" class="mb-24">
+        <WidgetNews :news-widget="widget" :top-news-content="widget.content" />
+      </div>
       <div v-if="widget.widgetType === 'footerwidget'">
         <SharedFooterWidget
           :footer-widget="widget" :footer-widget-content="widget.content"
