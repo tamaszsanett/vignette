@@ -1,5 +1,5 @@
 <template>
-  <div v-if="accordionContent" class="widget">
+  <div v-if="accordionContent" class="widget" id="topVignette">
     <AccordionComponent
       :content="accordionContent.content"
       containerClass="max-w-[1100px] mx-auto w-full"

@@ -1,7 +1,8 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+
 @layer utilities {
   .container {
-    @apply md:max-w-[1245px];
+    @apply md:max-w-[1100px];
   }
 
   .bg-green-grad {
@@ -50,7 +51,7 @@
   }
 
   .widget {
-    @apply clear-both py-8;
+    @apply clear-both;
   }
 
   .widget img {
@@ -84,7 +85,7 @@
   }
 
   .widget .p-accordion-content {
-    @apply px-2;
+    @apply px-0 sm:px-2 py-0;
   }
 
   .widget .mainPageWhichVignetteBlock > div:nth-child(2),
@@ -92,3 +93,72 @@
     @apply flex justify-center gap-8 md:gap-28 mb-4;
   }
 }
+
+
+html {
+  font-family: "Roboto Condensed", system-ui, sans-serif;
+}
+
+.p-component {
+  font-family: "Roboto Condensed", system-ui, sans-serif;
+}
+
+
+.vignetteTypesMainPage .col-9 {
+  @apply w-full max-w-[600px] lg:max-w-[840px] mx-auto px-4;
+}
+
+.vignetteTypesMainPageRow .titleImg img {
+  @apply w-[90px] h-[90px] lg:w-[110px] lg:h-[110px] md:top-4;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .vignetteTypeLabel { 
+  @apply text-base sm:text-lg md:text-xl top-[47%] md:top-[65%];
+}
+
+.vignetteTypesMainPage .title-img-text  {
+  @apply text-sm md:text-base lg:text-lg lg:leading-none h-12 md:max-h-[32px];
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .title-img-text {
+  @apply top-[25px] md:top-[50px];
+}
+/* 
+.vignetteTypesMainPage .titleImg .title-img-text {
+  @apply w-max;
+} */
+
+.mainPageWhichVignetteBlock {
+  @apply w-full lg:max-w-[900px] clear-both;
+}
+
+.mainPageWhichVignetteBlock > div:nth-child(2) .col-3, .mainPageWhichVignetteBlock > div:nth-child(3) .col-3 {
+  @apply w-full mb-8 md:flex items-center;
+}
+
+.mainPageWhichVignetteBlock > div:nth-child(2) .col-12, .mainPageWhichVignetteBlock > div:nth-child(3) .col-12 {
+  @apply md:w-auto;
+}
+
+
+.mainPageWhichVignetteBlock > div:first-child {
+  @apply mb-12;
+}
+
+.mainPageWhichVignetteBlock .line-text {
+  @apply mx-auto mb-2 md:ml-0 md:mb-0 block md:max-w-[170px];
+}
+
+.mainPageWhichVignetteBlock .title-desc {
+  @apply text-justify text-base block w-full max-w-[280px] md:max-w-[100%] mx-auto md:ml-10;
+}
+
+.bottom-footerL {
+  @apply mb-12;
+}
+
+.p-accordion-content p {
+  font-weight: normal !important;
+}
+
+

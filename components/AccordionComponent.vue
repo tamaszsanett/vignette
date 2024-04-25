@@ -7,7 +7,7 @@
           :class="titleClass"
           class="flex items-center justify-between w-full py-5 shadow-sm rounded-md"
         >
-          <h1 v-if="item.preTitle" class="ml-3 md:ml-[6.5rem] text-white my-0">
+          <h1 v-if="item.preTitle" class="ml-3 md:ml-[6.5rem] text-white my-0 lg:text-7xl">
             {{ item.preTitle }}
           </h1>
           <img
@@ -44,13 +44,15 @@
           v-for="button in item.buttons"
           :key="button.url"
           :to="button.url"
-          class="btn primary-btn-outline"
+          class="btn primary-btn-outline min-h-14 pr-2"
           :title="button.title"
         >
-          {{ button.title }}
+          <span class="w-full md:w-[60%] text-left">
+            {{ button.title }}
+          </span>
           <img
             v-if="button.iconSrc"
-            class="pl-2 read-img"
+            class="read-img w-[20px] h-[20px]"
             :src="button.iconSrc"
             :alt="button.title"
           />

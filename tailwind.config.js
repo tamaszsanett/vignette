@@ -16,6 +16,7 @@ module.exports = {
         "title-black": "#1B1B1B",
         "desc-gray": "#707070",
         "base-orange": "#F58C1F",
+        "link-orange": "#f58a1f",
         "secondary-orange": "#F57D21",
         "faq-gray": "#efefef",
         "faq-title-gray": "#666",

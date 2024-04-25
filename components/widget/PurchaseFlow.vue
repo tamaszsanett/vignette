@@ -1,14 +1,14 @@
 <template>
-  <section v-if="items.length" class="my-16 lg:my-28">
+  <section v-if="items.length">
     <h2 v-if="mainTitle" class="h2 mb-0">{{ mainTitle }}</h2>
     <div class="w-full">
       <div class="w-full">
         <section
-          class="w-full mb-5 flex flex-wrap justify-center justify-items-cente gap-8 md:gap-y-24 md:gap-x-8 lg:gap-x-24 2xl:gap-x-52 relative"
+          class="w-full mb-5 flex flex-wrap justify-center gap-8 md:gap-y-24 md:gap-x-8 lg:gap-x-24 2xl:gap-x-52 relative"
         >
           <img
             :src="mainSvgSrc"
-            class="absolute md:top-[12.5rem] lg:top-[10.5rem] 2xl:top-52 h-auto max-w-[1090px] hidden md:block w-[85%]"
+            class="absolute md:top-[12.5rem] lg:top-[10.5rem] 2xl:top-52 h-auto max-w-[1090px] hidden md:block w-[85%] xl:w-[90%] 2xl:w-full"
             :alt="mainSvgAlt"
           />
 
@@ -16,7 +16,7 @@
             <img :src="items[0].stepIcon" :alt="items[0].stepIconAlt" />
             <p class="flow-card-body">{{ items[0].description }}</p>
           </div>
-          <div class="flow-card md:-order-1 md:w-[40%] md:flex-col-reverse relative md:left-[3.5rem] lg:left-[6.5rem] 2xl:left-[9.5rem] md:top-12">
+          <div class="flow-card md:-order-1 md:w-[40%] md:flex-col-reverse relative md:left-[3.5rem] lg:left-[6.5rem] xl:left-[5.5rem] 2xl:left-[7rem] md:top-12">
             <img :src="items[1].stepIcon" :alt="items[1].stepIconAlt" />
             <p class="flow-card-body">{{ items[1].description }}</p>
           </div>
@@ -24,7 +24,7 @@
             <img :src="items[2].stepIcon" :alt="items[2].stepIconAlt" />
             <p class="flow-card-body">{{ items[2].description }}</p>
           </div>
-          <div class="flow-card md:-order-1 md:w-[40%] md:flex-col-reverse relative md:right-[3.5rem] lg:right-[6.5rem] 2xl:right-[9.5rem] md:top-12">
+          <div class="flow-card md:-order-1 md:w-[40%] md:flex-col-reverse relative md:right-[3.5rem] lg:right-[6.5rem] xl:right-[5.5rem] 2xl:right-[7rem] md:top-12">
             <img :src="items[3].stepIcon" :alt="items[3].stepIconAlt" />
             <p class="flow-card-body">{{ items[3].description }}</p>
           </div>

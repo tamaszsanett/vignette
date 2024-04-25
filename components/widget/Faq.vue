@@ -7,7 +7,7 @@
       :content="accordionContent.content"
       containerClass="max-w-[888px] mx-auto w-full"
       titleClass="gray-grad-bg"
-      descClass="text-faq-title-gray"
+      descClass="text-base-orange text-lg"
       iconClass="orange-arrow"
     ></AccordionComponent>
   </div>

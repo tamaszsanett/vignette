@@ -1,22 +1,22 @@
 @layer base {
    h1, .h1, .mainPageTopTitle, .content-static h1 {
-      @apply text-2xl leading-10 lg:text-[3.3rem] font-medium md:leading-[60px];
+      @apply text-3xl leading-10 lg:text-[2.5rem] font-medium md:leading-[60px];
     }
   
     h2, .h2, .content-static h2 {
-      @apply font-medium text-3xl lg:text-4xl md:leading-[48px];
+      @apply font-medium text-2xl lg:text-3xl md:leading-[48px];
     }
   
    h3,  .h3, .content-static h3 {
-      @apply font-medium text-2xl lg:text-3xl;
+      @apply font-medium text-xl lg:text-3xl;
     }
   
     h4, .h4, .content-static h4 {
-      @apply font-medium text-xl lg:text-2xl;
+      @apply font-medium text-lg lg:text-2xl;
     }
   
     h5, .h5, .content-static h5 {
-      @apply font-medium text-lg lg:text-xl;
+      @apply font-medium text-base lg:text-xl;
     }
   
     h6, .h6, .content-static h6 {
@@ -30,7 +30,6 @@
     h2 {
       @apply my-8;
     }
-
    
   }
 
@@ -70,4 +69,8 @@
     .home {
       @apply border-none relative top-1 pb-0;
     }
+  }
+
+  .mainPageWhichVignetteBlock h3 {
+    @apply text-base font-normal;
   }

@@ -1,5 +1,5 @@
 <template>
-  <section v-if="newsWidget" class="mt-16">
+  <section v-if="newsWidget" class="my-16">
     <h2>{{ newsWidget.content.topNews.mainTitle }}</h2>
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 content-center gap-8 xl:gap-10"
@@ -39,7 +39,7 @@
               {{ item.buttonText }}
               <img
                 v-if="item.buttonIconSrc"
-                class="pl-2 read-img"
+                class="pl-2 news-img"
                 :src="item.buttonIconSrc"
                 :alt="item.buttonTitle"
               />
