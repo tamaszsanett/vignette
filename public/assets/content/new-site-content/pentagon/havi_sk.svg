@@ -1,0 +1,29 @@
+<svg width="197" height="179" viewBox="0 0 197 179" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g filter="url(#filter0_d_109_219)">
+<path d="M60.4968 17L126.15 17C128.024 16.9992 129.865 17.4917 131.488 18.428C133.111 19.3643 134.458 20.7114 135.395 22.3336L139.234 28.9754L144.268 37.6939L153.792 54.1612L155.142 56.5216L167.041 77.1515L168.203 79.1641C169.141 80.7854 169.634 82.625 169.634 84.4977C169.634 86.3704 169.141 88.21 168.203 89.8313L167.041 91.8485L153.769 114.811L144.268 131.306L139.321 139.864L135.395 146.662C134.458 148.285 133.111 149.632 131.488 150.569C129.866 151.506 128.024 152 126.15 152L60.4968 152C58.6234 151.999 56.7833 151.505 55.1614 150.568C53.5394 149.631 52.1928 148.284 51.257 146.662L26.8875 104.473L19.5972 91.8485L18.4348 89.8313C17.4949 88.2107 17 86.3708 17 84.4977C17 82.6246 17.4949 80.7847 18.4348 79.1641L19.5972 77.1469L26.9195 64.4853L31.5188 56.5216L51.257 22.3336C52.1935 20.7114 53.5409 19.3643 55.1638 18.428C56.7866 17.4917 58.6276 16.9992 60.5014 17" fill="url(#paint0_linear_109_219)"/>
+</g>
+<defs>
+<filter id="filter0_d_109_219" x="0" y="0" width="196.635" height="179" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="5" dy="5"/>
+<feGaussianBlur stdDeviation="11"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.960784 0 0 0 0 0.490196 0 0 0 0 0.129412 0 0 0 0.2 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_109_219"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_109_219" result="shape"/>
+</filter>
+<linearGradient id="paint0_linear_109_219" x1="17" y1="84.5" x2="169.634" y2="84.5" gradientUnits="userSpaceOnUse">
+<stop stop-color="#F58C1F"/>
+<stop offset="1" stop-color="#F57D21"/>
+</linearGradient>
+</defs>
+   <text font-family="Roboto Condensed" x="37" y="93" fill="white" transform="translate(-50%,-50%)" 
+     style="
+font-style: normal;
+font-weight: 700;
+font-size: 32px;
+line-height: 40px;
+color: #FFFFFF;"
+     >Mesačne</text>
+</svg>

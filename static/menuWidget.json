@@ -34,30 +34,30 @@
         "url": "https://www.new.hungary-vignette.eu/customer-service"
       }
     ],
-    "langArrowSrc": "/Content/header/arrow.png",
+    "langArrowSrc": "/assets/content/header/arrow.png",
     "languageSelection": [
       {
         "title": "HU",
         "url": "https://uj.autopalyamatrica.hu",
-        "imgSrc": "/Content/Flag_of_Hungary.svg",
+        "imgSrc": "/assets/content/Flag_of_Hungary.svg",
         "alt": "Hungary"
       },
       {
         "title": "DE",
         "url": "https://ungarn-vignette.eu",
-        "imgSrc": "/Content/Flag_of_Germany.svg",
+        "imgSrc": "/assets/content/Flag_of_Germany.svg",
         "alt": "Germany"
       },
       {
         "title": "SK",
         "url": "https://madarska-dialnicna-znamka.eu",
-        "imgSrc": "/Content/Flag_of_Slovakia.svg",
+        "imgSrc": "/assets/content/Flag_of_Slovakia.svg",
         "alt": "Slovakia"
       },
       {
         "title": "RO",
         "url": "https://vigneta-ungaria.eu",
-        "imgSrc": "/Content/Flag_of_Romania.svg",
+        "imgSrc": "/assets/content/Flag_of_Romania.svg",
         "alt": "Romania"
       }
     ]

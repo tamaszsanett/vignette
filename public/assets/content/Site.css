@@ -1,0 +1,910 @@
+﻿* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: sans-serif;
+}
+
+h1 {
+    font-size: 32px;
+    text-shadow: 0.02em 0.02em 0.02em rgba(0,0,0,0.4);
+}
+
+.num {
+    float: left;
+    display: block;
+    position: absolute;
+    padding: 5px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #ddd;
+}
+
+h1, h2, h3, h4 {
+    color: #1d4153;
+    margin: 15px 0;
+}
+
+.sidebar {
+    width: 25%;
+    border-right: 3px solid #2f6682;
+    border-left: 2px solid #f58221;
+}
+
+    .sidebar ul {
+        padding: 5px 10px;
+        font-size: 16px;
+    }
+
+    .sidebar li {
+        list-style: none;
+    }
+
+        .sidebar li a {
+            text-decoration: none;
+            width: 100%;
+            display: block;
+            padding: 10px;
+            color: #1d4153;
+        }
+
+            .sidebar li a:hover {
+                background-color: #2f6682;
+                color: #fff;
+            }
+
+* {
+    box-sizing: border-box;
+}
+
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+[class*="col-"] {
+    float: left;
+    padding: 0 15px;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+.menu-toggle {
+    display: none;
+    background: url(/assets/content/menu_icon.svg) no-repeat center/30px 24px transparent;
+    width: 40px;
+    height: 40px;
+}
+
+
+
+.menu {
+    width: 100%;
+    max-width: 1264px;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+    background-color: #fafafb;
+    transition: box-shadow cubic-bezier(.165, .84, .44, 1) .25s;
+    border-top: 3px solid #2f6682;
+    border-bottom: 2px solid #f58221;
+    margin: 7px auto;
+    font-size: 16px;
+}
+
+.user-menu {
+    display: inline-block;
+}
+
+.text-right {
+    text-align: right;
+}
+
+.right {
+    margin: 12px;
+    float: right;
+}
+
+.content {
+}
+
+.menu ul {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.menu li {
+    list-style: none;
+    display: inline-block;
+    border: 0;
+    padding: 0 3px;
+    margin-bottom: 0;
+}
+
+    .menu li a {
+        display: inline-block;
+        padding: 10px 7px;
+        text-decoration: none;
+        color: #1d4153;
+        border-color: #ccc;
+    }
+
+        .menu li a:hover {
+            background-color: #2f6682;
+            color: #fff;
+        }
+
+button {
+    cursor: pointer;
+    border: 1px solid #999;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+.logo {
+    background-image: url('/assets/content/Autopalya-Matrica.png');
+    background-size: 129px 43px;
+    background-repeat: no-repeat;
+    width: 100%;
+    max-width: 1264px;
+    margin: 0 auto;
+    height: 43px;
+    display: block;
+    margin-top: 7px;
+}
+
+#top-menu {
+    float: right;
+    margin: 12px;
+}
+
+    #top-menu a {
+        color: #1d4153;
+        text-decoration: none;
+        font-size: 0.9em;
+        padding-bottom: 3px;
+    }
+
+        #top-menu a:hover {
+            color: #000;
+        }
+
+.container {
+    width: 97%;
+    max-width: 1264px;
+    margin: 0 auto;
+}
+
+header {
+    width: 100%;
+    max-width: 1264px;
+    margin: 0 auto;
+}
+
+.webshop-items {
+    text-align: center;
+}
+
+.webshop-item-category {
+    min-width: 280px;
+    width: 30%;
+    display: inline-block;
+    padding-right: 15px;
+    padding-bottom: 15px;
+    margin: auto;
+}
+
+.webshop-category-logo {
+    width: 123px;
+    float: left;
+}
+
+.webshop-item {
+    border: 3px solid #1d4153;
+    background-color: #1d4153;
+    border-radius: 7px;
+    margin-left: 123px;
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #fff;
+}
+
+    .webshop-item a {
+        color: #fff;
+    }
+
+.higligted-item {
+    border: 3px solid darkred;
+    background-color: darkred;
+}
+
+.item-day {
+    width: 50%;
+    display: inline-block;
+    float: left;
+    padding: 7px 5px;
+    text-align: right;
+}
+
+.item-price {
+    width: 50%;
+    background-color: #1189c5;
+    display: inline-block;
+    padding: 7px 5px;
+    text-align: right;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    white-space: nowrap;
+}
+
+.accordion-header {
+    color: #2f6682;
+    padding: 3px;
+}
+
+.accordion-content {
+    padding: 3px;
+    border: 1px solid #ccc;
+    margin-bottom: 7px;
+}
+
+.widget-content {
+    color: #666;
+    font-size: 13px;
+}
+
+div.info {
+    padding: 10px;
+    border: 1px solid #1189c5;
+    background-color: #9cd4f1;
+    font-size: 15px;
+    color: #1189c5;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: bold;
+}
+@media only screen and (max-width: 1920px) {
+
+    .contact-info {
+        width: 60%;
+    }
+
+    .concrete-vignette {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 1090px) {
+    .contact-info {
+        width: 100%;
+    }
+
+    .concrete-vignette {
+        width: 100%;
+    }
+
+    h1 {
+        font-size: 23px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+
+    .concrete-vignette {
+        width: 100%;
+    }
+
+    .contact-info {
+        width: 100%;
+    }
+
+
+
+    /* For mobile phones: */
+    [class*="col-"] {
+        width: 100%;
+    }
+
+    .menu-toggle {
+        display: inline-block;
+        float: right;
+        border: 0;
+    }
+
+    .menu {
+        display: none;
+    }
+
+
+    .sidebar {
+        width: 75%;
+        background-color: #fff;
+    }
+
+    .user-menu {
+        display: none;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    h2 {
+        font-size: 16px;
+    }
+
+    h3 {
+        font-size: 16px;
+    }
+
+    div.info {
+        font-size: 13px;
+    }
+}
+
+.product-image {
+    float: right;
+    margin: 10px;
+}
+
+.concrete-vignette {
+    border: 1px solid #ccc;
+    background-color: #eee;
+    margin: 10px;
+    border-radius: 5px;
+    box-shadow: 0 8px 6px -6px black;
+    margin: 10px auto;
+    padding: 5px 0;
+}
+
+.contact-info {
+    margin: 10px auto;
+    border-radius: 5px;
+    box-shadow: 0 8px 6px -6px black;
+    border: 1px solid #ccc;
+    background-color: #efefef;
+}
+
+.submit-order {
+    margin: 0 auto;
+    display: block;
+    background-color: #2f6682;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    text-align: center;
+}
+
+.form-field {
+    margin: 10px;
+    clear: both;
+    height: 22px;
+}
+
+.form-field label {
+    width: 50%;
+    text-align: right;
+    display: inline-block;
+    padding-right: 5px;
+    font-weight: bold;
+    margin-top: 4px;
+    font-size: 13px;
+}
+
+    .form-field .tooltip {
+        width: 5%;
+        float: right;
+        text-align: center;
+    }
+
+    .form-field input[type="text"],
+    .form-field input[type="email"] {
+        width: 45%;
+        float: right;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        font-size: 15px;
+        padding: 3px;
+    }
+
+.form-field .field-info {
+    display: block;
+    color: #333;
+    float: right;
+    width: 50%;
+    font-size: 13px;
+}
+
+input[type=checkbox]:checked ~ div {
+    display: block;
+}
+
+input[type=checkbox] ~ div {
+    display: none;
+}
+
+input[type=checkbox] {
+    display: none;
+}
+
+.form-field-checkbox {
+    text-align: center;
+    margin-bottom: 20px;
+    margin-top: 10px;
+    clear: both;
+}
+
+.form-field-checkbox > label {
+    border: 1px solid #999;
+    background-color: #ddd;
+    padding: 5px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.field {
+    width: 50%;
+    float: right;
+    margin-bottom: 10px;
+}
+
+    .field input[type="text"],
+    .field input[type="email"] {
+        width: 100%;
+    }
+
+    .field .field-info {
+        width: 100%;
+    }
+
+
+.new-vignette {
+    text-align: center;
+}
+
+amp-user-notification > div {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.del {
+    float: right;
+    display: block;
+    position: relative;
+    right: 5px;
+    top: 5px;
+    margin-bottom: -5px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #666;
+    cursor: pointer
+}
+
+.form input[type=checkbox] {
+    display: inline;
+}
+
+.county {
+    width: 45%;
+    display: inline-block;
+    margin: 0 auto;
+}
+
+.errors {
+    background-color: darkred;
+    padding: 3px 3px;
+    margin: 5px;
+    color: #fff;
+    font-size: 12px;
+    border-radius: 4px;
+}
+
+.field-error {
+    color: darkred;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+.CountryId {
+    width: 140px;
+    padding: 3px;
+}
+
+.add-wignette {
+    margin: 0 auto;
+    display: inline-block;
+    background-color: #666;
+    color: white;
+    font-weight: bold;
+    font-size: 17px;
+    cursor: pointer;
+    border: 1px solid #999;
+    border-radius: 8px;
+    padding: 5px 10px;
+}
+
+
+/* Tooltip container */
+.tooltip {
+    position: relative;
+    display: inline-block;
+}
+
+    /* Tooltip text */
+    .tooltip .tooltiptext {
+        visibility: hidden;
+        width: 120px;
+        background-color: #ddd;
+        border: 1px solid #333;
+        box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+        color: #000;
+        font-size: 13px;
+        text-align: center;
+        padding: 5px 0;
+        border-radius: 6px;
+        /* Position the tooltip text - see examples below! */
+        position: absolute;
+        z-index: 1;
+        top: -10px;
+        left: 105%;
+    }
+
+    /* Show the tooltip text when you mouse over the tooltip container */
+    .tooltip:hover .tooltiptext {
+        visibility: visible;
+    }
+
+.questionmark {
+    font-weight: bold;
+    font-size: 13px;
+    padding: 3px;
+    border-radius: 10px;
+    background-color: lightgray;
+    border: darkgray;
+    width: 21px;
+    display: inline-block;
+    text-align: center;
+    color: #fff;
+    cursor: help;
+}
+
+    .questionmark:hover {
+        background-color: gray;
+    }
+
+hr {
+    border: 1px solid #eee;
+}
+
+.strong {
+    font-weight: bold;
+}
+
+.label {
+    display: inline-block;
+    float: left;
+    width: 170px;
+    text-align: right;
+    margin-right: 10px;
+    color: #333;
+}
+
+.info-warning {
+    color: #aa6f08;
+    background-image: linear-gradient(to bottom, #fcf8e3 0%, #f8efc0 100%);
+    border-color: #f5e79e;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+}
+
+.info-danger {
+    color: #bb0000;
+    background-image: linear-gradient(to bottom, #fcf8e3 0%, #f8efc0 100%);
+    border-color: #bb0000;
+    padding: 10px;
+    margin: 10px 0;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+}
+
+.field {
+    clear: both;
+}
+
+.vignettes {
+    clear: both;
+}
+
+label {
+    cursor: pointer;
+}
+
+.vignette {
+    background-color: #fafafb;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+    border: 1px solid #ccc;
+    border-radius: 2px;
+    padding: 5px;
+    margin: 5px auto;
+    display: block;
+    float: left;
+    width: 100%;
+    clear: both;
+}
+
+.vignette-type,
+.vignette-validity-start {
+    margin-bottom: 4px;
+}
+
+h3, h4 {
+    font-weight: normal;
+}
+
+.payment-method h2 {
+    font-size: 18px;
+    background-image: linear-gradient(to bottom, #f5f5f5 0%, #e8e8e8 100%);
+    padding: 5px;
+    margin-top: 10px;
+}
+
+.payment-method p {
+    background-color: #fff;
+    padding: 10px;
+}
+
+.payment-method {
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 10px 0;
+    background-color: #d9edf7;
+    color: #31708f;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+}
+
+    .payment-method label {
+        cursor: pointer;
+        font-weight: bold;
+    }
+
+.red {
+    color: orangered;
+}
+
+.green {
+    color: olivedrab;
+}
+
+.center {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.price {
+    font-size: 20px;
+}
+
+input[type=checkbox] {
+    display: inline;
+}
+
+.btn {
+    cursor: pointer;
+    border: 1px solid #999;
+    border-radius: 8px;
+    padding: 5px 10px;
+    background-color: buttonface;
+    text-decoration: none;
+    color: #1d4153;
+}
+
+.vignette-header {
+    margin-top: 20px;
+}
+
+    .vignette-header h3 {
+        clear: both;
+        display: block;
+        width: 250px;
+        float: left;
+        margin: 0;
+    }
+
+    .vignette-header span {
+        float: right;
+    }
+
+    .clearfix {
+        clear: both;
+    }
+
+fieldset {
+    margin-top: 20px;
+    background-color: #fafafb;
+    box-shadow: 0 1px 0 rgba(12,13,14,0.1), 0 1px 6px rgba(59,64,69,0.1);
+    border: 1px solid #ccc;
+    border-radius: 2px;
+}
+
+.prices {
+    padding-top: 15px;
+    clear: both;
+    float: right;
+}
+
+.confirm-page {
+    margin-bottom: 100px;
+}
+
+
+amp-user-notification {
+    background-color: #fafafb;
+    border-top: 3px solid #2f6682;
+}
+
+    amp-user-notification div {
+        padding: 5px;
+    }
+
+    amp-user-notification a {
+        color: #1d4153;
+    }
+
+    amp-user-notification button {
+        padding: 10px;
+        margin-left: 10px;
+        font-size: 20px;
+    }
+
+.payment-success-table {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-spacing: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .payment-success-table td,
+    .payment-success-table th {
+        padding: 10px;
+    }
+
+    .payment-success-table thead {
+        background-color: green;
+        color: #fff
+    }
+
+.payment-error .control-label {
+    font-weight: bold;
+}
+
+.payment-error .form-control-static {
+    padding: 0;
+    margin: 0;
+}
+
+.payment-error-table {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-spacing: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.payment-error-table td,
+.payment-error-table th {
+    padding: 10px;
+}
+
+.payment-error-table thead {
+    background-color: darkred;
+    color: #fff
+}
+
+.payment-error .control-label {
+    font-weight: bold;
+}
+
+.payment-error .form-control-static {
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    color: #444;
+}
+
+
+.payment-progress .control-label {
+    font-weight: bold;
+}
+
+.payment-progress .form-control-static {
+    padding: 0;
+    margin: 0;
+}
+
+.payment-progress-table {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-spacing: 0;
+    text-align: center;
+    margin-top: 20px;
+}
+
+    .payment-progress-table td,
+    .payment-progress-table th {
+        padding: 10px;
+    }
+
+    .payment-progress-table thead {
+        background-color: darkgrey;
+        color: #fff
+    }
+
+.payment-progress .control-label {
+    font-weight: bold;
+}
+
+.payment-progress .form-control-static {
+    padding: 0;
+    margin: 0;
+}

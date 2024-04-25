@@ -7,7 +7,7 @@ a {
 }
 
 body {
-  font-family: "Roboto Condensed";
+  font-family: "Robotűo Condensed";
   line-height: 1.4em;
 }
 
@@ -67,7 +67,7 @@ h2 {
 }
 
 .sidebar li a.mobileDropDownStyleSet:after {
-  content: url("/Content/header/white_arrow.png");
+  content: url("/assets/content/header/white_arrow.png");
   margin-left: 10px;
 }
 
@@ -145,7 +145,7 @@ h2 {
 
 .menu-toggle {
   display: none;
-  background: url(/Content/menu-icon2.svg) no-repeat center/30px 24px
+  background: url(/assets/content/menu-icon2.svg) no-repeat center/30px 24px
     transparent;
   width: 40px;
   height: 40px;
@@ -4951,7 +4951,7 @@ td {
 }
 
 .whyToBuyHere .whyToBuyHereElement {
-  background-image: url(https://www.new.hungary-vignette.eu/Content/miert_nalunk_vasarold_alap.svg);
+  background-image: url(https://www.new.hungary-vignette.eu/assets/content/miert_nalunk_vasarold_alap.svg);
   background-repeat: no-repeat;
   height: 133px;
   display: flex;
@@ -4984,7 +4984,7 @@ td {
 }
 
 .downloadAppMainPageBg {
-  background-image: url(/Content/voxpay_mobil_mockup.webp);
+  background-image: url(/assets/content/voxpay_mobil_mockup.webp);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -5069,37 +5069,37 @@ td {
 }
 
 .backgroundImage {
-  background-image: url(/Content/gray_bg.webp), url(/Content/gray_bg2.webp);
+  background-image: url(/assets/content/gray_bg.webp), url(/assets/content/gray_bg2.webp);
   background-repeat: no-repeat, no-repeat;
   background-position: center -25vh, center calc(100% - 125vh);
 }
 
 .backgroundImage2 {
-  background-image: url(/Content/gray_bg3.webp);
+  background-image: url(/assets/content/gray_bg3.webp);
   background-repeat: no-repeat;
   background-position: 50vw top;
 }
 
 .backgroundImage3 {
-  background-image: url(/Content/gray_bg4.webp);
+  background-image: url(/assets/content/gray_bg4.webp);
   background-repeat: no-repeat;
   background-position: 50vw -8vh;
 }
 
 .backgroundImage4 {
-  background-image: url(/Content/gray_bg5.webp);
+  background-image: url(/assets/content/gray_bg5.webp);
   background-repeat: no-repeat;
   background-position: 50vw -10vh;
 }
 
 .backgroundImage5 {
-  background-image: url(/Content/gray_bg6.webp);
+  background-image: url(/assets/content/gray_bg6.webp);
   background-repeat: no-repeat;
   background-position: 50vw top;
 }
 
 .backgroundImage6 {
-  background-image: url(/Content/gray_bg7.webp);
+  background-image: url(/assets/content/gray_bg7.webp);
   background-repeat: no-repeat;
   background-position: 48vw top;
 }
@@ -5441,7 +5441,7 @@ td {
   .VisualPlateNumberInclusive
   .visualPlateNumberBodySetterForEur
   .visualPlateNumberLabelSetterForEur {
-  background-image: url(/Content/euPlateNumberStarBg.svg);
+  background-image: url(/assets/content/euPlateNumberStarBg.svg);
   background-repeat: no-repeat;
   color: white;
   display: flex;
@@ -5789,7 +5789,7 @@ mark {
 
   .downloadAppMainPageBg > div.col-7:nth-child(1) {
     height: 262px;
-    background-image: url(/Content/voxpay_mobil_mockup_mobile.webp);
+    background-image: url(/assets/content/voxpay_mobil_mockup_mobile.webp);
     background-repeat: no-repeat;
     width: 390px;
     padding: 0;
@@ -6428,7 +6428,7 @@ mark {
 
   .validityPageMainDiv .ValidityFormShadow .CountryIdFormGroupInput select {
     appearance: none;
-    background-image: url(/Content/orange_chevron_down.svg);
+    background-image: url(/assets/content/orange_chevron_down.svg);
     background-repeat: no-repeat;
     background-position: 6px 50%;
     background-size: 1em;
@@ -6742,7 +6742,7 @@ mark {
   .ControlDivForUnderPlateNumber select {
     font-size: 14px;
     appearance: none;
-    background-image: url(/Content/orange_chevron_down.svg);
+    background-image: url(/assets/content/orange_chevron_down.svg);
     background-repeat: no-repeat;
     background-size: 1em;
     background-position: 95%;
@@ -7801,7 +7801,7 @@ mark {
 
   .form-field > div > select {
     appearance: none;
-    background-image: url(/Content/orange_chevron_down.svg);
+    background-image: url(/assets/content/orange_chevron_down.svg);
     background-repeat: no-repeat;
     background-position: 6px 50%;
     background-size: 1em;
@@ -7921,7 +7921,7 @@ mark {
 .confirm-page-desktop-view .info-model-danger ul li,
 .confirm-page-mobile-view .info-model-danger ul li {
   text-align: left;
-  background: url(/Content/new-site-content/danger-error-icon.svg);
+  background: url(/assets/content/new-site-content/danger-error-icon.svg);
   background-repeat: no-repeat;
   padding-left: 40px;
 }

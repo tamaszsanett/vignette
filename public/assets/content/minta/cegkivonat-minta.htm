@@ -1,0 +1,661 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Frameset//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-frameset.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="hu" lang="hu">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-2" />
+		<title></title>
+		<!--[if lt IE 9]>
+		  <script src="https://occsz.e-cegjegyzek.hu/jquery/jquery-1.11.3.min.js"></script>
+		<![endif]-->
+		<!--[if gte IE 9]><!-->
+		  <script src="https://occsz.e-cegjegyzek.hu/jquery/jquery-3.0.0.min.js"></script>
+		<!--<![endif]-->
+		<script src="https://occsz.e-cegjegyzek.hu/jquery/jquery-ui-1.11.4/jquery-ui.min.js"></script>
+		<script src="https://occsz.e-cegjegyzek.hu/jquery/jquery-history-1.8b2.js"></script>
+		<script src="https://occsz.e-cegjegyzek.hu/js/mustache.js"></script>
+		<script src="https://occsz.e-cegjegyzek.hu/js/bootstrap.min.js"></script>
+		<script src="https://occsz.e-cegjegyzek.hu/js/Blob.js"></script>
+		<script src="https://occsz.e-cegjegyzek.hu/js/FileSaver.js"></script>
+
+		<script src="https://occsz.e-cegjegyzek.hu/js/occsz/utils.js"></script>
+		<link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,400italic,700,700italic&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" type="text/css" href="https://occsz.e-cegjegyzek.hu/jquery/jquery-ui-1.11.4/jquery-ui.min.css">		
+		<link rel="stylesheet" type="text/css" href="https://occsz.e-cegjegyzek.hu/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="https://occsz.e-cegjegyzek.hu/css/bootstrap-theme.css">
+		<link rel="stylesheet" type="text/css" href="https://occsz.e-cegjegyzek.hu/css/new.css">
+		<link rel="stylesheet" type="text/css" href="https://occsz.e-cegjegyzek.hu/css/print.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+      <script src="https://occsz.e-cegjegyzek.hu/js/html5shiv.js"></script>
+      <script src="https://occsz.e-cegjegyzek.hu/js/respond.js"></script>
+  <![endif]-->
+	</head>
+	<body>
+	<script>function checkEnabled(){}; function enableObject(){};</script>
+	
+		<div id="wrapper" class="kiadmany">
+			<div id="felhasznalo">
+</div>
+<div id="zaszlo" class="">
+	<div class="piros"></div>
+	<div class="container" id="zaszlokozep" style="display: table-cell;">
+		<div style="display: table; height: 100%; width: 100%;">
+			<div class="piros" style="width: 60%"></div>
+			<div class="feher"></div>
+			<div class="zold" style="width: 30%"></div>
+		</div>
+	</div>
+	<div class="zold"></div>
+</div>
+<div id="cimsor" class="hidden-xs-frompaper">
+	<div class="container">
+		<div class="row">
+			<div class="cimer col-sm-7">
+				
+					<a onclick="occsz.menu.gotoPage('index'); return false;" href="?index">
+						<div>
+							<div class="cimerkep"><img height="60" onclick="occsz.menu.gotoPage('index');" src="https://occsz.e-cegjegyzek.hu/icons/cimer.png" alt=""></div>
+							<div class="cimerszoveg_befoglalo">
+								<div><span class="cimercim">Igazságügyi Minisztérium</span></div>
+								<div class="cimerszoveg">Céginformációs&nbsp;és&nbsp;az&nbsp;Elektronikus&nbsp;Cégeljárásban<br>Közreműködő&nbsp;Szolgálat</div>
+							</div>
+						</div>
+					</a>
+				
+				
+			</div>
+			<div class="col-sm-5 noprint">
+				<!-- <div >Súgó <a href="#" onclick="helpIcons(true); return false;">be</a> / <a href="#" onclick="helpIcons(false); return false;">ki</a></div> -->
+				<div id="nyelv">
+					
+				</div>
+				<div class="clearfix"></div>
+				<div id="kereso" style="display: none;">
+				</div>
+				<div id="belepes" style="display: none;">
+					<button type="button" class="occszbtn btntovabb" id="belepesbtn" style="float: right;" onclick="occsz.user.showLogin();">
+						Belépés
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<hr class="visible-print-block" />
+
+<div id="kozep">
+	<div class="container">
+		<div id="menu" class="menushow">
+		</div>
+		<div id="tartalomdoboz">
+			<div id="tartalom-notify"> </div>
+			<div id="tartalom">
+				<!--OccszAnswer-->
+
+<!-- Kiadmány kezdete -->
+<h1>Cégkivonat</h1>
+
+<p>A <b>Cg.<span id="cgjsz">xx-xx-xxxxxx</span></b> cégjegyzékszámú 
+<b><span id="cegnev">XXXXXXXXXXX Korlátolt Felelősségű Társaság</span></b> <b>(<span id="szekhely">XXXX Budapest,XXXXXXX.</span><span style="display: none;">; adószám: <span id="adoszam">XXXXXXXX-X-XX</span></span>)</b> cég 2019. április 4. napján hatályos adatai a következők:</p>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+</TABLE>
+<H2 ALIGN=CENTER>I. Cégformától független adatok</H2>
+<TABLE CELLPADDING=1 CELLSPACING=2 WIDTH=100%><tr valign="top">
+<td width="60">1.</td>
+<td><B class="rov">Általános adatok</B></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><TABLE CELLPADDING="0" CELLSPACING="0">
+<tr valign="top">
+<td>Cégjegyzékszám: </td>
+<td>xx-xx-xxxxxx</td>
+</tr>
+<tr valign="top">
+<td>Cégforma: </td>
+<td>Korlátolt felelősségű társaság</td>
+</tr>
+<tr valign="top">
+<td>Bejegyezve: </td>
+<td>2017&#x2F;09&#x2F;14</td>
+</tr>
+</TABLE></td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">2.</td>
+<td><B class="rov">A cég elnevezése</B></td>
+</tr>
+<tr valign="top">
+<td width="60">2/1.</td>
+<td>XXXXXXX Korlátolt Felelősségű Társaság</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">3.</td>
+<td><B class="rov">A cég rövidített elnevezése</B></td>
+</tr>
+<tr valign="top">
+<td width="60">3/1.</td>
+<td>XXXXX Kft.</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">5.</td>
+<td><B class="rov">A cég székhelye</B></td>
+</tr>
+<tr valign="top">
+<td width="60">5/1.</td>
+<td>XXXX Budapest, XXXXXXX utca X XX.</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">8.</td>
+<td><B class="rov">A létesítő okirat kelte</B></td>
+</tr>
+<tr valign="top">
+<td width="60">8/1.</td>
+<td>2017. szeptember 8.</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">8/2.</td>
+<td>2019. március 1.</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2019&#x2F;03&#x2F;26  <i>Közzétéve: 2019&#x2F;03&#x2F;30</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2019&#x2F;03&#x2F;26 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">902.</td>
+<td><B class="rov">A cég tevékenysége</B></td>
+</tr>
+<tr valign="top">
+<td width="60">9/1.</td>
+<td><TABLE CELLPADDING="0" CELLSPACING="0">
+<tr valign="top">
+<td width="60"><I>7490 &#x27;08</I></td>
+<td>M.n.s. egyéb szakmai, tudományos, műszaki tevékenység
+<br /><B>Főtevékenység.</B></td>
+</tr>
+</TABLE></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">9/2.</td>
+<td><TABLE CELLPADDING="0" CELLSPACING="0">
+<tr valign="top">
+<td width="60"><I>7219 &#x27;08</I></td>
+<td>Egyéb természettudományi, műszaki kutatás, fejlesztés</td>
+</tr>
+</TABLE></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">9/3.</td>
+<td><TABLE CELLPADDING="0" CELLSPACING="0">
+<tr valign="top">
+<td width="60"><I>7220 &#x27;08</I></td>
+<td>Társadalomtudományi, humán kutatás, fejlesztés</td>
+</tr>
+</TABLE></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">9/4.</td>
+<td><TABLE CELLPADDING="0" CELLSPACING="0">
+<tr valign="top">
+<td width="60"><I>6820 &#x27;08</I></td>
+<td>Saját tulajdonú, bérelt ingatlan bérbeadása, üzemeltetése</td>
+</tr>
+</TABLE></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>A változás időpontja: </i>2019&#x2F;03&#x2F;01</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2019&#x2F;03&#x2F;28  <i>Közzétéve: 2019&#x2F;03&#x2F;30</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2019&#x2F;03&#x2F;01 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">11.</td>
+<td><B class="rov">A cég jegyzett tőkéje</B></td>
+</tr>
+<tr valign="top">
+<td width="60">11/1.</td>
+<td><table border="1" cellpadding="5" cellspacing="2">
+<tr valign="top">
+<td><b>Megnevezés</b></td>
+<td><b>Összeg</b></td>
+<td><b>Pénznem</b></td>
+</tr>
+<tr valign="top">
+<td>Összesen</td>
+<td>3 000 000</td>
+<td>HUF</td>
+</tr>
+</table></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">13.</td>
+<td><B class="rov">A vezető tisztségviselő(k), a képviseletre jogosult(ak) adatai</B></td>
+</tr>
+<tr valign="top">
+<td width="60">13/1.</td>
+<td>XXXXX XXXXXX <I>(an.: XXXX XXX</I>
+<br />Születési ideje: XXX&#x2F;09&#x2F;02
+<br />XXX Budapest, XXXXXXXX XX.
+<br />Adóazonosító jel: XXXXXXXXX
+<br />
+A képviselet módja: <B>önálló</B><br />
+A képviseletre jogosult tisztsége: ügyvezető (vezető tisztségviselő)<br />
+A hiteles cégaláírási nyilatkozat vagy az ügyvéd által ellenjegyzett aláírás-minta <a href="#" onclick='return checkEnabled();' >benyújtásra került</a>.<br /><br />Jogviszony kezdete: 2017&#x2F;09&#x2F;08<br /></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">20.</td>
+<td><B class="rov">A cég statisztikai számjele</B></td>
+</tr>
+<tr valign="top">
+<td width="60">20/1.</td>
+<td><SPAN id="kshszam">XXXXXXXX-7490-113-01.</span></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">21.</td>
+<td><B class="rov">A cég adószáma</B></td>
+</tr>
+<tr valign="top">
+<td width="60">21/1.</td>
+<td><I>Adószám: </I><SPAN id="adoszam">XXXXXXXX-X-XX.</SPAN>
+<br /><i>Közösségi adószám:</i> HUXXXXXXXX.
+<br /><i>Adószám státusza:</i> érvényes adószám
+<br /><i>Státusz kezdete:</i> 2017&#x2F;09&#x2F;13</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">32.</td>
+<td><B class="rov">A cég pénzforgalmi jelzőszáma</B></td>
+</tr>
+<tr valign="top">
+<td width="60">32/1.</td>
+<td>XXXXXXXX-YYYYYYYY-ZZZZZZZZ
+<br />A számla megnyitásának dátuma: 2017&#x2F;09&#x2F;26.
+<br />A pénzforgalmi jelzőszámot a CIB Bank Zrt. XXXXXXXX Fiók <I>(XXXX Budapest XXXXXX. út X.)</I> kezeli.
+<form action="#" method="POST" onsubmit="return checkEnabled('cjszButton_1','XX\XXXXX\XXXXXX');">
+<input type="hidden" name="stype" value="CgjszKeres">
+<input type="hidden" name="bs" value="01">
+<input type="hidden" name="cf" value="10">
+<input type="hidden" name="n" value="XXXXXX">
+<input type="hidden" name="LANG" value="HU">
+<input type="hidden" name="adm_MarkedUser" value="">
+<input type="hidden" name="Report" value="IMOnline">
+<input type="hidden" name="FromSystem" value="IMOnline">
+Cégjegyzékszám: <input type="submit" id="cjszButton_1" name="cjsz_button" value="01&#x2D;10&#x2D;XXXXXX">
+</form>
+<script type='text/javascript'> enableObject('cjszButton_1','01\u002D10\uXXXXXX');</script></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;10&#x2F;02  <i>Közzétéve: 2017&#x2F;10&#x2F;03</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;10&#x2F;02 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">32/2.</td>
+<td>XXXXXXXX-XXXXXXXXX-XXXXXXXX
+<br />A számla megnyitásának dátuma: 2017&#x2F;09&#x2F;26.
+<br />A pénzforgalmi jelzőszámot a CIB Bank Zrt. XXXXXXFiók <I>(XXX Budapest XXXXX X.)</I> kezeli.
+<form action="#" method="POST" onsubmit="return checkEnabled('cjszButton_2','01\u002D10\XXXXX');">
+<input type="hidden" name="stype" value="CgjszKeres">
+<input type="hidden" name="bs" value="01">
+<input type="hidden" name="cf" value="10">
+<input type="hidden" name="n" value="XXXXXX">
+<input type="hidden" name="LANG" value="HU">
+<input type="hidden" name="adm_MarkedUser" value="">
+<input type="hidden" name="Report" value="IMOnline">
+<input type="hidden" name="FromSystem" value="IMOnline">
+Cégjegyzékszám: <input type="submit" id="cjszButton_2" name="cjsz_button" value="XXXXXXXX">
+</form>
+<script type='text/javascript'> enableObject('cjszButton_2','01\u002D10\X');</script></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;10&#x2F;02  <i>Közzétéve: 2017&#x2F;10&#x2F;03</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;10&#x2F;02 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">45.</td>
+<td><B class="rov">A cég elektronikus elérhetősége</B></td>
+</tr>
+<tr valign="top">
+<td width="60">45/1.</td>
+<td><TABLE CELLPADDING="0" CELLSPACING="0">
+<tr valign="top">
+<td width="200">A cég kézbesítési címe:</td>
+<td><a href="mailto:XXXXX&#x40;plfag&#x2E;XXXX">XXXXXX@XXXXX.com</a></td>
+</tr>
+</tr>
+</TABLE></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">49.</td>
+<td><B class="rov">A cég cégjegyzékszámai</B></td>
+</tr>
+<tr valign="top">
+<td width="60">49/1.</td>
+<td><form action="#" method="POST" onsubmit="return checkEnabled('cjszButton_3','01\u002D09\X');">
+<input type="hidden" name="stype" value="CgjszKeres">
+<input type="hidden" name="bs" value="XX">
+<input type="hidden" name="cf" value="XX">
+<input type="hidden" name="n" value="XXXXXX">
+<input type="hidden" name="LANG" value="HU">
+<input type="hidden" name="adm_MarkedUser" value="">
+<input type="hidden" name="Report" value="IMOnline">
+<input type="hidden" name="FromSystem" value="IMOnline">
+Cégjegyzékszám: <input type="submit" id="cjszButton_3" name="cjsz_button" value="XX&#x2D;XX&#x2D;XXXXXX">
+</form>
+<script type='text/javascript'> enableObject('cjszButton_3','01\X\XXX');</script>Vezetve a Fővárosi Törvényszék Cégbírósága nyilvántartásában.</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">59.</td>
+<td><B class="rov">A cég hivatalos elektronikus elérhetősége</B></td>
+</tr>
+<tr valign="top">
+<td width="60">59/1.</td>
+<td>A cég hivatalos elektronikus elérhetősége: 26130396#cegkapu<br /></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>A változás időpontja: </i>2018&#x2F;06&#x2F;29</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2018&#x2F;07&#x2F;05  <i>Közzétéve: 2018&#x2F;07&#x2F;10</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2018&#x2F;06&#x2F;29 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">60.</td>
+<td><B class="rov">Európai Egyedi Azonosító</B></td>
+</tr>
+<tr valign="top">
+<td width="60">60/1.</td>
+<td>Európai Egyedi Azonosító: HUOCCSZ.XX-XX-XXXXXX<br /></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+</TABLE>
+<H2 ALIGN=CENTER>II. Cégformától függő adatok</H2>
+<TABLE CELLPADDING=1 CELLSPACING=2 WIDTH=100%><tr valign="top">
+<td width="60">1.</td>
+<td><B class="rov">A tag(ok) adatai</B></td>
+</tr>
+<tr valign="top">
+<td width="60">1/1.</td>
+<td>XXXXXXX XXXXX <I>(an.: XXXXXX XXXXXX)</I>
+<br />Születési ideje: XXXXX&#x2F;XX&#x2F;XX
+<br />XXXXX XXXXXX, XXXXXXXX XXX.<br />A tagsági jogviszony kezdete: 2017&#x2F;09&#x2F;08<br /></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2017&#x2F;09&#x2F;14  <i>Közzétéve: 2017&#x2F;09&#x2F;15</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2017&#x2F;09&#x2F;14 ...</td>
+</tr>
+</table>
+<p></p>
+<table cellpadding="1" cellspacing="2" width="100%" id="XXX">
+<tr valign="top">
+<td width="60">1/2.</td>
+<td>XXXX XXXX <I>(an.: XXXXX XXXXXX)</I>
+<br />Születési ideje: XXXX&#x2F;XX&#x2F;XX
+<br />XXXXXX Budapest, XXX utca 26. X.<br />A tagsági jogviszony kezdete: 2019&#x2F;03&#x2F;01<br /></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>A változás időpontja: </i>2019&#x2F;03&#x2F;01</td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Bejegyzés kelte: </i>2019&#x2F;03&#x2F;26  <i>Közzétéve: 2019&#x2F;03&#x2F;30</i></td>
+</tr>
+<tr valign="top">
+<td width="60"></td>
+<td><i>Hatályos: </i>2019&#x2F;03&#x2F;01 ...</td>
+</tr>
+</table>
+
+<!-- Kiadmány vége -->
+<!-- Kiadmány mérete: 16406 bájt -->
+<!-- Számlázott mennyiség: 16406 bájt -->
+<hr/>
+
+<br />
+Az IM Céginformációs Szolgálata hivatalosan igazolja, hogy ezen kiadmány adatai az illetékes cégbíróság jogerős végzésein alapulnak.
+A cégügyben el nem bírált módosítás nincs folyamatban.
+
+
+
+<P></P>
+<ADDRESS>Készült: 2019&#x2F;04&#x2F;04 12:38:11. 
+
+A szolgáltatott adatok a kibocsátás időpontjában megegyeznek a cégnyilvántartó rendszer adataival.
+<br />Microsec zrt.
+</ADDRESS>
+
+<!-- Teljes számlázott mennyiség: 16406 bájt -->
+
+
+<!--OccszAnswer-->
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="noprint" id="suti_csik">
+	<div class="container noprint" style="position: relative;">
+		<div id="suti_uzenet" style="position: relative; overflow-y: visible; overflow-x: hidden; max-height: 100vh; display: none;" ></div>
+	</div>
+</div>
+
+<div class="noprint" id="mindigLatszik_also">
+	<div class="container" style="position: relative;">
+		<span class="visible-xs-inline" id="navigacio_fel_tajekoztato" >
+			<a href="#" class="noprint"  onclick="ugras_fel(event); return false;">A lap tetejére</a>
+		</span>
+		<img class="noprint" id="navigacio_fel_kep" src="/minta/fel.png"  onclick="ugras_fel(event);" title="A lap tetejére" alt="">
+	</div>
+</div>
+<div id="lablec">
+	<div class="container">
+		<center><a href="https://www.microsec.hu" target="_blank">Microsec zrt.</a></center>
+	</div>
+</div>
+
+		</div>
+	</body>
+</html>
+ 
+
+
+
+
