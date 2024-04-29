@@ -15,7 +15,7 @@
             v-if="item.src"
             :src="item.src"
             :alt="item.alt"
-            class="w-full object-cover mt-5 max-h-52 rounded-[5px]"
+            class="w-full object-cover mt-5 max-h-52 rounded-[5px] aspect-video"
           />
           <div>
             <NuxtLink

@@ -1,3 +1,5 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -10,6 +12,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'sans': ['"RobotoCondensedRegular"', ...defaultTheme.fontFamily.sans],
+      },
       colors: {
         "base-black": "#404040",
         "link-hover": "#f38d00",

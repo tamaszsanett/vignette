@@ -31,7 +31,7 @@
           v-if="langSelection"
         >
           <span>{{ langSelection.title }}</span>
-          <img :src="langSelection.imgSrc" alt="Language" class="ml-2" />
+          <img class="max-w-[20px] ml-2" :src="langSelection.imgSrc" alt="Language" />
         </Button>
         <!--   <transition name="drop-down">
           <Button v-if="isLanguageDropdownOpen" label="show" @click="visible = true" class="lang-switcher mt-5">
@@ -107,7 +107,7 @@
       >
         <template #header v-if="langSelection">
           <div class="inline-flex items-center gap-2 pb-2 border-b w-full">
-            <img :src="langSelection.imgSrc" />
+            <img class="max-w-[20px]" :src="langSelection.imgSrc" />
             <span class="font-bold whitespace-nowrap">{{
               langSelection.title
             }}</span>
