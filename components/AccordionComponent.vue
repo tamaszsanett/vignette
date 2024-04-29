@@ -1,4 +1,5 @@
 <template>
+  <h1 v-if="pageTitle">{{ pageTitle }}</h1>
   <h2 v-if="mainTitle">{{ mainTitle }}</h2>
   <Accordion :class="containerClass" :activeIndex="0">
     <AccordionTab v-for="item in content" :key="item.title">
@@ -85,6 +86,7 @@ interface ContentItem {
 
 interface AccordionComponent {
   mainTitle?: string;
+  pageTitle?: string;
   mainIconSrc?: string;
   mainIconAlt?: string;
   containerClass?: string;

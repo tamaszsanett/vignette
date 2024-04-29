@@ -1,6 +1,7 @@
 <template>
   <div v-if="accordionContent" class="widget">
     <AccordionComponent
+      :pageTitle="accordionContent.pageTitle"
       :mainTitle="accordionContent.mainTitle"
       :mainIconSrc="accordionContent.mainIconSrc"
       :mainIconAlt="accordionContent.mainIconAlt"
@@ -26,6 +27,7 @@ interface AccordionContent {
   mainIconSrc?: string;
   mainIconAlt?: string;
   mainTitle?: string;
+  pageTitle?: string;
   content: AccordionItem[];
 }
 
