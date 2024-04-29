@@ -46,7 +46,7 @@ const props = defineProps({
   },
 });
 
-onMounted(() => {
+/* onMounted(() => {
   console.log("Widget Data:", props.widget);
-});
+}); */
 </script>
