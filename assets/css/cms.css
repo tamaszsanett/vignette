@@ -1837,13 +1837,10 @@ h3.small {
 }
 
 .shadow-block-s {
-  background: linear-gradient(
-    89.89deg,
-    #eeeef3 0.59%,
-    rgba(238, 238, 243, 0) 99.92%
-  );
+  background: linear-gradient(89.89deg, #EEEEF3 0.59%, rgba(238, 238, 243, 0) 99.92%);
   border-radius: 15px;
-  width: 424px;
+  width: 100%;
+  margin: auto;
   height: 177px;
   display: flex;
   align-items: center;
@@ -1852,7 +1849,7 @@ h3.small {
   color: black;
 }
 
-.amp-img-pad {
+.gyik_img {
   padding: 10px 30px;
 }
 
@@ -5273,10 +5270,22 @@ td {
   justify-content: center;
 }
 
+.contactPage > div.col-12 .contactPageDescription p {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+
 .contactPage > div.col-12 .contactPageDescriptionBottom {
   display: flex;
   justify-content: center;
   column-gap: 100px;
+}
+
+.contactPage > div.col-12 .contactPageDescriptionBottom div.col-2 > div, .contactPage > div.col-12 .contactPageBottomGrid > div > div {
+  display: inline-block;
+  text-align: center;
 }
 
 .voxPayLogoFloatingBlock {
@@ -5460,6 +5469,12 @@ mark {
 
   h2 {
     line-height: 45px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .contactPage > div.col-12 > div {
+    width: 100%;
   }
 }
 
@@ -6007,7 +6022,7 @@ mark {
   }
 
   .contactPage {
-    padding: 0 35px;
+    padding: 0 15px;
   }
 
   .contactPage > div.col-12 {
@@ -6023,17 +6038,17 @@ mark {
 
   .contactPage > div.col-12 > div .shadow-block-s {
     width: 100%;
-    background: linear-gradient(
-      185.63deg,
-      #eeeef3 4.11%,
-      rgba(238, 238, 243, 0) 88%
-    );
+    background: linear-gradient(185.63deg, #EEEEF3 4.11%, rgba(238, 238, 243, 0) 88%);
     border-radius: 15px;
     font-size: 16px;
-    padding-left: 0;
+    padding: 5px 10px;
     min-height: 177px;
     height: auto;
     margin-bottom: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .contactPage > div.col-12 > div .shadow-block-s > p {

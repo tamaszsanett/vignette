@@ -15,16 +15,38 @@ export type WidgetId = {
 };
 
 // FAQ (faq.vue)
-export type AccordionItem = {
+export type AccordionButton = {
   title: string;
-  desc: string;
+  url: string;
+  iconSrc?: string;
+  iconAlt?: string;
 };
 
-export type AccordionContent = {
-  mainIconSrc?: string;
-  mainIconAlt?: string;
+export type VignetteAccordionItem = {
+  preTitle?: string;
+  iconSrc?: string;
+  iconAlt?: string;
+  title: string;
+  desc?: string; 
+  secondaryIconSrc?: string;
+  secondaryIconAlt?: string;
+  buttons: AccordionButton[];
+};
+
+export type VignetteAccordion = {
+  vignetteTypes: VignetteAccordionItem[];
+};
+
+export type Item = {
+  iconSrc?: string;
+  iconAlt?: string;
+  title: string;
+  desc?: string;
+};
+
+export type MainAccordion = {
   mainTitle?: string;
-  content: AccordionItem[];
+  items: Item[];
 };
 
 // News (news.vue)
@@ -115,27 +137,6 @@ export type Widget = {
   widgetType: string;
   section: string;
   content: string;
-};
-
-// Accordion another version (vignetteAccordion.vue)
-export type Button = {
-  title: string;
-  iconSrc: string;
-  iconAlt: string;
-  url: string;
-};
-
-export type VignetteAccordionItem = {
-  preTitle?: string;
-  secondaryIconSrc?: string;
-  secondaryIconAlt?: string;
-  title: string;
-  desc?: string;
-  buttons: Button[];
-};
-
-export type VignetteAccordionContent = {
-  content: VignetteAccordionItem[];
 };
 
 
