@@ -1,5 +1,5 @@
 <template>
-  <Accordion class="max-w-[1100px] mx-auto w-full" :activeIndex="0">
+  <Accordion class="max-w-[1100px] mx-auto w-full" :activeIndex="0" id="topVignette">
     <AccordionTab v-for="(item, index) in widget.vignetteTypes" :key="index">
       <template #header>
         <div

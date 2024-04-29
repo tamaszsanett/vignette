@@ -36,14 +36,14 @@
   .content-static h2 {
     @apply text-base-orange;
   }
+
+  a {
+    @apply font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
+  }
   
   @layer base {
     p {
       @apply text-base text-title-black my-4;
-    }
-  
-    a {
-      @apply font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
     }
 
     .menu-wrapper a {
