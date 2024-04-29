@@ -9,7 +9,7 @@ export type ApiResponse = {
     title: string;
     metaDescription: string;
     metaKeywords: string;
-    alternateLinks: [];
+    alternateLinks: AlternateLink[];
     widgets: Widget[];
   };
 };
@@ -207,4 +207,11 @@ export type FooterWidget = {
   widgetId: string;
   widgetType: string;
   content: FooterWidgetContent;
+};
+
+export type AlternateLink = {
+  ro: string;
+  de: string;
+  sk: string;
+  en: string;
 };
