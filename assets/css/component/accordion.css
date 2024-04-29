@@ -61,8 +61,8 @@ svg.p-icon.p-accordion-toggle-icon {
   .p-accordion-header
   .p-accordion-header-link
   .p-accordion-toggle-icon {
-  font-family: "Roboto Condensed", sans-serif;
-  @apply mt-[1rem] md:mr-[6.5rem];
+  /* font-family: "Roboto Condensed", sans-serif; */
+  @apply mt-[1rem] md:mr-[6.5rem] font-sans;
 }
 
 .p-accordion .p-accordion-header .p-accordion-header-link {

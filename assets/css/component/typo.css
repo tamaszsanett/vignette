@@ -28,7 +28,7 @@
     }
 
     h2 {
-      @apply my-8;
+      @apply my-8 text-center;
     }
    
   }
