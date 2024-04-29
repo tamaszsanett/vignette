@@ -4,10 +4,16 @@
       <div v-if="widget.widgetType === 'html'" class="my-4">
         <div v-html="widget.content"></div>
       </div>
+      <div v-if="widget.widgetType === 'vignetteaccordionwidget'">
+        <WidgetVignetteAccordion :widget-data="widget.content" />
+      </div>
+      <div v-if="widget.widgetType === 'vignettepurchaseflowwidget'">
+        <WidgetPurchaseFlow :widget-data="widget.content" />
+      </div>
       <div v-if="widget.widgetType === 'faqwidget'">
         <WidgetFaq :widget-data="widget.content" />
       </div>
-      <div v-if="widget.widgetType === 'newswidget'" class="mb-24">
+      <div v-if="widget.widgetType === 'vignettenewswidget'">
         <WidgetNews :news-widget="widget" :top-news-content="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'footerwidget'">
