@@ -5,21 +5,25 @@
         <div v-html="widget.content"></div>
       </div>
       <div v-if="widget.widgetType === 'vignetteaccordionwidget'">
-        <WidgetVignetteAccordion :widget-data="widget.content" />
+        <WidgetVignetteAccordion :widget="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'vignettepurchaseflowwidget'">
         <WidgetPurchaseFlow :widget-data="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'faqwidget'">
-        <WidgetFaq :widget-data="widget.content" />
+        <WidgetFaq :widget="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'vignettenewswidget'">
         <WidgetNews :news-widget="widget" :top-news-content="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'footerwidget'">
         <SharedFooterWidget
-          :footer-widget="widget" :footer-widget-content="widget.content"
-          :class="{ 'bottom-section': widget.section === 'main', 'hidden': widget.section !== 'main' }"
+          :footer-widget="widget"
+          :footer-widget-content="widget.content"
+          :class="{
+            'bottom-section': widget.section === 'main',
+            hidden: widget.section !== 'main',
+          }"
         />
       </div>
       <div
@@ -31,6 +35,7 @@
     </template>
   </main>
 </template>
+
 <script setup>
 import { useWidgets } from "~/composables/useWidgets";
 const { widgets, error, isLoading } = useWidgets();
