@@ -21,25 +21,26 @@ export function useWidgets() {
 
   const apiEndpoint = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
 
-    const { data: widgetsData, error: widgetsError } = useAsyncData<Array<Widget>>(
+    const { data: widgetsData, error: widgetsError } = useAsyncData<ApiResponse>(
       `widgetsData-${currentLanguage.value}-${pageUri.value}`,
       async () => {
         const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll("%2C", "%2F")}&Localization=${currentLanguage.value}`;
-        console.log(url);
         const response = await $fetch<ApiResponse>(url);
-        console.log(response);
-        return response
-          ? response.value.widgets.map((widget) => {
-              if (widget.widgetType === "html") {
-                return widget;
-              } else {
-                return {
-                  ...widget,
-                  content: JSON.parse(widget.content),
-                };
-              }
-            })
-          : [];
+
+        response.value.widgets = response.value.widgets.map((widget) => {
+          if (widget.widgetType === "html") {
+            widget.pageTitle = response.value.title;
+            return widget;
+          } else {
+            return {
+              ...widget,
+              content: JSON.parse(widget.content),
+              pageTitle: response.value.title
+            };
+          }
+        });
+
+        return response;
       }
     );
 

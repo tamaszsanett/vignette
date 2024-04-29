@@ -6,6 +6,10 @@ export type WidgetContent = {
 
 export type ApiResponse = {
   value: {
+    title: string;
+    metaDescription: string;
+    metaKeywords: string;
+    alternateLinks: [];
     widgets: Widget[];
   };
 };
@@ -139,6 +143,7 @@ export type Widget = {
   widgetType: string;
   section: string;
   content: string;
+  pageTitle: string;
 };
 
 
