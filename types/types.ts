@@ -14,7 +14,7 @@ export type WidgetId = {
   widgetId: string;
 };
 
-// FAQ (faq.vue)
+// Accordions
 export type AccordionButton = {
   title: string;
   url: string;
@@ -45,6 +45,7 @@ export type Item = {
 };
 
 export type MainAccordion = {
+  pageTitle?: string;
   mainTitle?: string;
   items: Item[];
 };
@@ -63,8 +64,8 @@ export type TopNewsItem = {
 };
 
 export type TopNews = {
-  mainTitle: string;
-  pageTitle: string;
+  mainTitle?: string;
+  pageTitle?: string;
   items: TopNewsItem[];
 };
 
