@@ -1,6 +1,6 @@
 <template>
   <section v-if="newsWidget" class="my-8">
-    <h2 v-if="newsWidget.content.topNews.pageTitle">{{ newsWidget.content.topNews.pageTitle }}</h2>
+    <h1 v-if="newsWidget.content.topNews.pageTitle">{{ newsWidget.content.topNews.pageTitle }}</h1>
     <h2 v-if="newsWidget.content.topNews.mainTitle">{{ newsWidget.content.topNews.mainTitle }}</h2>
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 content-center gap-8 xl:gap-10"
@@ -15,7 +15,7 @@
             v-if="item.src"
             :src="item.src"
             :alt="item.alt"
-            class="w-full object-cover mt-5 max-h-52 rounded-[5px]"
+            class="w-full object-cover mt-5 max-h-52 rounded-[5px] aspect-video"
           />
           <div>
             <NuxtLink
