@@ -1,5 +1,6 @@
 <template>
   <section v-if="newsWidget" class="my-16">
+    <h1 v-if="newsWidget.content.topNews.pageTitle">{{ newsWidget.content.topNews.pageTitle }}</h1>
     <h2 v-if="newsWidget.content.topNews.mainTitle">{{ newsWidget.content.topNews.mainTitle }}</h2>
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 content-center gap-8 xl:gap-10"
@@ -19,7 +20,7 @@
           <div>
             <NuxtLink
               :to="item.url"
-              class="text-title-black hover:text-secondary-orange"
+              class="orange hover:text-secondary-orange"
             >
               <h3 v-if="item.title" class="text-sm mb-4 font-semibold mt-6">
                 {{ item.title }}
@@ -31,17 +32,15 @@
               class="text-desc-gray text-sm text-ellipsis line-clamp-5"
             ></div>
             <NuxtLink
-              v-if="item.buttonText"
               :to="item.url"
               class="btn primary-btn-outline mt-5 stretched-link"
-              :title="item.buttonTitle"
+              :title="item.title"
             >
-              {{ item.buttonText }}
+              Read more
               <img
-                v-if="item.buttonIconSrc"
                 class="pl-2 news-img"
-                :src="item.buttonIconSrc"
-                :alt="item.buttonTitle"
+                src="/assets/Content/new-site-content/arrowcircleup_icon.svg"
+                :alt="item.title"
               />
             </NuxtLink>
           </div>

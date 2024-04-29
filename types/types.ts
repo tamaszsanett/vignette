@@ -64,6 +64,7 @@ export type TopNewsItem = {
 
 export type TopNews = {
   mainTitle: string;
+  pageTitle: string;
   items: TopNewsItem[];
 };
 

@@ -4823,7 +4823,7 @@ td {
 }
 
 .whyToBuyHere .whyToBuyHereElement {
-  background-image: url(https://www.new.hungary-vignette.eu/content/miert_nalunk_vasarold_alap.svg);
+  background-image: url(/assets/content/miert_nalunk_vasarold_alap.svg);
   background-repeat: no-repeat;
   height: 133px;
   display: flex;
