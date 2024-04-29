@@ -20,6 +20,14 @@ export default defineNuxtConfig({
       scrollBehaviorType: 'smooth'
     }
   },
+  routeRules: {
+    "/": {
+      redirect: {
+        to: "/en",
+        statusCode: 301
+      }
+    }
+  },
   app: {
     head: {
       title: "Hungarian Motorway vignette sale online &#128663; 2023!",
