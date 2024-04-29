@@ -71,4 +71,24 @@ export default defineNuxtConfig({
     "nuxt-aos",
     "nuxt-primevue",
   ],
+  imports: {
+    dirs: [
+      // Scan top-level modules
+      'composables',
+      // ... or scan modules nested one level deep with a specific name and file extension
+      'composables/*/index.{ts,js,mjs,mts}',
+      // ... or scan all modules within given directory
+      'composables/**',
+      'types/*.ts', 'store/*.ts', 'types/**/*.ts'
+    ]
+  },
+  nitro: {
+    // IIS options default
+    iis: {
+      // merges in a pre-existing web.config file to the nitro default file
+      mergeConfig: true,
+      // overrides the default nitro web.config file all together
+      overrideConfig: false,
+    },
+  },
 });

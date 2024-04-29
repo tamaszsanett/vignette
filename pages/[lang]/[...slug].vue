@@ -1,53 +1,44 @@
 <template>
-  <main v-if="widgetsData" class="container mx-auto px-4 lg:px-0 pt-6 content-static">
-    <div v-for="widget in widgetsData" :key="widget.widgetId">
-      <div v-html="widget.content"></div>
-    </div>
+  <main class="container mx-auto px-4 lg:px-0 pt-6 mt-24">
+    <template v-for="widget in widgets" :key="widget.widgetId">
+      <div v-if="widget.widgetType === 'html'" class="my-4">
+        <div v-html="widget.content"></div>
+      </div>
+      <div v-if="widget.widgetType === 'vignetteaccordionwidget'">
+        <WidgetVignetteAccordion :widget-data="widget.content" />
+      </div>
+      <div v-if="widget.widgetType === 'vignettepurchaseflowwidget'">
+        <WidgetPurchaseFlow :widget-data="widget.content" />
+      </div>
+      <div v-if="widget.widgetType === 'faqwidget'">
+        <WidgetFaq :widget-data="widget.content" />
+      </div>
+      <div v-if="widget.widgetType === 'vignettenewswidget'">
+        <WidgetNews :news-widget="widget" :top-news-content="widget.content" />
+      </div>
+      <div v-if="widget.widgetType === 'footerwidget'">
+        <SharedFooterWidget
+          :footer-widget="widget" :footer-widget-content="widget.content"
+          :class="{ 'bottom-section': widget.section === 'main', 'hidden': widget.section !== 'main' }"
+        />
+      </div>
+      <div
+        v-if="widget.widgetType === 'menuwidget'"
+        :class="{ 'top-menu': widget.section === 'top' }"
+      >
+        <SharedMenuWidget :menu-widget="widget.content" />
+      </div>
+    </template>
   </main>
-  <div v-else-if="widgetsError">Error loading widget content.</div>
-  <div v-else>Loading widget content...</div>
 </template>
-<script setup lang="ts">
-import { useAsyncData, useRoute } from "nuxt/app";
-import { computed, ref } from "vue";
+<script setup>
+import { useWidgets } from "~/composables/useWidgets";
+const { widgets, error, isLoading } = useWidgets();
 
-interface Widget {
-  widgetId: string;
-  content: string;
+if (error.value) {
+  console.error("Error loading widgets:", error.value);
 }
 
-interface ApiResponse {
-  value: {
-    widgets: Widget[];
-  };
-}
+//console.log("Loaded widgets:", widgets);
 
-const route = useRoute();
-
-const lang = computed(() => route.params.lang as string);
-const pageUri = computed(() => route.params.slug as string);
-const apiEndpoint = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-
-// minden widget
-const { data: widgetsData, error: widgetsError } = useAsyncData<Array<Widget>>(
-  `widgetsData-${lang.value}-${pageUri.value}`,
-  async () => {
-    const url = `${apiEndpoint}?PageUri=%2F${pageUri.value}&Localization=${lang.value}`;
-    const response = await $fetch<ApiResponse>(url);
-      
-    console.log(response);
-
-    return response ? response.value.widgets : [];
-  }
-);
-
-
-if (widgetsError.value) {
-  console.error("Error fetching widgets data:", widgetsError.value);
-}
-
-//ID
-const getWidgetContentById = (widgetId: string) => {
-  return widgetsData.value?.find(widget => widget.widgetId === widgetId)?.content ?? 'Widget content not found.';
-}
 </script>

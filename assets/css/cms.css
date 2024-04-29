@@ -67,7 +67,7 @@ h2 {
 }
 
 .sidebar li a.mobileDropDownStyleSet:after {
-  content: url("/Content/header/white_arrow.png");
+  content: url("/assets/content/header/white_arrow.png");
   margin-left: 10px;
 }
 
@@ -145,7 +145,7 @@ h2 {
 
 .menu-toggle {
   display: none;
-  background: url(/Content/menu-icon2.svg) no-repeat center/30px 24px
+  background: url(/assets/content/menu-icon2.svg) no-repeat center/30px 24px
     transparent;
   width: 40px;
   height: 40px;
@@ -473,10 +473,7 @@ div.info {
   .contact-info {
     width: 60%;
   }
-  /*.concrete-vignette {
-                    width: 60%;
-                }
-                */
+
   .county-col {
     width: 30%;
     padding: 10px;
@@ -507,18 +504,6 @@ div.info {
 
   .concrete-vignette {
     width: 100%;
-  }
-  /*h1 {
-                font-size: 23px;
-                line-height: 1.2em;
-            }
-*/
-  h2 {
-    font-size: 16px;
-  }
-
-  h3 {
-    font-size: 16px;
   }
 
   .county-col {
@@ -598,22 +583,6 @@ div.info {
 
   .user-menu {
     display: none;
-  }
-  /*   h1 {
-                font-size: 20px;
-            }*/
-
-  h1.vignette-header {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-
-  h2 {
-    font-size: 16px;
-  }
-
-  h3 {
-    font-size: 16px;
   }
 
   div.info {
@@ -1301,10 +1270,6 @@ amp-user-notification button {
   margin: 0;
 }
 
-body {
-  color: #444;
-}
-
 .payment-progress .control-label {
   font-weight: bold;
 }
@@ -1872,13 +1837,10 @@ h3.small {
 }
 
 .shadow-block-s {
-  background: linear-gradient(
-    89.89deg,
-    #eeeef3 0.59%,
-    rgba(238, 238, 243, 0) 99.92%
-  );
+  background: linear-gradient(89.89deg, #EEEEF3 0.59%, rgba(238, 238, 243, 0) 99.92%);
   border-radius: 15px;
-  width: 424px;
+  width: 100%;
+  margin: auto;
   height: 177px;
   display: flex;
   align-items: center;
@@ -1887,7 +1849,7 @@ h3.small {
   color: black;
 }
 
-.amp-img-pad {
+.gyik_img {
   padding: 10px 30px;
 }
 
@@ -4402,23 +4364,6 @@ td {
   height: 111px;
 }
 
-.title-desc {
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: justify;
-  position: relative;
-  top: 10px;
-}
-
-@media all and (min-width: 768px) {
-  .title-desc {
-    left: -17px;
-  }
-}
-
 .line-text {
   margin-block: -15px;
   margin-inline: -25px;
@@ -4430,10 +4375,6 @@ td {
 
 .bottom-footerM {
   margin-bottom: 40px;
-}
-
-.bottom-footerL {
-  margin-bottom: 60px;
 }
 
 .bottom-footerXL {
@@ -4493,36 +4434,9 @@ td {
   margin-top: 56px;
   margin-left: -42px;
   z-index: 7;
-  padding-top: 5px;
-  text-align: left;
-  padding-left: 35px;
-  font-size: 13px !important;
-  display: block;
-  position: relative;
-  float: left;
-}
-
-.title-img-text:before {
-  content: "";
-  position: absolute;
-  right: -9px;
-  height: 0;
-  width: 0;
-  border-top: 17px solid transparent;
-  border-bottom: 18px solid transparent;
-  border-left: 10px solid #78caa3;
-  border-radius: 4px;
-  margin-top: -7px;
-}
-
-.title-img-text {
-  margin-top: 56px;
-  margin-left: -42px;
-  z-index: 7;
   padding-top: 6px;
   text-align: left;
   padding-left: 35px;
-  font-size: 15px !important;
   display: block;
   position: relative;
   float: left;
@@ -4579,21 +4493,6 @@ td {
   font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
-  font-size: 16px;
-  color: #ffffff;
-}
-
-.title-img-text {
-  vertical-align: middle;
-  padding: 19px -14px;
-  width: 300px;
-  height: 31px;
-  background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
-  box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
   color: #ffffff;
 }
 
@@ -4666,33 +4565,6 @@ td {
   float: right;
   margin-inline: 30px;
   margin-top: -10px;
-}
-
-.greenButton {
-  cursor: pointer;
-  border: 1px solid #fff;
-  border-radius: 8px;
-  padding: 5px 10px;
-  flex-direction: row;
-  justify-content: center;
-  padding: 15px 39px;
-  width: 285px;
-  height: 54px;
-  background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
-  box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
-  border-radius: 5px;
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: center;
-  color: #ffffff;
-}
-
-.greenButton:hover {
-  color: #5ccc94;
-  background: white;
 }
 
 .slide-container {
@@ -4951,13 +4823,18 @@ td {
 }
 
 .whyToBuyHere .whyToBuyHereElement {
-  background-image: url(https://www.new.hungary-vignette.eu/Content/miert_nalunk_vasarold_alap.svg);
+  background-image: url(https://www.new.hungary-vignette.eu/content/miert_nalunk_vasarold_alap.svg);
   background-repeat: no-repeat;
   height: 133px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
+}
+
+.my-4 .col-9.horizontal-set {
+  width: 100%;
+  clear: both;
 }
 
 .whyToBuyHere .whyToBuyHereElement > span {
@@ -4984,7 +4861,7 @@ td {
 }
 
 .downloadAppMainPageBg {
-  background-image: url(/Content/voxpay_mobil_mockup.webp);
+  background-image: url(/assets/content/voxpay_mobil_mockup.webp);
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -5069,37 +4946,37 @@ td {
 }
 
 .backgroundImage {
-  background-image: url(/Content/gray_bg.webp), url(/Content/gray_bg2.webp);
+  background-image: url(/assets/content/gray_bg.webp), url(/assets/content/gray_bg2.webp);
   background-repeat: no-repeat, no-repeat;
   background-position: center -25vh, center calc(100% - 125vh);
 }
 
 .backgroundImage2 {
-  background-image: url(/Content/gray_bg3.webp);
+  background-image: url(/assets/content/gray_bg3.webp);
   background-repeat: no-repeat;
   background-position: 50vw top;
 }
 
 .backgroundImage3 {
-  background-image: url(/Content/gray_bg4.webp);
+  background-image: url(/assets/content/gray_bg4.webp);
   background-repeat: no-repeat;
   background-position: 50vw -8vh;
 }
 
 .backgroundImage4 {
-  background-image: url(/Content/gray_bg5.webp);
+  background-image: url(/assets/content/gray_bg5.webp);
   background-repeat: no-repeat;
   background-position: 50vw -10vh;
 }
 
 .backgroundImage5 {
-  background-image: url(/Content/gray_bg6.webp);
+  background-image: url(/assets/content/gray_bg6.webp);
   background-repeat: no-repeat;
   background-position: 50vw top;
 }
 
 .backgroundImage6 {
-  background-image: url(/Content/gray_bg7.webp);
+  background-image: url(/assets/content/gray_bg7.webp);
   background-repeat: no-repeat;
   background-position: 48vw top;
 }
@@ -5334,6 +5211,7 @@ td {
 
 .mainPageWhichVignetteBlock {
   width: 100%;
+  clear: both;
 }
 
 .mainPageWhichVignetteBlock amp-img {
@@ -5342,11 +5220,6 @@ td {
   margin-inline: 0;
 }
 
-.mainPageWhichVignetteBlock > div:nth-child(2) .col-3 .col-12,
-.mainPageWhichVignetteBlock > div:nth-child(3) .col-3 .col-12 {
-  padding: 0;
-  margin-bottom: 15px;
-}
 
 .vignetteHeaderSetter {
   padding-bottom: 0;
@@ -5397,10 +5270,22 @@ td {
   justify-content: center;
 }
 
+.contactPage > div.col-12 .contactPageDescription p {
+  display: flex;
+  justify-content: center;
+  font-weight: bold;
+}
+
+
 .contactPage > div.col-12 .contactPageDescriptionBottom {
   display: flex;
   justify-content: center;
   column-gap: 100px;
+}
+
+.contactPage > div.col-12 .contactPageDescriptionBottom div.col-2 > div, .contactPage > div.col-12 .contactPageBottomGrid > div > div {
+  display: inline-block;
+  text-align: center;
 }
 
 .voxPayLogoFloatingBlock {
@@ -5440,7 +5325,7 @@ td {
   .VisualPlateNumberInclusive
   .visualPlateNumberBodySetterForEur
   .visualPlateNumberLabelSetterForEur {
-  background-image: url(/Content/euPlateNumberStarBg.svg);
+  background-image: url(/assets/content/euPlateNumberStarBg.svg);
   background-repeat: no-repeat;
   color: white;
   display: flex;
@@ -5508,19 +5393,14 @@ td {
 .vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .vignetteTypeLabel {
   position: absolute;
   z-index: 12;
-  top: 47%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: #ffffff;
-  font-size: 26px;
-  line-height: 40px;
   font-weight: 700;
   text-align: center;
-  width: 114px;
 }
 
 .vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .title-img-text {
-  top: 42px;
   left: -15px;
   margin-left: 0;
   margin-top: 0;
@@ -5589,6 +5469,12 @@ mark {
 
   h2 {
     line-height: 45px;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .contactPage > div.col-12 > div {
+    width: 100%;
   }
 }
 
@@ -5746,31 +5632,6 @@ mark {
     height: 132px !important;
   }
 
-  .mainPageWhichVignetteBlock > div:nth-child(2),
-  .mainPageWhichVignetteBlock > div:nth-child(3) {
-    flex-direction: column;
-  }
-
-  .mainPageWhichVignetteBlock > div:nth-child(2) .col-3,
-  .mainPageWhichVignetteBlock > div:nth-child(3) .col-3 {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .mainPageWhichVignetteBlock > div:nth-child(3) .col-1,
-  .mainPageWhichVignetteBlock > div:nth-child(3) .col-2 {
-    display: none;
-  }
-
-  .mainPageWhichVignetteBlock > div:nth-child(2) .col-3 .col-12,
-  .mainPageWhichVignetteBlock > div:nth-child(3) .col-3 .col-12 {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 20px;
-    margin-top: 10px;
-  }
-
   .whyToBuyHere > div {
     grid-template-columns: minmax(auto, 310px);
   }
@@ -5788,7 +5649,7 @@ mark {
 
   .downloadAppMainPageBg > div.col-7:nth-child(1) {
     height: 262px;
-    background-image: url(/Content/voxpay_mobil_mockup_mobile.webp);
+    background-image: url(/assets/content/voxpay_mobil_mockup_mobile.webp);
     background-repeat: no-repeat;
     width: 390px;
     padding: 0;
@@ -5857,8 +5718,6 @@ mark {
   }
 
   .vignetteTypesMainPage .vignetteTypeLabel {
-    font-size: 23px !important;
-    line-height: 25px !important;
     width: 87px !important;
   }
 
@@ -5869,11 +5728,9 @@ mark {
   .vignetteTypesMainPage .titleImg .title-img-text {
     width: 250px;
     left: -55px !important;
-    top: 16px !important;
+    top: 20px !important;
     padding-left: 68px;
-    height: 74px;
     padding-top: 0;
-    font-size: 18px !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -6165,7 +6022,7 @@ mark {
   }
 
   .contactPage {
-    padding: 0 35px;
+    padding: 0 15px;
   }
 
   .contactPage > div.col-12 {
@@ -6181,17 +6038,17 @@ mark {
 
   .contactPage > div.col-12 > div .shadow-block-s {
     width: 100%;
-    background: linear-gradient(
-      185.63deg,
-      #eeeef3 4.11%,
-      rgba(238, 238, 243, 0) 88%
-    );
+    background: linear-gradient(185.63deg, #EEEEF3 4.11%, rgba(238, 238, 243, 0) 88%);
     border-radius: 15px;
     font-size: 16px;
-    padding-left: 0;
+    padding: 5px 10px;
     min-height: 177px;
     height: auto;
     margin-bottom: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
   }
 
   .contactPage > div.col-12 > div .shadow-block-s > p {
@@ -6427,7 +6284,7 @@ mark {
 
   .validityPageMainDiv .ValidityFormShadow .CountryIdFormGroupInput select {
     appearance: none;
-    background-image: url(/Content/orange_chevron_down.svg);
+    background-image: url(/assets/content/orange_chevron_down.svg);
     background-repeat: no-repeat;
     background-position: 6px 50%;
     background-size: 1em;
@@ -6741,7 +6598,7 @@ mark {
   .ControlDivForUnderPlateNumber select {
     font-size: 14px;
     appearance: none;
-    background-image: url(/Content/orange_chevron_down.svg);
+    background-image: url(/assets/content/orange_chevron_down.svg);
     background-repeat: no-repeat;
     background-size: 1em;
     background-position: 95%;
@@ -7246,7 +7103,7 @@ mark {
 
   #desing-table {
     margin: 0px;
-    width: max-content;
+    width: 100%;
   }
 
   .table-container {
@@ -7594,8 +7451,7 @@ mark {
   }
 
   .vignetteTypesMainPage .titleImg .title-img-text {
-    font-size: 12px !important;
-    width: 160px;
+    width: 180px;
   }
 
   .vignetteTypesMainPage .titleImg .title-img-text:before {
@@ -7800,7 +7656,7 @@ mark {
 
   .form-field > div > select {
     appearance: none;
-    background-image: url(/Content/orange_chevron_down.svg);
+    background-image: url(/assets/content/orange_chevron_down.svg);
     background-repeat: no-repeat;
     background-position: 6px 50%;
     background-size: 1em;
@@ -7920,7 +7776,7 @@ mark {
 .confirm-page-desktop-view .info-model-danger ul li,
 .confirm-page-mobile-view .info-model-danger ul li {
   text-align: left;
-  background: url(/Content/new-site-content/danger-error-icon.svg);
+  background: url(/assets/content/new-site-content/danger-error-icon.svg);
   background-repeat: no-repeat;
   padding-left: 40px;
 }

@@ -1,83 +1,52 @@
 <template>
-  <div v-if="accordionContent" class="widget">
-    <AccordionComponent
-      :mainTitle="accordionContent.mainTitle"
-      :mainIconSrc="accordionContent.mainIconSrc"
-      :mainIconAlt="accordionContent.mainIconAlt"
-      :content="accordionContent.content"
-      containerClass="max-w-[888px] mx-auto w-full"
-      titleClass="gray-grad-bg"
-      descClass="text-faq-title-gray"
-      iconClass="orange-arrow"
-    ></AccordionComponent>
-  </div>
+  <h2 v-if="widget.mainTitle">{{ widget.mainTitle }}</h2>
+  <Accordion class="max-w-[888px] mx-auto w-full" :activeIndex="0">
+    <AccordionTab v-for="(item, index) in widget.items" :key="index">
+      <template #header>
+        <div
+          class="gray-grad-bg flex items-center justify-between w-full py-5 shadow-sm rounded-md"
+        >
+          <img
+            v-if="item.iconSrc"
+            class="ml-3 sm:ml-[6.5rem] h-[50px] w-[50px] hidden md:flex"
+            :src="item.iconSrc"
+            :alt="item.iconAlt"
+          />
+          <span
+            v-if="item.title"
+            class="font-bold text-lg md:text-xl mx-4 text-base-orange"
+            >{{ item.title }}</span
+          >
+          <div class="">
+            <span
+              class="p-icon p-accordion-toggle-icon orange-arrow"
+            ></span>
+          </div>
+        </div>
+      </template>
+      <div v-if="item.desc" class="m-0 px-4">
+        <div v-html="item.desc"></div>
+      </div>
+    </AccordionTab>
+  </Accordion>
 </template>
 
-<script setup lang="ts">
-import { useAsyncData } from "nuxt/app";
-import { computed } from "vue";
+<script lang="ts" setup>
+import { defineProps } from "vue";
+import Accordion from "primevue/accordion";
+import AccordionTab from "primevue/accordiontab";
 
-interface AccordionItem {
-  title: string;
-  desc: string;
-}
+import type { MainAccordion} from "~/types/types";
 
-interface AccordionContent {
-  mainIconSrc?: string;
-  mainIconAlt?: string;
-  mainTitle?: string;
-  content: AccordionItem[];
-}
+const props = defineProps({
+  widget: {
+    type: Object as PropType<MainAccordion>,
+    required: true,
+    default: () => ({ mainTitle: '', content: { items: [] } })
+  },
+});
 
-interface ApiResponse {
-  value: {
-    widgets: Array<{
-      widgetId: string;
-      content: string; 
-    }>;
-  };
-}
-
-const api = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-const pageUri = "%2F&";
-const lang = "en";
-const targetWidgetId = "33068e0f-cdf0-4911-b0b1-d9dd5139f13f";
-const uniqueKey = `accordionContent-${targetWidgetId}`;
-
-// UseAsyncData reactive update
-const { data: accordionData } = useAsyncData<AccordionContent | null>(
-  uniqueKey,
-  async () => {
-    try {
-      const url = `${api}?PageUri=${pageUri}Localization=${lang}`;
-      const response = await $fetch<ApiResponse>(url);
-
-      const widget = response.value.widgets.find(
-        (widget) => widget.widgetId === targetWidgetId
-      );
-
-      if (!widget) {
-        console.log("Widget not found");
-        return null;
-      }
-
-      const parsedWidgetContent = JSON.parse(widget.content);
-
-      return {
-        mainIconSrc: parsedWidgetContent.mainIconSrc,
-        mainIconAlt: parsedWidgetContent.mainIconAlt,
-        mainTitle: parsedWidgetContent.mainTitle,
-        content: parsedWidgetContent.items.map((item: AccordionItem) => ({
-          title: item.title,
-          desc: item.desc,
-        })),
-      };
-    } catch (error) {
-      console.error("API fetch error:", error);
-      return null;
-    }
-  }
-);
-
-const accordionContent = computed(() => accordionData.value);
+/* onMounted(() => {
+  console.log("Widget Data:", props.widget);
+}); */
 </script>

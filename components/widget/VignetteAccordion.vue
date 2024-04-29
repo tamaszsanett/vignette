@@ -1,91 +1,64 @@
 <template>
-  <div v-if="accordionContent" class="widget">
-    <AccordionComponent
-      :content="accordionContent.content"
-      containerClass="max-w-[1100px] mx-auto w-full"
-      titleClass="bg-green-grad"
-      descClass="text-white text-sm md:text-lg font-medium"
-      iconClass="green-arrow"
-      gridContentClass="grid sm:grid-cols-2 gap-2 sm:gap-4"
-    ></AccordionComponent>
-  </div>
+  <Accordion class="max-w-[1100px] mx-auto w-full" :activeIndex="0">
+    <AccordionTab v-for="(item, index) in widget.vignetteTypes" :key="index">
+      <template #header>
+        <div
+          class="bg-green-grad flex items-center justify-between w-full py-5 shadow-sm rounded-md"
+        >
+          <h1
+           
+            class="ml-3 md:ml-[6.5rem] text-white my-0 lg:text-7xl"
+          >
+            {{ item.preTitle }}
+          </h1>
+          <img
+            v-if="item.iconSrc"
+            class="ml-3 sm:ml-[6.5rem] h-[50px] w-[50px] hidden md:flex"
+            :src="item.iconSrc"
+            :alt="item.iconAlt"
+          />
+          <span
+            v-if="item.title"
+            class="text-white text-sm md:text-lg font-medium mx-4"
+            >{{ item.title }}</span
+          >
+          <img
+            v-if="item.secondaryIconSrc"
+            class="mr-5 h-5 w-5 md:h-[50px] md:w-[50px] lg:h-[70px] lg:w-[93px] ml-auto"
+            :src="item.secondaryIconSrc"
+            :alt="item.secondaryIconAlt"
+          />
+          <div class="">
+            <span
+              class="green-arrow p-icon p-accordion-toggle-icon"
+            ></span>
+          </div>
+        </div>
+      </template>
+      <div v-if="item.desc" class="m-0 px-4">
+        <div v-html="item.desc"></div>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-2 sm:gap-4">
+        <NuxtLink v-for="(button, btnIndex) in item.buttons" :key="btnIndex" :to="button.url" class="btn primary-btn-outline min-h-14 pr-2" :title="button.title">
+          <span class="w-full md:w-[60%] text-left">{{ button.title }}</span>
+          <img v-if="button.iconSrc" class="read-img w-[20px] h-[20px]" :src="button.iconSrc" :alt="button.iconAlt"/>
+        </NuxtLink>
+      </div>
+    </AccordionTab>
+  </Accordion>
 </template>
 
-<script setup lang="ts">
-import { useAsyncData } from "nuxt/app";
-import { computed } from "vue";
+<script lang="ts" setup>
+import { defineProps } from "vue";
+import Accordion from "primevue/accordion";
+import AccordionTab from "primevue/accordiontab";
 
-interface Button {
-  title: string;
-  iconSrc: string;
-  iconAlt: string;
-  url: string;
-}
+import type { VignetteAccordion } from "~/types/types";
+const props = defineProps({
+  widget: {
+    type: Object as PropType<VignetteAccordion>,
+    required: true,
+  },
+});
 
-interface AccordionItem {
-  preTitle?: string;
-  secondaryIconSrc?: string;
-  secondaryIconAlt?: string;
-  title: string;
-  desc?: string;
-  buttons: Button[];
-}
-
-interface AccordionContent {
-  content: AccordionItem[];
-}
-
-interface ApiResponse {
-  value: {
-    widgets: Array<{
-      widgetId: string;
-      content: string; 
-    }>;
-  };
-}
-
-const api = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-const pageUri = "%2F&";
-const lang = "en";
-const targetWidgetId = "97ac617f-14c6-4e3a-8ae9-075ddf1f853c";
-const uniqueKey = `accordionContent-${targetWidgetId}`;
-
-// UseAsyncData reactive update
-const { data: accordionData } = useAsyncData<AccordionContent | null>(
-  uniqueKey,
-  async () => {
-    try {
-      const url = `${api}?PageUri=${pageUri}Localization=${lang}`;
-      const response = await $fetch<ApiResponse>(url);
-
-      const widget = response.value.widgets.find(
-        (widget) => widget.widgetId === targetWidgetId
-      );
-
-      if (!widget) {
-        console.log("Widget not found");
-        return null;
-      }
-
-      const parsedContent = JSON.parse(widget.content);
-
-      const vignetteTypes = parsedContent.vignetteTypes.map((item: AccordionItem) => ({
-        preTitle: item.preTitle,
-        secondaryIconSrc: item.secondaryIconSrc,
-        secondaryIconAlt: item.secondaryIconAlt,
-        title: item.title,
-        buttons: item.buttons,
-      }));
-
-      return {
-        content: vignetteTypes,
-      };
-    } catch (error) {
-      console.error("API fetch error:", error);
-      return null;
-    }
-  }
-);
-
-const accordionContent = computed(() => accordionData.value);
 </script>

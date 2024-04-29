@@ -8,7 +8,7 @@
     "sitesTitle": "Sites",
     "socialMediaTitle": "Follow us:",
     "footerLogo": {
-      "src": "/Content/header/logo-en-EN.png",
+      "src": "/assets/content/header/logo-en-EN.png",
       "alt": "Highway",
       "title": "Vignette"
     },
@@ -68,8 +68,8 @@
       "iOS": "/Home/IOS?utm_source=IOSGomb&utm_campaign=oldalsav%20box&utm_medium=APP"
     },
     "appImages": {
-      "androidSrc": "/Content/footer/google-play-hu-HU.png",
-      "iOSSrc": "/Content/footer/app-store-hu-HU.webp",
+      "androidSrc": "/assets/content/footer/google-play-hu-HU.png",
+      "iOSSrc": "/assets/content/footer/app-store-hu-HU.webp",
       "androidAlt": "androidAlt",
       "iosAlt": "iosAlt"
     },
@@ -77,36 +77,36 @@
       {
         "title": "otp-card",
         "url": "https://simplepartner.hu/PaymentService/Fizetesi_tajekoztato_EN.pdf",
-        "src": "/Content/otpcards2.webp"
+        "src": "/assets/content/otpcards2.webp"
       },
       {
         "title": "borgun-card",
-        "url": "http://dev.voxinfo.hu/VoxPayAdmin/Contents#",
-        "src": "/Content/Borgun_logos_v1_200px.jpg"
+        "url": "http://dev.voxinfo.hu/VoxPayAdmin/assets/contents#",
+        "src": "/assets/content/Borgun_logos_v1_200px.jpg"
       },
       {
         "title": "barion-card",
         "url": "#",
-        "src": "/Content/barion-card.png"
+        "src": "/assets/content/barion-card.png"
       }
     ],
     "socialMedia": [
       {
         "platform": "facebook",
         "url": "https://www.facebook.com/autopalyamatrica.hu",
-        "src": "/Content/footer/facebook.png",
+        "src": "/assets/content/footer/facebook.png",
         "ID": "facebook"
       },
       {
         "platform": "instagram",
         "url": "https://www.instagram.com/voxpay_hungary/",
-        "src": "/Content/footer/instagram.png",
+        "src": "/assets/content/footer/instagram.png",
         "ID": "instagram"
       },
       {
         "platform": "tiktok",
         "url": "https://www.tiktok.com/@autopalyamatrica",
-        "src": "/Content/footer/tik-tok.png",
+        "src": "/assets/content/footer/tik-tok.png",
         "ID": "tik-tok"
       }
     ],

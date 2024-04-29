@@ -26,7 +26,7 @@ Start the development server on `http://localhost:3000`:
 
 ```bash
 # npm
-npm run dev
+npm run dev -- -o
 
 # pnpm
 pnpm run dev
@@ -73,3 +73,5 @@ bun run preview
 ```
 
 Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+
+npx nuxi build --preset=iis_node
