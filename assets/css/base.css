@@ -16,25 +16,23 @@
   @apply font-medium text-sm tracking-normal;
 }
 
-@layer components {
-  /* WhyYouBuyhere .vue */
-  .why-buy-here .col-9 {
-    @apply w-full;
-  }
+/* WhyYouBuyhere .vue */
+.why-buy-here .col-9 {
+  @apply w-full;
+}
 
-  .top-menu {
-    position: absolute;
-    top: 0;
-    right: 0;
-    left: 0;
-  }
+.top-menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+}
 
-  .bottom-section {
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 100%;
-  }
+.bottom-section {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
 }
 
 @layer base {
@@ -76,27 +74,17 @@
   }
 }
 
-@layer components {
-  .widget .mainPageWhichVignetteBlock {
-    @apply w-full px-4 lg:px-0;
-  }
+.widget .mainPageWhichVignetteBlock {
+  @apply w-full px-4 lg:px-0;
+}
 
-  .widget .mainPageWhichVignetteBlock h3 {
-    @apply text-sm my-3.5 font-normal mb-10;
-  }
+.widget .mainPageWhichVignetteBlock h3 {
+  @apply text-sm my-3.5 font-normal mb-10;
+}
 
-  .widget .p-accordion .p-accordion-header .p-accordion-header-link {
-    @apply px-0 py-2 lg:py-3;
-  }
-
-  .widget .p-accordion-content {
-    @apply px-0 sm:px-2 py-0;
-  }
-
-  .widget .mainPageWhichVignetteBlock > div:nth-child(2),
-  .widget .mainPageWhichVignetteBlock > div:nth-child(3) {
-    @apply flex justify-center gap-8 md:gap-28 mb-4;
-  }
+.widget .mainPageWhichVignetteBlock > div:nth-child(2),
+.widget .mainPageWhichVignetteBlock > div:nth-child(3) {
+  @apply flex justify-center gap-8 md:gap-28 mb-4;
 }
 
 html {
