@@ -24,7 +24,8 @@ export function useWidgets() {
     const { data: widgetsData, error: widgetsError } = useAsyncData<Array<Widget>>(
       `widgetsData-${currentLanguage.value}-${pageUri.value}`,
       async () => {
-        const url = `${apiEndpoint}?PageUri=%2F${pageUri.value}&Localization=${currentLanguage.value}`;
+        const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll("%2C", "%2F")}&Localization=${currentLanguage.value}`;
+        console.log(url);
         const response = await $fetch<ApiResponse>(url);
         console.log(response);
         return response
