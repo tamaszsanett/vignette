@@ -1,6 +1,5 @@
 <template>
   <section v-if="newsWidget" class="my-16">
-    <h1 v-if="newsWidget.content.topNews.pageTitle">{{ newsWidget.content.topNews.pageTitle }}</h1>
     <h2 v-if="newsWidget.content.topNews.mainTitle">{{ newsWidget.content.topNews.mainTitle }}</h2>
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 content-center gap-8 xl:gap-10"
@@ -64,11 +63,4 @@ const props = defineProps({
     required: true,
   },
 });
-
-/* onMounted(() => {
-  console.log("Widgets Loaded:", props.newsWidget.content);
-
-  console.log("widget: " + props.topNewsContent);
-}); */
-
 </script>

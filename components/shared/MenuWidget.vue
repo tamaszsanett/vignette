@@ -1,7 +1,7 @@
 <template>
   <header v-if="menuWidget" class="w-full z-40 top-0 bg-base-black">
     <nav
-      class="mx-auto flex justify-between items-center p-4 text-white menu-wrapper"
+      class="mx-auto flex justify-between items-center p-4 text-white menu-wrapper max-w-[1245px]"
     >
       <div class="flex justify-start items-center">
         <a v-if="menuWidget.logo" :href="`/${langSelection?.code}`">

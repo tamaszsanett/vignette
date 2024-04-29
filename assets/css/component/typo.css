@@ -43,11 +43,11 @@
     }
   
     a {
-      @apply tracking-wider font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
+      @apply font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
     }
 
     .menu-wrapper a {
-      @apply text-white text-[11px] lg:text-sm hover:text-link-hover uppercase;
+      @apply text-white text-[11px] lg:text-sm hover:text-link-hover uppercase font-normal;
     }
 
     .footer-txt a {
