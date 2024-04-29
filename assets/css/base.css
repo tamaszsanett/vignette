@@ -38,6 +38,11 @@
 }
 
 @layer base {
+  ul {
+    margin: 1.2em 1.3em;
+    list-style-type: square;
+  }
+
   table {
     @apply w-fit;
   }
