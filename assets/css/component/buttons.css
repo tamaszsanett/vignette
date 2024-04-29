@@ -63,7 +63,7 @@
 }
 
 [type="button"].lang-btn {
-  @apply flex items-center bg-white rounded-[4px] text-sm px-2 py-1 font-medium hover:bg-transparent hover:text-white;
+  @apply flex items-center bg-white text-base-black rounded-[4px] text-sm px-2 py-1 font-medium hover:bg-transparent hover:text-white;
 }
 
 .p-dialog-footer {
