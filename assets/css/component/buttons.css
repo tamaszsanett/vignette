@@ -10,15 +10,15 @@
   .btn-box-shadow {
     box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
   }
+
+  .primary-btn-outline {
+    @apply bg-white text-base-orange hover:text-white hover:bg-base-orange border-base-orange focus:ring-base-orange;
+  }  
 }
 
 .primary-btn,
 [type="button"].primary-btn {
   @apply bg-base-orange text-white hover:text-base-orange hover:bg-white border-base-orange focus:ring-base-orange;
-}
-
-.primary-btn-outline {
-  @apply bg-white text-base-orange hover:text-white hover:bg-base-orange border-base-orange focus:ring-base-orange;
 }
 
 .p-accordion .primary-btn-outline {
@@ -59,7 +59,7 @@
 }
 
 .btn-orange {
-  @apply btn primary-btn w-fit;
+  @apply btn w-fit primary-btn-outline;
 }
 
 [type="button"].lang-btn {
