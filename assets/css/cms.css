@@ -6,11 +6,6 @@ a {
   color: #209b61;
 }
 
-body {
-  font-family: "Roboto Condensed";
-  line-height: 1.4em;
-}
-
 .num {
   float: left;
   display: block;
@@ -23,17 +18,6 @@ body {
 
 .vignette-header span {
   float: right;
-}
-
-h2 {
-  color: #1d4153;
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 40px;
-  text-align: center;
-  color: #1b1b1b;
-  line-height: 1.4em;
 }
 
 .sidebar {
@@ -158,7 +142,6 @@ h2 {
 }
 
 .prices {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
@@ -622,7 +605,6 @@ div.info {
   background: linear-gradient(180deg, #f58c1f 0%, #f57d21 100%);
   color: white;
   padding: 10px 40px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -835,7 +817,6 @@ amp-user-notification > div {
   border-radius: 10px;
   width: 350px;
   height: 56px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-size: 18px;
   padding-left: 10px;
@@ -871,7 +852,6 @@ hr {
   box-shadow: 0 1px 0 rgb(12 13 14 / 10%), 0 1px 6px rgb(59 64 69 / 10%);
   background: #ffffff;
   border-radius: 5px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 17px;
@@ -879,7 +859,6 @@ hr {
   color: #f58c1f;
   background: linear-gradient(180deg, #f58c1f 0%, #f57d21 100%);
   color: white;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 500;
   font-size: 14px;
@@ -922,7 +901,6 @@ amp-accordion > section[expanded] > :last-child {
   border-radius: 2px;
   background: #ffffff;
   /*  box-shadow: 5px 5px 22px rgb(245 125 33 / 20%);*/
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -1003,7 +981,6 @@ label {
 }
 
 .purchase-data {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -1024,7 +1001,6 @@ label {
 }
 
 .vignette {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -1071,19 +1047,13 @@ h4 {
 }
 
 .payment-method {
-  /*border: 1px solid #ccc;*/
   padding: 13px;
   margin: 10px 0;
-  /*background: linear-gradient(0deg, #5CCC94 0%, #8CCAAE 100%);
-            color: white;*/
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
   line-height: 32px;
-  /* text-align: center;
-                */
   color: #1b1b1b;
   width: 100%;
   margin: auto;
@@ -1162,7 +1132,6 @@ fieldset {
   box-shadow: 0 1px 0 rgb(12 13 14 / 10%), 0 1px 6px rgb(59 64 69 / 10%);
   border: 1px solid #ccc;
   border-radius: 2px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -1313,17 +1282,6 @@ amp-user-notification button {
 h4 > a {
   color: #1d4153;
   text-decoration: none;
-}
-
-h1 {
-  font-family: "Roboto Condensed";
-  font-style: normal;
-  font-weight: 700;
-  font-size: 52px;
-  line-height: 60px;
-  text-align: center;
-  color: #1b1b1b;
-  margin-bottom: 15px;
 }
 
 .article-image {
@@ -2617,7 +2575,6 @@ td.VignetteOrdered {
 
 .checkText {
   cursor: pointer;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -3202,7 +3159,6 @@ hr {
   width: 125px;
   text-align: center;
   border: none;
-  font-family: "Roboto Condensed";
   font-style: normal;
   background-color: none;
 }
@@ -3213,7 +3169,6 @@ hr {
   border-radius: 10px;
   width: 350px;
   height: 56px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-size: 22px;
   text-align: center;
@@ -3241,7 +3196,6 @@ hr {
 }
 
 .th-fleet {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -3260,7 +3214,6 @@ hr {
   background: linear-gradient(180deg, #f58c1f 0%, #f57d21 100%);
   color: white;
   padding: 15px 60px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -3310,7 +3263,6 @@ span.tooltip {
   height: 26px;
   background: linear-gradient(180deg, #f58c1f 0%, #f57d21 100%);
   border-radius: 5px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 13.3333px;
@@ -3363,7 +3315,6 @@ span.tooltip {
   padding: 4px;
   border-radius: 4px;
   height: 30px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 13px;
@@ -3414,7 +3365,6 @@ a {
 }
 
 .fleetUploadLink-text {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -3448,7 +3398,6 @@ a {
 }
 
 .header-h3 {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 40px;
@@ -3520,7 +3469,6 @@ a {
 }
 
 .label-style {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -3545,7 +3493,6 @@ a {
 }
 
 .orange-h4 {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -3603,7 +3550,6 @@ a {
 .grey-desing {
   background-color: #eeeeee;
   width: 100%;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -3615,7 +3561,6 @@ a {
 .black-desing {
   background-color: #404040;
   width: 100%;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -3641,7 +3586,6 @@ a {
 }
 
 .desing-fonts {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -3685,7 +3629,6 @@ a {
 }
 
 .dropdown-text {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -3756,7 +3699,6 @@ a {
   border: 1px solid #f58221;
   border-radius: 8px;
   padding: 13px 115px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 18px;
@@ -3792,7 +3734,6 @@ a {
 }
 
 .news-widget {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 15px;
@@ -3900,7 +3841,6 @@ a {
 }
 
 .footer-txt {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -4065,7 +4005,6 @@ a {
 }
 
 p {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -4128,7 +4067,6 @@ p {
   text-decoration: none;
   color: #f58c1f;
   line-height: normal;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 13.6483px;
@@ -4147,7 +4085,6 @@ input[type="checkbox"] {
 }
 
 .orange-h5 {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -4179,7 +4116,6 @@ input[type="checkbox"] {
   background: white;
   border: 1px solid #5ccc94;
   padding: 10px 10px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 16px;
@@ -4187,27 +4123,12 @@ input[type="checkbox"] {
   width: 150px;
   height: 41px;
   margin-inline: 20px;
-  /*padding: 10px 40px;
-            color: white;
-            padding: 10px 40px;
-            font-family: 'Roboto Condensed';
-            font-style: normal;
-            font-weight: 700;
-            font-size: 16px;
-            line-height: 24px;
-            width: 150px;
-            height: 41px;
-            margin-inline: 20px;
-            border: 1px solid #5CCC94;*/
 }
 
 .back:hover {
   color: white;
   background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
   border: 1px solid #5ccc94;
-  /*color: #5CCC94;
-                background: white;
-                border: 1px solid #5CCC94;*/
 }
 
 .btn-disabled {
@@ -4298,7 +4219,6 @@ td {
 }
 
 #desing-table {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -4328,7 +4248,6 @@ td {
   padding-bottom: 12px;
   background-color: #ffffff;
   color: #1B1B1B;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -4480,7 +4399,6 @@ td {
   height: 31px;
   background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
   box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   color: #ffffff;
@@ -4496,7 +4414,6 @@ td {
 
 .header {
   padding-top: 50px;
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 52px;
@@ -4830,7 +4747,6 @@ td {
 .whyToBuyHere .whyToBuyHereElement > span {
   width: 179px;
   margin-top: 10px;
-  font-family: "Roboto Condensed";
   color: white;
   line-height: 20px;
   font-size: 14px;
@@ -4858,7 +4774,6 @@ td {
 
 .downloadAppMainPageBg .greenHeader {
   font-size: 32px;
-  font-family: "Roboto Condensed";
   font-weight: 700;
   background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
   -webkit-background-clip: text;
@@ -5019,7 +4934,6 @@ td {
 }
 
 .orange-h3 {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -5029,7 +4943,6 @@ td {
 }
 
 /* .orange-h3-inline-none {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
@@ -7303,7 +7216,6 @@ mark {
 }
 
 #desing-table-full-width {
-  font-family: "Roboto Condensed";
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -7547,7 +7459,6 @@ mark {
 
 @media only screen and (min-width: 300px) and (max-width: 380px) {
   .redesing-user-menu {
-    font-family: "Roboto Condensed";
     line-height: 1.4em;
   }
 

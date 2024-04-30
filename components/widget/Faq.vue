@@ -1,5 +1,5 @@
 <template>
-  <h2 v-if="widget.pageTitle">{{ widget.pageTitle }}</h2>
+  <h1 v-if="widget.pageTitle">{{ widget.pageTitle }}</h1>
   <h2 v-if="widget.mainTitle">{{ widget.mainTitle }}</h2>
   <Accordion class="max-w-[888px] mx-auto w-full" :activeIndex="0">
     <AccordionTab v-for="(item, index) in widget.items" :key="index">

@@ -1,7 +1,14 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
-html {
-  font-family: "Roboto Condensed", system-ui, sans-serif;
+@layer utilities {
+  .font-regular {
+    @apply font-sans;
+  }
+}
+
+html, body {
+  font-family: "Roboto Condensed", sans-serif !important;
+  @apply font-regular text-base-black;
 }
 
 .p-component {
@@ -62,10 +69,6 @@ html {
   }
 
   .p-component {
-    font-family: "Roboto Condensed";
-  }
-
-  body {
     font-family: "Roboto Condensed";
   }
 
