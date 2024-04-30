@@ -58,7 +58,12 @@ import { useAsyncData, useRoute } from "nuxt/app";
   const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll("%2C", "%2F")}&Localization=${currentLanguage.value}`;
 
   const response = (await $fetch<ApiResponse>(url));
-  useSeoMeta({title: response.value.title});
+  useSeoMeta({
+    title: response.value.title,
+    ogTitle: response.value.title,
+    description: response.value.metaDescription,
+    ogDescription: response.value.metaDescription,
+  })
 
 
   const widgets = response.value.widgets.map((widget) => {
