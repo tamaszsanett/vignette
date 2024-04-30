@@ -1,0 +1,92 @@
+@layer utilities {
+  .primary-input,
+  .primary-select {
+    @apply py-3 px-7 bg-white border-[0.5px] flex items-center text-base-black placeholder:text-gray-300 leading-6
+    base-radius focus:outline-none text-lg w-full focus:box-shadow-16 focus:border-black focus:ring-1 transition-all duration-300 ease-in-out;
+  }
+
+  .primary-select {
+    @apply py-1;
+  }
+
+  .primary-label {
+    @apply text-base text-base-black mb-0 font-bold;
+  }
+
+  .input-border {
+    border: 1px solid rgba(138, 138, 138, 0.37);
+  }
+
+  .box-shadow-16 {
+    box-shadow: 2px 2px 7px 0px rgba(16, 16, 16, 0.16);
+  }
+
+  .base-radius {
+    @apply rounded-lg;
+  }
+}
+
+.p-dropdown-filter-container .p-dropdown-filter.p-component {
+  @apply primary-select;
+}
+
+.primary-input.group-input {
+  @apply pl-16;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  @apply bg-base-orange text-white;
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+  @apply outline-base-orange;
+}
+
+.calendar-wrapper {
+  @apply py-0 px-0 primary-input !important;
+}
+
+.p-calendar input {
+  @apply shadow-none px-2 py-3 bg-white hover:text-base-green text-lg;
+}
+
+.p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
+  @apply outline-base-green;
+}
+
+.p-datepicker {
+  @apply max-w-[300px];
+}
+
+.p-datepicker td {
+  @apply p-1;
+}
+
+.p-datepicker-calendar {
+  @apply m-0;
+}
+
+.p-datepicker table td.p-datepicker-today > span.p-highlight {
+    @apply bg-base-orange text-white;
+}
+
+.p-datepicker table td > span.p-highlight {
+    @apply bg-base-green text-white;
+}
+
+.p-datepicker-title {
+    @apply font-bold;
+}
+
+.p-datepicker table td > span:focus {
+    @apply outline-base-green;
+}
+
+.p-datepicker table td > span:focus {
+    @apply outline-base-orange;
+}
+
+input:disabled {
+    @apply hover:text-base-black;
+}
+

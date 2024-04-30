@@ -1075,13 +1075,6 @@ h4 {
   color: olivedrab;
 }
 
-.bg-green {
-  background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
-  color: white;
-  padding: 10px 0px;
-  text-align: center;
-}
-
 .dropMenuItem {
   display: block !important;
   height: 30px;
@@ -1126,53 +1119,8 @@ input[type="checkbox"] {
   margin-bottom: 80px;
 }
 
-fieldset {
-  margin-top: 20px;
-  background-color: #fafafb;
-  box-shadow: 0 1px 0 rgb(12 13 14 / 10%), 0 1px 6px rgb(59 64 69 / 10%);
-  border: 1px solid #ccc;
-  border-radius: 2px;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 15px;
-  line-height: 15px;
-  color: #1b1b1b;
-  clear: both;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  padding: -6px 30px;
-  gap: 10px;
-  background: rgba(245, 246, 249, 0.37);
-  border: 1px solid #d0cfd7;
-  border-radius: 15px;
-  /* margin: 10px;
-                */
-  background: linear-gradient(90deg, #eeeef3 0%, rgba(238, 238, 243, 0) 100%);
-  border-radius: 15px;
-}
-
 .confirm-page {
   margin-bottom: 100px;
-}
-
-amp-user-notification {
-  background-color: #fafafb;
-  border-top: 3px solid #f58c1f;
-}
-
-amp-user-notification div {
-  padding: 5px;
-}
-
-amp-user-notification a {
-  color: #1d4153;
-}
-
-amp-user-notification button {
-  padding: 10px;
-  margin-left: 10px;
-  font-size: 20px;
 }
 
 .payment-success .form-control-static {
@@ -2635,17 +2583,10 @@ td.VignetteOrdered {
     width: 103% !important;
     height: 90px !important;
   }
-
-  .purchase-calculatorInvoice {
-    top: 500px !important;
-  }
 }
 
 /*Laptop L min*/
 @media screen and (min-width: 1440px) {
-  .purchase-calculatorInvoice {
-    top: 446px !important;
-  }
 
   .VignetteHeaderImg {
     width: 101% !important;
@@ -2655,9 +2596,7 @@ td.VignetteOrdered {
 
 /*Laptop L max*/
 @media screen and (max-width: 1440px) {
-  .purchase-calculatorInvoice {
-    top: 380px !important;
-  }
+
 
   .VignetteHeaderImg {
     width: 101% !important;
@@ -2677,11 +2616,6 @@ td.VignetteOrdered {
     width: 50% !important;
   }
 
-  .purchase-calculatorInvoice {
-    left: 78% !important;
-    width: 20% !important;
-    top: 375px !important;
-  }
 
   .menu li a {
     font-size: 13px !important;
@@ -3804,11 +3738,6 @@ a {
   );
 }
 
-.text-black {
-  color: #1B1B1B;
-  font-size: 20px;
-}
-
 .vignette-accordion .higligted-item {
   /* Orange gradient */
   background: linear-gradient(180deg, #f58c1f 0%, #f57d21 100%);
@@ -4094,23 +4023,6 @@ input[type="checkbox"] {
 }
 
 
-/*.btn-green {
-    background: linear-gradient(0deg, #5CCC94 0%, #8CCAAE 100%);
-    color: white;
-}*/
-
-.btn-green:hover {
-  color: white;
-  background: linear-gradient(0deg, #5ccc94 0, #8ccaae 100%);
-  border: 1px solid #5ccc94;
-}
-
-.btn-green {
-  color: #5ccc94;
-  background: white;
-  border: 1px solid #5ccc94;
-}
-
 .back {
   color: #5ccc94;
   background: white;
@@ -4218,7 +4130,7 @@ td {
   padding: 10px 20px;
 }
 
-#desing-table {
+.design-table {
   font-style: normal;
   font-weight: 700;
   font-size: 14px;
@@ -4229,21 +4141,21 @@ td {
   width: 80%;
 }
 
-#desing-table td,
-#desing-table th {
+.design-table td,
+.design-table th {
   border: 1px solid #f5f6f9;
   padding: 8px;
 }
 
-#desing-table tr:nth-child(even) {
+.design-table tr:nth-child(even) {
   background-color: #f5f6f9;
 }
 
-#desing-table tr:hover {
+.design-table tr:hover {
   background-color: #dadeeb;
 }
 
-#desing-table th {
+.design-table th {
   padding-top: 12px;
   padding-bottom: 12px;
   background-color: #ffffff;
@@ -4703,18 +4615,8 @@ td {
   margin-bottom: 20px;
 }
 
-.purchase-calculator {
-  left: 70%;
-  width: 18%;
-  position: absolute;
-}
 
-.purchase-calculatorInvoice {
-  left: 74%;
-  width: 18%;
-  position: absolute;
-  top: 399px;
-}
+
 
 .whyToBuyHere {
   text-align: center;
@@ -6005,13 +5907,13 @@ mark {
     grid-template-columns: auto;
   }
 
-  .finesPage #desing-table {
+  .finesPage .design-table {
     margin: 0;
     width: 100%;
     font-size: 12px;
   }
 
-  .finesPage #desing-table th {
+  .finesPage .design-table th {
     font-size: 12px;
   }
 
@@ -6462,11 +6364,6 @@ mark {
     padding: 0;
   }
 
-  .purchaseStep2 form .purchase-calculator {
-    position: unset;
-    width: 100%;
-    margin: 25px 0;
-  }
 
   .purchaseStep2 form input,
   .purchaseStep2 form select,
@@ -6528,10 +6425,6 @@ mark {
     width: 100%;
   }
 
-  .purchaseStep3 .purchase-calculatorInvoice {
-    position: unset;
-    margin-bottom: 30px;
-  }
 
   .purchaseStep3 .purchaseContactInfo {
     padding: 0;
@@ -7004,7 +6897,7 @@ mark {
     position: unset !important;
   }
 
-  #desing-table {
+  .design-table {
     margin: 0px;
     width: 100%;
   }
@@ -7116,10 +7009,6 @@ mark {
     min-width: 50px;
   }
 
-  .purchaseStep3 .purchase-calculatorInvoice {
-    right: 4%;
-    left: unset;
-  }
 
   .mainPageWhichVignetteBlock amp-img {
     width: 180px !important;
@@ -7196,11 +7085,6 @@ mark {
     width: 70% !important;
   }
 
-  .purchaseStep2 form .purchase-calculator {
-    right: 20px;
-    left: unset !important;
-    width: 25% !important;
-  }
 
   .menu.menu-top .container.row > div:nth-child(1) amp-img {
     width: 100% !important;
@@ -7215,7 +7099,7 @@ mark {
   }
 }
 
-#desing-table-full-width {
+.design-table-full-width {
   font-style: normal;
   font-weight: 700;
   font-size: 14px;

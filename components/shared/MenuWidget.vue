@@ -1,5 +1,5 @@
 <template>
-  <header v-if="menuWidget" class="w-full z-40 top-0 bg-base-black">
+  <header v-if="menuWidget" class="w-full z-40 top-0 bg-secondary-black">
     <nav
       class="mx-auto flex justify-between items-center p-4 text-white menu-wrapper max-w-[1245px]"
     >
