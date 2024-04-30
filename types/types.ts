@@ -9,7 +9,7 @@ export type ApiResponse = {
     title: string;
     metaDescription: string;
     metaKeywords: string;
-    alternateLinks: AlternateLink[];
+    alternateLinks: AlternateLink;
     widgets: Widget[];
   };
 };

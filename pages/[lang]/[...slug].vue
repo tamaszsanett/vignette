@@ -20,19 +20,12 @@
         <WidgetPurchasePrice :widget="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'footerwidget'">
-        <SharedFooterWidget
-          :footer-widget="widget"
-          :footer-widget-content="widget.content"
-          :class="{
-            'bottom-section': widget.section === 'main',
-            hidden: widget.section !== 'main',
-          }"
-        />
+        <SharedFooterWidget :footer-widget="widget" :footer-widget-content="widget.content" :class="{
+          'bottom-section': widget.section === 'main',
+          hidden: widget.section !== 'main',
+        }" />
       </div>
-      <div
-        v-if="widget.widgetType === 'menuwidget'"
-        :class="{ 'top-menu': widget.section === 'top' }"
-      >
+      <div v-if="widget.widgetType === 'menuwidget'" :class="{ 'top-menu': widget.section === 'top' }">
         <SharedMenuWidget :menu-widget="widget.content" />
       </div>
     </template>
@@ -43,38 +36,59 @@
 import { ref, computed, watch } from "vue";
 import { useAsyncData, useRoute } from "nuxt/app";
 
-  const route = useRoute();
-  const currentLanguage = ref('en');
-  watch(() => route.params.lang, (newLang) => {
-    currentLanguage.value = Array.isArray(newLang) ? newLang[0] : newLang || 'en';
-  }, { immediate: true });
-
-  const pageUri = computed(() => {
-    const slug = (route.params.slug as string) || "";
-    return `${encodeURIComponent(slug)}`;
-  });
-
-  const apiEndpoint = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-  const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll("%2C", "%2F")}&Localization=${currentLanguage.value}`;
-
-  const response = (await $fetch<ApiResponse>(url));
-  useSeoMeta({
-    title: response.value.title,
-    ogTitle: response.value.title,
-    description: response.value.metaDescription,
-    ogDescription: response.value.metaDescription,
-  })
+const route = useRoute();
+const currentLanguage = ref('en');
+watch(() => route.params.lang, (newLang) => {
+  currentLanguage.value = Array.isArray(newLang) ? newLang[0] : newLang || 'en';
+}, { immediate: true });
 
 
-  const widgets = response.value.widgets.map((widget) => {
-          if (widget.widgetType === "html") {
-            return widget;
-          } else {
-            return {
-              ...widget,
-              content: JSON.parse(widget.content),
-            };
-          }
-        });
+// import useMeta from Composition API
+
+useHead({
+  htmlAttrs: {
+    lang: currentLanguage,
+  },
+  meta: [
+    {
+      name: "language", content: currentLanguage
+    }
+  ]
+});
+
+const pageUri = computed(() => {
+  const slug = (route.params.slug as string) || "";
+  return `${encodeURIComponent(slug)}`;
+});
+
+const apiEndpoint = "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll("%2C", "%2F")}&Localization=${currentLanguage.value}`;
+
+const response = (await $fetch<ApiResponse>(url));
+useSeoMeta({
+  title: response.value.title,
+  ogTitle: response.value.title,
+  description: response.value.metaDescription,
+  ogDescription: response.value.metaDescription,
+})
+
+useHead({
+  link: [
+    { rel: "alternate", href: response.value.alternateLinks.en, hreflang: "en"},
+    { rel: "alternate", href: response.value.alternateLinks.de, hreflang: "de-DE"},
+    { rel: "alternate", href: response.value.alternateLinks.ro, hreflang: "ro-RO"},
+    { rel: "alternate", href: response.value.alternateLinks.sk, hreflang: "sk-SK"}
+  ]});
+
+const widgets = response.value.widgets.map((widget) => {
+  if (widget.widgetType === "html") {
+    return widget;
+  } else {
+    return {
+      ...widget,
+      content: JSON.parse(widget.content),
+    };
+  }
+});
 
 </script>

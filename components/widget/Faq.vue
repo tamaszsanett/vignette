@@ -1,5 +1,5 @@
 <template>
-  <h1 v-if="widget.pageTitle">{{ widget.pageTitle }}</h1>
+  <h1 v-if="widget.pageTitle" class="text-center">{{ widget.pageTitle }}</h1>
   <h2 v-if="widget.mainTitle">{{ widget.mainTitle }}</h2>
   <Accordion class="max-w-[888px] mx-auto w-full" :activeIndex="0">
     <AccordionTab v-for="(item, index) in widget.items" :key="index">
@@ -15,7 +15,7 @@
           />
           <span
             v-if="item.title"
-            class="font-bold text-lg md:text-xl mx-4 text-base-orange"
+            class="font-bold text-lg md:text-xl mx-4 text-base-orange w-100"
             >{{ item.title }}</span
           >
           <div class="">

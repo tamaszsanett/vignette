@@ -155,6 +155,11 @@ export default defineNuxtConfig({
         },
       ],
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
+      script: [
+        { src: "https://www.googletagmanager.com/gtag/js?id=G-V8GTFLHHBY" },
+        { src: "/js/googletagmanager.js"},
+        { src: "//cdn.cookie-script.com/s/2fa8a850d3f1925a0be8ab712caaa7d9.js"}
+      ]
     },
     pageTransition: { name: "page", mode: "out-in" },
   },

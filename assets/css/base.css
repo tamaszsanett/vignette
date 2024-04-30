@@ -168,3 +168,7 @@ html, body {
 .whyToBuyHere.bottom-footerS {
   @apply mb-0;
 }
+
+.w-100 {
+  width: 100%;
+}
