@@ -101,6 +101,7 @@ export type LanguageSelectionItem = {
   code: string;
   imgSrc: string;
   alt: string;
+  url: string;
 };
 
 export type MenuWidgetContent = {
@@ -115,7 +116,7 @@ export type MenuWidget = {
 logo: any;
 menu: any;
 siteUrl: string | undefined;
-languageSelection: any;
+languageSelection: LanguageSelectionItem[];
   widgetId: string;
   widgetType: string;
   content: string;

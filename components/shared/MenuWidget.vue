@@ -116,16 +116,17 @@
         <div class="grid grid-cols-2 justify-between gap-2">
           <div
             v-for="item in menuWidget.languageSelection"
-            @click="() => changeLanguage(item.code)"
+            @click="() => changeLanguage(item.code, item.url)"
             :key="item.title"
             class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1"
           >
-            <span>{{ item.title }}</span>
-            <img
+          <img
               :src="`${item.imgSrc}`"
               :alt="item.alt"
               class="inline-block ml-2 w-5 h-5"
-            />
+            />  
+          <span>{{ item.title }}</span>
+            
           </div>
         </div>
         <template #footer>
@@ -168,8 +169,7 @@ const props = defineProps({
 const { currentLanguage } = useWidgets();
 const langSelection = ref<LanguageSelectionItem>();
 
-const changeLanguage = (langCode: string): void => {
-  const newPath = `/${langCode}${route.path.replace(/^\/[^/]+/, "")}`; // Replaces the existing language code with the newly selected one
+const changeLanguage = (langCode: string, url: string): void => {
   currentLanguage.value = langCode;
   const newLang = props.menuWidget.languageSelection.find(
     (lang: { code: string }) => lang.code === langCode
@@ -177,7 +177,9 @@ const changeLanguage = (langCode: string): void => {
   if (newLang) {
     langSelection.value = newLang;
   }
-  router.replace(newPath);
+
+  console.log(url);
+  navigateTo(url, { external: true });
 };
 
 const isActive = (url: string): boolean => route.path === url;
