@@ -24,6 +24,7 @@ export type AccordionButton = {
   url: string;
   iconSrc?: string;
   iconAlt?: string;
+  highlighted: boolean;
 };
 
 export type VignetteAccordionItem = {
