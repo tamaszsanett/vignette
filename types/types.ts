@@ -171,7 +171,7 @@ export type AppImage = {
   androidSrc: string;
   iOSSrc: string;
   androidAlt: string;
-  iosAlt: string;
+  iOSAlt: string;
 };
 
 export type PaymentOption = {

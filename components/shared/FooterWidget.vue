@@ -61,11 +61,11 @@
           <a
             :href="`${footerWidgetContent?.appLinks.iOS}`"
             rel="noreferrer"
-            :alt="footerWidgetContent?.appImages.iosAlt"
+            :alt="footerWidgetContent?.appImages.iOSAlt"
           >
             <img
               :src="`${footerWidgetContent?.appImages.iOSSrc}`"
-              :alt="footerWidgetContent?.appImages.iosAlt"
+              :alt="footerWidgetContent?.appImages.iOSAlt"
               width="124"
               height="33"
             />

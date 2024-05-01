@@ -14,13 +14,14 @@
           <img
             v-if="item.src"
             :src="item.src"
-            :alt="item.alt"
+            :alt="item.title"
             class="w-full object-cover mt-5 max-h-52 rounded-[5px] aspect-video"
           />
           <div>
             <NuxtLink
               :to="item.url"
               class="orange hover:text-secondary-orange"
+              :title="item.title"
             >
               <h3 v-if="item.title" class="text-sm mb-4 font-semibold mt-6">
                 {{ item.title }}
