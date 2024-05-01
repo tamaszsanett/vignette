@@ -52,7 +52,8 @@
             :alt="footerWidgetContent?.appImages.androidAlt"
           >
             <img
-              class="w-[124px] h-[33px]"
+            width="124"
+              height="33"
               :src="`${footerWidgetContent?.appImages.androidSrc}`"
               :alt="footerWidgetContent?.appImages.androidAlt"
             />

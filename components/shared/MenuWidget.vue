@@ -38,7 +38,7 @@
           </Button>
         </transition> -->
       </div>
-      <button type="button" class="md:hidden p-4" @click="toggleMobileMenu">
+      <button type="button" class="md:hidden p-4" @click="toggleMobileMenu" aria-label="Toggle menu">
         <!-- Menu Icon -->
         <svg
           width="24"
@@ -62,7 +62,7 @@
           class="text-white fixed h-screen left-0 top-0 w-full max-w-xs mx-auto bg-base-black p-4 z-30"
         >
           <div class="mt-5 flex flex-col items-start">
-            <button class="self-end" @click="toggleMobileMenu">
+            <button class="self-end" @click="toggleMobileMenu" aria-label="Toggle menu">
               <!-- Close Icon -->
               <svg
                 class="h-6 w-6"
