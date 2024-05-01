@@ -177,3 +177,11 @@ html, body {
   width: 100%;
   margin: 0 auto;
 }
+
+#otp-card {
+  width: 63px;
+}
+
+#barion-card {
+  width: 255px;
+}

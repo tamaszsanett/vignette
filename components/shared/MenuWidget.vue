@@ -133,7 +133,7 @@
           <div class="border-t pt-5 w-full">
             <Button
               class="btn primary-btn btn-sm mx-auto"
-              label="Bezárás"
+              label="Close"
               icon="pi pi-check"
               @click="visible = false"
               autofocus

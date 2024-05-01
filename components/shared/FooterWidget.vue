@@ -88,10 +88,11 @@
             :href="option.url"
           >
             <img
-              class="w-full max-w-[inherit] h-[21px]"
+              class="max-w-[inherit] h-[21px]"
               :src="`${option.src}`"
               :alt="option.title"
               :title="option.title"
+              :id="option.title"
             />
           </a>
         </div>

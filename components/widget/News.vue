@@ -8,9 +8,9 @@
       <div
         v-for="item in topNewsContent?.topNews.items"
         :key="item.id"
-        class="shadow-md drop-shadow-md hover:shadow-none transition-shadow text-white h-full px-4 py-2 rounded-md"
+        class="shadow-md drop-shadow-md hover:shadow-none transition-shadow text-white px-4 py-2 rounded-md"
       >
-        <div class="mb-4 h-full flex flex-col justify-around">
+        <div class="mb-4 flex flex-col justify-around">
           <img
             v-if="item.src"
             :src="item.src"
@@ -33,7 +33,7 @@
             ></div>
             <NuxtLink
               :to="item.url"
-              class="btn primary-btn-outline mt-5 stretched-link"
+              class="btn primary-btn-outline mt-5"
               :title="item.title"
             >
               Read more
