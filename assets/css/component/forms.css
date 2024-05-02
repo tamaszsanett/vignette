@@ -1,7 +1,7 @@
 @layer utilities {
   .primary-input,
   .primary-select {
-    @apply py-3 px-7 bg-white border-[0.5px] flex items-center text-base-black placeholder:text-gray-300 leading-6
+    @apply py-3 px-7 bg-white border-[0.5px] flex items-center text-base-black placeholder:text-zinc-300 leading-6
     base-radius focus:outline-none text-lg w-full focus:box-shadow-16 focus:border-black focus:ring-1 transition-all duration-300 ease-in-out;
   }
 
@@ -28,6 +28,10 @@
 
 .p-dropdown-filter-container .p-dropdown-filter.p-component {
   @apply primary-select;
+}
+
+.p-inputnumber .p-inputnumber-input {
+  @apply primary-input;
 }
 
 .primary-input.group-input {
@@ -90,3 +94,40 @@ input:disabled {
     @apply hover:text-base-black;
 }
 
+.error-message {
+  @apply text-sm text-red;
+}
+
+.p-checkbox.p-highlight .p-checkbox-box {
+  accent-color: #e77600;
+  @apply bg-base-orange hover:bg-red;
+}
+
+.p-checkbox.p-highlight {
+  @apply border-none rounded-[4px];
+}
+
+.p-checkbox, .p-radiobutton {
+  accent-color: #fff;
+  @apply bg-white rounded-[4px] border border-gray;
+}
+
+.p-radiobutton {
+  @apply rounded-full;
+}
+
+.p-checkbox.p-highlight .p-checkbox-box .p-icon {
+  @apply flex items-center justify-center h-full w-[80%] mx-auto;
+}
+
+.p-radiobutton-box {
+  @apply flex items-center justify-center h-5 w-5;
+}
+
+.p-radiobutton, .p-radiobutton-input {
+  @apply h-full w-full max-w-[1.35rem];
+}
+
+.p-radiobutton-icon {
+  @apply bg-base-orange h-4 w-4;
+}

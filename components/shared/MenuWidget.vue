@@ -90,7 +90,7 @@
               :href="`/${currentLanguage}${item.url}`"
               :key="item.url"
               :class="{ 'active-link': isActive(item.url) }"
-              class="block py-2 hover:text-gray-300"
+              class="block py-2 hover:text-zinc-300"
               @click="toggleMobileMenu"
             >
               {{ item.title }}

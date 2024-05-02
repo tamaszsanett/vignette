@@ -93,28 +93,26 @@
             </div>
           </div>
         </section>
+        <div
+          @click.prevent="toggleAdditionalContent"
+          class="base-link cursor-pointer flex justify-center"
+        >
+          + további matrica felvétele
+        </div>
+
+        <div v-if="showAdditionalContent" class="relative">
+          további matrica majd ide
+          <button
+            @click="hideAdditionalContent"
+            class="del absolute top-0 -right-10"
+          ></button>
+        </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">Vissza</a>
-          <button class="btn-green" type="submit">Következő</button>
+          <NuxtLink to="/UnderInvoiceData" class="btn-green" type="submit">Következő</NuxtLink>
         </section>
       </div>
-      <section class="shadow bg-green text-white purchase-calculator">
-        <div class="w-full flex items-center justify-center py-4">
-          <span>Kiválasztott matricák </span>
-        </div>
-        <div class="bg-white text-base-black font-bold w-full flex items-center justify-between">
-          <div class="w-1/2 py-3">D1 - 10 napos</div>
-          <div class="w-1/2">6 400 Ft</div>
-        </div>
-        <div class="bg-white text-base-black font-bold w-full flex items-center justify-between">
-          <div class="w-1/2 py-3">D1 - 10 napos</div>
-          <div class="w-1/2 py-3">6 400 Ft</div>
-        </div>
-        <div class="w-full flex items-center justify-between py-1">
-          <div class="w-1/2 py-3">Összesen:</div>
-          <div class="w-1/2 py-3">12 800 Ft</div>
-        </div>
-      </section>
+      <PurchaseBox />
     </form>
     <template v-for="widget in widgets" :key="widget.widgetId">
       <div
@@ -129,7 +127,17 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
-import { useAsyncData, useRoute } from "nuxt/app";
+import { useAsyncData, useRoute, useSeoMeta } from "nuxt/app";
+
+const showAdditionalContent = ref(false);
+
+const toggleAdditionalContent = () => {
+  showAdditionalContent.value = !showAdditionalContent.value;
+};
+
+const hideAdditionalContent = () => {
+  showAdditionalContent.value = false;
+};
 
 // Dátum típusok kezelése a ref-ben
 const startDate = ref(new Date());

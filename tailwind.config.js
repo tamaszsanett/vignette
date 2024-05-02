@@ -27,7 +27,9 @@ module.exports = {
         "faq-title-gray": "#666",
         "blue": "#2B3A97",
         "base-green": "#5CCC94",
-        "base-gray": "#e9e9e9"
+        "base-gray": "#e9e9e9",
+        "red": "#F25532",
+        "gray": "#bfb7a7",
       },
     },
   },
