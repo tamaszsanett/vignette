@@ -8,7 +8,7 @@
     }
   
    h3,  .h3, .content-static h3 {
-      @apply font-medium text-xl lg:text-3xl;
+      @apply font-medium text-l lg:text-xl;
     }
   
     h4, .h4, .content-static h4 {
@@ -28,7 +28,7 @@
     }
 
     h2 {
-      @apply my-8 text-center;
+      @apply my-8;
     }
    
   }
@@ -73,4 +73,20 @@
 
   .mainPageWhichVignetteBlock h3 {
     @apply text-base font-normal;
+  }
+
+  .news-title {
+    font-size: 1.1em;
+    line-height: 1.2em;
+
+  }
+
+  .read-more-link {
+    position: absolute;
+    bottom: 1em;
+    width: 90%;
+  }
+
+  .news-lead {
+    margin-bottom: 3rem;
   }

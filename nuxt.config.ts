@@ -23,6 +23,7 @@ export default defineNuxtConfig({
   routeRules: {
     "/": { redirect: { to: "/en", statusCode: 301 } },
     "/404": { redirect: { to: "/en/404", statusCode: 301 } },
+    "/en/customer-service": { redirect: { to: "/en/contact", statusCode: 301 } },
     "/about-us": { redirect: { to: "/en/about-us", statusCode: 301 } },
     "/adatvedelem": { redirect: { to: "/en/adatvedelem", statusCode: 301 } },
     "/combined-monthly-stickers": { redirect: { to: "/en/combined-monthly-stickers", statusCode: 301 } },
@@ -161,7 +162,7 @@ export default defineNuxtConfig({
         { src: "//cdn.cookie-script.com/s/2fa8a850d3f1925a0be8ab712caaa7d9.js"}
       ]
     },
-    pageTransition: { name: "page", mode: "out-in" },
+    pageTransition: { name: "page" },
   },
   modules: [
     "@nuxt/image",

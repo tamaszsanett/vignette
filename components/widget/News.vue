@@ -1,7 +1,7 @@
 <template>
   <section v-if="newsWidget" class="my-8">
     <h1 v-if="newsWidget.content.topNews.pageTitle" class="text-center">{{ newsWidget.content.topNews.pageTitle }}</h1>
-    <h2 v-if="newsWidget.content.topNews.mainTitle">{{ newsWidget.content.topNews.mainTitle }}</h2>
+    <h2 v-if="newsWidget.content.topNews.mainTitle" class="text-center">{{ newsWidget.content.topNews.mainTitle }}</h2>
     <div
       class="grid sm:grid-cols-2 md:grid-cols-3 content-center gap-8 xl:gap-10"
     >
@@ -20,21 +20,21 @@
           <div>
             <NuxtLink
               :to="item.url"
-              class="orange hover:text-secondary-orange"
+              class="black hover:text-secondary-black"
               :title="item.title"
             >
-              <h3 v-if="item.title" class="text-sm mb-4 font-semibold mt-6">
+              <h3 v-if="item.title" class="mb-4 font-semibold mt-6 news-title">
                 {{ item.title }}
               </h3>
             </NuxtLink>
             <div
               v-if="item.desc"
               v-html="item.desc"
-              class="text-desc-gray text-sm text-ellipsis line-clamp-5"
+              class="text-desc-gray text-sm text-ellipsis line-clamp-5 news-lead"
             ></div>
             <NuxtLink
               :to="item.url"
-              class="btn primary-btn-outline mt-5"
+              class="btn primary-btn-outline mt-5 read-more-link"
               :title="item.title"
             >
               Read more

@@ -1,6 +1,6 @@
 <template>
   <section v-if="items.length">
-    <h2 v-if="mainTitle" class="h2 mb-0">{{ mainTitle }}</h2>
+    <h2 v-if="mainTitle" class="h2 mb-0 text-center">{{ mainTitle }}</h2>
     <div class="w-full">
       <div class="w-full">
         <section
