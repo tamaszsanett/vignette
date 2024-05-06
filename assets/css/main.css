@@ -3,6 +3,9 @@
 @import "./component/accordion.css";
 @import "./component/buttons.css";
 @import "./component/cards.css";
+@import "./component/forms.css";
+
+@import "purchase.css";
 
 /* tailwind custom base css */
 @import "base.css";
