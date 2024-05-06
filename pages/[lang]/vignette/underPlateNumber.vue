@@ -3,12 +3,12 @@
     <header class="flex justify-center py-5">
       <img
         class="w-full hidden sm:block"
-        src="../public/img/purchase/under-plate-number-line_hu-HU.svg"
+        src="/img/purchase/desktop/under-plate-number-line_en_EN.svg"
         alt="autópálya-matrica"
       />
       <img
         class="w-full block sm:hidden"
-        src="../public/img/purchase/under-plate-number-line_hu-HU_mobile.svg"
+        src="/img/purchase/mobile/under-plate-number-line_en-EN.svg"
         alt="autópálya-matrica"
       />
     </header>
@@ -16,11 +16,22 @@
       <h1 class="purchase-h1">
         <img
           class="w-[45px]"
-          src="../public/img/purchase/D1.svg"
+          src="/img/purchase/D1.svg"
           alt="autópálya-matrica"
         />
-        <span class="ml-2">D1 - Havi országos autópálya-matrica</span>
+        <span class="ml-2">D1 - Monthly national highway sticker</span>
       </h1>
+      <div
+        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+      >
+        <img
+          src="/img/purchase/danger-icon.svg"
+          alt="Hiba történt"
+          class="w-5 h-5"
+          style="width: 20px; height: 20px"
+        />
+        <p class="error-message my-0">An error message will appear here</p>
+      </div>
       <div class="w-full md:max-w-[350px] mx-auto flex flex-col gap-4">
         <section class="card flex flex-col gap-2">
           <label for="country_mark" class="primary-label"
@@ -97,19 +108,21 @@
           @click.prevent="toggleAdditionalContent"
           class="base-link cursor-pointer flex justify-center"
         >
-          + további matrica felvétele
+          + add another vignette
         </div>
 
         <div v-if="showAdditionalContent" class="relative">
-          további matrica majd ide
+          more vignette here
           <button
             @click="hideAdditionalContent"
             class="del absolute top-0 -right-10"
           ></button>
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
-          <a class="btn-gray" href="/">Vissza</a>
-          <NuxtLink to="/UnderInvoiceData" class="btn-green" type="submit">Következő</NuxtLink>
+          <a class="btn-gray" href="/">Back</a>
+          <NuxtLink to="/en/vignette/UnderInvoiceData" class="btn-green" type="submit"
+            >Next</NuxtLink
+          >
         </section>
       </div>
       <PurchaseBox />

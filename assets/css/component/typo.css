@@ -1,76 +1,99 @@
 @layer base {
-   h1, .h1, .mainPageTopTitle, .content-static h1 {
-      @apply text-3xl leading-10 lg:text-[2.5rem] font-medium md:leading-[60px];
-    }
-  
-    h2, .h2, .content-static h2 {
-      @apply font-medium text-2xl lg:text-3xl md:leading-[48px];
-    }
-  
-   h3,  .h3, .content-static h3 {
-      @apply font-medium text-xl lg:text-3xl;
-    }
-  
-    h4, .h4, .content-static h4 {
-      @apply font-medium text-lg lg:text-2xl;
-    }
-  
-    h5, .h5, .content-static h5 {
-      @apply font-medium text-base lg:text-xl;
-    }
-  
-    h6, .h6, .content-static h6 {
-      @apply font-medium text-base lg:text-lg;
-    }
-
-    h1, .mainPageTopTitle, .topMarginUnderQuickBuyButton {
-      @apply mb-3 mt-5 lg:mb-4 lg:mt-10;
-    }
-
-    h2 {
-      @apply my-8 text-center;
-    }
-   
+  h1,
+  .h1,
+  .mainPageTopTitle,
+  .content-static h1 {
+    @apply text-3xl leading-10 lg:text-[2.5rem] font-medium md:leading-[60px];
   }
 
+  h2,
+  .h2,
   .content-static h2 {
-    @apply text-base-orange;
+    @apply font-medium text-2xl lg:text-3xl md:leading-[48px];
   }
 
-  a, .base-link {
-    @apply font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
-  }
-  
-  @layer base {
-    p {
-      @apply text-base text-base-black my-4;
-    }
-
-    .menu-wrapper a {
-      @apply text-white text-[11px] lg:text-sm hover:text-link-hover uppercase font-normal;
-    }
-
-    .footer-txt a {
-      @apply hover:text-link-hover;
-    }
-
-   .lang-switcher {
-      @apply shadow-lg rounded-[4px] bg-white text-base-black w-20 h-auto absolute right-0
-    }
-
-    .menu-wrapper .lang-switcher a {
-      @apply text-base-black hover:text-link-hover;
-    }
-
-    .active-link {
-      @apply text-purple-500;
-    }
-    
-    .home {
-      @apply border-none relative top-1 pb-0;
-    }
+  h3,
+  .h3,
+  .content-static h3 {
+    @apply font-medium text-xl lg:text-3xl;
   }
 
-  .mainPageWhichVignetteBlock h3 {
-    @apply text-base font-normal;
+  h4,
+  .h4,
+  .content-static h4 {
+    @apply font-medium text-lg lg:text-2xl;
   }
+
+  h5,
+  .h5,
+  .content-static h5 {
+    @apply font-medium text-base lg:text-xl;
+  }
+
+  h6,
+  .h6,
+  .content-static h6 {
+    @apply font-medium text-base lg:text-lg;
+  }
+
+  h1,
+  .mainPageTopTitle,
+  .topMarginUnderQuickBuyButton {
+    @apply mb-3 mt-5 lg:mb-4 lg:mt-10;
+  }
+
+  h2 {
+    @apply my-8 text-center;
+  }
+}
+
+.content-static h2 {
+  @apply text-base-orange;
+}
+
+a,
+.base-link {
+  @apply font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
+}
+
+.v-shop-h2 {
+  @apply mb-3 mt-0 text-lg lg:text-2xl text-left;
+}
+
+@layer base {
+  p {
+    @apply text-base text-base-black my-4;
+  }
+
+  .menu-wrapper a {
+    @apply text-white text-[11px] lg:text-sm hover:text-link-hover uppercase font-normal;
+  }
+
+  .footer-txt a {
+    @apply hover:text-link-hover;
+  }
+
+  .lang-switcher {
+    @apply shadow-lg rounded-[4px] bg-white text-base-black w-20 h-auto absolute right-0;
+  }
+
+  .menu-wrapper .lang-switcher a {
+    @apply text-base-black hover:text-link-hover;
+  }
+
+  .active-link {
+    @apply text-purple-500;
+  }
+
+  .home {
+    @apply border-none relative top-1 pb-0;
+  }
+}
+
+.mainPageWhichVignetteBlock h3 {
+  @apply text-base font-normal;
+}
+
+.text-danger {
+  @apply text-red;
+}

@@ -9,10 +9,6 @@
     @apply py-1;
   }
 
-  .primary-label {
-    @apply text-base text-base-black mb-0 font-bold;
-  }
-
   .input-border {
     border: 1px solid rgba(138, 138, 138, 0.37);
   }
@@ -24,6 +20,10 @@
   .base-radius {
     @apply rounded-lg;
   }
+}
+
+.primary-label {
+  @apply text-base text-base-black mb-0 font-bold leading-[10px];
 }
 
 .p-dropdown-filter-container .p-dropdown-filter.p-component {
@@ -100,7 +100,7 @@ input:disabled {
 
 .p-checkbox.p-highlight .p-checkbox-box {
   accent-color: #e77600;
-  @apply bg-base-orange hover:bg-red;
+  @apply bg-base-orange hover:bg-red w-[15px] h-[15px];
 }
 
 .p-checkbox.p-highlight {
@@ -109,7 +109,7 @@ input:disabled {
 
 .p-checkbox, .p-radiobutton {
   accent-color: #fff;
-  @apply bg-white rounded-[4px] border border-gray;
+  @apply bg-white rounded-[4px] border border-gray w-full max-w-[15px] min-w-[15px] h-[15px];
 }
 
 .p-radiobutton {
@@ -117,17 +117,75 @@ input:disabled {
 }
 
 .p-checkbox.p-highlight .p-checkbox-box .p-icon {
-  @apply flex items-center justify-center h-full w-[80%] mx-auto;
+  @apply flex items-center justify-center h-full w-[70%] mx-auto;
 }
 
 .p-radiobutton-box {
-  @apply flex items-center justify-center h-5 w-5;
+  @apply flex items-center justify-center h-[15px] w-[15px];
 }
 
 .p-radiobutton, .p-radiobutton-input {
-  @apply h-full w-full max-w-[1.35rem];
+  @apply h-full w-full max-w-[16px] flex items-center justify-center;
 }
 
 .p-radiobutton-icon {
-  @apply bg-base-orange h-4 w-4;
+  @apply bg-base-orange h-[12px] w-[12px];
+}
+
+.primary-btn.tooltip-wrapper {
+  @apply px-2 py-0 text-[15px];
+}
+
+.tooltip {
+  border-bottom: 1px dotted black;
+  @apply relative inline-block top-0;
+}
+
+/* Tooltip text */
+.tooltip .tooltiptext {
+  visibility: hidden;
+  border: 1px solid #e9e9e9;
+  z-index: 1;
+  bottom: 25px;
+  right: -10px;
+  font-weight: 700;
+  @apply absolute z-10 rounded-md base-radius py-2 px-0 text-center text-xs bg-base-gray 
+  text-base-black w-auto h-auto max-w-[200px] min-w-[200px] shadow-xl;
+}
+
+.tooltip .tooltiptext:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-width: 10px;
+  border-style: solid;
+  border-color: #e9e9e9 transparent transparent transparent;
+  top: 100%;
+  right: 10px;
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip:hover .tooltiptext {
+  @apply visible;
+}
+
+.p-autocomplete-input {
+  @apply primary-input;
+}
+
+.payment-method .p-accordion-header-text {
+  @apply text-left px-2 mb-2;
+}
+
+.payment-method .p-accordion-header, .payment-method .p-accordion-content  {
+  @apply base-radius;
+}
+
+.payment-method .p-accordion-header-action {
+  @apply block;
+}
+
+.payment-method .p-toggleable-content {
+  @apply mt-2 base-radius;
 }

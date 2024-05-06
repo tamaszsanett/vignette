@@ -14,3 +14,7 @@
 .card {
     @apply w-full;
 }
+
+.p-card-body {
+    @apply p-[15px];
+}

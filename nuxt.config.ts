@@ -161,7 +161,6 @@ export default defineNuxtConfig({
         { src: "//cdn.cookie-script.com/s/2fa8a850d3f1925a0be8ab712caaa7d9.js"}
       ]
     },
-    pageTransition: { name: "page", mode: "out-in" },
   },
   modules: [
     "@nuxt/image",
