@@ -2,7 +2,7 @@
   <h1 v-if="widget.pageTitle" class="text-center">{{ widget.pageTitle }}</h1>
   <h2 v-if="widget.mainTitle" class="text-center">{{ widget.mainTitle }}</h2>
 
-  <div class="text-center mb-4">
+  <div class="text-center mb-4" v-if="showSearch === true">
     <IconField iconPosition="left" class="w-full max-w-[400px] mx-auto">
       <InputIcon class="pi pi-search"> </InputIcon>
       <InputText v-model="searchQuery" placeholder="Search" class="primary-input" style="padding-left: 2rem;" />
@@ -51,6 +51,10 @@ const props = defineProps({
     type: Object as PropType<MainAccordion>,
     required: true,
     default: () => ({ mainTitle: '', content: { items: [] } })
+  },
+  showSearch: {
+    type: Boolean,
+    default: false
   },
 });
 

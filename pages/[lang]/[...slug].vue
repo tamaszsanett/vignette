@@ -11,7 +11,7 @@
         <WidgetPurchaseFlow :widget-data="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'faqwidget'">
-        <WidgetFaq :widget="widget.content" />
+        <WidgetFaq :widget="widget.content" :show-search="showSearch" />
       </div>
       <div v-if="widget.widgetType === 'vignettenewswidget'">
         <WidgetNews :news-widget="widget" :top-news-content="widget.content" />
@@ -42,6 +42,9 @@ watch(() => route.params.lang, (newLang) => {
   currentLanguage.value = Array.isArray(newLang) ? newLang[0] : newLang || 'en';
 }, { immediate: true });
 
+const showSearch = computed(() => {
+  return !!route.params.slug;
+});
 
 // import useMeta from Composition API
 
