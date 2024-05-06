@@ -35,7 +35,7 @@
         </section>
       </div>
       <NuxtLink
-        :to="{path: '/', hash: buttonUrl}"
+        :to="{path: '/', hash: '#' + buttonUrl}"
         class="btn primary-btn w-fit mx-auto"
         :title="buttonText"
       >
