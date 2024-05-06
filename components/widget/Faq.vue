@@ -1,8 +1,15 @@
 <template>
   <h1 v-if="widget.pageTitle" class="text-center">{{ widget.pageTitle }}</h1>
   <h2 v-if="widget.mainTitle" class="text-center">{{ widget.mainTitle }}</h2>
+
+  <div class="text-center mb-4">
+    <IconField iconPosition="left" class="w-full max-w-[400px] mx-auto">
+      <InputIcon class="pi pi-search"> </InputIcon>
+      <InputText v-model="searchQuery" placeholder="Search" class="primary-input" style="padding-left: 2rem;" />
+    </IconField>
+  </div>
   <Accordion class="max-w-[888px] mx-auto w-full" :activeIndex="0">
-    <AccordionTab v-for="(item, index) in widget.items" :key="index">
+    <AccordionTab v-for="(item, index) in filteredItems" :key="index">
       <template #header>
         <div
           class="gray-grad-bg flex items-center justify-between w-full py-5 shadow-sm rounded-md"
@@ -47,7 +54,11 @@ const props = defineProps({
   },
 });
 
-/* onMounted(() => {
-  console.log("Widget Data:", props.widget);
-}); */
+const searchQuery = ref("");
+
+const filteredItems = computed(() =>
+  props.widget.items.filter(item =>
+    item.title.toLowerCase().includes(searchQuery.value.toLowerCase())
+  )
+);
 </script>

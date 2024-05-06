@@ -21,6 +21,14 @@
   @apply bg-base-orange text-white hover:text-base-orange hover:bg-white border-base-orange focus:ring-base-orange;
 }
 
+.btn-gray {
+  @apply btn border text-base-black border-base-gray bg-base-gray hover:bg-white max-w-[150px] w-full;
+}
+
+.btn-green[type='submit'], .btn-green {
+  @apply btn bg-base-green text-white hover:bg-white hover:text-base-green border border-base-green max-w-[150px] w-full;
+}
+
 .p-accordion .primary-btn-outline {
   @apply justify-around text-link-orange hover:text-white md:text-xl font-normal;
 }

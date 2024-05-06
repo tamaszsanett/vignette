@@ -11,7 +11,7 @@ html, body {
   @apply font-regular text-base-black;
 }
 
-.p-component {
+.p-component, .p-inputtext {
   font-family: "Roboto Condensed", system-ui, sans-serif;
 }
 
@@ -32,6 +32,11 @@ html, body {
     background: #5ccc94;
     background: linear-gradient(0deg, #5ccc94 0, #8ccaae 100%);
   }
+
+  .bg-green {
+    background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
+  }
+
   /* base css */
 }
 

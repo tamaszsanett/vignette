@@ -10,3 +10,11 @@
 .flow-card-body {
     @apply max-w-[300px] text-center;
 }
+
+.card {
+    @apply w-full;
+}
+
+.p-card-body {
+    @apply p-[15px];
+}
