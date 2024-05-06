@@ -84,6 +84,16 @@
             />
           </InputGroup>
         </section>
+        <section class="card flex justify-content-center">
+          <MultiSelect
+            v-model="selectedCounties"
+            :options="counties"
+            optionLabel="name"
+            placeholder="Select Counties"
+            :maxSelectedLabels="3"
+            class="primary-select"
+          />
+        </section>
         <section class="flex flex-col gap-2">
           <div
             class="flex justify-center items-center space-x-4 calendar-wrapper"
@@ -120,7 +130,10 @@
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">Back</a>
-          <NuxtLink to="/en/vignette/UnderInvoiceData" class="btn-green" type="submit"
+          <NuxtLink
+            to="/en/vignette/UnderInvoiceData"
+            class="btn-green"
+            type="submit"
             >Next</NuxtLink
           >
         </section>
@@ -184,6 +197,15 @@ const countries = ref([
   { name: "Japan", code: "JP" },
   { name: "Spain", code: "ES" },
   { name: "United States", code: "US" },
+]);
+
+const selectedCounties = ref();
+const counties = ref([
+    { name: 'Bács-Kiskun vármegye', code: 'HU' },
+    { name: 'Baranya vármegye', code: 'HU' },
+    { name: 'Békés vármegye', code: 'HU' },
+    { name: 'Borsod-Abaúj-Zemplén vármegye', code: 'HU' },
+    { name: 'Csongrád vármegye', code: 'HU' }
 ]);
 
 const route = useRoute();

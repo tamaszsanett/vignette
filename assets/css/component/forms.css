@@ -42,7 +42,7 @@
   @apply bg-base-orange text-white;
 }
 
-.p-dropdown:not(.p-disabled).p-focus {
+.p-dropdown:not(.p-disabled).p-focus, .p-multiselect:not(.p-disabled).p-focus {
   @apply outline-base-orange;
 }
 
@@ -51,7 +51,11 @@
 }
 
 .p-calendar input {
-  @apply shadow-none px-2 py-3 bg-white hover:text-base-green text-lg;
+  @apply shadow-none px-2 py-3 bg-white hover:text-base-green text-lg cursor-pointer;
+}
+
+.p-calendar.p-calendar-disabled input {
+  @apply cursor-not-allowed;
 }
 
 .p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
@@ -188,4 +192,12 @@ input:disabled {
 
 .payment-method .p-toggleable-content {
   @apply mt-2 base-radius;
+}
+
+.p-multiselect-label.p-placeholder {
+  @apply text-base;
+}
+
+.p-multiselect-item {
+  @apply text-base text-base-black mb-0 leading-[10px];
 }
