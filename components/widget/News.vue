@@ -42,7 +42,8 @@
               v-html="item.desc"
               class="text-desc-gray text-sm text-ellipsis line-clamp-5 news-lead"
             ></div>
-            <NuxtLink
+            <button
+              @click="navigateTo(item.url, { external: true })"
               :to="item.url"
               class="btn primary-btn-outline mt-5 read-more-link"
               :title="item.title"
@@ -53,7 +54,7 @@
                 src="/assets/Content/new-site-content/arrowcircleup_icon.svg"
                 :alt="item.title"
               />
-            </NuxtLink>
+            </button>
           </div>
         </div>
       </div>
@@ -73,4 +74,5 @@ const props = defineProps({
     required: true,
   },
 });
+
 </script>
