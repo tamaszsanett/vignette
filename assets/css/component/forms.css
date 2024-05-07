@@ -23,7 +23,7 @@
 }
 
 .primary-label {
-  @apply text-base text-base-black mb-0 font-bold leading-[10px];
+  @apply text-base text-base-black mb-0 font-bold leading-none;
 }
 
 .p-dropdown-filter-container .p-dropdown-filter.p-component {

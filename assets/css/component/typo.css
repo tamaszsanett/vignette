@@ -15,7 +15,7 @@
   h3,
   .h3,
   .content-static h3 {
-    @apply font-medium text-l lg:text-xl;
+    @apply font-medium text-lg lg:text-xl text-base-orange;
   }
 
   h4,
@@ -46,75 +46,25 @@
     @apply my-8;
   }
 
-  h1,
-  .h1,
-  .mainPageTopTitle,
-  .content-static h1 {
-    @apply text-3xl leading-10 lg:text-[2.5rem] font-medium md:leading-[60px];
-  }
-
-  h2,
-  .h2,
-  .content-static h2 {
-    @apply font-medium text-2xl lg:text-3xl md:leading-[48px];
-  }
-
-  h3,
-  .h3,
-  .content-static h3 {
-    @apply font-medium text-xl lg:text-3xl;
-  }
-
   .mainPageWhichVignetteBlock h3 {
     @apply text-base font-normal;
   }
 
-  .news-title {
-    font-size: 1.1em;
-    line-height: 1.2em;
+  h3.news-title {
+    @apply text-base-black text-[1.1em] leading-[1.2em] mb-4 font-semibold mt-6 text-ellipsis line-clamp-2;
   }
 
   .read-more-link {
-    position: absolute;
-    bottom: 1em;
-    width: 90%;
+    @apply absolute bottom-3 w-[90%];
   }
 
   .news-lead {
     margin-bottom: 3rem;
   }
-  
-  h4,
-  .h4,
-  .content-static h4 {
-    @apply font-medium text-lg lg:text-2xl;
-  }
-
-  h5,
-  .h5,
-  .content-static h5 {
-    @apply font-medium text-base lg:text-xl;
-  }
-
-  h6,
-  .h6,
-  .content-static h6 {
-    @apply font-medium text-base lg:text-lg;
-  }
-
-  h1,
-  .mainPageTopTitle,
-  .topMarginUnderQuickBuyButton {
-    @apply mb-3 mt-5 lg:mb-4 lg:mt-10;
-  }
 
   h2 {
     @apply my-8 text-center;
   }
-}
-
-.content-static h2 {
-  @apply text-base-orange;
 }
 
 a,
