@@ -268,7 +268,7 @@
         </section>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">Back</a>
-          <NuxtLink to="/en/vignette/confirm" class="btn-green" type="submit"
+          <NuxtLink to="/en/purchase/confirm" class="btn-green" type="submit"
             >Next</NuxtLink
           >
         </section>

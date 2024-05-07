@@ -14,6 +14,32 @@ export type ApiResponse = {
   };
 };
 
+export type VignetteInfoResponse = {
+  value: {
+    vignetteType: VignetteType;
+    numberOfMoths?: number;
+    counties?: County[];
+  };
+};
+
+export type County = {
+  vignetteCode: string;
+};
+
+export type VignetteType = {
+  vignetteCode: string;
+  category: string;
+  vehicleType: string;
+  durationType: string;
+  validityStartMin: string;
+  validityStartAcceptable: boolean;
+  validityStartMax: string;
+  yearChangeMonthDay: string;
+  amount: number;
+  transactionFee: number;
+};
+
+
 export type WidgetId = {
   widgetId: string;
 };

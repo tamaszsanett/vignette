@@ -191,7 +191,7 @@
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">Back</a>
-          <NuxtLink to="/en/vignette/paymentUnderPayment" class="btn-green" type="submit"
+          <NuxtLink to="/en/purchase/paymentUnderPayment" class="btn-green" type="submit"
             >Order vignette</NuxtLink
           >
         </section>

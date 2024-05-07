@@ -16,12 +16,12 @@
       <h1 class="purchase-h1">
         <img
           class="w-[45px]"
-          src="/img/purchase/D1.svg"
+          :src="'/img/purchase/' + category + '.svg'"
           alt="autópálya-matrica"
         />
-        <span class="ml-2">D1 - Monthly national highway sticker</span>
+        <span class="ml-2">{{ response.value.title }}</span>
       </h1>
-      <section class="mx-auto my-8">
+      <section class="mx-auto my-8" v-if="isRegionalVignette">
         <div class="card flex justify-center">
           <div class="grid grid-cols-2 gap-1 sm:gap-2 sm:gap-x-20">
             <div
@@ -155,7 +155,7 @@
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">Back</a>
           <NuxtLink
-            to="/en/vignette/UnderInvoiceData"
+            to="/en/purchase/UnderInvoiceData"
             class="btn-green"
             type="submit"
             >Next</NuxtLink
@@ -177,7 +177,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
-import { useAsyncData, useRoute, useSeoMeta } from "nuxt/app";
+import { useAsyncData, useRoute } from "nuxt/app";
 import type { FormData } from '~/types/purchaseTypes.ts';
 
 const DAYS_TO_ADD = 10;
@@ -267,6 +267,8 @@ const selectedCounties = ref(["Baranya"]);
 
 const route = useRoute();
 const currentLanguage = ref("en");
+const category = route.params.category;
+
 watch(
   () => route.params.lang,
   (newLang) => {
@@ -278,20 +280,36 @@ watch(
 );
 
 const pageUri = computed(() => {
-  const slug = (route.params.slug as string) || "";
-  return `${encodeURIComponent(slug)}`;
+  return `${encodeURIComponent("/vignette/"+route.params.category+"/"+route.params.type)}`;
 });
 
 const apiEndpoint =
   "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
+const url = `${apiEndpoint}?PageUri=${pageUri.value.replaceAll(
   "%2C",
   "%2F"
 )}&Localization=${currentLanguage.value}`;
 
 const response = await $fetch<ApiResponse>(url);
 
-useSeoMeta({ title: response.value.title });
+useHead({
+  title: response.value.title,
+  htmlAttrs: {
+    lang: currentLanguage,
+  },
+  meta: [
+    { name: "language", content: currentLanguage },
+    { name: "og:title", content: response.value.title },
+    { name: "description", content: response.value.metaDescription },
+    { name: "og:description", content: response.value.metaDescription }
+  ],
+  link: [
+    { rel: "canonical", href: response.value.alternateLinks.en },
+    { rel: "alternate", href: response.value.alternateLinks.en, hreflang: "en"},
+    { rel: "alternate", href: response.value.alternateLinks.de, hreflang: "de-DE"},
+    { rel: "alternate", href: response.value.alternateLinks.ro, hreflang: "ro-RO"},
+    { rel: "alternate", href: response.value.alternateLinks.sk, hreflang: "sk-SK"}
+  ]});
 
 const widgets = response.value.widgets.map((widget) => {
   if (widget.widgetType === "html") {
@@ -303,4 +321,19 @@ const widgets = response.value.widgets.map((widget) => {
     };
   }
 });
+
+const vignetteInfoUri = computed(() => {
+  return `${encodeURIComponent(route.params.category+"/"+route.params.type)}`;
+});
+
+const apiEndpointInfo =
+  "https://test-gw.voxpay.hu/Webshop.Vignette/GetVignetteInfo";
+const infoUrl = `${apiEndpointInfo}?VignetteSlug=${vignetteInfoUri.value.replaceAll(
+  "%2C",
+  "%2F"
+)}&CurrencyCode=EUR`;
+
+const vignetteInfo = await $fetch<VignetteInfoResponse>(infoUrl);
+const isRegionalVignette = vignetteInfo.value.vignetteType.durationType.startsWith("YEAR_");
+
 </script>

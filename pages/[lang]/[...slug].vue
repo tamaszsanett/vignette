@@ -48,17 +48,6 @@ const showSearch = computed(() => {
 
 // import useMeta from Composition API
 
-useHead({
-  htmlAttrs: {
-    lang: currentLanguage,
-  },
-  meta: [
-    {
-      name: "language", content: currentLanguage
-    }
-  ]
-});
-
 const pageUri = computed(() => {
   const slug = (route.params.slug as string) || "";
   return `${encodeURIComponent(slug)}`;
@@ -76,6 +65,14 @@ useSeoMeta({
 })
 
 useHead({
+  htmlAttrs: {
+    lang: currentLanguage,
+  },
+  meta: [
+    {
+      name: "language", content: currentLanguage
+    }
+  ],
   link: [
     { rel: "canonical", href: response.value.alternateLinks.en },
     { rel: "alternate", href: response.value.alternateLinks.en, hreflang: "en"},
