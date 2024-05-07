@@ -77,6 +77,7 @@ useSeoMeta({
 
 useHead({
   link: [
+    { rel: "canonical", href: response.value.alternateLinks.en },
     { rel: "alternate", href: response.value.alternateLinks.en, hreflang: "en"},
     { rel: "alternate", href: response.value.alternateLinks.de, hreflang: "de-DE"},
     { rel: "alternate", href: response.value.alternateLinks.ro, hreflang: "ro-RO"},
