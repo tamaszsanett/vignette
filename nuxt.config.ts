@@ -125,36 +125,7 @@ export default defineNuxtConfig({
         class: "scroll-smooth",
       },
 
-      meta: [
-        {
-          hid: "description",
-          name: "description",
-          content:
-            "Buy a highway vignette&#128077; Weekly, monthly, annual county and national e-vignette. Even without registration, with bank card or transfer! D1, D2, U, B2, D1M",
-        },
-        { name: "format-detection", content: "telephone=no" },
-        {
-          hid: "og:title",
-          property: "og:title",
-          content: "Hungarian Motorway vignette sale online &#128663; 2023!",
-        },
-        {
-          hid: "og:description",
-          property: "og:description",
-          content:
-            "Buy a highway vignette&#128077; Weekly, monthly, annual county and national e-vignette. Even without registration, with bank card or transfer! D1, D2, U, B2, D1M",
-        },
-        {
-          hid: "og:image",
-          property: "og:image",
-          content: "/img/headers/header3.webp",
-        },
-        {
-          hid: "twitter:card",
-          name: "twitter:card",
-          content: "summary_large_image",
-        },
-      ],
+      
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
       script: [
         { src: "https://www.googletagmanager.com/gtag/js?id=G-V8GTFLHHBY" },
