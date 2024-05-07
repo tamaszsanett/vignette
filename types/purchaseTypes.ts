@@ -1,6 +1,6 @@
-export type Plate = {
-  selectedCountry: string | null;
-  plateNumber: string;
-  startDate: Date;
+export type FormData = {
+  selectedCountry: { name: string; code: string } | undefined;
+  licensePlate: string;
+  startDate: Date | null;
   endDate: Date | null;
 };
