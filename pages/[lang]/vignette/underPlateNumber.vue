@@ -12,7 +12,7 @@
         alt="autópálya-matrica"
       />
     </header>
-    <form class="pb-10 max-w-[600px] mx-auto">
+    <form class="pb-10 max-w-[800px] mx-auto">
       <h1 class="purchase-h1">
         <img
           class="w-[45px]"
@@ -21,6 +21,25 @@
         />
         <span class="ml-2">D1 - Monthly national highway sticker</span>
       </h1>
+      <section class="mx-auto my-8">
+        <div class="card flex justify-center">
+          <div class="grid grid-cols-2 gap-1 sm:gap-2 sm:gap-x-20">
+            <div
+              v-for="county of counties"
+              :key="county.key"
+              class="flex items-center gap-x-2"
+            >
+              <Checkbox
+                v-model="selectedCounties"
+                :inputId="county.key"
+                name="county"
+                :value="county.name"
+              />
+              <label class="primary-label text-sm md:text-base" :for="county.key">{{ county.name }}</label>
+            </div>
+          </div>
+        </div>
+      </section>
       <div
         class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
       >
@@ -83,16 +102,6 @@
               class="primary-input group-input"
             />
           </InputGroup>
-        </section>
-        <section class="card flex justify-content-center">
-          <MultiSelect
-            v-model="selectedCounties"
-            :options="counties"
-            optionLabel="name"
-            placeholder="Select Counties"
-            :maxSelectedLabels="3"
-            class="primary-select"
-          />
         </section>
         <section class="flex flex-col gap-2">
           <div
@@ -199,14 +208,27 @@ const countries = ref([
   { name: "United States", code: "US" },
 ]);
 
-const selectedCounties = ref();
 const counties = ref([
-    { name: 'Bács-Kiskun vármegye', code: 'HU' },
-    { name: 'Baranya vármegye', code: 'HU' },
-    { name: 'Békés vármegye', code: 'HU' },
-    { name: 'Borsod-Abaúj-Zemplén vármegye', code: 'HU' },
-    { name: 'Csongrád vármegye', code: 'HU' }
+  { name: "Bács-Kiskun county", key: "Bács-Kiskun" },
+  { name: "Jász-Nagykun-Szolnok county", key: "Jász-Nagykun-Szolnok" },
+  { name: "Baranya county", key: "Baranya" },
+  { name: "Komárom-Esztergom county", key: "Komárom-Esztergom" },
+  { name: "Békés county", key: "Békés" },
+  { name: "Pest county", key: "Pest" },
+  { name: "Borsod-Abaúj-Zemplén county", key: "Borsod-Abaúj-Zemplén" },
+  { name: "Somogy county", key: "Somogy" },
+  { name: "Csongrád county", key: "Csongrád" },
+  { name: "Szabolcs-Szatmár-Bereg county", key: "Szabolcs-Szatmár-Bereg" },
+  { name: "Fejér county", key: "Fejér" },
+  { name: "Tolna county", key: "Tolna" },
+  { name: "Győr-Moson-Sopron county", key: "Győr-Moson-Sopron" },
+  { name: "Vas county", key: "Vas" },
+  { name: "Hajdú-Bihar county", key: "Hajdú-Bihar" },
+  { name: "Veszprém county", key: "Veszprém" },
+  { name: "Heves county", key: "Heves" },
+  { name: "Zala county", key: "Zala" },
 ]);
+const selectedCounties = ref(["Baranya"]);
 
 const route = useRoute();
 const currentLanguage = ref("en");
