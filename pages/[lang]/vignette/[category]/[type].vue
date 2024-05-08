@@ -3,12 +3,12 @@
     <header class="flex justify-center py-5">
       <img
         class="w-full hidden sm:block"
-        src="/img/purchase/desktop/under-plate-number-line_en_EN.svg"
+        :src="`/img/purchase/desktop/${$t('image.desktopPath')}`"
         alt="autópálya-matrica"
       />
       <img
         class="w-full block sm:hidden"
-        src="/img/purchase/mobile/under-plate-number-line_en-EN.svg"
+        :src="`/img/purchase/mobile/${$t('image.mobilePath')}`"
         alt="autópálya-matrica"
       />
     </header>
@@ -17,9 +17,16 @@
         <img
           class="w-[45px]"
           :src="'/img/purchase/' + category + '.svg'"
-          alt="autópálya-matrica"
+          :alt="category + ' ' + $t('image.altVignette')"
         />
-        <span class="ml-2">{{ response.value.title }}</span>
+        <div class="flex items-center space-x-2">
+          <span>{{ vignetteInfo.value.vignetteType.category }} -</span>
+          <span
+            v-if="vignetteInfo.value.vignetteType.durationType === 'WEEK'"
+            >{{ $t("title.weekly") }} ({{ $t("title.tenDays") }}) {{ $t("title.afterTitle") }}</span
+          >
+          <!-- more condition here --> 
+        </div>
       </h1>
       <section class="mx-auto my-8" v-if="isRegionalVignette">
         <div class="card flex justify-center">
@@ -54,7 +61,7 @@
           class="w-5 h-5"
           style="width: 20px; height: 20px"
         />
-        <p class="error-message my-0">An error message will appear here</p>
+        <p class="error-message my-0">{{ $t("type.plateError") }}</p>
       </div>
       <div class="w-full">
         <div
@@ -62,14 +69,22 @@
           v-for="(item, i) in formData.multiples"
           :key="i"
         >
-          <div class="relative" v-if="formData.multiples.length > 1 && formData.multiples[i] != formData.multiples[0]">
+          <div
+            class="relative"
+            v-if="
+              formData.multiples.length > 1 &&
+              formData.multiples[i] != formData.multiples[0]
+            "
+          >
             <hr class="dashed-hr my-8" />
             <button
               @click.prevent="remove(i)"
               class="del absolute top-4 -right-10"
             ></button>
           </div>
-          <section class="card flex flex-col gap-2 w-full md:max-w-[350px] mx-auto">
+          <section
+            class="card flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
+          >
             <label :for="'country_mark' + i" class="primary-label"
               >Nationality mark</label
             >
@@ -146,7 +161,8 @@
             </div>
           </section>
         </div>
-        <button type="button"
+        <button
+          type="button"
           @click.pervent="addMore"
           class="base-link cursor-pointer flex w-auto justify-center mx-auto my-8"
         >
@@ -178,12 +194,15 @@
 <script setup lang="ts">
 import { ref, computed, onMounted, watch } from "vue";
 import { useAsyncData, useRoute } from "nuxt/app";
-import type { FormData } from '~/types/purchaseTypes.ts';
+import type { FormData } from "~/types/purchaseTypes.ts";
+const { locale } = useI18n();
 
 const DAYS_TO_ADD = 10;
 
 const startDate = ref(new Date());
-const endDate = ref<Date | null>(new Date(startDate.value.getTime() + DAYS_TO_ADD * 24 * 60 * 60 * 1000));
+const endDate = ref<Date | null>(
+  new Date(startDate.value.getTime() + DAYS_TO_ADD * 24 * 60 * 60 * 1000)
+);
 const minDate = ref(new Date());
 
 const formData = ref({
@@ -193,7 +212,7 @@ const formData = ref({
       licensePlate: "",
       startDate: startDate.value,
       endDate: endDate.value,
-    }
+    },
   ] as FormData[],
 });
 
@@ -220,27 +239,30 @@ onMounted(async () => {
   /* const response = await fetchExternalEndDate(); */
   // Update endDate for the first element in formData.multiples
   if (formData.value.multiples.length > 0) {
-    formData.value.multiples[0].endDate = new Date(startDate.value.getTime() + DAYS_TO_ADD * 24 * 60 * 60 * 1000 );
+    formData.value.multiples[0].endDate = new Date(
+      startDate.value.getTime() + DAYS_TO_ADD * 24 * 60 * 60 * 1000
+    );
   }
 });
 
-const countries = ref([
-  { name: "Hungary", code: "HU" },
-  { name: "Slovakia", code: "SK" },
-  { name: "Germany", code: "DE" },
-  { name: "Ukrain", code: "UK" },
-  { name: "Slovenia", code: "SLO" },
-  { name: "Australia", code: "AU" },
-  { name: "Brazil", code: "BR" },
-  { name: "China", code: "CN" },
-  { name: "Egypt", code: "EG" },
-  { name: "France", code: "FR" },
-  { name: "Germany", code: "DE" },
-  { name: "India", code: "IN" },
-  { name: "Japan", code: "JP" },
-  { name: "Spain", code: "ES" },
-  { name: "United States", code: "US" },
-]);
+const countries = computed(() => {
+  switch (locale.value) {
+    case 'hu':
+      return [
+        { name: "Magyarország", code: "HU" },
+        { name: "Szlovákia", code: "SK" },
+        // more countries 
+      ];
+    case 'de':
+      return [
+        { name: "Ungarn", code: "HU" },
+        { name: "Slo", code: "SK" },
+        // more countries 
+      ];
+    default:
+      return [{ name: "Hungary", code: "HU" }];  //default
+  }
+});
 
 const counties = ref([
   { name: "Bács-Kiskun county", key: "Bács-Kiskun" },
@@ -266,7 +288,7 @@ const counties = ref([
 const selectedCounties = ref(["Baranya"]);
 
 const route = useRoute();
-const currentLanguage = ref("en");
+const currentLanguage = ref(locale);
 const category = route.params.category;
 
 watch(
@@ -279,9 +301,18 @@ watch(
   { immediate: true }
 );
 
-const pageUri = computed(() => {
-  return `${encodeURIComponent("/vignette/"+route.params.category+"/"+route.params.type)}`;
+watch(locale, (newLocale) => {
+  console.log("Nyelv megváltozott: ", newLocale);
 });
+
+const pageUri = computed(() => {
+  return `${encodeURIComponent(
+    "/vignette/" + route.params.category + "/" + route.params.type
+  )}`;
+});
+
+console.log("PageUri:", pageUri.value);
+console.log("Localization:", currentLanguage.value);
 
 const apiEndpoint =
   "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
@@ -301,15 +332,32 @@ useHead({
     { name: "language", content: currentLanguage },
     { name: "og:title", content: response.value.title },
     { name: "description", content: response.value.metaDescription },
-    { name: "og:description", content: response.value.metaDescription }
+    { name: "og:description", content: response.value.metaDescription },
   ],
   link: [
     { rel: "canonical", href: response.value.alternateLinks.en },
-    { rel: "alternate", href: response.value.alternateLinks.en, hreflang: "en"},
-    { rel: "alternate", href: response.value.alternateLinks.de, hreflang: "de-DE"},
-    { rel: "alternate", href: response.value.alternateLinks.ro, hreflang: "ro-RO"},
-    { rel: "alternate", href: response.value.alternateLinks.sk, hreflang: "sk-SK"}
-  ]});
+    {
+      rel: "alternate",
+      href: response.value.alternateLinks.en,
+      hreflang: "en",
+    },
+    {
+      rel: "alternate",
+      href: response.value.alternateLinks.de,
+      hreflang: "de-DE",
+    },
+    {
+      rel: "alternate",
+      href: response.value.alternateLinks.ro,
+      hreflang: "ro-RO",
+    },
+    {
+      rel: "alternate",
+      href: response.value.alternateLinks.sk,
+      hreflang: "sk-SK",
+    },
+  ],
+});
 
 const widgets = response.value.widgets.map((widget) => {
   if (widget.widgetType === "html") {
@@ -323,7 +371,9 @@ const widgets = response.value.widgets.map((widget) => {
 });
 
 const vignetteInfoUri = computed(() => {
-  return `${encodeURIComponent(route.params.category+"/"+route.params.type)}`;
+  return `${encodeURIComponent(
+    route.params.category + "/" + route.params.type
+  )}`;
 });
 
 const apiEndpointInfo =
@@ -334,6 +384,6 @@ const infoUrl = `${apiEndpointInfo}?VignetteSlug=${vignetteInfoUri.value.replace
 )}&CurrencyCode=EUR`;
 
 const vignetteInfo = await $fetch<VignetteInfoResponse>(infoUrl);
-const isRegionalVignette = vignetteInfo.value.vignetteType.durationType.startsWith("YEAR_");
-
+const isRegionalVignette =
+  vignetteInfo.value.vignetteType.durationType.startsWith("YEAR_");
 </script>

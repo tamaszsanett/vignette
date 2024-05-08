@@ -154,8 +154,24 @@ export default defineNuxtConfig({
     ]
   },
   i18n: {
-    vueI18n: './i18n/i18n.config.ts', // if you are using custom path, default
-    
+    vueI18n: './i18n/i18n.config.ts',
+    baseUrl: 'https://www.new.hungary-vignette.eu/',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US'
+      },
+      {
+        code: 'gb',
+        iso: 'en-GB'
+      }
+    ],
+    strategy: 'no_prefix',
+    differentDomains: true,
+    defaultLocale: 'en', // default locale of your project for Nuxt pages and routings
+
+    // Or enable the option in production only
+    // differentDomains: (process.env.NODE_ENV === 'production')
   },
   nitro: {
     // IIS options default
