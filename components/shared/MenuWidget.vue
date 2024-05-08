@@ -177,9 +177,14 @@ const changeLanguage = (langCode: string, url: string): void => {
   if (newLang) {
     langSelection.value = newLang;
   }
-
-  console.log(url);
-  navigateTo(url, { external: true });
+  url = url.replace("https://new-hungary-vignette.voxpay.hu", "");
+  if (url.startsWith("https"))
+  {
+    navigateTo(url, { external: true }); 
+  }
+  else {
+    navigateTo(url);
+  }
 };
 
 const isActive = (url: string): boolean => route.path === url;
