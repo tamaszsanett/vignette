@@ -155,7 +155,7 @@ export default defineNuxtConfig({
   },
   i18n: {
     vueI18n: './i18n/i18n.config.ts',
-    baseUrl: 'https://www.new.hungary-vignette.eu/',
+    baseUrl: 'https://new-hungary-vignette.voxpay.hu/',
     locales: [
       {
         code: 'en',
@@ -167,7 +167,7 @@ export default defineNuxtConfig({
       }
     ],
     strategy: 'no_prefix',
-    differentDomains: true,
+    differentDomains: false,
     defaultLocale: 'en', // default locale of your project for Nuxt pages and routings
 
     // Or enable the option in production only
