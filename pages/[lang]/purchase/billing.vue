@@ -279,7 +279,11 @@ import { uuid } from 'vue-uuid';
 import type { GetOrderRespose } from "~/types/types";
 
 
-const orderId = useCookie('orderId');
+const orderId = useCookie('orderId', {
+    watch: 'shallow',
+    priority: 'high',
+    maxAge: 2592000000
+  });
 const cartKey = useCookie('cartKey');
 
 if (cartKey.value == null) 
@@ -399,9 +403,9 @@ async function sendForm() {
       userEmail: orderData.value.userEmail,
       phoneNumber: orderData.value.phoneNumber,
       invoiceName: orderData.value.invoiceName,
-      invoiceHuTaxNumber: orderData.value.invoiceHUTaxNumber ?? "",
-      invoiceHuGroupTaxNumber: orderData.value.invoiceHUGroupTaxNumber ?? "",
-      invoiceEuTaxNumber: orderData.value.invoiceEUTaxNumber ?? "",
+      invoiceHuTaxNumber: orderData.value.invoiceHUTaxNumber == "" ? null : orderData.value.invoiceHUTaxNumber,
+      invoiceHuGroupTaxNumber: orderData.value.invoiceHUGroupTaxNumber == "" ? null : orderData.value.invoiceHUGroupTaxNumber,
+      invoiceEuTaxNumber: orderData.value.invoiceEUTaxNumber == "" ? null : orderData.value.invoiceEUTaxNumber,
       invoiceCountry: selectedCountry.value,
       invoicePostalCode: orderData.value.invoicePostalCode,
       invoiceCity: orderData.value.invoiceCity,

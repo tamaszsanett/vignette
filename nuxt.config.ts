@@ -131,7 +131,7 @@ export default defineNuxtConfig({
       script: [
         { src: "https://www.googletagmanager.com/gtag/js?id=G-V8GTFLHHBY" },
         { src: "/js/googletagmanager.js"},
-        { src: "//cdn.cookie-script.com/s/2fa8a850d3f1925a0be8ab712caaa7d9.js"}
+       // { src: "//cdn.cookie-script.com/s/2fa8a850d3f1925a0be8ab712caaa7d9.js"}
       ]
     },
   },

@@ -247,6 +247,7 @@ export type AlternateLink = {
 export type GetOrderRespose = {
   value: {
     orderId: string;
+    trid: BigInteger;
     cartKey: string;
     metaDtridscription: number;
     userEmail: string;
@@ -261,7 +262,36 @@ export type GetOrderRespose = {
     invoicePostalCode: string;
     invoiceCity: string;
     invoiceStreetAddress: string;
+
+    cartItems: CartItem[];
   };
+  isSuccess: boolean;
+  error: {
+    message: string;
+    code: string;
+  }
+}
+
+export type CartItem = {
+  cartItemKey: string;
+  productCode: string;
+  quantity: number;
+  netUnitPrice: number;
+  grossUnitPrice: number;
+  vat: number;
+  properties: CartItemProperty[];
+}
+
+export type CartItemProperty = {
+  key: string;
+  value: string;
+}
+
+export type PurchaseVignettesAnonymWithOrderResponse = {
+  value: {
+    status: string;
+    redirectUrl: string;
+  },
   isSuccess: boolean;
   error: {
     message: string;

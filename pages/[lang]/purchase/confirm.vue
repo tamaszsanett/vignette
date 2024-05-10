@@ -21,17 +21,7 @@
         />
         <span class="ml-2">Check the entered data</span>
       </h1>
-      <div
-        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
-      >
-        <img
-          src="/img/purchase/danger-icon.svg"
-          alt="Hiba történt"
-          class="w-5 h-5"
-          style="width: 20px; height: 20px"
-        />
-        <p class="error-message my-0">An error message will appear here</p>
-      </div>
+      
       <div class="w-full md:max-w-[500px] mx-auto flex flex-col gap-2 mt-2">
         <div class="text-sm lg:text-lg">
           <div class="">
@@ -50,48 +40,48 @@
           </div>
         </div>
         <hr class="dashed-hr" />
-        <div class="text-sm lg:text-lg">
+        <div class="text-sm lg:text-lg" v-for="item in orderData.value.cartItems">
           <div class="flex items-center">
             <div class="half-width">Vignette type</div>
-            <div class="half-width">D1 - 1 havi</div>
+            <div class="half-width">{{ item.productCode }}</div>
           </div>
           <div class="flex items-center">
             <div class="half-width">Plate number:</div>
-            <div class="half-width">ABC123</div>
+            <div class="half-width">{{ item.properties.find(x => x.key == "PlateNumber")?.value ?? "" }}</div>
           </div>
           <div class="flex items-center">
             <div class="half-width">Nationality mark</div>
-            <div class="half-width">H | Magyarország (Hungary)</div>
+            <div class="half-width">{{ item.properties.find(x => x.key == "CountryCode")?.value ?? "" }}</div>
           </div>
           <div class="flex items-center vignette-validity-start">
             <div class="half-width">Validity interval</div>
-            <div class="half-width">2024-05-06 - 2024-06-06</div>
+            <div class="half-width">{{ item.properties.find(x => x.key == "ValidityStart")?.value ?? "" }} - {{ item.properties.find(x => x.key == "ValidityEnd")?.value ?? "" }}</div>
           </div>
         </div>
         <hr class="dashed-hr" />
-        <div>
+        <div v-if="orderData.value.needInvoice">
           <h2 class="v-shop-h2">Billing information</h2>
           <div class="invoice-data text-sm lg:text-lg">
             <div class="flex items-center">
               <div class="half-width">Name / Company name:</div>
-              <div class="half-width">AS 24 Hungaria</div>
+              <div class="half-width">{{ orderData.value.invoiceName }}</div>
             </div>
             <div class="flex items-center">
               <div class="half-width">Country:</div>
-              <div class="half-width">Magyarország | Hungary</div>
+              <div class="half-width">{{ orderData.value.invoiceCountry }}</div>
             </div>
             <div class="flex items-center">
               <div class="half-width">Zip code</div>
-              <div class="half-width">1173</div>
+              <div class="half-width">{{ orderData.value.invoicePostalCode }}</div>
             </div>
             <div class="flex items-center">
               <div class="half-width">City</div>
-              <div class="half-width">Budapest</div>
+              <div class="half-width">{{ orderData.value.invoiceCity }}</div>
             </div>
             <div class="flex items-center">
               <div class="half-width">Address (street, number)</div>
               <div class="half-width">
-                Pesti út 44, D.ép. 2.em. 6. 6-os kcs. (40-50.)
+                {{ orderData.value.invoiceStreetAddress }}
               </div>
             </div>
           </div>
@@ -100,30 +90,43 @@
         <div class="text-sm lg:text-lg w-full">
           <div class="flex items-center">
             <div class="half-width">Vignette price</div>
-            <div class="half-width">10 360 Ft</div>
+            <div class="half-width">{{ Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(sumVignettePrice) }}</div>
           </div>
           <div class="flex items-center">
             <div class="half-width">Convenience fee</div>
-            <div class="half-width">640 Ft</div>
+            <div class="half-width">{{ Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(sumConvenienceFee) }}</div>
           </div>
           <div class="flex items-center">
             <div class="half-width">Total</div>
-            <div class="half-width">11 000 Ft</div>
+            <div class="half-width">{{ Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(sum) }}</div>
           </div>
         </div>
         <hr class="dashed-hr" />
+
+        <div v-if="errorMessage"
+        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+      >
+        <img
+          src="/img/purchase/danger-icon.svg"
+          alt="Hiba történt"
+          class="w-5 h-5"
+          style="width: 20px; height: 20px"
+        />
+        <p class="error-message my-0">{{ errorMessage }}</p>
+      </div>
+
         <h2 class="v-shop-h2">Choice of payment method</h2>
         <div class="payment-method">
           <div class="flex items-center gap-2">
             <RadioButton
-              id="Payment_OnlineTransfer"
-              v-model="paymentOnlineTransfer"
-              inputId="Payment_OnlineTransfer"
-              name="paymentOnlineTransfer"
-              value="paymentOnlineTransfer"
+              id="Payment_Barion"
+              v-model="paymentMethod"
+              inputId="Payment_Barion"
+              name="PaymentMethod"
+              value="Barion"
             />
             <label
-              for="Payment_OnlineTransfer"
+              for="Payment_Barion"
               class="primary-label text-lg font-normal"
               >Bank card - Barion</label
             >
@@ -131,7 +134,7 @@
           <Accordion
             :activeIndex="[0]"
             class="mt-4"
-            v-if="paymentOnlineTransfer"
+            v-if="paymentMethod"
           >
             <AccordionTab
               header="Payment takes place through Barion’s secure payment page."
@@ -191,8 +194,8 @@
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">Back</a>
-          <NuxtLink to="/en/purchase/paymentUnderPayment" class="btn-green" type="submit"
-            >Order vignette</NuxtLink
+          <Button class="greenButton" @click="sendForm()"
+            >Order vignette</Button
           >
         </section>
       </div>
@@ -209,20 +212,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import { useAsyncData, useRoute, useSeoMeta } from "nuxt/app";
-import type { GetOrderRespose } from "~/types/types";
+import { ref, computed } from "vue";
+import { useRoute } from "nuxt/app";
+import type { GetOrderRespose, PurchaseVignettesAnonymWithOrderResponse } from "~/types/types";
 
-
-const orderId = useCookie('orderId');
-const paymentOnlineTransfer = ref("");
-const newsletterSubscription = ref(false);
-const datasAreCorrect = ref(false);
-
-const commmonApiEndpoint =
-  "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
-
-var orderData = await $fetch<GetOrderRespose>(`${commmonApiEndpoint}?OrderId=${orderId.value}`);
+/// ----------------- LOAD LANGUAGE -----------------------
 
 const route = useRoute();
 const currentLanguage = ref("en");
@@ -235,6 +229,134 @@ watch(
   },
   { immediate: true }
 );
+/// ----------------- / LOAD LANGUAGE -----------------------
+
+/// ----------------- LOAD ORDER -----------------------
+
+const orderId = useCookie('orderId', {
+    watch: 'shallow',
+    priority: 'high',
+    maxAge: 2592000000
+  });
+const paymentMethod = ref("Barion");
+const newsletterSubscription = ref(false);
+const datasAreCorrect = ref(false);
+
+const errorMessage = ref("");
+
+const commmonApiEndpoint =
+  "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
+
+var orderData = await $fetch<GetOrderRespose>(`${commmonApiEndpoint}?OrderId=${orderId.value}`);
+
+const sum = ref(0.0);
+const sumConvenienceFee = ref(0.0);
+const sumVignettePrice = ref(0.0);
+
+for (var i = 0; i < orderData.value.cartItems.length; i++)
+{
+  var item = orderData.value.cartItems[i];
+  
+  sum.value += item.grossUnitPrice;
+
+  let vignettePrice =parseFloat(item.properties.find(x => x.key == "VignettePrice")?.value ?? "");
+  let transactionFee = parseFloat(item.properties.find(x => x.key == "TransactionFee")?.value ?? "");
+
+  sumVignettePrice.value += vignettePrice;
+  sumConvenienceFee.value += transactionFee;
+}
+
+/// ----------------- /LOAD ORDER -----------------------
+
+/// ----------------- SUBMIT ORDER -----------------------
+
+
+async function sendForm() {
+
+  if (!datasAreCorrect.value)
+  {
+    errorMessage.value = "GTCC required!!!";
+    return;
+  }
+
+  const submitOrderEndpoint =
+  "https://test-gw.voxpay.hu/Webshop.Vignette/PurchaseVignettesAnonymWithOrder";
+  const response = await $fetch<PurchaseVignettesAnonymWithOrderResponse>(submitOrderEndpoint, {
+    method: "POST",
+    body: {
+      orderId: orderId.value,
+      paymentMode: paymentMethod.value,
+      subscribeNewsletter: newsletterSubscription.value,
+      participatePrizeGame: false,
+      isFleet: false,
+      forGift: false,
+      currency: "EUR",
+      sourceShop: "hungary-vignette.eu/" + currentLanguage.value,
+      sourcePlatform: "web",
+      sourceForm: "Standard",
+      redirectURL: "https://localhost:3000/"+currentLanguage.value + "/purchase/status",
+      cultureKey: currentLanguage.value
+    }
+  });
+
+  if (!response.isSuccess) {
+    errorMessage.value = "";
+
+    if (response.error.code == "https://tools.ietf.org/html/rfc9110#section-15.5.1")
+    {
+    var errors = JSON.parse(response.error.message);
+
+    if (errors.UserEmail != null) {
+      errorMessage.value += errors.UserEmail[0] + "<br />";
+    }    
+    if (errors.PhoneNumber != null) {
+      errorMessage.value += errors.PhoneNumber[0] + "<br />";
+    }    
+    if (errors.InvoiceName != null) {
+      errorMessage.value += errors.InvoiceName[0] + "<br />";
+    }  
+    if (errors.InvoiceHUTaxNumber != null) {
+      errorMessage.value += errors.InvoiceHUTaxNumber[0] + "<br />";
+    }  
+    if (errors.InvoiceHUGroupTaxNumber != null) {
+      errorMessage.value += errors.InvoiceHUGroupTaxNumber[0] + "<br />";
+    }  
+    if (errors.InvoiceEUTaxNumber != null) {
+      errorMessage.value += errors.InvoiceEUTaxNumber[0] + "<br />";
+    }  
+    if (errors.InvoiceCountry != null) {
+      errorMessage.value += errors.InvoiceCountry[0] + "<br />";
+    }  
+    if (errors.InvoicePostalCode != null) {
+      errorMessage.value += errors.InvoicePostalCode[0] + "<br />";
+    }  
+    if (errors.InvoiceCity != null) {
+      errorMessage.value += errors.InvoiceCity[0] + "<br />";
+    }  
+    if (errors.InvoiceStreetAddress != null) {
+      errorMessage.value += errors.InvoiceStreetAddress[0] + "<br />";
+    }  
+    if (errors.InvoicePostalCode != null) {
+      errorMessage.value += errors.InvoicePostalCode[0] + "<br />";
+    }  
+    if (errors.NeedInvoice != null) {
+      errorMessage.value += errors.NeedInvoice[0] + "<br />";
+    }  
+  }
+  else {
+    errorMessage.value = response.error.message;
+  }
+  }
+  else {
+    navigateTo(response.value.redirectUrl, { external: true });
+  }
+  
+  
+}
+
+/// ----------------- / SUBMIT ORDER -----------------------
+
+/// ----------------- ROUTING -----------------------
 
 const pageUri = computed(() => {
   const slug = (route.params.slug as string) || "";
@@ -250,7 +372,7 @@ const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
 
 const response = await $fetch<ApiResponse>(url);
 
-useSeoMeta({ title: response.value.title });
+useHead({ title: response.value.title });
 
 const widgets = response.value.widgets.map((widget) => {
   if (widget.widgetType === "html") {
@@ -262,4 +384,7 @@ const widgets = response.value.widgets.map((widget) => {
     };
   }
 });
+
+
+/// ----------------- /ROUTING -----------------------
 </script>
