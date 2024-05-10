@@ -37,14 +37,14 @@
           <div class="">
             <div>
               Phone number:
-              <a class="base-link" href="tel:36|06205032515">36|06205032515</a>
+              <a class="base-link" href="#">{{ orderData.value.phoneNumber  }}</a>
             </div>
           </div>
           <div class="">
             <div>
               E-mail address:
-              <a class="base-link" href="mailto:zsanett.tamas87@gmail.com"
-                >zsanett.tamas87@gmail.com</a
+              <a class="base-link" href="#"
+                >{{ orderData.value.userEmail }}</a
               >
             </div>
           </div>
@@ -211,9 +211,18 @@
 <script setup lang="ts">
 import { ref, computed, onMounted } from "vue";
 import { useAsyncData, useRoute, useSeoMeta } from "nuxt/app";
+import type { GetOrderRespose } from "~/types/types";
+
+
+const orderId = useCookie('orderId');
 const paymentOnlineTransfer = ref("");
 const newsletterSubscription = ref(false);
 const datasAreCorrect = ref(false);
+
+const commmonApiEndpoint =
+  "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
+
+var orderData = await $fetch<GetOrderRespose>(`${commmonApiEndpoint}?OrderId=${orderId.value}`);
 
 const route = useRoute();
 const currentLanguage = ref("en");

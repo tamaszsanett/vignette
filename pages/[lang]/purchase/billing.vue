@@ -286,9 +286,7 @@ if (cartKey.value == null)
 {
   cartKey.value = uuid.v4();
 }
-
 cartKey.value = '3fa85f64-5717-4562-b3fc-2c963f66afa8';
-
 // Betöltjük a korábbi order adatait, ha van order-id-nk.
 
 const commmonApiEndpoint =
@@ -401,10 +399,10 @@ async function sendForm() {
       userEmail: orderData.value.userEmail,
       phoneNumber: orderData.value.phoneNumber,
       invoiceName: orderData.value.invoiceName,
-      invoiceHuTaxNumber: orderData.value.invoiceHUTaxNumber,
-      invoiceHuGroupTaxNumber: orderData.value.invoiceHUGroupTaxNumber,
-      invoiceEuTaxNumber: orderData.value.invoiceEUTaxNumber,
-      invoiceCountry: orderData.value.invoiceCountry,
+      invoiceHuTaxNumber: orderData.value.invoiceHUTaxNumber ?? "",
+      invoiceHuGroupTaxNumber: orderData.value.invoiceHUGroupTaxNumber ?? "",
+      invoiceEuTaxNumber: orderData.value.invoiceEUTaxNumber ?? "",
+      invoiceCountry: selectedCountry.value,
       invoicePostalCode: orderData.value.invoicePostalCode,
       invoiceCity: orderData.value.invoiceCity,
       invoiceStreetAddress: orderData.value.invoiceStreetAddress,
@@ -463,6 +461,8 @@ async function sendForm() {
   }
   else {
     orderId.value = response.value.orderId;
+    console.log(response);
+
     navigateTo("/"+currentLanguage.value+"/purchase/confirm");
   }
   
