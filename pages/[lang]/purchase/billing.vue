@@ -287,21 +287,30 @@ if (cartKey.value == null)
   cartKey.value = uuid.v4();
 }
 
-orderId.value = 'c22b07d3-0b4d-49c7-acc0-7f5bdba47530';
 cartKey.value = '3fa85f64-5717-4562-b3fc-2c963f66afa8';
 
 // Betöltjük a korábbi order adatait, ha van order-id-nk.
 
 const commmonApiEndpoint =
   "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
-const orderData = await $fetch<GetOrderRespose>(`${commmonApiEndpoint}?OrderId=${orderId.value}`);
 
-const vatInvoiceChecked = ref(orderData == null ? false : orderData.value.needInvoice);
+var orderData = {
+  value: {
+    needInvoice: false,
+    userEmail: ""
+  }
+} as GetOrderRespose;
+if (orderId.value != null)
+{
+  orderData = await $fetch<GetOrderRespose>(`${commmonApiEndpoint}?OrderId=${orderId.value}`);
+}
+
+const vatInvoiceChecked = ref(orderData == null ? false : orderData.value?.needInvoice);
 const cityValue = ref(null);
 const emailValue = ref(null);
 const phoneValue = ref(null);
 const companyName = ref(null);
-const companyOrPrivatePerson = ref(orderData == null ? "" : (orderData.value.invoiceHUTaxNumber == null ? "privatePerson" : "company"));
+const companyOrPrivatePerson = ref(orderData == null ? "" : (orderData.value?.invoiceHUTaxNumber == null ? "privatePerson" : "company"));
 const inputMaskValue = ref("");
 const errorMessage = ref("");
 
@@ -343,7 +352,7 @@ const countries = ref([
   "United States",
 ]);
 
-const selectedCountry = ref(orderData.value.invoiceCountry);
+const selectedCountry = ref(orderData.value?.invoiceCountry);
 const postalCodeItems = ref<string[]>([]);
 
 const search = (event: { query: string }) => {
@@ -453,6 +462,7 @@ async function sendForm() {
     window.scrollTo(0, 0);
   }
   else {
+    orderId.value = response.value.orderId;
     navigateTo("/"+currentLanguage.value+"/purchase/confirm");
   }
   

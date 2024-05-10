@@ -246,6 +246,7 @@ export type AlternateLink = {
 
 export type GetOrderRespose = {
   value: {
+    orderId: string;
     cartKey: string;
     metaDtridscription: number;
     userEmail: string;
