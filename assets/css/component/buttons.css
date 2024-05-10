@@ -96,3 +96,7 @@
 .p-dialog-header-icon.p-dialog-header-close.p-link {
   @apply absolute top-2 right-2;
 }
+
+button.greenButton {
+  background-color: rgb(92 204 148 / var(--tw-bg-opacity));
+}

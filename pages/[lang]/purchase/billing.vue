@@ -22,7 +22,7 @@
         <span class="ml-2">Enter billing information</span>
       </h1>
       <div class="w-full mx-auto flex flex-col gap-4">
-        <div
+        <div v-if="errorMessage"
           class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
         >
           <img
@@ -31,7 +31,7 @@
             class="w-5 h-5"
             style="width: 20px; height: 20px"
           />
-          <p class="error-message my-0">An error message will appear here</p>
+          <p class="error-message my-0" v-html="errorMessage"></p>
         </div>
         <section class="card flex flex-col gap-2">
           <label for="email" class="primary-label">E-mail</label>
@@ -39,7 +39,7 @@
             class="primary-input"
             id="email"
             type="email"
-            v-model="emailValue"
+            v-model="orderData.value.userEmail"
             aria-describedby="email"
           />
         </section>
@@ -59,7 +59,7 @@
                 <template #value="slotProps">
                   <div v-if="slotProps.value" class="flex items-center">
                     <div
-                      :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`"
+                      :class="`mr-2 flag flag-${slotProps.value.code}`"
                     >
                       {{ slotProps.value.number }}
                     </div>
@@ -71,7 +71,7 @@
                 <template #option="slotProps">
                   <div class="flex items-center">
                     <div
-                      :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`"
+                      :class="`mr-2 flag flag-${slotProps.option.code}`"
                     >
                       {{ slotProps.option.code }} |
                     </div>
@@ -83,7 +83,7 @@
             <InputText
               type="tel"
               id="PhoneNumber"
-              v-model="phoneValue"
+              v-model="orderData.value.phoneNumber"
               aria-describedby="phone-number"
               class="primary-input"
             />
@@ -108,10 +108,6 @@
         <section class="w-full">
           <p class="text-xs m-0 font-bold">
             We will not be able to issue an invoice afterwards.
-          </p>
-          <p class="text-base-orange text-xs m-0 font-bold">
-            Without requesting a VAT invoice, only bank card payment is possible
-            on our site
           </p>
         </section>
         <section v-if="vatInvoiceChecked">
@@ -148,7 +144,7 @@
                     class="primary-input"
                     id="name"
                     type="text"
-                    v-model="companyName"
+                    v-model="orderData.value.invoiceName"
                     aria-describedby="name"
                   />
                 </div>
@@ -169,7 +165,7 @@
                     class="primary-input"
                     id="companyName"
                     type="text"
-                    v-model="emailValue"
+                    v-model="orderData.value.invoiceName"
                     aria-describedby="name"
                   />
                 </div>
@@ -182,7 +178,7 @@
             <section class="card flex flex-col gap-2">
               <label for="country" class="primary-label">Country</label>
               <Dropdown
-                id="country"
+                id="invoiceCountry"
                 v-model="selectedCountry"
                 :options="countries"
                 filter
@@ -192,12 +188,7 @@
               >
                 <template #value="slotProps">
                   <div v-if="slotProps.value" class="flex items-center">
-                    <div
-                      :class="`mr-2 flag flag-${slotProps.value.code.toLowerCase()}`"
-                    >
-                      {{ slotProps.value.code }} |
-                    </div>
-                    <div>{{ slotProps.value.name }}</div>
+                    <div>{{ slotProps.value }}</div>
                   </div>
                   <span v-else>
                     {{ slotProps.placeholder }}
@@ -205,12 +196,7 @@
                 </template>
                 <template #option="slotProps">
                   <div class="flex items-center">
-                    <div
-                      :class="`mr-2 flag flag-${slotProps.option.code.toLowerCase()}`"
-                    >
-                      {{ slotProps.option.code }} |
-                    </div>
-                    <div>{{ slotProps.option.name }}</div>
+                    <div>{{ slotProps.option }}</div>
                   </div>
                 </template>
               </Dropdown>
@@ -218,7 +204,7 @@
             <section
               v-if="
                 companyOrPrivatePerson === 'company' &&
-                selectedCountry?.code === 'HU'
+                orderData.value.invoiceCountry === 'Hungary'
               "
             >
               <section class="card flex flex-col gap-2">
@@ -228,7 +214,7 @@
                 <InputMask
                   id="tax_number"
                   class="primary-input"
-                  v-model="inputMaskValue"
+                  v-model="orderData.value.invoiceHUTaxNumber"
                   variant="filled"
                   mask="99999999-9-99"
                   placeholder=""
@@ -239,7 +225,7 @@
               <label for="postalCode" class="primary-label">Postal code</label>
               <AutoComplete
                 id="postalCode"
-                v-model="postalCodeValue"
+                v-model="orderData.value.invoicePostalCode"
                 :suggestions="postalCodeItems"
                 @complete="search"
               />
@@ -250,7 +236,7 @@
                 class="primary-input"
                 id="city"
                 type="city"
-                v-model="cityValue"
+                v-model="orderData.value.invoiceCity"
                 aria-describedby="city"
               />
             </section>
@@ -260,7 +246,7 @@
                 class="primary-input"
                 id="street"
                 type="street"
-                v-model="cityValue"
+                v-model="orderData.value.invoiceStreetAddress"
                 aria-describedby="street"
               />
             </section>
@@ -268,8 +254,8 @@
         </section>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">Back</a>
-          <NuxtLink to="/en/purchase/confirm" class="btn-green" type="submit"
-            >Next</NuxtLink
+          <Button class="greenButton" @click="sendForm()"
+            >Next</Button
           >
         </section>
       </div>
@@ -289,14 +275,35 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { useRoute } from "nuxt/app";
+import { uuid } from 'vue-uuid'; 
+import type { GetOrderRespose } from "~/types/types";
 
-const vatInvoiceChecked = ref(false);
+
+const orderId = useCookie('orderId');
+const cartKey = useCookie('cartKey');
+
+if (cartKey.value == null) 
+{
+  cartKey.value = uuid.v4();
+}
+
+orderId.value = 'c22b07d3-0b4d-49c7-acc0-7f5bdba47530';
+cartKey.value = '3fa85f64-5717-4562-b3fc-2c963f66afa8';
+
+// Betöltjük a korábbi order adatait, ha van order-id-nk.
+
+const commmonApiEndpoint =
+  "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
+const orderData = await $fetch<GetOrderRespose>(`${commmonApiEndpoint}?OrderId=${orderId.value}`);
+
+const vatInvoiceChecked = ref(orderData == null ? false : orderData.value.needInvoice);
 const cityValue = ref(null);
 const emailValue = ref(null);
 const phoneValue = ref(null);
 const companyName = ref(null);
-const companyOrPrivatePerson = ref("privatePerson");
+const companyOrPrivatePerson = ref(orderData == null ? "" : (orderData.value.invoiceHUTaxNumber == null ? "privatePerson" : "company"));
 const inputMaskValue = ref("");
+const errorMessage = ref("");
 
 const selectedCountryPhonePrefix = ref();
 const numbers = ref([
@@ -318,26 +325,25 @@ watch(
   { immediate: true }
 );
 
-const selectedCountry = ref();
 const countries = ref([
-  { name: "Hungary", code: "HU" },
-  { name: "Slovakia", code: "SK" },
-  { name: "Germany", code: "DE" },
-  { name: "Ukrain", code: "UK" },
-  { name: "Slovenia", code: "SLO" },
-  { name: "Australia", code: "AU" },
-  { name: "Brazil", code: "BR" },
-  { name: "China", code: "CN" },
-  { name: "Egypt", code: "EG" },
-  { name: "France", code: "FR" },
-  { name: "Germany", code: "DE" },
-  { name: "India", code: "IN" },
-  { name: "Japan", code: "JP" },
-  { name: "Spain", code: "ES" },
-  { name: "United States", code: "US" },
+  "Hungary",
+  "Slovakia",
+  "Germany",
+  "Ukrain",
+  "Slovenia",
+  "Australia",
+  "Brazil",
+  "China",
+  "Egypt",
+  "France",
+  "Germany",
+  "India",
+  "Japan",
+  "Spain",
+  "United States",
 ]);
 
-const postalCodeValue = ref("");
+const selectedCountry = ref(orderData.value.invoiceCountry);
 const postalCodeItems = ref<string[]>([]);
 
 const search = (event: { query: string }) => {
@@ -372,4 +378,85 @@ const widgets = response.value.widgets.map((widget) => {
     };
   }
 });
+
+async function sendForm() {
+  const createOrderEndpoint =
+  "https://test-gw.voxpay.hu/Webshop.Common/CreateOrder";
+  const response = await $fetch<GetOrderRespose>(createOrderEndpoint, {
+    method: "POST",
+    body: {
+      orderId: orderId.value,
+      cartKey: cartKey.value,
+      sessionId: "string",
+      clientId: "string",
+      userEmail: orderData.value.userEmail,
+      phoneNumber: orderData.value.phoneNumber,
+      invoiceName: orderData.value.invoiceName,
+      invoiceHuTaxNumber: orderData.value.invoiceHUTaxNumber,
+      invoiceHuGroupTaxNumber: orderData.value.invoiceHUGroupTaxNumber,
+      invoiceEuTaxNumber: orderData.value.invoiceEUTaxNumber,
+      invoiceCountry: orderData.value.invoiceCountry,
+      invoicePostalCode: orderData.value.invoicePostalCode,
+      invoiceCity: orderData.value.invoiceCity,
+      invoiceStreetAddress: orderData.value.invoiceStreetAddress,
+      needInvoice: vatInvoiceChecked.value
+    } 
+  });
+
+  if (!response.isSuccess) {
+    errorMessage.value = "";
+
+    if (response.error.code == "https://tools.ietf.org/html/rfc9110#section-15.5.1")
+    {
+    var errors = JSON.parse(response.error.message);
+
+    if (errors.UserEmail != null) {
+      errorMessage.value += errors.UserEmail[0] + "<br />";
+    }    
+    if (errors.PhoneNumber != null) {
+      errorMessage.value += errors.PhoneNumber[0] + "<br />";
+    }    
+    if (errors.InvoiceName != null) {
+      errorMessage.value += errors.InvoiceName[0] + "<br />";
+    }  
+    if (errors.InvoiceHUTaxNumber != null) {
+      errorMessage.value += errors.InvoiceHUTaxNumber[0] + "<br />";
+    }  
+    if (errors.InvoiceHUGroupTaxNumber != null) {
+      errorMessage.value += errors.InvoiceHUGroupTaxNumber[0] + "<br />";
+    }  
+    if (errors.InvoiceEUTaxNumber != null) {
+      errorMessage.value += errors.InvoiceEUTaxNumber[0] + "<br />";
+    }  
+    if (errors.InvoiceCountry != null) {
+      errorMessage.value += errors.InvoiceCountry[0] + "<br />";
+    }  
+    if (errors.InvoicePostalCode != null) {
+      errorMessage.value += errors.InvoicePostalCode[0] + "<br />";
+    }  
+    if (errors.InvoiceCity != null) {
+      errorMessage.value += errors.InvoiceCity[0] + "<br />";
+    }  
+    if (errors.InvoiceStreetAddress != null) {
+      errorMessage.value += errors.InvoiceStreetAddress[0] + "<br />";
+    }  
+    if (errors.InvoicePostalCode != null) {
+      errorMessage.value += errors.InvoicePostalCode[0] + "<br />";
+    }  
+    if (errors.NeedInvoice != null) {
+      errorMessage.value += errors.NeedInvoice[0] + "<br />";
+    }  
+  }
+  else {
+    errorMessage.value = response.error.message;
+  }
+    window.scrollTo(0, 0);
+  }
+  else {
+    navigateTo("/"+currentLanguage.value+"/purchase/confirm");
+  }
+  
+  
+}
+
 </script>

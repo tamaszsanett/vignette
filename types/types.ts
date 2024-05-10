@@ -243,3 +243,27 @@ export type AlternateLink = {
   sk: string;
   en: string;
 };
+
+export type GetOrderRespose = {
+  value: {
+    cartKey: string;
+    metaDtridscription: number;
+    userEmail: string;
+    phoneNumber: string;
+    
+    needInvoice: boolean;
+    invoiceName: string;
+    invoiceHUTaxNumber: string;
+    invoiceHUGroupTaxNumber: string;
+    invoiceEUTaxNumber: string;
+    invoiceCountry: string;
+    invoicePostalCode: string;
+    invoiceCity: string;
+    invoiceStreetAddress: string;
+  };
+  isSuccess: boolean;
+  error: {
+    message: string;
+    code: string;
+  }
+}
