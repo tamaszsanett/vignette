@@ -294,11 +294,11 @@ async function sendForm() {
       sourceShop: "hungary-vignette.eu/" + currentLanguage.value,
       sourcePlatform: "web",
       sourceForm: "Standard",
-      redirectURL: "https://localhost:3000/"+currentLanguage.value + "/purchase/status",
+      redirectURL: "http://localhost:3000/"+currentLanguage.value + "/purchase/status/"+orderData.value.trid,
       cultureKey: currentLanguage.value
     }
   });
-
+  console.log("http://localhost:3000/"+currentLanguage.value + "/purchase/status/"+orderData.value.trid);
   if (!response.isSuccess) {
     errorMessage.value = "";
 

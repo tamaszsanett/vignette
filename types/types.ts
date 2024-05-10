@@ -298,3 +298,38 @@ export type PurchaseVignettesAnonymWithOrderResponse = {
     code: string;
   }
 }
+
+export type GetPurchaseResponse = {
+  value: {
+    trid: number,
+    purchaseStatus: string,
+    paymentStatus: string,
+    paymentResult: string,
+    invoiceStatus: string,
+    invoiceReceiptNumber: string,
+    amount: number,
+    transactionFee: number,
+    currency: string,
+    paymentAmount: number,
+    paymentMode: string,
+    vignettes: Vignette[]
+  },
+  isSuccess: true,
+  error: {
+    code: string,
+    message: string
+  },
+  isFailure: false
+}
+
+export type Vignette = {
+  
+    vignetteType: string,
+    countryCode: string,
+    plateNumber: string,
+    vehicleCategory: string,
+    validFrom: string,
+    status: string,
+    nmfrVignetteNumber: string
+  
+}
