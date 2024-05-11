@@ -13,11 +13,11 @@
                   Transaction identifier
                 </div>
                 <div class="float-left">
-                  <p class="form-control-static">5534893208627661</p>
+                  <p class="form-control-static">{{ purchaseData.value.trid }}</p>
                 </div>
                 <div class="control-label float-left px-2">E-mail</div>
                 <div class="float-left px-2">
-                  <p class="form-control-static">zsanett.tamas87@gmail.com</p>
+                  <p class="form-control-static">TODO: From API</p>
                 </div>
               </div>
               <div class="design-table w-full clear-both pt-[2px]">
@@ -30,12 +30,13 @@
                       <td><strong>Validity period</strong></td>
                       <td><strong>Vignette number</strong></td>
                     </tr>
-                    <tr>
-                      <td>ABC123 &nbsp;&nbsp; ( RO )</td>
-                      <td>2024.05.06. - 2024.06.06.</td>
+                   <tr v-for="vignette in purchaseData.value.vignettes">
+                      <td>({{ vignette.countryCode  }}) {{ vignette.plateNumber }}</td>
+                      <td>{{ vignette.validFrom.substring(0,10).replaceAll("-", ".") }} - TODO: from API</td>
                       <td class="text-info">
-                        D1 - 1 month<br />
-                        <strong class="uppercase">IN PROGRESS</strong>
+                        TODO: {{ vignette.vignetteType }}<br />
+                        <strong class="uppercase">{{ vignette.status }}</strong><br />
+                        <strong>{{ vignette.nmfrVignetteNumber }}</strong>
                       </td>
                     </tr>
                   </tbody>
@@ -48,15 +49,15 @@
                 <section
                   class="flex items-center flex-wrap justify-center gap-4"
                 >
-                  <NuxtLink
+                  <Button
                     id="refreshbutton"
-                    to="Vignette/Confirm?trid=&send=true&__RequestVerificationToken=&PaymentMethod=Payment_TwoStepsBankcardBarion&DatasAreCorrect=true"
+                    @click="reloadPage()"
                     class="btn-green"
                     type="submit"
                   >
-                    <span>Refresh</span>
-                    <span id="refreshcounter"> (0)</span>
-                  </NuxtLink>
+                    <span>Refresh &nbsp;</span>
+                    <span id="refreshcounter"> ({{ timerCount }})</span>
+              </Button>
                 </section>
                 <p class="text-info">
                   Please check your mailbox. <br />We will send you confirmation
@@ -72,58 +73,54 @@
         </Card>
       </div>
     </form>
-    <template v-for="widget in widgets" :key="widget.widgetId">
-      <div
-        v-if="widget.widgetType === 'menuwidget'"
-        :class="{ 'top-menu': widget.section === 'top' }"
-      >
-        <SharedMenuWidget :menu-widget="widget.content" />
-      </div>
-    </template>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import { useAsyncData, useRoute, useSeoMeta } from "nuxt/app";
+import type { GetPurchaseResponse } from "~/types/types";
 import Card from "primevue/card";
 
-const route = useRoute();
-const currentLanguage = ref("en");
-watch(
-  () => route.params.lang,
-  (newLang) => {
-    currentLanguage.value = Array.isArray(newLang)
-      ? newLang[0]
-      : newLang || "en";
+const props = defineProps({
+  purchaseData: {
+    type: Object as PropType<GetPurchaseResponse>,
+    required: true,
   },
-  { immediate: true }
-);
-
-const pageUri = computed(() => {
-  const slug = (route.params.slug as string) || "";
-  return `${encodeURIComponent(slug)}`;
 });
 
-const apiEndpoint =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
-  "%2C",
-  "%2F"
-)}&Localization=${currentLanguage.value}`;
+function reloadPage() {
+  window.location.reload();
+}
+</script>
 
-const response = await $fetch<ApiResponse>(url);
+<script lang="ts">
 
-useSeoMeta({ title: response.value.title });
+    export default {
 
-const widgets = response.value.widgets.map((widget) => {
-  if (widget.widgetType === "html") {
-    return widget;
-  } else {
-    return {
-      ...widget,
-      content: JSON.parse(widget.content),
-    };
-  }
-});
+        data() {
+            return {
+                timerCount: 5
+            }
+        },
+
+        watch: {
+
+            timerCount: {
+                handler(value) {
+
+                    if (value > 0) {
+                        setTimeout(() => {
+                            this.timerCount--;
+                        }, 1000);
+                    }
+                    else if (value == 0) {
+                      window.location.reload();
+                    }
+
+                },
+                immediate: true // This ensures the watcher is triggered upon creation
+            }
+
+        }
+    }
+
 </script>

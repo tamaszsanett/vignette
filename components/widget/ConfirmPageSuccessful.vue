@@ -31,7 +31,7 @@
                       <td><strong>Vignette number</strong></td>
                     </tr>
                     <tr v-for="vignette in purchaseData.value.vignettes" class="success-order">
-                      <td>{{ vignette.plateNumber }} &nbsp;&nbsp; ( {{ vignette.countryCode  }} )</td>
+                      <td>({{ vignette.countryCode  }}) {{ vignette.plateNumber }}</td>
                       <td>{{ vignette.validFrom.substring(0,10).replaceAll("-", ".") }} - TODO: from API</td>
                       <td class="text-info">
                         TODO: {{ vignette.vignetteType }}<br />

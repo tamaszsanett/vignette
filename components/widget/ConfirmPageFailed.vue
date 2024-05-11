@@ -10,7 +10,7 @@
             <div class="payment-progress">
               <div class="w-full clear-both">
                 <p class="error-message">
-                  #1048: Purchase Failed: Canceled payment.
+                  TODO: Paymentresult: {{ purchaseData.value.paymentResult }}
                 </p>
               </div>
               <div class="clear-both">
@@ -28,7 +28,7 @@
                     class="btn-green"
                     type="submit"
                   >
-                    <span>Reorder</span>
+                    <span>TODO: Reorder</span>
                   </NuxtLink>
                 </section>
               </div>
@@ -43,11 +43,11 @@
                   Transaction identifier
                 </div>
                 <div class="float-left">
-                  <p class="form-control-static">5534893208627661</p>
+                  <p class="form-control-static">{{ purchaseData.value.trid }}</p>
                 </div>
                 <div class="control-label float-left px-2">E-mail</div>
                 <div class="float-left px-2">
-                  <p class="form-control-static">zsanett.tamas87@gmail.com</p>
+                  <p class="form-control-static">TODO: From API</p>
                 </div>
               </div>
               <div class="design-table w-full clear-both pt-[2px]">
@@ -60,12 +60,13 @@
                       <td><strong>Validity period</strong></td>
                       <td><strong>Vignette number</strong></td>
                     </tr>
-                    <tr class="failed-order">
-                      <td>ABC123 &nbsp;&nbsp; ( RO )</td>
-                      <td>2024.05.06. - 2024.06.06.</td>
+                    <tr v-for="vignette in purchaseData.value.vignettes" class="failed-order">
+                      <td>({{ vignette.countryCode  }}) {{ vignette.plateNumber }}</td>
+                      <td>{{ vignette.validFrom.substring(0,10).replaceAll("-", ".") }} - TODO: from API</td>
                       <td class="text-info">
-                        D1 - 1 month<br />
-                        <strong class="uppercase">Unsuccessful</strong>
+                        TODO: {{ vignette.vignetteType }}<br />
+                        <strong class="uppercase">{{ vignette.status }}</strong><br />
+                        <strong>{{ vignette.nmfrVignetteNumber }}</strong>
                       </td>
                     </tr>
                   </tbody>
@@ -76,18 +77,6 @@
                   If you think that your payment was successful, but the sticker
                   validation failed, please contact us!
                 </p>
-                <section
-                  class="flex items-center flex-wrap justify-center gap-4 my-5"
-                >
-                  <NuxtLink
-                    id="refreshbutton"
-                    to="/vignette/D1/1month/type?backtrid="
-                    class="btn-green"
-                    type="submit"
-                  >
-                    <span>Refresh</span>
-                  </NuxtLink>
-                </section>
                 <p class="text-danger">
                   IMPORTANT: The fact that the financial performance has been
                   fulfilled does not automatically mean that you are entitled to
@@ -113,58 +102,18 @@
         </Card>
       </div>
     </form>
-    <template v-for="widget in widgets" :key="widget.widgetId">
-      <div
-        v-if="widget.widgetType === 'menuwidget'"
-        :class="{ 'top-menu': widget.section === 'top' }"
-      >
-        <SharedMenuWidget :menu-widget="widget.content" />
-      </div>
-    </template>
   </main>
 </template>
 
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
-import { useAsyncData, useRoute, useSeoMeta } from "nuxt/app";
+import type { GetPurchaseResponse } from "~/types/types";
 import Card from "primevue/card";
 
-const route = useRoute();
-const currentLanguage = ref("en");
-watch(
-  () => route.params.lang,
-  (newLang) => {
-    currentLanguage.value = Array.isArray(newLang)
-      ? newLang[0]
-      : newLang || "en";
+const props = defineProps({
+  purchaseData: {
+    type: Object as PropType<GetPurchaseResponse>,
+    required: true,
   },
-  { immediate: true }
-);
-
-const pageUri = computed(() => {
-  const slug = (route.params.slug as string) || "";
-  return `${encodeURIComponent(slug)}`;
 });
 
-const apiEndpoint =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
-const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
-  "%2C",
-  "%2F"
-)}&Localization=${currentLanguage.value}`;
-
-const response = await $fetch<ApiResponse>(url);
-
-useSeoMeta({ title: response.value.title });
-
-const widgets = response.value.widgets.map((widget) => {
-  if (widget.widgetType === "html") {
-    return widget;
-  } else {
-    return {
-      ...widget,
-      content: JSON.parse(widget.content),
-    };
-  }
-});
 </script>
