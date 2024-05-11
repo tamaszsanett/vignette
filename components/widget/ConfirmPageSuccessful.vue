@@ -21,9 +21,7 @@
                 </div>
               </div>
               <div class="design-table w-full clear-both pt-[2px]">
-                <table
-                  class="table table-condensed table-hover payment-progress-table"
-                >
+                <table class="table table-condensed table-hover payment-progress-table">
                   <tbody>
                     <tr>
                       <td><strong>License plate number</strong></td>
@@ -31,8 +29,8 @@
                       <td><strong>Vignette number</strong></td>
                     </tr>
                     <tr v-for="vignette in purchaseData.value.vignettes" class="success-order">
-                      <td>({{ vignette.countryCode  }}) {{ vignette.plateNumber }}</td>
-                      <td>{{ vignette.validFrom.substring(0,10).replaceAll("-", ".") }} - TODO: from API</td>
+                      <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
+                      <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - TODO: from API</td>
                       <td class="text-info">
                         TODO: {{ vignette.vignetteType }}<br />
                         <strong class="uppercase">{{ vignette.status }}</strong><br />
@@ -44,13 +42,7 @@
               </div>
               <div class="clear-both">
                 <section class="flex items-center flex-wrap my-5 gap-4 w-full">
-                  <NuxtLink
-                    id="downloadOrder"
-                    to="#"
-                    class="btn-green"
-                    type="submit"
-                    style="max-width: 250px"
-                  >
+                  <NuxtLink id="downloadOrder" to="#" class="btn-green" type="submit" style="max-width: 250px">
                     <span>Download order summary</span>
                   </NuxtLink>
                 </section>
@@ -66,9 +58,7 @@
                   Customer Service:<br />
                   Phone: (36-1) 225-7603<br />
                   E-mail:
-                  <a class="base-link" href="mailto:support@hungary-vignette.eu"
-                    >support@hungary-vignette.eu</a
-                  >
+                  <a class="base-link" href="mailto:support@hungary-vignette.eu">support@hungary-vignette.eu</a>
                 </address>
               </div>
             </div>

@@ -21,18 +21,16 @@
                 </div>
               </div>
               <div class="design-table w-full clear-both pt-[2px]">
-                <table
-                  class="table table-condensed table-hover payment-progress-table"
-                >
+                <table class="table table-condensed table-hover payment-progress-table">
                   <tbody>
                     <tr>
                       <td><strong>License plate number</strong></td>
                       <td><strong>Validity period</strong></td>
                       <td><strong>Vignette number</strong></td>
                     </tr>
-                   <tr v-for="vignette in purchaseData.value.vignettes">
-                      <td>({{ vignette.countryCode  }}) {{ vignette.plateNumber }}</td>
-                      <td>{{ vignette.validFrom.substring(0,10).replaceAll("-", ".") }} - TODO: from API</td>
+                    <tr v-for="vignette in purchaseData.value.vignettes">
+                      <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
+                      <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - TODO: from API</td>
                       <td class="text-info">
                         TODO: {{ vignette.vignetteType }}<br />
                         <strong class="uppercase">{{ vignette.status }}</strong><br />
@@ -46,18 +44,11 @@
                 <p>
                   To review the result, please refresh the page in some seconds!
                 </p>
-                <section
-                  class="flex items-center flex-wrap justify-center gap-4"
-                >
-                  <Button
-                    id="refreshbutton"
-                    @click="reloadPage()"
-                    class="btn-green"
-                    type="submit"
-                  >
+                <section class="flex items-center flex-wrap justify-center gap-4">
+                  <Button id="refreshbutton" @click="reloadPage()" class="btn-green" type="submit">
                     <span>Refresh &nbsp;</span>
                     <span id="refreshcounter"> ({{ timerCount }})</span>
-              </Button>
+                  </Button>
                 </section>
                 <p class="text-info">
                   Please check your mailbox. <br />We will send you confirmation
@@ -94,33 +85,33 @@ function reloadPage() {
 
 <script lang="ts">
 
-    export default {
+export default {
 
-        data() {
-            return {
-                timerCount: 5
-            }
-        },
-
-        watch: {
-
-            timerCount: {
-                handler(value) {
-
-                    if (value > 0) {
-                        setTimeout(() => {
-                            this.timerCount--;
-                        }, 1000);
-                    }
-                    else if (value == 0) {
-                      window.location.reload();
-                    }
-
-                },
-                immediate: true // This ensures the watcher is triggered upon creation
-            }
-
-        }
+  data() {
+    return {
+      timerCount: 5
     }
+  },
+
+  watch: {
+
+    timerCount: {
+      handler(value) {
+
+        if (value > 0) {
+          setTimeout(() => {
+            this.timerCount--;
+          }, 1000);
+        }
+        else if (value == 0) {
+          window.location.reload();
+        }
+
+      },
+      immediate: true // This ensures the watcher is triggered upon creation
+    }
+
+  }
+}
 
 </script>

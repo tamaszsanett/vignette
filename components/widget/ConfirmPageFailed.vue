@@ -19,15 +19,8 @@
                   customer authentication introduced on January 1st, the rate of
                   unsuccessful payments increased in the initial period.
                 </p>
-                <section
-                  class="w-full flex items-center flex-wrap justify-center gap-4"
-                >
-                  <NuxtLink
-                    id="refreshbutton"
-                    to="/vignette/D1/1month/type?backtrid="
-                    class="btn-green"
-                    type="submit"
-                  >
+                <section class="w-full flex items-center flex-wrap justify-center gap-4">
+                  <NuxtLink id="refreshbutton" to="/vignette/D1/1month/type?backtrid=" class="btn-green" type="submit">
                     <span>TODO: Reorder</span>
                   </NuxtLink>
                 </section>
@@ -51,9 +44,7 @@
                 </div>
               </div>
               <div class="design-table w-full clear-both pt-[2px]">
-                <table
-                  class="table table-condensed table-hover payment-progress-table"
-                >
+                <table class="table table-condensed table-hover payment-progress-table">
                   <tbody>
                     <tr>
                       <td><strong>License plate number</strong></td>
@@ -61,8 +52,8 @@
                       <td><strong>Vignette number</strong></td>
                     </tr>
                     <tr v-for="vignette in purchaseData.value.vignettes" class="failed-order">
-                      <td>({{ vignette.countryCode  }}) {{ vignette.plateNumber }}</td>
-                      <td>{{ vignette.validFrom.substring(0,10).replaceAll("-", ".") }} - TODO: from API</td>
+                      <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
+                      <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - TODO: from API</td>
                       <td class="text-info">
                         TODO: {{ vignette.vignetteType }}<br />
                         <strong class="uppercase">{{ vignette.status }}</strong><br />
@@ -92,9 +83,7 @@
                   Customer Service:<br />
                   Phone: (36-1) 225-7603<br />
                   E-mail:
-                  <a class="base-link" href="mailto:support@hungary-vignette.eu"
-                    >support@hungary-vignette.eu</a
-                  >
+                  <a class="base-link" href="mailto:support@hungary-vignette.eu">support@hungary-vignette.eu</a>
                 </address>
               </div>
             </div>
