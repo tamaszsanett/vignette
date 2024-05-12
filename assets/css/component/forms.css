@@ -99,7 +99,7 @@ input:disabled {
 }
 
 .error-message {
-  @apply text-sm text-red;
+  @apply text-sm text-red max-w-[300px];
 }
 
 .p-checkbox.p-highlight .p-checkbox-box {
