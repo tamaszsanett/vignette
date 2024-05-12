@@ -3,12 +3,12 @@
     <header class="flex justify-center py-5">
       <img
         class="w-full hidden sm:block"
-        src="/img/purchase/desktop/under-invoice-data-line_en_EN.svg"
+        :src="`/img/purchase/desktop/${$t('type.image.desktop_path')}`"
         alt="autópálya-matrica"
       />
       <img
         class="w-full block sm:hidden"
-        src="/img/purchase/mobile/under-invoice-data-line_en_EN.svg"
+        :src="`/img/purchase/mobile/${$t('type.image.mobile_path')}`"
         alt="autópálya-matrica"
       />
     </header>
@@ -16,10 +16,10 @@
       <h1 class="purchase-h1">
         <img
           class="w-[45px]"
-          src="/img/purchase/D1.svg"
-          alt="autópálya-matrica"
+          :src="'/img/purchase/' + category + '.svg'"
+          :alt="category + ' ' + $t('type.image.alt_vignette')"
         />
-        <span class="ml-2">Enter billing information</span>
+        <span class="ml-2"> {{ $t("invoice_data.title") }}</span>
       </h1>
       <div class="w-full mx-auto flex flex-col gap-4">
         <div

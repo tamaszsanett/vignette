@@ -2436,31 +2436,6 @@ td.VignetteOrdered {
   font-weight: bold;
 }
 
-.monthType {
-  width: 65px;
-  height: 40px;
-  background: #eeeef3;
-  border-radius: 5px;
-  border: none;
-  color: #e0e0e9;
-  cursor: pointer;
-}
-
-.monthType:hover {
-  color: #5ccc94;
-  background: white;
-  box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
-  border: 1px solid #5ccc94;
-}
-
-.monthType.focus {
-  color: white;
-  background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
-  box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
-  border: none;
-  margin-bottom: 10px;
-}
-
 .county-link {
   text-decoration: none;
   color: #f58c1f;

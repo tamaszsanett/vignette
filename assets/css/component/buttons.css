@@ -13,7 +13,11 @@
 
   .primary-btn-outline {
     @apply bg-white text-base-orange hover:text-white hover:bg-base-orange border-base-orange focus:ring-base-orange;
-  }  
+  }
+
+  .btn-disabled {
+    @apply cursor-not-allowed bg-dark-gray border-none hover:bg-dark-gray !important;
+  }
 }
 
 .primary-btn,
@@ -27,6 +31,10 @@
 
 .btn-green[type='submit'], .btn-green {
   @apply btn bg-base-green text-white hover:bg-white hover:text-base-green border border-base-green max-w-[150px] w-full;
+}
+
+.btn-green.disabled {
+  @apply btn-disabled;
 }
 
 .p-accordion .primary-btn-outline {
@@ -95,4 +103,8 @@
 
 .p-dialog-header-icon.p-dialog-header-close.p-link {
   @apply absolute top-2 right-2;
+}
+
+.p-inplace-display {
+  @apply btn-sm primary-btn-outline border text-center;
 }
