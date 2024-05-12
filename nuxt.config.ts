@@ -122,7 +122,7 @@ export default defineNuxtConfig({
       charset: "utf-8",
       viewport: "width=device-width, initial-scale=1",
       htmlAttrs: {
-        lang: "hu",
+        lang: "en",
         class: "scroll-smooth",
       },
 
@@ -141,6 +141,7 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     "nuxt-aos",
     "nuxt-primevue",
+    "@nuxtjs/i18n"
   ],
   imports: {
     dirs: [
@@ -152,6 +153,26 @@ export default defineNuxtConfig({
       'composables/**',
       'types/*.ts', 'store/*.ts', 'types/**/*.ts'
     ]
+  },
+  i18n: {
+    vueI18n: './i18n/i18n.config.ts',
+    baseUrl: 'https://new-hungary-vignette.voxpay.hu/',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US'
+      },
+      {
+        code: 'gb',
+        iso: 'en-GB'
+      }
+    ],
+    strategy: 'no_prefix',
+    differentDomains: false,
+    defaultLocale: 'en', // default locale of your project for Nuxt pages and routings
+
+    // Or enable the option in production only
+    // differentDomains: (process.env.NODE_ENV === 'production')
   },
   nitro: {
     // IIS options default

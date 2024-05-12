@@ -1,0 +1,82 @@
+export default defineI18nConfig(() => ({
+  legacy: false,
+  locale: "en",
+  messages: {
+    en: {
+      type: {
+        empty_plate: "Filling in the registration number is mandatory!",
+        invalid_plate: "The number plate is wrong. For example, it cannot contain a hyphen or does not meet the standard represented by your country.",
+        incorrect_plate_num: "Incorrect number plate in Hungarian format!",
+        nationality_mark: "Nationality mark",
+        licence_plate: "License plate",
+        add_another_widget: "+ add another vignette",
+        next: "next",
+        back: "back",
+        selected_box_title: "Selected vignettes",
+        month: "month",
+        day: "day",
+        year: "year",
+        total: "Total",
+        more_month: "I would buy for more than a month",
+        select_country_placeholder: "Select a Country",
+        regional_error: "Selecting a county is mandatory!",
+        image: {
+          alt_vignette: "Vignette EN",
+          desktop_path: "under-plate-number-line_en_EN.svg",
+          mobile_path: "under-plate-number-line_en_EN.svg",
+        },
+        title: {
+          year_11: "County region",
+          weekly: "Weekly",
+          monthly: "Monthly",
+          annual: "Annual",
+          ten_days: "10 day",
+          after_title: "national highway sticker",
+        },
+      },
+      invoice_data: {
+        title: "Enter billing information",
+        phone: "Phone number",
+        mailTooltipText: "We will send the sticker confirmation to this address",
+      }
+    },
+    de: {
+      type: {
+        empty_plate: "Das Ausfüllen der Registrierungsnummer ist Pflicht!",
+        invalid_plate: "Das Nummernschild ist falsch. Es darf beispielsweise keinen Bindestrich enthalten oder entspricht nicht dem in Ihrem Land vertretenen Standard.",
+        incorrect_plate_num: "Incorrect number plate in Hungarian format!",
+        nationality_mark: "Nationalitätszeichen",
+        licence_plate: "Nummernschild",
+        add_another_widget: "+ eine weitere Vignette hinzufügen",
+        next: "nächste",
+        back: "zurück",
+        selectedBoxTitle: "Ausgewählte Vignetten",
+        month: "Monat",
+        day: "Tag",
+        year: "Jahr",
+        total: "Gesamt",
+        more_month: "Ich würde es für mehr als einen Monat kaufen",
+        select_country_placeholder: "Wähle ein Land",
+        regional_error: "Die Auswahl eines Landkreises ist obligatorisch!",
+        image: {
+          alt_vignette: "Vignette DE",
+          desktop_path: "under-plate-number-line_de_DE.svg",
+          mobile_path: "under-plate-number-line_de-DE.svg",
+        },
+        title: {
+          year_11: "Landkreisregion",
+          annual: "Jährlich",
+          weekly: "Wöchentlich",
+          monthly: "Monatliche",
+          ten_days: "10 Tag",
+          after_title: "Nationalstraßenaufkleber",
+        },
+      },
+      invoice_data: {
+        title: "Enter billing information",
+        phone: "Phone number",
+        mailTooltipText: "We will send the sticker confirmation to this address",
+      }
+    },
+  },
+}));

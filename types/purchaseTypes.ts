@@ -1,6 +1,33 @@
+export type Country = {
+  name: string;
+  countryCode: string;
+};
+
+export type Countries = {
+  [key: string]: Country[];
+};
+
+export type Counties = {
+  [key: string]: County[];
+};
+
+export type County = {
+  name: string;
+  key: string;
+};
+
+//plate validation
+
 export type FormData = {
-  selectedCountry: { name: string; code: string } | undefined;
-  licensePlate: string;
+  formShowError: boolean;
+  invalidPlate: string;
+  selectedCountry: { name: string; countryCode: string } | undefined;
+  countryCode: string;
+  plateNumber: string;
   startDate: Date | null;
   endDate: Date | null;
-};
+}
+
+export type PlateValidation = {
+  validateAllPlates: (multiples: FormData[], t: Function) => Promise<void>;
+}

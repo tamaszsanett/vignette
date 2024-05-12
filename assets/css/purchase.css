@@ -21,3 +21,18 @@
 .purchase-step-3 .prefix-select {
     @apply px-0;
 }
+
+.monthType[type="button"] {
+  background: rgba(245, 246, 249, 0.37);
+  @apply w-[62px] h-10 border border-dark-gray rounded-[5px] cursor-pointer text-dark-gray 
+  focus:bg-white focus:outline-none focus:text-base-black hover:text-base-green hover:border hover:border-base-green hover:bg-white;
+}
+
+.monthType[type="button"]:hover {
+  box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
+}
+
+.monthType[type="button"].focus {
+  box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
+  @apply bg-base-green text-white border-none;
+}
