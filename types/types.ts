@@ -312,6 +312,7 @@ export type GetPurchaseResponse = {
     currency: string,
     paymentAmount: number,
     paymentMode: string,
+    userEmail: string,
     vignettes: Vignette[]
   },
   isSuccess: true,
@@ -329,6 +330,7 @@ export type Vignette = {
     plateNumber: string,
     vehicleCategory: string,
     validFrom: string,
+    validTo: string,
     status: string,
     nmfrVignetteNumber: string
   

@@ -40,7 +40,7 @@
                 </div>
                 <div class="control-label float-left px-2">E-mail</div>
                 <div class="float-left px-2">
-                  <p class="form-control-static">TODO: From API</p>
+                  <p class="form-control-static">{{  purchaseData.value.userEmail }}</p>
                 </div>
               </div>
               <div class="design-table w-full clear-both pt-[2px]">
@@ -53,9 +53,9 @@
                     </tr>
                     <tr v-for="vignette in purchaseData.value.vignettes" class="failed-order">
                       <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
-                      <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - TODO: from API</td>
+                      <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - {{ vignette.validTo.substring(0, 10).replaceAll("-", ".") }}</td>
                       <td class="text-info">
-                        TODO: {{ vignette.vignetteType }}<br />
+                        TODO translate me: {{ vignette.vignetteType }}<br />
                         <strong class="uppercase">{{ vignette.status }}</strong><br />
                         <strong>{{ vignette.nmfrVignetteNumber }}</strong>
                       </td>
