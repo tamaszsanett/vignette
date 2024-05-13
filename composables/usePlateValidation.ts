@@ -5,7 +5,7 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
   const validateAllPlates = async (multiples: FormData[], t: Function) => {
     for (const item of multiples) {
       if (!item.selectedCountry || !item.plateNumber) {
-        item.invalidPlate = t("type.empty_plate_or_country");
+        item.invalidPlate = t("type.invalid_plate");
         continue;
       }
 

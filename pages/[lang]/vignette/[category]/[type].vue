@@ -44,6 +44,30 @@
           <!-- more condition here -->
         </div>
       </h1>
+      <div
+        v-if="item.formShowError"
+        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+      >
+        <img
+          src="/img/purchase/danger-icon.svg"
+          alt="Hiba történt"
+          class="w-5 h-5"
+          style="width: 20px; height: 20px"
+        />
+        <p class="error-message my-0">{{ emptyMessage }}</p>
+      </div>
+      <div
+        v-if="item.invalidPlate"
+        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+      >
+        <img
+          src="/img/purchase/danger-icon.svg"
+          alt="Hiba történt"
+          class="w-5 h-5"
+          style="width: 20px; height: 20px"
+        />
+        <p class="error-message my-0">{{ item.invalidPlate }}</p>
+      </div>
       <section class="mx-auto my-8" v-if="isRegionalVignette">
         <div class="card flex justify-center">
           <div class="grid grid-cols-2 gap-1 sm:gap-2 sm:gap-x-20">
@@ -83,61 +107,11 @@
               class="del absolute top-10 right-0 lg:top-4 lg:-right-10"
             ></button>
           </div>
-          <Inplace
-            class="w-full md:max-w-[350px] mx-auto flex justify-center"
-            v-if="durationType === 'MONTH'"
-          >
-            <template #display>{{ $t("type.more_month") }}</template>
-            <template #content class="w-full">
-              <div class="w-full flex gap-2">
-                <InputText
-                  type="button"
-                  class="monthType focus"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_1"
-                  value="1"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_2"
-                  value="2"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_3"
-                  value="3"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_4"
-                  value="4"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_5"
-                  value="5"
-                />
-              </div>
-            </template>
-          </Inplace>
           <section
             class="card flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
           >
             <label :for="'country_mark' + i" class="primary-label">{{
-              $t("type.nationality_mark")
+              $t("type.car_country")
             }}</label>
             <Dropdown
               :id="'country_mark-' + i"
@@ -175,7 +149,7 @@
           </section>
           <section class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto">
             <label :for="'licence_plate-' + i" class="primary-label">{{
-              $t("type.licence_plate")
+              $t("type.licence_plate_number")
             }}</label>
             <InputGroup class="relative">
               <InputGroupAddon>
@@ -195,32 +169,13 @@
               />
             </InputGroup>
           </section>
-          <div
-            v-if="item.formShowError"
-          
-            class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+          <section
+            class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
+            v-if="isCalendarVisible"
           >
-            <img
-              src="/img/purchase/danger-icon.svg"
-              alt="Hiba történt"
-              class="w-5 h-5"
-              style="width: 20px; height: 20px"
-            />
-            <p class="error-message my-0">{{ emptyMessage }}</p>
-          </div>
-          <div
-            v-if="item.invalidPlate"
-            class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
-          >
-            <img
-              src="/img/purchase/danger-icon.svg"
-              alt="Hiba történt"
-              class="w-5 h-5"
-              style="width: 20px; height: 20px"
-            />
-            <p class="error-message my-0">{{ item.invalidPlate }}</p>
-          </div>
-          <section class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto" v-if="isCalendarVisible">
+            <label :for="'start_date-' + i" class="primary-label">{{
+              $t("type.validity_period")
+            }}</label>
             <div
               class="flex justify-center items-center space-x-4 calendar-wrapper"
             >
@@ -245,7 +200,56 @@
               </div>
             </div>
           </section>
-
+          <section
+            class="w-full md:max-w-[350px] mx-auto"
+            v-if="durationType === 'MONTH'"
+          >
+            <label :for="'start_date-' + i" class="primary-label">{{
+              $t("type.number_of_month")
+            }}</label>
+            <div class="w-full flex gap-2">
+              <InputText
+                type="button"
+                class="monthType focus"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_1"
+                value="1"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_2"
+                value="2"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_3"
+                value="3"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_4"
+                value="4"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_5"
+                value="5"
+              />
+            </div>
+          </section>
           <button
             type="button"
             @click.pervent="addMore"
@@ -259,12 +263,7 @@
     </form>
     <section class="flex items-center flex-wrap justify-center gap-4">
       <a class="btn-gray" href="/">{{ $t("type.back") }}</a>
-      <button
-        class="btn btn-green cursor-pointer"
-        :class="{ disabled: disabled }"
-        :disabled="disabled"
-        @click.prevent="validate"
-      >
+      <button class="btn btn-green cursor-pointer" @click.prevent="validate">
         {{ $t("type.next") }}
       </button>
     </section>
@@ -286,15 +285,9 @@ import { ref, computed, onMounted, watch } from "vue";
 import { useAsyncData, useRoute } from "nuxt/app";
 import { usePlateValidation } from "~/composables/usePlateValidation";
 import { useVignetteInfo } from "~/composables/useVignetteInfo";
-import { useVignetteEndDate } from '~/composables/useVignetteEndDate';
-import type {
-  FormData,
-  Countries,
-  Counties,
-} from "~/types/purchaseTypes.ts";
-import type {
-  VignetteInfoResponse,
-} from "~/types/types.ts";
+import { useVignetteEndDate } from "~/composables/useVignetteEndDate";
+import type { FormData, Countries, Counties } from "~/types/purchaseTypes.ts";
+import type { VignetteInfoResponse } from "~/types/types.ts";
 import countries from "~/data/countries";
 import counties from "~/data/counties";
 const selectedCounties = ref(["Baranya"]);
@@ -303,36 +296,35 @@ const category = route.params.category;
 
 //countries select
 const countryOptions = computed(() => {
-  return countries[locale.value] as Countries;
+  return countries[locale.value] as unknown as Countries;
 });
 
 //counties select
 const countyOptions = computed(() => {
-  return counties[locale.value] as Counties;
+  return counties[locale.value] as unknown as Counties;
 });
 
 const formData = ref({
   multiples: [
     {
       selectedCountry: undefined,
-      countryCode: undefined,
+      countryCode: "",
       plateNumber: "",
       startDate: new Date(),
       endDate: null,
       formShowError: false,
       invalidPlate: "",
     } as FormData,
-  ]
+  ],
 });
 
-const { showError, invalidPlate, validateAllPlates } = usePlateValidation(
+const { validateAllPlates } = usePlateValidation(
   "https://test-gw.voxpay.hu/Webshop.Vignette/ValidatePlateNumber"
 );
 
-const disabled = ref(true);
 const emptyMessage = ref("");
 
-const handleInputValidation = (index) => {
+const handleInputValidation = (index: number) => {
   const item = formData.value.multiples[index];
   if (item.plateNumber.trim() === "") {
     item.formShowError = true; // Show error if input is empty
@@ -343,7 +335,7 @@ const handleInputValidation = (index) => {
 };
 
 watch(
-  () => formData.value.multiples.map(item => item.plateNumber),
+  () => formData.value.multiples.map((item) => item.plateNumber),
   (newValues) => {
     newValues.forEach((_, index) => handleInputValidation(index));
   },
@@ -351,7 +343,7 @@ watch(
 );
 
 // Monitor changes in formData to dynamically update the form state
-watch(
+/* watch(
   formData,
   () => {
     disabled.value = formData.value.multiples.some(
@@ -359,12 +351,12 @@ watch(
     );
   },
   { deep: true }
-);
+); */
 
 const addMore = () => {
   formData.value.multiples.push({
     selectedCountry: undefined,
-    countryCode: undefined,
+    countryCode: "",
     plateNumber: "",
     startDate: new Date(),
     endDate: new Date(),
@@ -387,10 +379,10 @@ watch(
     newValues.forEach((item, index) => {
       if (
         item.selectedCountry &&
-        item.selectedCountry.code !==
+        item.selectedCountry.countryCode !==
           formData.value.multiples[index].countryCode
       ) {
-        formData.value.multiples[index].countryCode = item.selectedCountry.code;
+        formData.value.multiples[index].countryCode = item.selectedCountry.countryCode;
       }
     });
   },
@@ -407,27 +399,45 @@ const startDate = ref(new Date());
 
 const numberOfVignettes = ref(1); // Default to 1, modify as necessary
 const minStartDate = computed(() => {
-  return vignetteInfo.value ? new Date(vignetteInfo.value.value.vignetteType.validityStartMin) : new Date();
+  return vignetteInfo.value
+    ? new Date(vignetteInfo.value.value.vignetteType.validityStartMin)
+    : new Date();
 });
 const maxEndDate = computed(() => {
-  return vignetteInfo.value ? new Date(vignetteInfo.value.value.vignetteType.validityStartMax) : new Date();
+  return vignetteInfo.value
+    ? new Date(vignetteInfo.value.value.vignetteType.validityStartMax)
+    : new Date();
 });
 
 // Watch for changes in startDate or numberOfVignettes and update the end date
-watch([startDate, numberOfVignettes], async () => {
-  if (vignetteInfo.value) {
-    await fetchEndDate(vignetteInfo.value.value.vignetteType.vignetteCode, startDate.value, numberOfVignettes.value);
-  }
-}, { immediate: true });
+watch(
+  [startDate, numberOfVignettes],
+  async () => {
+    if (vignetteInfo.value) {
+      await fetchEndDate(
+        vignetteInfo.value.value.vignetteType.vignetteCode,
+        startDate.value,
+        numberOfVignettes.value
+      );
+    }
+  },
+  { immediate: true }
+);
 
 const { fetchVignetteInfo } = useVignetteInfo();
 
 vignetteInfo.value = await fetchVignetteInfo();
 
-await fetchEndDate(vignetteInfo.value.value.vignetteType.vignetteCode, startDate.value, numberOfVignettes.value);
+await fetchEndDate(
+  vignetteInfo.value.value.vignetteType.vignetteCode,
+  startDate.value,
+  numberOfVignettes.value
+);
 
 const isCalendarVisible = computed(() => {
-  return vignetteInfo.value?.value.vignetteType.validityStartAcceptable ?? false;
+  return (
+    vignetteInfo.value?.value.vignetteType.validityStartAcceptable ?? false
+  );
 });
 
 const isRegionalVignette = computed(

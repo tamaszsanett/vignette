@@ -36,3 +36,15 @@
   box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
   @apply bg-base-green text-white border-none;
 }
+
+.p-dropdown-items-wrapper ul {
+  @apply m-0;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding: 0.5rem 1rem;
+}
+
+.p-dropdown-panel .p-dropdown-header {
+  padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+}
