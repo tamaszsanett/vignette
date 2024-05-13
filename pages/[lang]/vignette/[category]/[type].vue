@@ -68,6 +68,22 @@
         />
         <p class="error-message my-0">{{ item.invalidPlate }}</p>
       </div>
+      <section v-if="isRegionalVignette">
+        <div
+          v-if="!isAtLeastOneCountySelected"
+          class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+        >
+          <img
+            src="/img/purchase/danger-icon.svg"
+            alt="Hiba történt"
+            class="w-5 h-5"
+            style="width: 20px; height: 20px"
+          />
+          <p class="error-message my-0">
+            {{ errorCountiesMessage }}
+          </p>
+        </div>
+      </section>
       <section class="mx-auto my-8" v-if="isRegionalVignette">
         <div class="card flex justify-center">
           <div class="grid grid-cols-2 gap-1 sm:gap-2 sm:gap-x-20">
@@ -77,15 +93,14 @@
               class="flex items-center gap-x-2"
             >
               <Checkbox
-                :id="'county-' + county.key"
+                :input-id="county.key"
                 v-model="selectedCounties"
-                :inputId="'county-' + county.key"
-                name="county"
-                :value="county.name"
+                name="counties"
+                :value="county.key"
               />
               <label
                 class="primary-label text-sm md:text-base"
-                :for="'county-' + county.key"
+                :for="county.key"
                 >{{ county.name }}</label
               >
             </div>
@@ -127,7 +142,8 @@
                   <div
                     :class="`mr-1 flag flag-${slotProps.value.countryCode.toLowerCase()}`"
                   >
-                    {{ slotProps.value.countryCode }} <span class="px-1">|</span>
+                    {{ slotProps.value.countryCode }}
+                    <span class="px-1">|</span>
                   </div>
                   <div>{{ slotProps.value.name }}</div>
                 </div>
@@ -177,10 +193,7 @@
               />
             </InputGroup>
           </section>
-          <section
-            class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
-            v-if="isCalendarVisible"
-          >
+          <section class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto">
             <label :for="'start_date-' + i" class="primary-label">{{
               $t("type.validity_period")
             }}</label>
@@ -192,6 +205,7 @@
                   :id="'start_date-' + i"
                   v-model="startDate"
                   :min-date="minStartDate"
+                  :disabled="isCalendarDisabled"
                   :manualInput="false"
                   dateFormat="yy-mm-dd"
                 />
@@ -294,18 +308,52 @@ import { useAsyncData, useRoute } from "nuxt/app";
 import { usePlateValidation } from "~/composables/usePlateValidation";
 import { useVignetteInfo } from "~/composables/useVignetteInfo";
 import { useVignetteEndDate } from "~/composables/useVignetteEndDate";
+import { useCountiesValidation } from "~/composables/useCountiesValidation";
 import type { FormData, Countries, Counties } from "~/types/purchaseTypes.ts";
 import type { VignetteInfoResponse } from "~/types/types.ts";
 import countries from "~/data/countries";
 import counties from "~/data/counties";
-const selectedCounties = ref(["Baranya"]);
+const selectedCounties = ref<string[]>([]);
 const currentLanguage = ref(locale);
 const category = route.params.category;
 
 const isEuCountry = (country: any) => {
-  const euCountries = ["A", "B", "BG", "CY", "CZ", "D", "DK", "E", "EST", "FIN", "F", "GR", "HR", "H", "IRL", "I", "LT", "L", "LV", "M", "NA", "PL", "P", "RO", "S", "SLO", "SK"];
+  const euCountries = [
+    "A",
+    "B",
+    "BG",
+    "CY",
+    "CZ",
+    "D",
+    "DK",
+    "E",
+    "EST",
+    "FIN",
+    "F",
+    "GR",
+    "HR",
+    "H",
+    "IRL",
+    "I",
+    "LT",
+    "L",
+    "LV",
+    "M",
+    "NA",
+    "PL",
+    "P",
+    "RO",
+    "S",
+    "SLO",
+    "SK",
+  ];
   return euCountries.includes(country.countryCode);
 };
+
+const { validateCounties, errorCountiesMessage, isAtLeastOneCountySelected } =
+  useCountiesValidation(selectedCounties);
+
+validateCounties();
 
 //countries select
 const countryOptions = computed(() => {
@@ -320,7 +368,9 @@ const countyOptions = computed(() => {
 const formData = ref({
   multiples: [
     {
-      selectedCountry: countryOptions.value.find(country => country.countryCode === "H"),
+      selectedCountry: countryOptions.value.find(
+        (country) => country.countryCode === "H"
+      ),
       countryCode: "",
       plateNumber: "",
       startDate: new Date(),
@@ -451,8 +501,8 @@ if (vignetteInfo.value !== null) {
   );
 }
 
-const isCalendarVisible = computed(() => {
-  return (
+const isCalendarDisabled = computed(() => {
+  return !(
     vignetteInfo.value?.value.vignetteType.validityStartAcceptable ?? false
   );
 });

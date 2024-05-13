@@ -21,6 +21,7 @@ export default defineI18nConfig(() => ({
         regional_error: "Selecting a county is mandatory!",
         number_of_month: "How many months",
         validity_period: "Validity period",
+        is_at_least_one_county_selected: "Selection of one county is mandatory!",
         image: {
           alt_vignette: "Vignette EN",
           desktop_path: "under-plate-number-line_en_EN.svg",
@@ -60,6 +61,7 @@ export default defineI18nConfig(() => ({
         regional_error: "Die Auswahl eines Landkreises ist obligatorisch!",
         number_of_month: "Wie viele Monate",
         validity_period: "Gültigkeitszeitraum",
+        is_at_least_one_county_selected: "Die Auswahl eines Landkreises ist zwingend erforderlich!",
         image: {
           alt_vignette: "Vignette DE",
           desktop_path: "under-plate-number-line_de_DE.svg",
