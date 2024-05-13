@@ -1,7 +1,7 @@
 import type { Counties } from "~/types/purchaseTypes";
 
 export const counties: Counties = {
-  hu: [
+  'hu': [
     { name: "Bács-Kiskun megye", key: "Bács-Kiskun" },
     { name: "Jász-Nagykun-Szolnok megye", key: "Jász-Nagykun-Szolnok" },
     { name: "Baranya megye", key: "Baranya" },
@@ -24,7 +24,7 @@ export const counties: Counties = {
     { name: "Heves megye", key: "Heves" },
     { name: "Zala megye", key: "Zala" },
   ],
-  de: [
+  'de': [
     { name: "Bács-Kiskun Grafschaft", key: "Bács-Kiskun" },
     {
       name: "Jász-Nagykun-Szolnok Grafschaft",
@@ -53,7 +53,7 @@ export const counties: Counties = {
     { name: "Heves Grafschaft", key: "Heves" },
     { name: "Zala Grafschaft", key: "Zala" },
   ],
-  en: [
+  'en': [
     { name: "Bács-Kiskun county", key: "Bács-Kiskun" },
     { name: "Jász-Nagykun-Szolnok county", key: "Jász-Nagykun-Szolnok" },
     { name: "Baranya county", key: "Baranya" },

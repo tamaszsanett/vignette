@@ -296,12 +296,12 @@ const category = route.params.category;
 
 //countries select
 const countryOptions = computed(() => {
-  return countries[locale.value] as unknown as Countries;
+  return countries[locale.value] || [];
 });
 
 //counties select
 const countyOptions = computed(() => {
-  return counties[locale.value] as unknown as Counties;
+  return counties[locale.value] || [];
 });
 
 const formData = ref({
