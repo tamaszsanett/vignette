@@ -51,7 +51,7 @@
 }
 
 .p-calendar input {
-  @apply shadow-none px-2 py-3 bg-white hover:text-base-green text-lg cursor-pointer;
+  @apply shadow-none px-2 py-3 bg-white hover:text-base-green text-lg cursor-pointer text-center;
 }
 
 .p-calendar.p-calendar-disabled input {
@@ -68,6 +68,10 @@
 
 .p-datepicker td {
   @apply p-1;
+}
+
+.p-datepicker table td > span {
+  @apply cursor-pointer;
 }
 
 .p-datepicker-calendar {

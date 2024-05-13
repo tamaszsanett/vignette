@@ -5,7 +5,7 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
   const validateAllPlates = async (multiples: FormData[], t: Function) => {
     for (const item of multiples) {
       if (!item.selectedCountry || !item.plateNumber) {
-        item.invalidPlate = t("type.empty_plate_or_country");
+        item.invalidPlate = t("type.invalid_plate");
         continue;
       }
 
@@ -28,10 +28,8 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
         ) {
           item.invalidPlate =
             responseData.value.error || t("type.invalid_plate");
-          console.log("Invalid data for", item.plateNumber);
         } else {
           item.invalidPlate = "";
-          console.log("Valid data for", item.plateNumber);
         }
       } catch (error) {
         item.invalidPlate = t("type.error_validating_plate");

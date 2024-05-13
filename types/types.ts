@@ -14,18 +14,7 @@ export type ApiResponse = {
   };
 };
 
-export type VignetteInfoResponse = {
-  value: {
-    vignetteType: VignetteType;
-    numberOfMoths?: number;
-    counties?: County[];
-  };
-};
-
-export type County = {
-  vignetteCode: string;
-};
-
+// Types for the VignetteType data
 export type VignetteType = {
   vignetteCode: string;
   category: string;
@@ -39,6 +28,19 @@ export type VignetteType = {
   transactionFee: number;
 };
 
+// Types for County data
+export type County = {
+  vignetteCode: string;
+};
+
+// Main response type from the VignetteInfo API
+export type VignetteInfoResponse = {
+  value: {
+    vignetteType: VignetteType;
+    numberOfMonths?: number;
+    counties?: County[];
+  };
+};
 
 export type WidgetId = {
   widgetId: string;

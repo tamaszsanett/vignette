@@ -2,12 +2,17 @@
   @apply flex items-center justify-center gap-4 text-[1.25rem] leading-8 lg:text-3xl;
 }
 
-.purchase-step-2 .plate-num-before {
+.purchase-step-2 .plate-num-before-eu {
   background-image: url("../../public/img/purchase/euPlateNumberStarBg.svg");
   background-size: 15px;
   background-position: center 5px;
   border-radius: 5px 0 0 5px;
   @apply h-full w-10 flex justify-center items-end text-sm p-0 text-white bg-blue bg-no-repeat;
+}
+
+.purchase-step-2 .plate-num-before-non-eu {
+  border-radius: 5px 0 0 5px;
+  @apply h-full w-10 flex justify-center items-end text-sm p-0 border border-base-black text-base-black;
 }
 
 .purchase-step-2 .p-inputgroup-addon {
@@ -35,4 +40,20 @@
 .monthType[type="button"].focus {
   box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
   @apply bg-base-green text-white border-none;
+}
+
+.p-dropdown-items-wrapper ul {
+  @apply m-0;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  padding: 0.5rem 1rem;
+}
+
+.p-dropdown-panel .p-dropdown-header {
+  padding: 0.8rem 0.5rem 0.8rem 0.5rem;
+}
+
+.p-dropdown.p-inputwrapper.p-inputwrapper-filled.primary-select {
+  @apply px-0;
 }

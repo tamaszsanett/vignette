@@ -12,38 +12,85 @@
         alt="autópálya-matrica"
       />
     </header>
+
     <form
       class="pb-4 max-w-[800px] mx-auto"
       v-for="(item, i) in formData.multiples"
       :key="i"
     >
-      <h1 class="purchase-h1">
+      <div class="max-w-[800px] mx-auto">
+        <h1 class="purchase-h1">
+          <img
+            class="w-[45px]"
+            :src="'/img/purchase/' + category + '.svg'"
+            :alt="category + ' ' + $t('type.image.alt_vignette')"
+          />
+          <div class="flex items-center space-x-2">
+            <span>{{ vignetteCategory }} -</span>
+            <span v-if="durationType === 'DAY'"
+              >{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }})
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'WEEK'"
+              >{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'YEAR_11'"
+              >{{ $t("type.title.year_11") }}
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'YEAR'"
+              >{{ $t("type.title.annual") }}
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'MONTH'"
+              >{{ $t("type.title.monthly") }}
+              {{ $t("type.title.after_title") }}</span
+            >
+            <!-- more condition here -->
+          </div>
+        </h1>
+      </div>
+      <div
+        v-if="item.formShowError"
+        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+      >
         <img
-          class="w-[45px]"
-          :src="'/img/purchase/' + category + '.svg'"
-          :alt="category + ' ' + $t('type.image.alt_vignette')"
+          src="/img/purchase/danger-icon.svg"
+          alt="Hiba történt"
+          class="w-5 h-5"
+          style="width: 20px; height: 20px"
         />
-        <div class="flex items-center space-x-2">
-          <span>{{ vignetteCategory }} -</span>
-          <span v-if="durationType === 'WEEK'"
-            >{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
-            {{ $t("type.title.after_title") }}</span
-          >
-          <span v-if="durationType === 'YEAR_11'"
-            >{{ $t("type.title.year_11") }}
-            {{ $t("type.title.after_title") }}</span
-          >
-          <span v-if="durationType === 'YEAR'"
-            >{{ $t("type.title.annual") }}
-            {{ $t("type.title.after_title") }}</span
-          >
-          <span v-if="durationType === 'MONTH'"
-            >{{ $t("type.title.monthly") }}
-            {{ $t("type.title.after_title") }}</span
-          >
-          <!-- more condition here -->
+        <p class="error-message my-0">{{ emptyMessage }}</p>
+      </div>
+      <div
+        v-if="item.invalidPlate"
+        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+      >
+        <img
+          src="/img/purchase/danger-icon.svg"
+          alt="Hiba történt"
+          class="w-5 h-5"
+          style="width: 20px; height: 20px"
+        />
+        <p class="error-message my-0">{{ item.invalidPlate }}</p>
+      </div>
+      <section v-if="isRegionalVignette">
+        <div
+          v-if="!isAtLeastOneCountySelected"
+          class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+        >
+          <img
+            src="/img/purchase/danger-icon.svg"
+            alt="Hiba történt"
+            class="w-5 h-5"
+            style="width: 20px; height: 20px"
+          />
+          <p class="error-message my-0">
+            {{ errorCountiesMessage }}
+          </p>
         </div>
-      </h1>
+      </section>
       <section class="mx-auto my-8" v-if="isRegionalVignette">
         <div class="card flex justify-center">
           <div class="grid grid-cols-2 gap-1 sm:gap-2 sm:gap-x-20">
@@ -53,15 +100,14 @@
               class="flex items-center gap-x-2"
             >
               <Checkbox
-                :id="'county-' + county.key"
+                :input-id="county.key"
                 v-model="selectedCounties"
-                :inputId="'county-' + county.key"
-                name="county"
-                :value="county.name"
+                name="counties"
+                :value="county.key"
               />
               <label
                 class="primary-label text-sm md:text-base"
-                :for="'county-' + county.key"
+                :for="county.key"
                 >{{ county.name }}</label
               >
             </div>
@@ -83,61 +129,12 @@
               class="del absolute top-10 right-0 lg:top-4 lg:-right-10"
             ></button>
           </div>
-          <Inplace
-            class="w-full md:max-w-[350px] mx-auto flex justify-center"
-            v-if="durationType === 'MONTH'"
-          >
-            <template #display>{{ $t("type.more_month") }}</template>
-            <template #content class="w-full">
-              <div class="w-full flex gap-2">
-                <InputText
-                  type="button"
-                  class="monthType focus"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_1"
-                  value="1"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_2"
-                  value="2"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_3"
-                  value="3"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_4"
-                  value="4"
-                />
-                <InputText
-                  type="button"
-                  class="monthType"
-                  id="monthType"
-                  data-days="30"
-                  data-id="monthType_5"
-                  value="5"
-                />
-              </div>
-            </template>
-          </Inplace>
+
           <section
             class="card flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
           >
             <label :for="'country_mark' + i" class="primary-label">{{
-              $t("type.nationality_mark")
+              $t("type.car_country")
             }}</label>
             <Dropdown
               :id="'country_mark-' + i"
@@ -151,9 +148,10 @@
               <template #value="slotProps">
                 <div v-if="slotProps.value" class="flex items-center">
                   <div
-                    :class="`mr-2 flag flag-${slotProps.value.countryCode.toLowerCase()}`"
+                    :class="`mr-1 flag flag-${slotProps.value.countryCode.toLowerCase()}`"
                   >
-                    {{ slotProps.value.countryCode }} |
+                    {{ slotProps.value.countryCode }}
+                    <span class="px-1">|</span>
                   </div>
                   <div>{{ slotProps.value.name }}</div>
                 </div>
@@ -175,11 +173,20 @@
           </section>
           <section class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto">
             <label :for="'licence_plate-' + i" class="primary-label">{{
-              $t("type.licence_plate")
+              $t("type.licence_plate_number")
             }}</label>
             <InputGroup class="relative">
               <InputGroupAddon>
-                <div class="plate-num-before">
+                <div
+                  class="plate-num-before-non-eu"
+                  :class="{
+                    'plate-num-before-eu':
+                      item.selectedCountry && isEuCountry(item.selectedCountry),
+                    'plate-num-before-non-eu':
+                      item.selectedCountry &&
+                      !isEuCountry(item.selectedCountry),
+                  }"
+                >
                   {{
                     item.selectedCountry
                       ? item.selectedCountry.countryCode
@@ -195,32 +202,10 @@
               />
             </InputGroup>
           </section>
-          <div
-            v-if="item.formShowError"
-          
-            class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
-          >
-            <img
-              src="/img/purchase/danger-icon.svg"
-              alt="Hiba történt"
-              class="w-5 h-5"
-              style="width: 20px; height: 20px"
-            />
-            <p class="error-message my-0">{{ emptyMessage }}</p>
-          </div>
-          <div
-            v-if="item.invalidPlate"
-            class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
-          >
-            <img
-              src="/img/purchase/danger-icon.svg"
-              alt="Hiba történt"
-              class="w-5 h-5"
-              style="width: 20px; height: 20px"
-            />
-            <p class="error-message my-0">{{ item.invalidPlate }}</p>
-          </div>
-          <section class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto" v-if="isCalendarVisible">
+          <section class="flex flex-col gap-2 w-full md:max-w-[350px] mx-auto">
+            <label :for="'start_date-' + i" class="primary-label">{{
+              $t("type.validity_period")
+            }}</label>
             <div
               class="flex justify-center items-center space-x-4 calendar-wrapper"
             >
@@ -229,6 +214,8 @@
                   :id="'start_date-' + i"
                   v-model="startDate"
                   :min-date="minStartDate"
+                  :max-date="maxEndDate"
+                  :disabled="isCalendarDisabled"
                   :manualInput="false"
                   dateFormat="yy-mm-dd"
                 />
@@ -237,7 +224,6 @@
                 <Calendar
                   :id="'end_date-' + i"
                   v-model="endDate"
-                  :max-date="maxEndDate"
                   :disabled="true"
                   :manualInput="false"
                   dateFormat="yy-mm-dd"
@@ -245,26 +231,75 @@
               </div>
             </div>
           </section>
-
+          <section
+            class="w-full md:max-w-[350px] mx-auto"
+            v-if="durationType === 'MONTH'"
+          >
+            <label :for="'start_date-' + i" class="primary-label">{{
+              $t("type.number_of_month")
+            }}</label>
+            <div class="w-full flex gap-2">
+              <InputText
+                type="button"
+                class="monthType focus"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_1"
+                value="1"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_2"
+                value="2"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_3"
+                value="3"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_4"
+                value="4"
+              />
+              <InputText
+                type="button"
+                class="monthType"
+                id="monthType"
+                data-days="30"
+                data-id="monthType_5"
+                value="5"
+              />
+            </div>
+          </section>
           <button
+            v-if="lastAddedIndex === i"
             type="button"
-            @click.pervent="addMore"
+            @click.prevent="addMore(i)"
             class="base-link cursor-pointer flex w-auto justify-center mx-auto my-4"
           >
             {{ $t("type.add_another_widget") }}
           </button>
         </div>
-        <PurchaseBox />
+        <PurchaseCalculator
+          :title="'Title here'"
+          :list="calculatedVignettes"
+          bgClass="additional-styles"
+        />
       </div>
     </form>
     <section class="flex items-center flex-wrap justify-center gap-4">
       <a class="btn-gray" href="/">{{ $t("type.back") }}</a>
-      <button
-        class="btn btn-green cursor-pointer"
-        :class="{ disabled: disabled }"
-        :disabled="disabled"
-        @click.prevent="validate"
-      >
+      <button class="btn btn-green cursor-pointer" @click.prevent="validate">
         {{ $t("type.next") }}
       </button>
     </section>
@@ -286,53 +321,87 @@ import { ref, computed, onMounted, watch } from "vue";
 import { useAsyncData, useRoute } from "nuxt/app";
 import { usePlateValidation } from "~/composables/usePlateValidation";
 import { useVignetteInfo } from "~/composables/useVignetteInfo";
-import { useVignetteEndDate } from '~/composables/useVignetteEndDate';
-import type {
-  FormData,
-  Countries,
-  Counties,
-} from "~/types/purchaseTypes.ts";
-import type {
-  VignetteInfoResponse,
-} from "~/types/types.ts";
+import { useVignetteEndDate } from "~/composables/useVignetteEndDate";
+import { useCountiesValidation } from "~/composables/useCountiesValidation";
+import type { FormData, Countries, Counties } from "~/types/purchaseTypes.ts";
+import type { VignetteInfoResponse } from "~/types/types.ts";
 import countries from "~/data/countries";
 import counties from "~/data/counties";
-const selectedCounties = ref(["Baranya"]);
+const selectedCounties = ref<string[]>([]);
 const currentLanguage = ref(locale);
 const category = route.params.category;
 
+const isEuCountry = (country: any) => {
+  const euCountries = [
+    "A",
+    "B",
+    "BG",
+    "CY",
+    "CZ",
+    "D",
+    "DK",
+    "E",
+    "EST",
+    "FIN",
+    "F",
+    "GR",
+    "HR",
+    "H",
+    "IRL",
+    "I",
+    "LT",
+    "L",
+    "LV",
+    "M",
+    "NA",
+    "PL",
+    "P",
+    "RO",
+    "S",
+    "SLO",
+    "SK",
+  ];
+  return euCountries.includes(country.countryCode);
+};
+
+const { validateCounties, errorCountiesMessage, isAtLeastOneCountySelected } =
+  useCountiesValidation(selectedCounties);
+
+validateCounties();
+
 //countries select
 const countryOptions = computed(() => {
-  return countries[locale.value] as Countries;
+  return countries[locale.value] || [];
 });
 
 //counties select
 const countyOptions = computed(() => {
-  return counties[locale.value] as Counties;
+  return counties[locale.value] || [];
 });
 
 const formData = ref({
   multiples: [
     {
-      selectedCountry: undefined,
-      countryCode: undefined,
+      selectedCountry: countryOptions.value.find(
+        (country) => country.countryCode === "H"
+      ),
+      countryCode: "",
       plateNumber: "",
       startDate: new Date(),
       endDate: null,
       formShowError: false,
       invalidPlate: "",
     } as FormData,
-  ]
+  ],
 });
 
-const { showError, invalidPlate, validateAllPlates } = usePlateValidation(
+const { validateAllPlates } = usePlateValidation(
   "https://test-gw.voxpay.hu/Webshop.Vignette/ValidatePlateNumber"
 );
 
-const disabled = ref(true);
 const emptyMessage = ref("");
 
-const handleInputValidation = (index) => {
+const handleInputValidation = (index: number) => {
   const item = formData.value.multiples[index];
   if (item.plateNumber.trim() === "") {
     item.formShowError = true; // Show error if input is empty
@@ -343,38 +412,39 @@ const handleInputValidation = (index) => {
 };
 
 watch(
-  () => formData.value.multiples.map(item => item.plateNumber),
+  () => formData.value.multiples.map((item) => item.plateNumber),
   (newValues) => {
     newValues.forEach((_, index) => handleInputValidation(index));
   },
   { deep: true }
 );
 
-// Monitor changes in formData to dynamically update the form state
-watch(
-  formData,
-  () => {
-    disabled.value = formData.value.multiples.some(
-      (item) => !item.selectedCountry || item.plateNumber.trim() === ""
-    );
-  },
-  { deep: true }
-);
+const lastAddedIndex = ref(0);
 
-const addMore = () => {
-  formData.value.multiples.push({
-    selectedCountry: undefined,
-    countryCode: undefined,
+const addMore = (index: number) => {
+  const newItem = {
+    selectedCountry: countryOptions.value.find(
+      (country) => country.countryCode === "H"
+    ),
+    countryCode: "",
     plateNumber: "",
     startDate: new Date(),
     endDate: new Date(),
     formShowError: false,
     invalidPlate: "",
-  });
+  };
+
+  formData.value.multiples.splice(index + 1, 0, newItem);
+  lastAddedIndex.value = index + 1;
 };
 
 const remove = (index: number) => {
   formData.value.multiples.splice(index, 1);
+  if (formData.value.multiples.length - 1 >= index) {
+    lastAddedIndex.value = formData.value.multiples.length - 1; // Update to the new last index
+  } else {
+    lastAddedIndex.value = Math.max(0, formData.value.multiples.length - 1); // Reset to the last or 0
+  }
 };
 
 const validate = async () => {
@@ -387,10 +457,11 @@ watch(
     newValues.forEach((item, index) => {
       if (
         item.selectedCountry &&
-        item.selectedCountry.code !==
+        item.selectedCountry.countryCode !==
           formData.value.multiples[index].countryCode
       ) {
-        formData.value.multiples[index].countryCode = item.selectedCountry.code;
+        formData.value.multiples[index].countryCode =
+          item.selectedCountry.countryCode;
       }
     });
   },
@@ -404,30 +475,83 @@ const vignetteInfo = ref<VignetteInfoResponse | null>(null);
 const { endDate, fetchEndDate } = useVignetteEndDate();
 
 const startDate = ref(new Date());
+const validityStart = startDate.value.toISOString().split("T")[0];
 
 const numberOfVignettes = ref(1); // Default to 1, modify as necessary
 const minStartDate = computed(() => {
-  return vignetteInfo.value ? new Date(vignetteInfo.value.value.vignetteType.validityStartMin) : new Date();
+  return vignetteInfo.value
+    ? new Date(vignetteInfo.value.value.vignetteType.validityStartMin)
+    : new Date();
 });
 const maxEndDate = computed(() => {
-  return vignetteInfo.value ? new Date(vignetteInfo.value.value.vignetteType.validityStartMax) : new Date();
+  return vignetteInfo.value
+    ? new Date(vignetteInfo.value.value.vignetteType.validityStartMax)
+    : new Date();
 });
 
 // Watch for changes in startDate or numberOfVignettes and update the end date
-watch([startDate, numberOfVignettes], async () => {
-  if (vignetteInfo.value) {
-    await fetchEndDate(vignetteInfo.value.value.vignetteType.vignetteCode, startDate.value, numberOfVignettes.value);
-  }
-}, { immediate: true });
+watch(
+  () => startDate.value,
+  async () => {
+    if (vignetteInfo.value) {
+      await fetchEndDate(
+        vignetteInfo.value.value.vignetteType.vignetteCode,
+        startDate.value.toISOString().split("T")[0],
+        numberOfVignettes.value
+      );
+    }
+  },
+  { immediate: true }
+);
 
 const { fetchVignetteInfo } = useVignetteInfo();
 
 vignetteInfo.value = await fetchVignetteInfo();
 
-await fetchEndDate(vignetteInfo.value.value.vignetteType.vignetteCode, startDate.value, numberOfVignettes.value);
+//
+onMounted(async () => {
+  try {
+    const info = await fetchVignetteInfo();
+    if (info) vignetteInfo.value = info;
+    if (vignetteInfo.value) {
+      await fetchEndDate(
+        vignetteInfo.value.value.vignetteType.vignetteCode,
+        new Date().toISOString().split("T")[0],
+        1
+      );
+    }
+  } catch (error) {
+    console.error("Failed to load vignette info:", error);
+  }
+});
 
-const isCalendarVisible = computed(() => {
-  return vignetteInfo.value?.value.vignetteType.validityStartAcceptable ?? false;
+const calculatedVignettes = computed(() => {
+  return vignetteInfo.value
+    ? [
+        {
+          category: vignetteInfo.value.value.vignetteType.category,
+          durationType: vignetteInfo.value.value.vignetteType.durationType,
+          price: `${(
+            vignetteInfo.value.value.vignetteType.amount +
+            vignetteInfo.value.value.vignetteType.transactionFee
+          ).toString()} Ft`,
+        },
+      ]
+    : [];
+});
+
+if (vignetteInfo.value !== null) {
+  await fetchEndDate(
+    vignetteInfo.value.value.vignetteType.vignetteCode,
+    validityStart,
+    numberOfVignettes.value
+  );
+}
+
+const isCalendarDisabled = computed(() => {
+  return !(
+    vignetteInfo.value?.value.vignetteType.validityStartAcceptable ?? false
+  );
 });
 
 const isRegionalVignette = computed(

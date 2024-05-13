@@ -538,7 +538,7 @@ export const countries: Countries = {
     { name: "Rwanda", countryCode: "RWA" },
     { name: "Sweden", countryCode: "S" },
     { name: "Saudi Arabia", countryCode: "SA" },
-    { name: "Eswatini", countryCode: "SD" },
+    { name: "Swaziland", countryCode: "SD" },
     { name: "Singapore", countryCode: "SGP" },
     { name: "Suriname", countryCode: "SME" },
     { name: "Senegal", countryCode: "SN" },

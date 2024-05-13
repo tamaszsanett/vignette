@@ -7,6 +7,14 @@ export type Countries = {
   [key: string]: Country[];
 };
 
+export type InvoiceCountry = {
+  name: string;
+};
+
+export type InvoiceCountries = {
+  [key: string]: InvoiceCountry[];
+};
+
 export type Counties = {
   [key: string]: County[];
 };
@@ -16,7 +24,7 @@ export type County = {
   key: string;
 };
 
-//plate validation
+//plate validation form data
 
 export type FormData = {
   formShowError: boolean;
