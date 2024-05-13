@@ -290,7 +290,11 @@
             {{ $t("type.add_another_widget") }}
           </button>
         </div>
-        <PurchaseBox />
+        <PurchaseCalculator
+          :title="'Title here'"
+          :list="calculatedVignettes"
+          bgClass="additional-styles"
+        />
       </div>
     </form>
     <section class="flex items-center flex-wrap justify-center gap-4">
@@ -503,6 +507,38 @@ watch(
 const { fetchVignetteInfo } = useVignetteInfo();
 
 vignetteInfo.value = await fetchVignetteInfo();
+
+//
+onMounted(async () => {
+  try {
+    const info = await fetchVignetteInfo();
+    if (info) vignetteInfo.value = info;
+    if (vignetteInfo.value) {
+      await fetchEndDate(
+        vignetteInfo.value.value.vignetteType.vignetteCode,
+        new Date().toISOString().split("T")[0],
+        1
+      );
+    }
+  } catch (error) {
+    console.error("Failed to load vignette info:", error);
+  }
+});
+
+const calculatedVignettes = computed(() => {
+  return vignetteInfo.value
+    ? [
+        {
+          category: vignetteInfo.value.value.vignetteType.category,
+          durationType: vignetteInfo.value.value.vignetteType.durationType,
+          price: `${(
+            vignetteInfo.value.value.vignetteType.amount +
+            vignetteInfo.value.value.vignetteType.transactionFee
+          ).toString()} Ft`,
+        },
+      ]
+    : [];
+});
 
 if (vignetteInfo.value !== null) {
   await fetchEndDate(
