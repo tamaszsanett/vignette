@@ -125,9 +125,9 @@
               <template #value="slotProps">
                 <div v-if="slotProps.value" class="flex items-center">
                   <div
-                    :class="`mr-2 flag flag-${slotProps.value.countryCode.toLowerCase()}`"
+                    :class="`mr-1 flag flag-${slotProps.value.countryCode.toLowerCase()}`"
                   >
-                    {{ slotProps.value.countryCode }} |
+                    {{ slotProps.value.countryCode }} <span class="px-1">|</span>
                   </div>
                   <div>{{ slotProps.value.name }}</div>
                 </div>
@@ -153,7 +153,15 @@
             }}</label>
             <InputGroup class="relative">
               <InputGroupAddon>
-                <div class="plate-num-before">
+                <div
+                  :class="{
+                    'plate-num-before-eu':
+                      item.selectedCountry && isEuCountry(item.selectedCountry),
+                    'plate-num-before-non-eu':
+                      item.selectedCountry &&
+                      !isEuCountry(item.selectedCountry),
+                  }"
+                >
                   {{
                     item.selectedCountry
                       ? item.selectedCountry.countryCode
@@ -294,6 +302,11 @@ const selectedCounties = ref(["Baranya"]);
 const currentLanguage = ref(locale);
 const category = route.params.category;
 
+const isEuCountry = (country: any) => {
+  const euCountries = ["A", "B", "BG", "CY", "CZ", "D", "DK", "E", "EST", "FIN", "F", "GR", "HR", "H", "IRL", "I", "LT", "L", "LV", "M", "NA", "PL", "P", "RO", "S", "SLO", "SK"];
+  return euCountries.includes(country.countryCode);
+};
+
 //countries select
 const countryOptions = computed(() => {
   return countries[locale.value] || [];
@@ -307,7 +320,7 @@ const countyOptions = computed(() => {
 const formData = ref({
   multiples: [
     {
-      selectedCountry: undefined,
+      selectedCountry: countryOptions.value.find(country => country.countryCode === "H"),
       countryCode: "",
       plateNumber: "",
       startDate: new Date(),
@@ -382,7 +395,8 @@ watch(
         item.selectedCountry.countryCode !==
           formData.value.multiples[index].countryCode
       ) {
-        formData.value.multiples[index].countryCode = item.selectedCountry.countryCode;
+        formData.value.multiples[index].countryCode =
+          item.selectedCountry.countryCode;
       }
     });
   },
@@ -396,6 +410,7 @@ const vignetteInfo = ref<VignetteInfoResponse | null>(null);
 const { endDate, fetchEndDate } = useVignetteEndDate();
 
 const startDate = ref(new Date());
+const validityStart = startDate.value.toISOString().split("T")[0];
 
 const numberOfVignettes = ref(1); // Default to 1, modify as necessary
 const minStartDate = computed(() => {
@@ -411,12 +426,12 @@ const maxEndDate = computed(() => {
 
 // Watch for changes in startDate or numberOfVignettes and update the end date
 watch(
-  [startDate, numberOfVignettes],
+  () => startDate.value,
   async () => {
     if (vignetteInfo.value) {
       await fetchEndDate(
         vignetteInfo.value.value.vignetteType.vignetteCode,
-        startDate.value,
+        startDate.value.toISOString().split("T")[0],
         numberOfVignettes.value
       );
     }
@@ -428,11 +443,13 @@ const { fetchVignetteInfo } = useVignetteInfo();
 
 vignetteInfo.value = await fetchVignetteInfo();
 
-await fetchEndDate(
-  vignetteInfo.value.value.vignetteType.vignetteCode,
-  startDate.value,
-  numberOfVignettes.value
-);
+if (vignetteInfo.value !== null) {
+  await fetchEndDate(
+    vignetteInfo.value.value.vignetteType.vignetteCode,
+    validityStart,
+    numberOfVignettes.value
+  );
+}
 
 const isCalendarVisible = computed(() => {
   return (

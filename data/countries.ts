@@ -1,7 +1,7 @@
 import type { Countries } from "~/types/purchaseTypes";
 
 export const countries: Countries = {
-  'hu': [
+  hu: [
     { name: "Magyarország", countryCode: "H" },
     { name: "Szlovákia", countryCode: "SK" },
     { name: "Ausztria", countryCode: "A" },
@@ -194,7 +194,7 @@ export const countries: Countries = {
     { name: "Puerto Rico", countryCode: "PR" },
     { name: "Koszovó", countryCode: "RKS" },
   ],
-  'de': [
+  de: [
     { name: "Ungarn", countryCode: "H" },
     { name: "Slowakei", countryCode: "SK" },
     { name: "Österreich", countryCode: "A" },
@@ -387,7 +387,7 @@ export const countries: Countries = {
     { name: "Puerto Rico", countryCode: "PR" },
     { name: "Kosovo", countryCode: "RKS" },
   ],
-  'en': [
+  en: [
     { name: "Hungary", countryCode: "H" },
     { name: "Slovakia", countryCode: "SK" },
     { name: "Austria", countryCode: "A" },
@@ -538,7 +538,7 @@ export const countries: Countries = {
     { name: "Rwanda", countryCode: "RWA" },
     { name: "Sweden", countryCode: "S" },
     { name: "Saudi Arabia", countryCode: "SA" },
-    { name: "Eswatini", countryCode: "SD" },
+    { name: "Swaziland", countryCode: "SD" },
     { name: "Singapore", countryCode: "SGP" },
     { name: "Suriname", countryCode: "SME" },
     { name: "Senegal", countryCode: "SN" },
