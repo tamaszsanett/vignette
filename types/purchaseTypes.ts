@@ -24,7 +24,7 @@ export type County = {
   key: string;
 };
 
-//plate validation
+//plate validation form data
 
 export type FormData = {
   formShowError: boolean;

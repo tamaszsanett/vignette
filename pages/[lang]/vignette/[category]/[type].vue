@@ -12,38 +12,45 @@
         alt="autópálya-matrica"
       />
     </header>
+
     <form
       class="pb-4 max-w-[800px] mx-auto"
       v-for="(item, i) in formData.multiples"
       :key="i"
     >
-      <h1 class="purchase-h1">
-        <img
-          class="w-[45px]"
-          :src="'/img/purchase/' + category + '.svg'"
-          :alt="category + ' ' + $t('type.image.alt_vignette')"
-        />
-        <div class="flex items-center space-x-2">
-          <span>{{ vignetteCategory }} -</span>
-          <span v-if="durationType === 'WEEK'"
-            >{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
-            {{ $t("type.title.after_title") }}</span
-          >
-          <span v-if="durationType === 'YEAR_11'"
-            >{{ $t("type.title.year_11") }}
-            {{ $t("type.title.after_title") }}</span
-          >
-          <span v-if="durationType === 'YEAR'"
-            >{{ $t("type.title.annual") }}
-            {{ $t("type.title.after_title") }}</span
-          >
-          <span v-if="durationType === 'MONTH'"
-            >{{ $t("type.title.monthly") }}
-            {{ $t("type.title.after_title") }}</span
-          >
-          <!-- more condition here -->
-        </div>
-      </h1>
+      <div class="max-w-[800px] mx-auto">
+        <h1 class="purchase-h1">
+          <img
+            class="w-[45px]"
+            :src="'/img/purchase/' + category + '.svg'"
+            :alt="category + ' ' + $t('type.image.alt_vignette')"
+          />
+          <div class="flex items-center space-x-2">
+            <span>{{ vignetteCategory }} -</span>
+            <span v-if="durationType === 'DAY'"
+              >{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }})
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'WEEK'"
+              >{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'YEAR_11'"
+              >{{ $t("type.title.year_11") }}
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'YEAR'"
+              >{{ $t("type.title.annual") }}
+              {{ $t("type.title.after_title") }}</span
+            >
+            <span v-if="durationType === 'MONTH'"
+              >{{ $t("type.title.monthly") }}
+              {{ $t("type.title.after_title") }}</span
+            >
+            <!-- more condition here -->
+          </div>
+        </h1>
+      </div>
       <div
         v-if="item.formShowError"
         class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
@@ -122,6 +129,7 @@
               class="del absolute top-10 right-0 lg:top-4 lg:-right-10"
             ></button>
           </div>
+
           <section
             class="card flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
           >
@@ -170,6 +178,7 @@
             <InputGroup class="relative">
               <InputGroupAddon>
                 <div
+                  class="plate-num-before-non-eu"
                   :class="{
                     'plate-num-before-eu':
                       item.selectedCountry && isEuCountry(item.selectedCountry),
@@ -205,6 +214,7 @@
                   :id="'start_date-' + i"
                   v-model="startDate"
                   :min-date="minStartDate"
+                  :max-date="maxEndDate"
                   :disabled="isCalendarDisabled"
                   :manualInput="false"
                   dateFormat="yy-mm-dd"
@@ -214,7 +224,6 @@
                 <Calendar
                   :id="'end_date-' + i"
                   v-model="endDate"
-                  :max-date="maxEndDate"
                   :disabled="true"
                   :manualInput="false"
                   dateFormat="yy-mm-dd"
@@ -273,8 +282,9 @@
             </div>
           </section>
           <button
+            v-if="lastAddedIndex === i"
             type="button"
-            @click.pervent="addMore"
+            @click.prevent="addMore(i)"
             class="base-link cursor-pointer flex w-auto justify-center mx-auto my-4"
           >
             {{ $t("type.add_another_widget") }}
@@ -405,31 +415,32 @@ watch(
   { deep: true }
 );
 
-// Monitor changes in formData to dynamically update the form state
-/* watch(
-  formData,
-  () => {
-    disabled.value = formData.value.multiples.some(
-      (item) => !item.selectedCountry || item.plateNumber.trim() === ""
-    );
-  },
-  { deep: true }
-); */
+const lastAddedIndex = ref(0);
 
-const addMore = () => {
-  formData.value.multiples.push({
-    selectedCountry: undefined,
+const addMore = (index: number) => {
+  const newItem = {
+    selectedCountry: countryOptions.value.find(
+      (country) => country.countryCode === "H"
+    ),
     countryCode: "",
     plateNumber: "",
     startDate: new Date(),
     endDate: new Date(),
     formShowError: false,
     invalidPlate: "",
-  });
+  };
+
+  formData.value.multiples.splice(index + 1, 0, newItem);
+  lastAddedIndex.value = index + 1;
 };
 
 const remove = (index: number) => {
   formData.value.multiples.splice(index, 1);
+  if (formData.value.multiples.length - 1 >= index) {
+    lastAddedIndex.value = formData.value.multiples.length - 1; // Update to the new last index
+  } else {
+    lastAddedIndex.value = Math.max(0, formData.value.multiples.length - 1); // Reset to the last or 0
+  }
 };
 
 const validate = async () => {
