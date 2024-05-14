@@ -27,6 +27,8 @@ export default defineI18nConfig(() => ({
         country_error: "Country required!",
         image: {
           alt_vignette: "Vignette",
+          desktop_path: "under-plate-number-line_en_EN.svg",
+          mobile_path: "under-plate-number-line_en_EN.svg",
         },
         title: {
           year_11: "County region",
@@ -207,7 +209,9 @@ export default defineI18nConfig(() => ({
         plate_num_placeholder: "e.g. ABC-123",
         country_error: "Country required!",
         image: {
-          alt_vignette: "Vignette DE",
+          alt_vignette: "Vignette",
+          desktop_path: "under-plate-number-line_de_DE.svg",
+          mobile_path: "under-plate-number-line_de_DE.svg",
         },
         title: {
           year_11: "Landkreisregion",
