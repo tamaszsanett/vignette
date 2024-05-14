@@ -289,6 +289,13 @@ export type CartItemProperty = {
   value: string;
 }
 
+export type CartItemToUpdate = {
+  cartKey: string | undefined;
+  cartItemKey: string;
+  quantity: number;
+  propertiesToUpdate: CartItemProperty[];
+}
+
 export type PurchaseVignettesAnonymWithOrderResponse = {
   value: {
     status: string;

@@ -27,6 +27,7 @@ export type County = {
 //plate validation form data
 
 export type FormData = {
+  itemKey: string;
   formShowError: boolean;
   invalidPlate: string;
   selectedCountry: { name: string; countryCode: string } | undefined;
@@ -37,5 +38,5 @@ export type FormData = {
 }
 
 export type PlateValidation = {
-  validateAllPlates: (multiples: FormData[], t: Function) => Promise<void>;
+  validateAllPlates: (multiples: FormData[], t: Function) => Promise<boolean>;
 }

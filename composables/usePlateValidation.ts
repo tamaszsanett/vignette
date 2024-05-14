@@ -3,9 +3,12 @@ import type { FormData, PlateValidation } from "~/types/purchaseTypes";
 export function usePlateValidation(apiEndpoint: string): PlateValidation {
 
   const validateAllPlates = async (multiples: FormData[], t: Function) => {
+    var hasError = false;
+
     for (const item of multiples) {
       if (!item.selectedCountry || !item.plateNumber) {
         item.invalidPlate = t("type.invalid_plate");
+        hasError = true;
         continue;
       }
 
@@ -28,17 +31,21 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
         ) {
           item.invalidPlate =
             responseData.value.error || t("type.invalid_plate");
+            hasError = true;
         } else {
           item.invalidPlate = "";
         }
       } catch (error) {
         item.invalidPlate = t("type.error_validating_plate");
         console.error("Error validating data:", error);
+        hasError = true;
       }
     }
+
+    return hasError;
   };
 
   return {
-    validateAllPlates,
+    validateAllPlates
   };
 }

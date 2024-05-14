@@ -18,8 +18,8 @@ export default defineI18nConfig(() => ({
         day: "day",
         year: "year",
         select_country_placeholder: "Select a Country",
-        regional_error: "Selecting a county is mandatory!",
-        number_of_month: "How many months",
+        regional_error: "Choose at least one county!",
+        number_of_month: "Number of month",
         validity_period: "Validity period",
         is_at_least_one_county_selected:
           "Selection of one county is mandatory!",

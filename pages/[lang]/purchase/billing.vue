@@ -16,8 +16,8 @@
       <h1 class="purchase-h1">
         <img
           class="w-[45px]"
-          :src="'/img/purchase/' + category + '.svg'"
-          :alt="category + ' ' + $t('type.image.alt_vignette')"
+          :src="'/img/purchase/' + 'D1' + '.svg'"
+          :alt="'D1' + ' ' + $t('type.image.alt_vignette')"
         />
         <span class="ml-2">{{ $t("billing.title") }}</span>
       </h1>
@@ -295,7 +295,7 @@ const cartKey = useCookie("cartKey");
 if (cartKey.value == null) {
   cartKey.value = uuid.v4();
 }
-cartKey.value = "3fa85f64-5717-4562-b3fc-2c963f66afa8";
+//cartKey.value = "3fa85f64-5717-4562-b3fc-2c963f66afa8";
 // Betöltjük a korábbi order adatait, ha van order-id-nk.
 
 const commmonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";

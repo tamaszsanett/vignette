@@ -51,7 +51,7 @@
                     </tr>
                     <tr v-for="vignette in purchaseData.value.vignettes" class="failed-order">
                       <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
-                      <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - {{ vignette.validTo.substring(0, 10).replaceAll("-", ".") }}</td>
+                      <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - {{ vignette.validTo?.substring(0, 10).replaceAll("-", ".") }}</td>
                       <td class="text-info">
                         TODO translate me: {{ vignette.vignetteType }}<br />
                         <strong class="uppercase">{{ vignette.status }}</strong><br />

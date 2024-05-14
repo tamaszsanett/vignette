@@ -279,11 +279,11 @@ async function sendForm() {
       sourceShop: "hungary-vignette.eu/" + currentLanguage.value,
       sourcePlatform: "web",
       sourceForm: "Standard",
-      redirectURL: "http://localhost:3000/"+currentLanguage.value + "/purchase/status/"+orderData.value.trid,
+      redirectURL: "https://new-hungary-vignette.voxpay.hu/"+currentLanguage.value + "/purchase/status/"+orderData.value.trid,
       cultureKey: currentLanguage.value
     }
   });
-  console.log("http://localhost:3000/"+currentLanguage.value + "/purchase/status/"+orderData.value.trid);
+  
   if (!response.isSuccess) {
     errorMessage.value = "";
 
