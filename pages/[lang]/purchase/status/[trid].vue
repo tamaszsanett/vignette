@@ -25,6 +25,7 @@ import type { GetPurchaseResponse } from "~/types/types";
 import ConfirmPageSuccessful from "~/components/widget/ConfirmPageSuccessful.vue";
 import ConfirmPageFailed from "~/components/widget/ConfirmPageFailed.vue";
 import ConfirmPageUnderPayment from "~/components/widget/ConfirmPageUnderPayment.vue";
+const { t, locale } = useI18n();
 
 const route = useRoute();
 const currentLanguage = ref("en");
