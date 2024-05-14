@@ -12,86 +12,39 @@
         alt="autópálya-matrica"
       />
     </header>
-
-    <form
-      class="pb-4 max-w-[800px] mx-auto"
-      v-for="(item, i) in formData.multiples"
-      :key="i"
-    >
-      <div class="max-w-[800px] mx-auto">
-        <h1 class="purchase-h1">
-          <img
-            class="w-[45px]"
-            :src="'/img/purchase/' + category + '.svg'"
-            :alt="category + ' ' + $t('type.image.alt_vignette')"
-          />
-          <div class="flex items-center space-x-2">
-            <span>{{ vignetteCategory }} -</span>
-            <span v-if="durationType === 'DAY'"
-              >{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }})
-              {{ $t("type.title.after_title") }}</span
-            >
-            <span v-if="durationType === 'WEEK'"
-              >{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
-              {{ $t("type.title.after_title") }}</span
-            >
-            <span v-if="durationType === 'YEAR_11'"
-              >{{ $t("type.title.year_11") }}
-              {{ $t("type.title.after_title") }}</span
-            >
-            <span v-if="durationType === 'YEAR'"
-              >{{ $t("type.title.annual") }}
-              {{ $t("type.title.after_title") }}</span
-            >
-            <span v-if="durationType === 'MONTH'"
-              >{{ $t("type.title.monthly") }}
-              {{ $t("type.title.after_title") }}</span
-            >
-            <!-- more condition here -->
-          </div>
-        </h1>
-      </div>
-      <div
-        v-if="item.formShowError"
-        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
-      >
+    <section class="max-w-[800px] mx-auto">
+      <h1 class="purchase-h1">
         <img
-          src="/img/purchase/danger-icon.svg"
-          alt="Hiba történt"
-          class="w-5 h-5"
-          style="width: 20px; height: 20px"
+          class="w-[45px]"
+          :src="'/img/purchase/' + category + '.svg'"
+          :alt="category + ' ' + $t('type.image.alt_vignette')"
         />
-        <p class="error-message my-0">{{ emptyMessage }}</p>
-      </div>
-      <div
-        v-if="item.invalidPlate"
-        class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
-      >
-        <img
-          src="/img/purchase/danger-icon.svg"
-          alt="Hiba történt"
-          class="w-5 h-5"
-          style="width: 20px; height: 20px"
-        />
-        <p class="error-message my-0">{{ item.invalidPlate }}</p>
-      </div>
-      <section v-if="isRegionalVignette">
-        <div
-          v-if="!isAtLeastOneCountySelected"
-          class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
-        >
-          <img
-            src="/img/purchase/danger-icon.svg"
-            alt="Hiba történt"
-            class="w-5 h-5"
-            style="width: 20px; height: 20px"
-          />
-          <p class="error-message my-0">
-            {{ errorCountiesMessage }}
-          </p>
+        <div class="flex items-center space-x-2">
+          <span>{{ vignetteCategory }} -</span>
+          <span v-if="durationType === 'DAY'"
+            >{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }})
+            {{ $t("type.title.after_title") }}</span
+          >
+          <span v-if="durationType === 'WEEK'"
+            >{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
+            {{ $t("type.title.after_title") }}</span
+          >
+          <span v-if="durationType === 'YEAR_11'"
+            >{{ $t("type.title.year_11") }}
+            {{ $t("type.title.after_title") }}</span
+          >
+          <span v-if="durationType === 'YEAR'"
+            >{{ $t("type.title.annual") }}
+            {{ $t("type.title.after_title") }}</span
+          >
+          <span v-if="durationType === 'MONTH'"
+            >{{ $t("type.title.monthly") }}
+            {{ $t("type.title.after_title") }}</span
+          >
+          <!-- more condition here -->
         </div>
-      </section>
-      <section class="mx-auto my-8" v-if="isRegionalVignette">
+      </h1>
+      <div class="mx-auto my-8" v-if="isRegionalVignette">
         <div class="card flex justify-center">
           <div class="grid grid-cols-2 gap-1 sm:gap-2 sm:gap-x-20">
             <div
@@ -113,7 +66,33 @@
             </div>
           </div>
         </div>
-      </section>
+      </div>
+      <div
+        class="w-full md:max-w-[350px] mx-auto mb-5"
+        v-if="durationType === 'MONTH'"
+      >
+        <label for="" class="primary-label">{{
+          $t("type.number_of_month")
+        }}</label>
+        <div class="w-full flex gap-2">
+          <InputText
+            type="button"
+            v-for="n in 5"
+            :key="n"
+            id="monthType"
+            class="monthType"
+            :value="n"
+            :class="{ focus: numberOfVignettes === n }"
+            @click="numberOfVignettes = n"
+          />
+        </div>
+      </div>
+    </section>
+    <form
+      class="pb-4 max-w-[800px] mx-auto"
+      v-for="(item, i) in formData.multiples"
+      :key="i"
+    >
       <div class="w-full">
         <div class="flex flex-col gap-4">
           <div
@@ -129,7 +108,46 @@
               class="del absolute top-10 right-0 lg:top-4 lg:-right-10"
             ></button>
           </div>
-
+          <div
+            v-if="item.formShowError"
+            class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+          >
+            <img
+              src="/img/purchase/danger-icon.svg"
+              alt="Hiba történt"
+              class="w-5 h-5"
+              style="width: 20px; height: 20px"
+            />
+            <p class="error-message my-0">{{ emptyMessage }}</p>
+          </div>
+          <div
+            v-if="item.invalidPlate"
+            class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+          >
+            <img
+              src="/img/purchase/danger-icon.svg"
+              alt="Hiba történt"
+              class="w-5 h-5"
+              style="width: 20px; height: 20px"
+            />
+            <p class="error-message my-0">{{ item.invalidPlate }}</p>
+          </div>
+          <section v-if="isRegionalVignette">
+            <div
+              v-if="!isAtLeastOneCountySelected"
+              class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+            >
+              <img
+                src="/img/purchase/danger-icon.svg"
+                alt="Hiba történt"
+                class="w-5 h-5"
+                style="width: 20px; height: 20px"
+              />
+              <p class="error-message my-0">
+                {{ errorCountiesMessage }}
+              </p>
+            </div>
+          </section>
           <section
             class="card flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
           >
@@ -231,56 +249,6 @@
               </div>
             </div>
           </section>
-          <section
-            class="w-full md:max-w-[350px] mx-auto"
-            v-if="durationType === 'MONTH'"
-          >
-            <label :for="'start_date-' + i" class="primary-label">{{
-              $t("type.number_of_month")
-            }}</label>
-            <div class="w-full flex gap-2">
-              <InputText
-                type="button"
-                class="monthType focus"
-                id="monthType"
-                data-days="30"
-                data-id="monthType_1"
-                value="1"
-              />
-              <InputText
-                type="button"
-                class="monthType"
-                id="monthType"
-                data-days="30"
-                data-id="monthType_2"
-                value="2"
-              />
-              <InputText
-                type="button"
-                class="monthType"
-                id="monthType"
-                data-days="30"
-                data-id="monthType_3"
-                value="3"
-              />
-              <InputText
-                type="button"
-                class="monthType"
-                id="monthType"
-                data-days="30"
-                data-id="monthType_4"
-                value="4"
-              />
-              <InputText
-                type="button"
-                class="monthType"
-                id="monthType"
-                data-days="30"
-                data-id="monthType_5"
-                value="5"
-              />
-            </div>
-          </section>
           <button
             v-if="lastAddedIndex === i"
             type="button"
@@ -291,7 +259,7 @@
           </button>
         </div>
         <PurchaseCalculator
-          :title="'Title here'"
+          :title="`${$t('type.purchase_calculator.title')}`"
           :list="calculatedVignettes"
           bgClass="additional-styles"
         />
@@ -489,6 +457,28 @@ const maxEndDate = computed(() => {
     : new Date();
 });
 
+const updateMonthEndDate = async () => {
+  const vignetteCode = "D130";
+  const validityStart = new Date().toISOString().split("T")[0];
+
+  const response = await fetchEndDate(
+    vignetteCode,
+    validityStart,
+    numberOfVignettes.value
+  );
+  if (response && response.isSuccess) {
+    console.log("End date fetched:", endDate.value);
+  } else {
+    console.error("Failed to fetch end date");
+  }
+};
+
+watch(numberOfVignettes, (newValue, oldValue) => {
+  if (newValue !== oldValue) {
+    updateMonthEndDate();
+  }
+});
+
 // Watch for changes in startDate or numberOfVignettes and update the end date
 watch(
   () => startDate.value,
@@ -532,8 +522,9 @@ const calculatedVignettes = computed(() => {
           category: vignetteInfo.value.value.vignetteType.category,
           durationType: vignetteInfo.value.value.vignetteType.durationType,
           price: `${(
-            vignetteInfo.value.value.vignetteType.amount +
-            vignetteInfo.value.value.vignetteType.transactionFee
+            (vignetteInfo.value.value.vignetteType.amount +
+              vignetteInfo.value.value.vignetteType.transactionFee) *
+            numberOfVignettes.value
           ).toString()} Ft`,
         },
       ]
