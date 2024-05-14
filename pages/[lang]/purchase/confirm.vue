@@ -19,20 +19,20 @@
           src="/img/purchase/D1.svg"
           alt="autópálya-matrica"
         />
-        <span class="ml-2">Check the entered data</span>
+        <span class="ml-2">{{ $t("confirm.main_title") }}</span>
       </h1>
       
       <div class="w-full md:max-w-[500px] mx-auto flex flex-col gap-2 mt-2">
         <div class="text-sm lg:text-lg">
           <div class="">
             <div>
-              Phone number:
+              {{ $t("confirm.phone_number") }}
               <a class="base-link" href="#">{{ orderData.value.phoneNumber  }}</a>
             </div>
           </div>
           <div class="">
             <div>
-              E-mail address:
+              {{ $t("confirm.email_address") }}
               <a class="base-link" href="#"
                 >{{ orderData.value.userEmail }}</a
               >
@@ -42,44 +42,44 @@
         <hr class="dashed-hr" />
         <div class="text-sm lg:text-lg" v-for="item in orderData.value.cartItems">
           <div class="flex items-center">
-            <div class="half-width">Vignette type</div>
+            <div class="half-width">{{ $t("confirm.vignette_info.vignette_type_title") }}</div>
             <div class="half-width">{{ item.productCode }}</div>
           </div>
           <div class="flex items-center">
-            <div class="half-width">Plate number:</div>
+            <div class="half-width">{{ $t("confirm.vignette_info.plate_number") }}</div>
             <div class="half-width">{{ item.properties.find(x => x.key == "PlateNumber")?.value ?? "" }}</div>
           </div>
           <div class="flex items-center">
-            <div class="half-width">Nationality mark</div>
+            <div class="half-width">{{ $t("confirm.vignette_info.car_country") }}</div>
             <div class="half-width">{{ item.properties.find(x => x.key == "CountryCode")?.value ?? "" }}</div>
           </div>
           <div class="flex items-center vignette-validity-start">
-            <div class="half-width">Validity interval</div>
+            <div class="half-width">{{ $t("confirm.vignette_info.validity_period") }}</div>
             <div class="half-width">{{ item.properties.find(x => x.key == "ValidityStart")?.value ?? "" }} - {{ item.properties.find(x => x.key == "ValidityEnd")?.value ?? "" }}</div>
           </div>
         </div>
         <hr class="dashed-hr" />
         <div v-if="orderData.value.needInvoice">
-          <h2 class="v-shop-h2">Billing information</h2>
+          <h2 class="v-shop-h2">{{ $t("confirm.billing_info.title") }}</h2>
           <div class="invoice-data text-sm lg:text-lg">
             <div class="flex items-center">
-              <div class="half-width">Name / Company name:</div>
+              <div class="half-width">{{ $t("confirm.billing_info.name_title") }}</div>
               <div class="half-width">{{ orderData.value.invoiceName }}</div>
             </div>
             <div class="flex items-center">
-              <div class="half-width">Country:</div>
+              <div class="half-width">{{ $t("confirm.billing_info.country") }}</div>
               <div class="half-width">{{ orderData.value.invoiceCountry }}</div>
             </div>
             <div class="flex items-center">
-              <div class="half-width">Zip code</div>
+              <div class="half-width">{{ $t("confirm.billing_info.zip_code") }}</div>
               <div class="half-width">{{ orderData.value.invoicePostalCode }}</div>
             </div>
             <div class="flex items-center">
-              <div class="half-width">City</div>
+              <div class="half-width">{{ $t("confirm.billing_info.city") }}</div>
               <div class="half-width">{{ orderData.value.invoiceCity }}</div>
             </div>
             <div class="flex items-center">
-              <div class="half-width">Address (street, number)</div>
+              <div class="half-width">{{ $t("confirm.billing_info.address") }}</div>
               <div class="half-width">
                 {{ orderData.value.invoiceStreetAddress }}
               </div>
@@ -89,15 +89,15 @@
         <hr class="dashed-hr" />
         <div class="text-sm lg:text-lg w-full">
           <div class="flex items-center">
-            <div class="half-width">Vignette price</div>
+            <div class="half-width">{{ $t("confirm.price.price_title") }}</div>
             <div class="half-width">{{ Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(sumVignettePrice) }}</div>
           </div>
           <div class="flex items-center">
-            <div class="half-width">Convenience fee</div>
+            <div class="half-width">{{ $t("confirm.price.convenience_fee") }}</div>
             <div class="half-width">{{ Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(sumConvenienceFee) }}</div>
           </div>
           <div class="flex items-center">
-            <div class="half-width">Total</div>
+            <div class="half-width">{{ $t("confirm.price.total") }}</div>
             <div class="half-width">{{ Intl.NumberFormat("de-DE", { style: "currency", currency: "EUR" }).format(sum) }}</div>
           </div>
         </div>
@@ -115,7 +115,7 @@
         <p class="error-message my-0">{{ errorMessage }}</p>
       </div>
 
-        <h2 class="v-shop-h2">Choice of payment method</h2>
+        <h2 class="v-shop-h2">{{ $t("confirm.payment.title") }}</h2>
         <div class="payment-method">
           <div class="flex items-center gap-2">
             <RadioButton
@@ -128,7 +128,7 @@
             <label
               for="Payment_Barion"
               class="primary-label text-lg font-normal"
-              >Bank card - Barion</label
+              >{{ $t("confirm.payment.card_type_label_barion") }}</label
             >
           </div>
           <Accordion
@@ -140,9 +140,7 @@
               header="Payment takes place through Barion’s secure payment page."
             >
               <p class="m-0">
-                Instead of entering the bank card data on the Barion payment
-                interface, you can also choose the Barion wallet, Apple Pay or
-                Google Pay payment option.
+                {{ $t("confirm.payment.barion_desc") }}
               </p>
             </AccordionTab>
           </Accordion>
@@ -158,7 +156,7 @@
               for="NewsletterSubscription"
               class="primary-label text-sm font-normal"
             >
-              Subscribe vignette newsletter!
+            {{ $t("confirm.payment.subscribe_label") }}
             </label>
           </section>
         </div>
@@ -173,29 +171,14 @@
               for="DatasAreCorrect"
               class="primary-label text-white text-sm font-normal"
             >
-              I state that I have read and accepted the
-              <a
-                class="whiteLink"
-                href="https://www.new.hungary-vignette.eu/gtcc"
-                target="_blank"
-                >General Terms and Conditions of Contract</a
-              >
-              as well as the
-              <a
-                class="whiteLink"
-                target="_blank"
-                href="https://www.new.hungary-vignette.eu/privacy"
-                >Privacy Statement</a
-              >
-              and I consent to the data management contained therein. I accept
-              the terms and conditions of use.
+            {{ $t("confirm.payment.terms_label") }}
             </label>
           </section>
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
-          <a class="btn-gray" href="/">Back</a>
+          <a class="btn-gray" href="/">{{ $t("payment.back") }}</a>
           <Button class="greenButton" @click="sendForm()"
-            >Order vignette</Button
+            >{{ $t("payment.order_vignette_btn_title") }}</Button
           >
         </section>
       </div>
@@ -215,6 +198,8 @@
 import { ref, computed } from "vue";
 import { useRoute } from "nuxt/app";
 import type { GetOrderRespose, PurchaseVignettesAnonymWithOrderResponse } from "~/types/types";
+const { t, locale } = useI18n();
+
 
 /// ----------------- LOAD LANGUAGE -----------------------
 
