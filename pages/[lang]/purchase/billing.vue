@@ -14,12 +14,31 @@
     </header>
     <section class="max-w-[800px] mx-auto">
       <h1 class="purchase-h1">
-        <img
-          class="w-[45px]"
-          :src="'/img/purchase/' + 'D1' + '.svg'"
-          :alt="'D1' + ' ' + $t('type.image.alt_vignette')"
-        />
-        <span class="ml-2">{{ $t("billing.title") }}</span>
+        <template v-for="(image, index) in imageMapping">
+          <img
+            v-if="
+              orderData.value.cartItems.find(
+                (item) => item.productCode === image.code
+              )
+            "
+            :key="index"
+            class="w-[45px]"
+            :src="image.src"
+            :alt="image.code + ' ' + $t('type.image.alt_vignette')"
+          />
+        </template>
+        <div
+          v-if="orderData.value.cartItems.length > 0"
+          class="flex items-center space-x-2"
+        >
+          <span>
+            {{
+              $t("vignette_type." + orderData.value.cartItems[0].productCode)
+            }}
+            -
+            {{ $t("billing.title") }}
+          </span>
+        </div>
       </h1>
     </section>
     <form class="pb-10 max-w-[450px] mx-auto">
@@ -36,24 +55,35 @@
           />
           <p class="error-message my-0" v-html="errorMessage"></p>
         </div>
-        <section class="card flex flex-col gap-2">
+        <section class="flex flex-col gap-2">
           <label for="email" class="primary-label">{{
             $t("billing.email")
           }}</label>
-          <InputText
-            class="primary-input"
-            id="email"
-            type="email"
-            v-model="orderData.value.userEmail"
-            aria-describedby="email"
-          />
+          <div class="relative flex gap-2 items-center">
+            <InputText
+              class="primary-input"
+              id="email"
+              type="email"
+              v-model="orderData.value.userEmail"
+              aria-describedby="email"
+            />
+            <button
+              type="button"
+              class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+            >
+              ?
+              <span class="tooltiptext">{{
+                $t("billing.mail_tooltip_text")
+              }}</span>
+            </button>
+          </div>
         </section>
         <section class="flex flex-col gap-2">
           <label for="PhoneNumberWrapper" class="primary-label">{{
             $t("billing.phone")
           }}</label>
-          <div id="PhoneNumberWrapper" class="flex items-center gap-2">
-            <section class="card flex flex-col gap-2 flex-1">
+          <div id="PhoneNumberWrapper" class="flex items-center gap-2 relative">
+            <div class="card flex flex-col gap-2 flex-1">
               <Dropdown
                 id="PhoneNumberPrefix"
                 v-model="selectedCountryPhonePrefix"
@@ -80,7 +110,7 @@
                   </div>
                 </template>
               </Dropdown>
-            </section>
+            </div>
             <InputText
               type="tel"
               id="PhoneNumber"
@@ -88,10 +118,13 @@
               aria-describedby="phone-number"
               class="primary-input"
             />
-            <button class="tooltip btn primary-btn tooltip-wrapper">
+            <button
+              type="button"
+              class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+            >
               ?
               <span class="tooltiptext">{{
-                $t("billing.mail_tooltip_text")
+                $t("billing.phone_tooltip_text")
               }}</span>
             </button>
           </div>
@@ -105,14 +138,12 @@
           <label for="vatInvoice" class="primary-label text-xl">
             {{ $t("billing.invoice_request_title") }}
           </label>
-        </section>
-        <section class="w-full">
-          <p class="text-xs m-0 font-bold">
-            {{ $t("billing.request_after_text1") }}
-          </p>
-          <p class="text-xs m-0 font-bold">
-            {{ $t("billing.request_after_text2") }}
-          </p>
+          <button type="button" class="tooltip btn primary-btn tooltip-wrapper">
+            ?
+            <span class="tooltiptext">{{
+              $t("billing.request_title_tooltip_text")
+            }}</span>
+          </button>
         </section>
         <section v-if="vatInvoiceChecked">
           <div class="flex items-center gap-4 justify-center mb-4">
@@ -123,7 +154,7 @@
                 name="companyOrPrivatePerson"
                 value="company"
               />
-              <label for="company" class="primary-label">
+              <label for="company" class="primary-label text-sm sm:text-base">
                 {{ $t("billing.company") }}
               </label>
             </div>
@@ -135,96 +166,125 @@
                 value="privatePerson"
                 checked="true"
               />
-              <label for="privatePerson" class="primary-label">{{
-                $t("billing.private_person")
-              }}</label>
+              <label
+                for="privatePerson"
+                class="primary-label text-sm sm:text-base"
+                >{{ $t("billing.private_person") }}</label
+              >
             </div>
+            <button
+              type="button"
+              class="tooltip btn primary-btn tooltip-wrapper"
+            >
+              ?
+              <span class="tooltiptext">{{
+                $t("billing.checkbox_tooltip_text")
+              }}</span>
+            </button>
           </div>
           <div class="w-full flex flex-col gap-4">
             <!-- Section visible only when 'privatePerson' is selected -->
-            <div v-if="companyOrPrivatePerson === 'privatePerson'">
-              <section class="card flex items-center gap-2">
-                <div class="flex flex-col w-full gap-2">
-                  <label for="name" class="primary-label">{{
-                    $t("billing.name")
-                  }}</label>
-                  <InputText
-                    class="primary-input"
-                    id="name"
-                    type="text"
-                    v-model="orderData.value.invoiceName"
-                    aria-describedby="name"
-                  />
-                </div>
-                <button class="tooltip btn primary-btn tooltip-wrapper">
+            <section
+              class="flex flex-col gap-2"
+              v-if="companyOrPrivatePerson === 'privatePerson'"
+            >
+              <label for="name" class="primary-label">{{
+                $t("billing.private_name")
+              }}</label>
+              <div class="relative flex items-center w-full gap-2">
+                <InputText
+                  class="primary-input"
+                  id="name"
+                  type="text"
+                  v-model="orderData.value.invoiceName"
+                  aria-describedby="name"
+                />
+                <button
+                  class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.name_tooltip_text")
                   }}</span>
                 </button>
-              </section>
-            </div>
+              </div>
+            </section>
             <!-- Section visible only when 'Company' is selected -->
             <section v-if="companyOrPrivatePerson === 'company'">
-              <section class="card flex items-center gap-2">
-                <div class="flex flex-col w-full gap-2">
-                  <label for="companyName" class="primary-label">{{
-                    $t("billing.company_name")
-                  }}</label>
-                  <InputText
-                    class="primary-input"
+              <div class="flex flex-col gap-2">
+                <label for="companyName" class="primary-label">{{
+                  $t("billing.company_name")
+                }}</label>
+                <div class="relative flex items-center w-full gap-2">
+                  <AutoComplete class="w-full"
                     id="companyName"
-                    type="text"
                     v-model="orderData.value.invoiceName"
-                    aria-describedby="name"
+                    :suggestions="companyNameSuggestions"
+                    @change="fetchCompanyNameSuggestions"
+                    field="name"
+                    data-key="name"
+                    @complete="onCompanyNameSelected"
                   />
+                  <button
+                    class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                  >
+                    ?
+                    <span class="tooltiptext">{{
+                      $t("billing.name_tooltip_text")
+                    }}</span>
+                  </button>
                 </div>
-                <button class="tooltip btn primary-btn tooltip-wrapper">
-                  ?
-                  <span class="tooltiptext">{{
-                    $t("billing.name_tooltip_text")
-                  }}</span>
-                </button>
-              </section>
+              </div>
             </section>
-            <section class="card flex flex-col gap-2">
+            <section class="flex flex-col gap-2">
               <label for="country" class="primary-label">{{
                 $t("billing.country")
               }}</label>
-              <Dropdown
-                id="invoiceCountry"
-                v-model="selectedCountry"
-                :options="countries"
-                filter
-                optionLabel="name"
-                placeholder="Select a Country"
-                class="w-full primary-select"
-              >
-                <template #value="slotProps">
-                  <div v-if="slotProps.value" class="flex items-center">
-                    <div>{{ slotProps.value }}</div>
-                  </div>
-                  <span v-else>
-                    {{ slotProps.placeholder }}
-                  </span>
-                </template>
-                <template #option="slotProps">
-                  <div class="flex items-center">
-                    <div>{{ slotProps.option }}</div>
-                  </div>
-                </template>
-              </Dropdown>
+              <div class="relative flex items-center w-full gap-2">
+                <Dropdown
+                  id="invoiceCountry"
+                  v-model="selectedCountry"
+                  :options="countries"
+                  filter
+                  optionLabel="name"
+                  placeholder="Select a Country"
+                  class="w-full primary-select"
+                >
+                  <template #value="slotProps">
+                    <div v-if="slotProps.value" class="flex items-center">
+                      <div>{{ slotProps.value }}</div>
+                    </div>
+                    <span v-else>
+                      {{ slotProps.placeholder }}
+                    </span>
+                  </template>
+                  <template #option="slotProps">
+                    <div class="flex items-center">
+                      <div>{{ slotProps.option }}</div>
+                    </div>
+                  </template>
+                </Dropdown>
+                <button
+                  class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                >
+                  ?
+                  <span class="tooltiptext">{{
+                    $t("billing.country_tooltip_text")
+                  }}</span>
+                </button>
+              </div>
             </section>
             <section
+              class="flex flex-col gap-2"
               v-if="
                 companyOrPrivatePerson === 'company' &&
                 orderData.value.invoiceCountry === 'Hungary'
               "
             >
-              <section class="card flex flex-col gap-2">
-                <label for="companyName" class="primary-label">{{
-                  $t("billing.tax_number")
-                }}</label>
+              <label for="tax_number" class="primary-label">{{
+                $t("billing.tax_number")
+              }}</label>
+              <div class="relative flex items-center w-full gap-2">
                 <InputMask
                   id="tax_number"
                   class="primary-input"
@@ -233,51 +293,93 @@
                   mask="99999999-9-99"
                   placeholder=""
                 />
-              </section>
+                <button
+                  type="button"
+                  class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                >
+                  ?
+                  <span class="tooltiptext">{{
+                    $t("billing.tax_number_tooltip_text")
+                  }}</span>
+                </button>
+              </div>
             </section>
-            <section class="card flex flex-col gap-2">
+            <section class="flex flex-col gap-2">
               <label for="postalCode" class="primary-label">{{
                 $t("billing.zip_code")
               }}</label>
-              <AutoComplete
-                id="postalCode"
-                v-model="orderData.value.invoicePostalCode"
-                :suggestions="postalCodeItems"
-                @complete="search"
-              />
+              <div class="relative w-full flex gap-2 items-center">
+                <AutoComplete
+                  class="w-full"
+                  id="postalCode"
+                  v-model="orderData.value.invoicePostalCode"
+                  :suggestions="postalCodeItems"
+                  @complete="search"
+                />
+                <button
+                  type="button"
+                  class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                >
+                  ?
+                  <span class="tooltiptext">{{
+                    $t("billing.zip_code_tooltip_text")
+                  }}</span>
+                </button>
+              </div>
             </section>
-            <section class="card flex flex-col gap-2">
+            <section class="flex flex-col gap-2">
               <label for="city" class="primary-label">{{
                 $t("billing.city")
               }}</label>
-              <InputText
-                class="primary-input"
-                id="city"
-                type="city"
-                v-model="orderData.value.invoiceCity"
-                aria-describedby="city"
-              />
+              <div class="relative w-full flex gap-2 items-center">
+                <InputText
+                  class="primary-input"
+                  id="city"
+                  type="city"
+                  v-model="orderData.value.invoiceCity"
+                  aria-describedby="city"
+                />
+                <button
+                  type="button"
+                  class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                >
+                  ?
+                  <span class="tooltiptext">{{
+                    $t("billing.city_tooltip_text")
+                  }}</span>
+                </button>
+              </div>
             </section>
-            <section class="card flex flex-col gap-2">
+            <section class="flex flex-col gap-2">
               <label for="street" class="primary-label">{{
                 $t("billing.address")
               }}</label>
-              <InputText
-                class="primary-input"
-                id="street"
-                type="street"
-                v-model="orderData.value.invoiceStreetAddress"
-                aria-describedby="street"
-              />
+              <div class="relative w-full flex gap-2 items-center">
+                <InputText
+                  class="primary-input"
+                  id="street"
+                  type="street"
+                  v-model="orderData.value.invoiceStreetAddress"
+                  aria-describedby="street"
+                />
+                <button
+                  type="button"
+                  class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                >
+                  ?
+                  <span class="tooltiptext">{{
+                    $t("billing.address_tooltip_text")
+                  }}</span>
+                </button>
+              </div>
             </section>
           </div>
         </section>
         <section class="flex items-center flex-wrap justify-center gap-4">
-          <Button class="btn-gray" @click="goBack">{{ $t("type.back") }}</Button>
-          <Button
-            class="btn btn-green cursor-pointer"
-            @click="sendForm"
-          >
+          <Button class="btn-gray" @click="goBack">{{
+            $t("type.back")
+          }}</Button>
+          <Button class="btn btn-green cursor-pointer" @click="sendForm">
             <span v-if="!loading">{{ $t("type.next") }}</span>
             <span class="h-5 w-5" v-else>
               <svg
@@ -308,9 +410,29 @@ const router = useRouter();
 import { ref, computed } from "vue";
 import { useRoute } from "nuxt/app";
 import { uuid } from "vue-uuid";
-import type { GetOrderRespose } from "~/types/types";
-const category = route.params.category;
+import type { GetOrderResponse } from "~/types/types";
 const { t, locale } = useI18n();
+
+const imageMapping = [
+  { code: "D124", src: "/img/purchase/D1.svg" },
+  { code: "D110", src: "/img/purchase/D1.svg" },
+  { code: "D130", src: "/img/purchase/D1.svg" },
+  { code: "D1365", src: "/img/purchase/D1.svg" },
+
+  { code: "D224", src: "/img/purchase/D2.svg" },
+  { code: "D210", src: "/img/purchase/D2.svg" },
+  { code: "D230", src: "/img/purchase/D2.svg" },
+  { code: "D2365", src: "/img/purchase/D2.svg" },
+
+  { code: "D1M24", src: "/img/purchase/D1M.svg" },
+  { code: "D1M10", src: "/img/purchase/D1M.svg" },
+  { code: "D1M30", src: "/img/purchase/D1M.svg" },
+
+  { code: "U24", src: "/img/purchase/U.svg" },
+  { code: "U10", src: "/img/purchase/U.svg" },
+  { code: "U30", src: "/img/purchase/U.svg" },
+  { code: "U365", src: "/img/purchase/U.svg" },
+];
 
 const orderId = useCookie("orderId", {
   watch: "shallow",
@@ -325,19 +447,42 @@ if (cartKey.value == null) {
 //cartKey.value = "3fa85f64-5717-4562-b3fc-2c963f66afa8";
 // Betöltjük a korábbi order adatait, ha van order-id-nk.
 
-const commmonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
+const commonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
 
 var orderData = {
   value: {
     needInvoice: false,
     userEmail: "",
+    invoiceName: "", // ensure this property exists in the GetOrderResponse type
   },
-} as GetOrderRespose;
+} as GetOrderResponse;
 if (orderId.value != null) {
-  orderData = await $fetch<GetOrderRespose>(
-    `${commmonApiEndpoint}?OrderId=${orderId.value}`
+  orderData = await $fetch<GetOrderResponse>(
+    `${commonApiEndpoint}?OrderId=${orderId.value}`
   );
 }
+
+const companyNameSuggestions = ref([]);
+
+const fetchCompanyNameSuggestions = async () => {
+  const query = orderData.value.invoiceName;
+  if (!query || query.length < 2) return;
+
+  const companyNamesEndpoint = `${commonApiEndpoint}?OrderId=${orderId.value}&search=${query}`;
+
+
+  try {
+    const response = await $fetch<GetOrderRespose[]>(companyNamesEndpoint);
+    companyNameSuggestions.value = response;
+  } catch (error) {
+    console.error("Error fetching invoice names:", error);
+  }
+};
+
+const onCompanyNameSelected =  (event: { value: string; }) => {
+  console.log("Event object:", event);
+  orderData.value.invoiceName = event.value;
+};
 
 const vatInvoiceChecked = ref(
   orderData == null ? false : orderData.value?.needInvoice
@@ -432,12 +577,11 @@ const widgets = response.value.widgets.map((widget) => {
 const loading = ref(false);
 
 async function sendForm() {
-
   loading.value = true;
 
   const createOrderEndpoint =
     "https://test-gw.voxpay.hu/Webshop.Common/CreateOrder";
-  const response = await $fetch<GetOrderRespose>(createOrderEndpoint, {
+  const response = await $fetch<GetOrderResponse>(createOrderEndpoint, {
     method: "POST",
     body: {
       orderId: orderId.value,
