@@ -3,6 +3,12 @@ export default defineI18nConfig(() => ({
   locale: "en",
   messages: {
     en: {
+      vignette_type: {
+        "D124": "D1 - 1 day",
+        "D110": "D1 - 10 days",
+        "D130": "D1 - 30 days",
+        "D1365": "D1 - 1 year",
+      },
       type: {
         empty_plate: "Filling in the registration number is mandatory!",
         invalid_plate:

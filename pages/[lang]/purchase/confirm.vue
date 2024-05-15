@@ -43,7 +43,7 @@
         <div class="text-sm lg:text-lg" v-for="item in orderData.value.cartItems">
           <div class="flex items-center">
             <div class="half-width">{{ $t("confirm.vignette_info.vignette_type_title") }}</div>
-            <div class="half-width">{{ item.productCode }}</div>
+            <div class="half-width">{{ $t("vignette_type."+item.productCode)  }}</div>
           </div>
           <div class="flex items-center">
             <div class="half-width">{{ $t("confirm.vignette_info.plate_number") }}</div>
@@ -55,10 +55,10 @@
           </div>
           <div class="flex items-center vignette-validity-start">
             <div class="half-width">{{ $t("confirm.vignette_info.validity_period") }}</div>
-            <div class="half-width">{{ item.properties.find(x => x.key == "ValidityStart")?.value ?? "" }} - {{ item.properties.find(x => x.key == "ValidityEnd")?.value ?? "" }}</div>
+            <div class="half-width">{{ item.properties.find(x => x.key == "ValidityStart")?.value.substring(0,10) ?? "" }} - {{ item.properties.find(x => x.key == "ValidityEnd")?.value.substring(0,10) ?? "" }}</div>
           </div>
         </div>
-        <hr class="dashed-hr" />
+        <hr class="dashed-hr" v-if="orderData.value.needInvoice" />
         <div v-if="orderData.value.needInvoice">
           <h2 class="v-shop-h2">{{ $t("confirm.billing_info.title") }}</h2>
           <div class="invoice-data text-sm lg:text-lg">
@@ -170,8 +170,8 @@
             <label
               for="DatasAreCorrect"
               class="primary-label text-white text-sm font-normal"
+              v-html="$t('confirm.payment.terms_label')"
             >
-            {{ $t("confirm.payment.terms_label") }}
             </label>
           </section>
         </div>
