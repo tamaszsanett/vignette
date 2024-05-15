@@ -202,6 +202,7 @@ export default defineI18nConfig(() => ({
         payment: {
           title: "Choice of payment method",
           card_type_label_barion: "Bank card - Barion",
+          barion_accordion_title: "Payment takes place through Barion’s secure payment page.",
           barion_desc:
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
@@ -471,6 +472,7 @@ export default defineI18nConfig(() => ({
         payment: {
           title: "Choice of payment method",
           card_type_label_barion: "Bank card - Barion",
+          barion_accordion_title: "Payment takes place through Barion’s secure payment page.",
           barion_desc:
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",

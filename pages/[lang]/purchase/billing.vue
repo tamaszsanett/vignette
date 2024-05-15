@@ -123,7 +123,9 @@
                 name="companyOrPrivatePerson"
                 value="company"
               />
-              <label for="company" class="primary-label"> {{ $t("billing.company") }} </label>
+              <label for="company" class="primary-label">
+                {{ $t("billing.company") }}
+              </label>
             </div>
             <div class="flex items-center gap-2">
               <RadioButton
@@ -133,9 +135,9 @@
                 value="privatePerson"
                 checked="true"
               />
-              <label for="privatePerson" class="primary-label"
-                >{{ $t("billing.private_person") }}</label
-              >
+              <label for="privatePerson" class="primary-label">{{
+                $t("billing.private_person")
+              }}</label>
             </div>
           </div>
           <div class="w-full flex flex-col gap-4">
@@ -143,7 +145,9 @@
             <div v-if="companyOrPrivatePerson === 'privatePerson'">
               <section class="card flex items-center gap-2">
                 <div class="flex flex-col w-full gap-2">
-                  <label for="name" class="primary-label">{{ $t("billing.name") }}</label>
+                  <label for="name" class="primary-label">{{
+                    $t("billing.name")
+                  }}</label>
                   <InputText
                     class="primary-input"
                     id="name"
@@ -154,7 +158,9 @@
                 </div>
                 <button class="tooltip btn primary-btn tooltip-wrapper">
                   ?
-                  <span class="tooltiptext">{{ $t("billing.name_tooltip_text") }}</span>
+                  <span class="tooltiptext">{{
+                    $t("billing.name_tooltip_text")
+                  }}</span>
                 </button>
               </section>
             </div>
@@ -162,9 +168,9 @@
             <section v-if="companyOrPrivatePerson === 'company'">
               <section class="card flex items-center gap-2">
                 <div class="flex flex-col w-full gap-2">
-                  <label for="companyName" class="primary-label"
-                    >{{ $t("billing.company_name") }}</label
-                  >
+                  <label for="companyName" class="primary-label">{{
+                    $t("billing.company_name")
+                  }}</label>
                   <InputText
                     class="primary-input"
                     id="companyName"
@@ -175,12 +181,16 @@
                 </div>
                 <button class="tooltip btn primary-btn tooltip-wrapper">
                   ?
-                  <span class="tooltiptext">{{ $t("billing.name_tooltip_text") }}</span>
+                  <span class="tooltiptext">{{
+                    $t("billing.name_tooltip_text")
+                  }}</span>
                 </button>
               </section>
             </section>
             <section class="card flex flex-col gap-2">
-              <label for="country" class="primary-label">{{ $t("billing.country") }}</label>
+              <label for="country" class="primary-label">{{
+                $t("billing.country")
+              }}</label>
               <Dropdown
                 id="invoiceCountry"
                 v-model="selectedCountry"
@@ -212,9 +222,9 @@
               "
             >
               <section class="card flex flex-col gap-2">
-                <label for="companyName" class="primary-label"
-                  >{{ $t("billing.tax_number") }}</label
-                >
+                <label for="companyName" class="primary-label">{{
+                  $t("billing.tax_number")
+                }}</label>
                 <InputMask
                   id="tax_number"
                   class="primary-input"
@@ -226,7 +236,9 @@
               </section>
             </section>
             <section class="card flex flex-col gap-2">
-              <label for="postalCode" class="primary-label">{{ $t("billing.zip_code") }}</label>
+              <label for="postalCode" class="primary-label">{{
+                $t("billing.zip_code")
+              }}</label>
               <AutoComplete
                 id="postalCode"
                 v-model="orderData.value.invoicePostalCode"
@@ -235,7 +247,9 @@
               />
             </section>
             <section class="card flex flex-col gap-2">
-              <label for="city" class="primary-label">{{ $t("billing.city") }}</label>
+              <label for="city" class="primary-label">{{
+                $t("billing.city")
+              }}</label>
               <InputText
                 class="primary-input"
                 id="city"
@@ -245,7 +259,9 @@
               />
             </section>
             <section class="card flex flex-col gap-2">
-              <label for="street" class="primary-label">{{ $t("billing.address") }}</label>
+              <label for="street" class="primary-label">{{
+                $t("billing.address")
+              }}</label>
               <InputText
                 class="primary-input"
                 id="street"
@@ -258,9 +274,18 @@
         </section>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <a class="btn-gray" href="/">{{ $t("type.back") }}</a>
-          <Button class="greenButton" @click="sendForm()">{{
-            $t("type.next")
-          }}</Button>
+          <Button
+            class="btn btn-green cursor-pointer"
+            @click="sendForm"
+          >
+            <span v-if="!loading">{{ $t("type.next") }}</span>
+            <span class="h-5 w-5" v-else>
+              <svg
+                class="animate-spin h-5 w-5 mr-3 border-4 border-t-transparent border-green-500 rounded-full"
+                viewBox="0 0 24 24"
+              ></svg>
+            </span>
+          </Button>
         </section>
       </div>
       <PurchaseBox />
@@ -402,7 +427,12 @@ const widgets = response.value.widgets.map((widget) => {
   }
 });
 
+const loading = ref(false);
+
 async function sendForm() {
+
+  loading.value = true;
+
   const createOrderEndpoint =
     "https://test-gw.voxpay.hu/Webshop.Common/CreateOrder";
   const response = await $fetch<GetOrderRespose>(createOrderEndpoint, {
@@ -490,5 +520,6 @@ async function sendForm() {
 
     navigateTo("/" + currentLanguage.value + "/purchase/confirm");
   }
+  loading.value = false;
 }
 </script>
