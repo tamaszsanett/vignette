@@ -510,7 +510,7 @@ const calculatedVignettes = computed(() => {
       return [];
     }
     else {
-      var items;
+      var items = [];
       selectedCounties.value.forEach((item, index) => {
         items.push({
           category: vignetteInfo.value?.value.vignetteType.category,
