@@ -246,7 +246,7 @@ export type AlternateLink = {
   en: string;
 };
 
-export type GetOrderRespose = {
+export type GetOrderResponse = {
   value: {
     orderId: string;
     trid: BigInteger;
