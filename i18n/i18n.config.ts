@@ -136,7 +136,7 @@ export default defineI18nConfig(() => ({
           ten_days: "10 day",
           daily: "Daily",
           one_day: "1-day",
-          after_title: "national highway sticker",
+          after_title: "national highway vignette",
         },
         purchase_calculator: {
           title: "Selected vignettes",
@@ -151,7 +151,7 @@ export default defineI18nConfig(() => ({
         title: "Enter billing information",
         phone: "Phone number",
         mail_tooltip_text:
-          "We will send the sticker confirmation to this address",
+          "We will send the vignette confirmation to this address",
         email: "E-mail",
         phone_tooltip_text: "In case of connection problems",
         invoice_request_title: "I would like a VAT invoice",
@@ -210,6 +210,7 @@ export default defineI18nConfig(() => ({
         payment: {
           title: "Choice of payment method",
           card_type_label_barion: "Bank card - Barion",
+          barion_accordion_title: "Payment takes place through Barion’s secure payment page.",
           barion_desc:
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
@@ -234,7 +235,7 @@ export default defineI18nConfig(() => ({
           unsuccessful payments increased in the initial period.`,
         reorder_btn_title: "Reorder",
         card: {
-          contact_us_text: `If you think that your payment was successful, but the sticker
+          contact_us_text: `If you think that your payment was successful, but the vignette
             validation failed, please contact us!`,
           important_text: `IMPORTANT: The fact that the financial performance has been
             fulfilled does not automatically mean that you are entitled to
@@ -420,7 +421,7 @@ export default defineI18nConfig(() => ({
         title: "Enter billing information",
         phone: "Phone number",
         mail_tooltip_text:
-          "We will send the sticker confirmation to this address",
+          "We will send the vignette confirmation to this address",
         email: "E-mail",
         phone_tooltip_text: "In case of connection problems",
         invoice_request_title: "I would like a VAT invoice",
@@ -479,6 +480,7 @@ export default defineI18nConfig(() => ({
         payment: {
           title: "Choice of payment method",
           card_type_label_barion: "Bank card - Barion",
+          barion_accordion_title: "Payment takes place through Barion’s secure payment page.",
           barion_desc:
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
@@ -503,7 +505,7 @@ export default defineI18nConfig(() => ({
           unsuccessful payments increased in the initial period.`,
         reorder_btn_title: "Reorder",
         card: {
-          contact_us_text: `If you think that your payment was successful, but the sticker
+          contact_us_text: `If you think that your payment was successful, but the vignette
             validation failed, please contact us!`,
           important_text: `IMPORTANT: The fact that the financial performance has been
             fulfilled does not automatically mean that you are entitled to

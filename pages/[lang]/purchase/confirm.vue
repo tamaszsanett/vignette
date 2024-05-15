@@ -176,10 +176,19 @@
           </section>
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
-          <a class="btn-gray" href="/">{{ $t("payment.back") }}</a>
-          <Button class="greenButton" @click="sendForm()"
-            >{{ $t("payment.order_vignette_btn_title") }}</Button
+          <a class="btn-gray" href="/">{{ $t("confirm.payment.back") }}</a>
+          <Button
+            class="btn btn-green cursor-pointer"
+            @click="sendForm"
           >
+            <span v-if="!loading">{{ $t("confirm.payment.order_vignette_btn_title") }}</span>
+            <span class="h-5 w-5" v-else>
+              <svg
+                class="animate-spin h-5 w-5 mr-3 border-4 border-t-transparent border-green-500 rounded-full"
+                viewBox="0 0 24 24"
+              ></svg>
+            </span>
+          </Button>
         </section>
       </div>
     </form>
@@ -255,8 +264,11 @@ for (var i = 0; i < orderData.value.cartItems.length; i++)
 
 /// ----------------- SUBMIT ORDER -----------------------
 
+const loading = ref(false);
 
 async function sendForm() {
+  
+  loading.value = true;
 
   if (!datasAreCorrect.value)
   {
@@ -335,8 +347,7 @@ async function sendForm() {
   else {
     navigateTo(response.value.redirectUrl, { external: true });
   }
-  
-  
+  loading.value = false;
 }
 
 /// ----------------- / SUBMIT ORDER -----------------------

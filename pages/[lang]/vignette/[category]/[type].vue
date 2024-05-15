@@ -151,10 +151,16 @@
           bgClass="additional-styles" />
     <section class="flex items-center flex-wrap justify-center gap-4">
       <a class="btn-gray" href="/">{{ $t("type.back") }}</a>
-      <button class="btn btn-green cursor-pointer" @click.prevent="validate">
-        {{ $t("type.next") }}
-      </button>
+      <Button class="btn btn-green cursor-pointer" @click.prevent="validate">
+        <span v-if="!loading">{{ $t("type.next") }}</span>
+        <span class="h-5 w-5" v-else>
+          <svg class="animate-spin h-5 w-5 mr-3 border-4 border-t-transparent border-green-500 rounded-full"
+            viewBox="0 0 24 24">
+          </svg>
+        </span>
+      </Button>
     </section>
+
     <template v-for="widget in widgets" :key="widget.widgetId">
       <div v-if="widget.widgetType === 'menuwidget'" :class="{ 'top-menu': widget.section === 'top' }">
         <SharedMenuWidget :menu-widget="widget.content" />
@@ -418,11 +424,16 @@ const remove = (index: number) => {
   }
 };
 
+const loading = ref(false);
+
+
 const validate = async () => {
+  loading.value = true;
   var hasErrors = await validateAllPlates(formData.value.multiples, t);
   if (!hasErrors) {
     navigateTo("/"+currentLanguage.value + "/purchase/billing");
   }
+  loading.value = false;
 };
 
 const minStartDate = computed(() => {

@@ -29,7 +29,7 @@
   @apply btn border text-base-black border-base-gray bg-base-gray hover:bg-white max-w-[150px] w-full;
 }
 
-.btn-green[type='submit'], .btn-green {
+.btn-green[type='submit'], .btn-green[type='button'], .btn-green, .p-button.btn-green {
   @apply btn bg-base-green text-white hover:bg-white hover:text-base-green border border-base-green max-w-[150px] w-full;
 }
 
