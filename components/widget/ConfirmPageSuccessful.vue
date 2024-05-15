@@ -57,7 +57,7 @@
                   {{ $t("global.contact_data.title") }}<br />
                   {{ $t("global.contact_data.phone") }}<br />
                   {{ $t("global.contact_data.email_title") }}
-                  <a class="base-link" href="mailto:{{ $t('global.contact_data.mail') }}">{{ $t("global.contact_data.mail") }}</a>
+                  <p>{{ $t("global.contact_data.mail") }}</p>
                 </address>
               </div>
             </div>

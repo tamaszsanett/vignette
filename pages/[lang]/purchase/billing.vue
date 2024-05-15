@@ -273,7 +273,7 @@
           </div>
         </section>
         <section class="flex items-center flex-wrap justify-center gap-4">
-          <a class="btn-gray" href="/">{{ $t("type.back") }}</a>
+          <Button class="btn-gray" @click="goBack">{{ $t("type.back") }}</Button>
           <Button
             class="btn btn-green cursor-pointer"
             @click="sendForm"
@@ -303,6 +303,8 @@
 
 <script setup lang="ts">
 const route = useRoute();
+import { useRouter } from "nuxt/app";
+const router = useRouter();
 import { ref, computed } from "vue";
 import { useRoute } from "nuxt/app";
 import { uuid } from "vue-uuid";
@@ -522,4 +524,8 @@ async function sendForm() {
   }
   loading.value = false;
 }
+
+const goBack = () => {
+  router.back();
+};
 </script>

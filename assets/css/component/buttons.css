@@ -25,7 +25,7 @@
   @apply bg-base-orange text-white hover:text-base-orange hover:bg-white border-base-orange focus:ring-base-orange;
 }
 
-.btn-gray {
+.btn-gray[type='submit'], .btn-gray[type='button'], .btn-gray, .p-button.btn-gray {
   @apply btn border text-base-black border-base-gray bg-base-gray hover:bg-white max-w-[150px] w-full;
 }
 
