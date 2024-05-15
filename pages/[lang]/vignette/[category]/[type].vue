@@ -25,9 +25,9 @@
       <div class="mx-auto my-8" v-if="isRegionalVignette">
         <div class="card flex justify-center">
           <div class="grid grid-cols-2 gap-1 sm:gap-2 sm:gap-x-20">
-            <div v-for="county of countyOptions" :key="county.key" class="flex items-center gap-x-2">
-              <Checkbox :input-id="county.key" v-model="selectedCounties" name="counties" :value="county.key" />
-              <label class="primary-label text-sm md:text-base" :for="county.key">{{ county.name }}</label>
+            <div v-for="county of countyOptions" :key="category + county.key" class="flex items-center gap-x-2">
+              <Checkbox :input-id="category + county.key" v-model="selectedCounties" name="counties" :value="category + county.key" />
+              <label class="primary-label text-sm md:text-base" :for="category + county.key">{{ county.name }}</label>
             </div>
           </div>
         </div>
