@@ -500,8 +500,7 @@ const calculatedVignettes = computed(() => {
           durationType: t("vignette_type."+item),
           numberOfMonths: numberOfVignettes.value,
           price: `${(
-            ((vignetteInfo.value?.value.vignetteType.amount ?? 0) +
-              (vignetteInfo.value?.value.vignetteType.transactionFee ?? 0)) *
+            ((vignetteInfo.value?.value.vignetteType.amount ?? 0) ) *
             numberOfVignettes.value * formData.value.multiples.length
           ).toFixed(2)} €`,
           
@@ -520,8 +519,7 @@ const calculatedVignettes = computed(() => {
         durationType:  t("vignette_type."+numberOfVignettes.value+vignetteInfo.value.value.vignetteType.durationType.toLowerCase()),
         numberOfMonths: numberOfVignettes.value,
         price: `${(
-          (vignetteInfo.value.value.vignetteType.amount +
-            vignetteInfo.value.value.vignetteType.transactionFee) *
+          (vignetteInfo.value.value.vignetteType.amount ) *
           numberOfVignettes.value * formData.value.multiples.length
         ).toFixed(2)} €`,
       },
