@@ -73,7 +73,7 @@
                   {{ $t("global.contact_data.title") }}<br />
                   {{ $t("global.contact_data.phone") }}<br />
                   {{ $t("global.contact_data.email_title") }}
-                  <p>{{ $t("global.contact_data.mail") }}</p>
+                  <a href="mailto: {{ $t('global.contact_data.mail').replace('[at]', '@'') }}">{{ $t("global.contact_data.mail").replace("[at]", "@") }}</a>
                 </address>
               </div>
             </div>

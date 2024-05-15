@@ -269,7 +269,7 @@ export default defineI18nConfig(() => ({
           title: "Customer Service:",
           phone: "Phone: (36-1) 225-7603",
           email_title: "E-mail:",
-          mail: "support@hungary-vignette.eu",
+          mail: "support[at]hungary-vignette.eu",
         },
         confirm_trid: {
           trans_id: "Transaction identifier",
