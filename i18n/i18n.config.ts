@@ -91,7 +91,15 @@ export default defineI18nConfig(() => ({
         U365_26: "Tolna county",
         U365_27: "Vas county",
         U365_28: "Veszprém county",
-        U365_29: "Zala county"
+        U365_29: "Zala county",
+        '1week': "1 week",
+        '1day': "1 day",
+        '1year': "1 year",
+        '1month': "1 month",
+        '2month': "2 months",
+        '3month': "3 months",
+        '4month': "4 months",
+        '5month': "5 months"
       },
       type: {
         empty_plate: "Filling in the registration number is mandatory!",

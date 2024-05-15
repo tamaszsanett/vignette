@@ -16,8 +16,6 @@ export async function useRemoveVignetteFromCart(
   const cartKey = useCookie('cartKey');
   var items = [];
 
-  console.log("removeFromCart");
-
   // in case of day, week, year this is a simple question
   if (durationType == "DAY" || durationType == "WEEK" || durationType == "YEAR") {
     items = [itemKey];

@@ -147,8 +147,6 @@ export async function useAddAnotherVignetteToCart(
     }
   }
 
-  
-  console.log(items);
 
   if (items.length > 0 && items[0].cartItemKey !== undefined)
     {

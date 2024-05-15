@@ -144,10 +144,11 @@
             {{ $t("type.add_another_widget") }}
           </button>
         </div>
-        <PurchaseCalculator :title="`${$t('type.purchase_calculator.title')}`" :list="calculatedVignettes"
-          bgClass="additional-styles" />
+        
       </div>
     </form>
+    <PurchaseCalculator :title="`${$t('type.purchase_calculator.title')}`" :list="calculatedVignettes"
+          bgClass="additional-styles" />
     <section class="flex items-center flex-wrap justify-center gap-4">
       <a class="btn-gray" href="/">{{ $t("type.back") }}</a>
       <button class="btn btn-green cursor-pointer" @click.prevent="validate">
@@ -265,7 +266,6 @@ watch( // Watch PlateNumber changes
       formData.value.multiples[index].countryCode = _?.countryCode ?? "";
       if (formData.value.multiples[index].selectedCountry?.countryCode != newValues[index]?.countryCode)
       {
-        console.log("countryCode");
         updateCartItem(index);
       }
     });
@@ -301,7 +301,6 @@ watch( // Watch ValidityStart changes
 );
 
 watch(numberOfVignettes, (newValue, oldValue) => {
-  console.log(oldValue + "::" + newValue);
   if (newValue !== oldValue) {
       updateMonthEndDate();
       if (newValue > oldValue) {
@@ -333,7 +332,6 @@ watch(selectedCounties, (newItems, oldItems) => {
   let removeable = oldItems.filter(x => !newItems.includes(x))[0];
   let newbie = newItems.filter(x => !oldItems.includes(x))[0];
 
-  console.log(newbie);
   if (newbie) {
     formData.value.multiples.forEach(async (item, index) => {
       useAddAnotherVignetteToCart(
@@ -422,7 +420,6 @@ const remove = (index: number) => {
 
 const validate = async () => {
   var hasErrors = await validateAllPlates(formData.value.multiples, t);
-  console.log(hasErrors);
   if (!hasErrors) {
     navigateTo("/"+currentLanguage.value + "/purchase/billing");
   }
@@ -441,7 +438,6 @@ const maxEndDate = computed(() => {
 
 const updateMonthEndDate = async () => {
   formData.value.multiples.forEach(async (item, index) => {
-    console.log(formData.value.multiples);
     if (item.startDate !== null) {
       var response = await fetchEndDate(
         vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
@@ -490,19 +486,48 @@ onMounted(async () => {
 });
 
 const calculatedVignettes = computed(() => {
+  var type = vignetteInfo.value?.value.vignetteType.durationType;
+  if (type == "YEAR_11")
+  {
+    if (selectedCounties.value.length == 0) {
+      return [];
+    }
+    else {
+      var items = [];
+      selectedCounties.value.forEach((item, index) => {
+        items.push({
+          category: vignetteInfo.value?.value.vignetteType.category,
+          durationType: t("vignette_type."+item),
+          numberOfMonths: numberOfVignettes.value,
+          price: `${(
+            ((vignetteInfo.value?.value.vignetteType.amount ?? 0) +
+              (vignetteInfo.value?.value.vignetteType.transactionFee ?? 0)) *
+            numberOfVignettes.value * formData.value.multiples.length
+          ).toFixed(2)} €`,
+          
+        });
+      });
+
+      return items;
+    }
+  }
+  else 
+  {
   return vignetteInfo.value
     ? [
       {
         category: vignetteInfo.value.value.vignetteType.category,
-        durationType: vignetteInfo.value.value.vignetteType.durationType,
+        durationType:  t("vignette_type."+numberOfVignettes.value+vignetteInfo.value.value.vignetteType.durationType.toLowerCase()),
+        numberOfMonths: numberOfVignettes.value,
         price: `${(
           (vignetteInfo.value.value.vignetteType.amount +
             vignetteInfo.value.value.vignetteType.transactionFee) *
-          numberOfVignettes.value
-        ).toString()} Ft`,
+          numberOfVignettes.value * formData.value.multiples.length
+        ).toFixed(2)} €`,
       },
     ]
     : [];
+  }
 });
 
 const isCalendarDisabled = computed(() => {

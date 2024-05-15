@@ -31,6 +31,6 @@ const totalPrice = computed(() => {
     return acc + cleanPrice;
   }, 0);
 
-  return total.toFixed(2) + "Ft";  
+  return total.toFixed(2) + " €";  
 });
 </script>
