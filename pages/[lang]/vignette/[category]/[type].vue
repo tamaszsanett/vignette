@@ -149,7 +149,7 @@
       </div>
     </form>
     <section class="flex items-center flex-wrap justify-center gap-4">
-      <a class="btn-gray" href="/">{{ $t("type.back") }}</a>
+      <Button class="btn-gray" @click="goBack">{{ $t("type.back") }}</Button>
       <Button class="btn btn-green cursor-pointer" @click.prevent="validate">
         <span v-if="!loading">{{ $t("type.next") }}</span>
         <span class="h-5 w-5" v-else>
@@ -171,6 +171,8 @@
 <script setup lang="ts">
 const { t, locale } = useI18n();
 const route = useRoute();
+import { useRouter } from "nuxt/app";
+const router = useRouter();
 import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "nuxt/app";
 import { usePlateValidation } from "~/composables/usePlateValidation";
@@ -437,6 +439,10 @@ const validate = async () => {
     navigateTo("/"+currentLanguage.value + "/purchase/billing");
   }
   loading.value = false;
+};
+
+const goBack = () => {
+  router.back();
 };
 
 const minStartDate = computed(() => {

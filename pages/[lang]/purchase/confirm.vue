@@ -13,13 +13,20 @@
       />
     </header>
     <form class="pb-10 max-w-[600px] mx-auto">
-      <h1 class="purchase-h1 mb-2">
-        <img
-          class="w-[45px]"
-          src="/img/purchase/D1.svg"
-          alt="autópálya-matrica"
-        />
-        <span class="ml-2">{{ $t("confirm.main_title") }}</span>
+      <h1 class="purchase-h1">
+        <img class="w-[45px]" :src="'/img/purchase/' + category + '.svg'"
+          :alt="category + ' ' + $t('type.image.alt_vignette')" />
+        <div class="flex items-center space-x-2">
+          <span>{{ vignetteCategory }} -</span>
+          <span v-if="durationType === 'DAY'">{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }}) {{
+            $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'WEEK'">{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }}) {{
+            $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'YEAR_11'">{{ $t("type.title.year_11") }} {{ $t("type.title.after_title")
+            }}</span>
+          <span v-if="durationType === 'YEAR'">{{ $t("type.title.annual") }} {{ $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'MONTH'">{{ $t("type.title.monthly") }} {{ $t("type.title.after_title") }}</span>
+        </div>
       </h1>
       
       <div class="w-full md:max-w-[500px] mx-auto flex flex-col gap-2 mt-2">
@@ -208,11 +215,25 @@ import { ref, computed } from "vue";
 import { useRoute } from "nuxt/app";
 import type { GetOrderRespose, PurchaseVignettesAnonymWithOrderResponse } from "~/types/types";
 const { t, locale } = useI18n();
+const route = useRoute();
+const category = route.params.category;
+import { useVignetteInfo } from "~/composables/useVignetteInfo";
+
+const vignetteCategory = computed(
+  () => vignetteInfo.value?.value.vignetteType.category || ""
+);
+
+const durationType = computed(
+  () => vignetteInfo.value?.value.vignetteType.durationType || ""
+);
+
+const vignetteInfo = ref<VignetteInfoResponse | null>(null);
+const { fetchVignetteInfo } = useVignetteInfo();
+vignetteInfo.value = await fetchVignetteInfo();
 
 
 /// ----------------- LOAD LANGUAGE -----------------------
 
-const route = useRoute();
 const currentLanguage = ref("en");
 watch(
   () => route.params.lang,
