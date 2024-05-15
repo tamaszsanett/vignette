@@ -27,8 +27,6 @@ export async function useAddAnotherVignetteToCart(
 
   const cartKey = useCookie('cartKey');
 
-  const endDate = ref<string | null>(null);
-
   var items = [{} as CartItem];
 
   // in case of day, week, year this is a simple question
@@ -67,13 +65,20 @@ export async function useAddAnotherVignetteToCart(
   // In case of MONTH duration type, add the different between previous and current month 
   else if (durationType == "MONTH")
   {
+    var j = 0;
     for (let i = previousNumberOfMonths+1; i <= numberOfMonths; i++)
       {
+        
         if (validityStart !== null && validityEnd !== null) {
-        var currentValidityStart = addMonths(validityStart, i-1);
-        var currentValidityEnd = addMonths(validityEnd, i-1);
 
-        items[i-1] = {
+          let currentValidityStart = new Date(validityStart.toISOString());
+          let currentValidityEnd = new Date(validityStart.toISOString());
+
+          currentValidityStart.setMonth(validityStart.getMonth() + i-1);
+          currentValidityEnd.setMonth(validityStart.getMonth() + i);
+
+
+        items[j] = {
           cartItemKey: itemKey + "_" + i,
           productCode: productCode,
           quantity: 1,
@@ -89,10 +94,10 @@ export async function useAddAnotherVignetteToCart(
               value: plateNumber
             },{
               key: "ValidityStart",
-              value: currentValidityStart == null ? "" : currentValidityStart.toISOString()
+              value: currentValidityStart == null ? "" : currentValidityStart.toISOString().substring(0,10)
             },{
               key: "ValidityEnd",
-              value: currentValidityEnd == null ? "" : currentValidityEnd.toISOString()
+              value: currentValidityEnd == null ? "" : currentValidityEnd.toISOString().substring(0,10)
             },{
               key: "VignettePrice",
               value: vignettePrice.toString()
@@ -102,6 +107,8 @@ export async function useAddAnotherVignetteToCart(
             }
           ]
         };
+
+        j++;
       }
       }
   }
@@ -140,6 +147,9 @@ export async function useAddAnotherVignetteToCart(
     }
   }
 
+  
+  console.log(items);
+
   if (items.length > 0 && items[0].cartItemKey !== undefined)
     {
     const requestBody = {
@@ -174,13 +184,4 @@ export async function useAddAnotherVignetteToCart(
   else {
     return null;
   }
-}
-
-function addMonths(date: Date, months: number) {
-  var d = date.getDate();
-  date.setMonth(date.getMonth() + months);
-  if (date.getDate() != d) {
-    date.setDate(0);
-  }
-  return date;
 }

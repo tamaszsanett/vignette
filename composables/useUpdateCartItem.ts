@@ -57,10 +57,18 @@ export async function useUpdateCartItem(
   }
   // In case of MONTH duration type, add the different between previous and current month 
   else if (durationType == "MONTH") {
+    
     for (let i = 1; i <= numberOfMonths; i++) {
       if (validityStart !== null && validityEnd !== null) {
-        var currentValidityStart = addMonths(validityStart, i - 1);
-        var currentValidityEnd = addMonths(validityEnd, i - 1);
+        let currentValidityStart = new Date(validityStart.toISOString());
+        let currentValidityEnd = new Date(validityStart.toISOString());
+
+        currentValidityStart.setMonth(validityStart.getMonth() + i-1);
+        currentValidityEnd.setMonth(validityStart.getMonth() + i);
+
+        currentValidityStart = addDays(currentValidityStart, i-1);
+        currentValidityEnd = addDays(currentValidityEnd, i-1);
+
 
         items[i - 1] = {
           cartKey: cartKey.value?.toString(),
@@ -75,10 +83,10 @@ export async function useUpdateCartItem(
               value: plateNumber
             }, {
               key: "ValidityStart",
-              value: currentValidityStart == null ? "" : currentValidityStart.toISOString()
+              value: currentValidityStart == null ? "" : currentValidityStart.toISOString().substring(0,10)
             }, {
               key: "ValidityEnd",
-              value: currentValidityEnd == null ? "" : currentValidityEnd.toISOString()
+              value: currentValidityEnd == null ? "" : currentValidityEnd.toISOString().substring(0,10)
             }, {
               key: "VignettePrice",
               value: vignettePrice.toString()
@@ -124,7 +132,8 @@ export async function useUpdateCartItem(
   }
 
   for (let i = 0; i < items.length; i++) {
-    if (items[i].cartItemKey !== undefined) {
+    if (items[i].cartItemKey) {
+      
       const apiEndpointBase = 'https://test-gw.voxpay.hu/Webshop.Common';
       try {
         const response = await fetch(apiEndpointBase + "/UpdateCartItem", {
@@ -138,23 +147,20 @@ export async function useUpdateCartItem(
           throw new Error('Network response was not ok');
         }
         const data: BaseResponse = await response.json();
-        return data;
       } catch (error) {
         console.error("Failed to fetch end date:", error);
-        return null; // or handle errors as appropriate for your application context
       }
     }
     else {
-      return null;
     }
   }
+
+  
+  return null;
 }
 
-function addMonths(date: Date, months: number) {
-  var d = date.getDate();
-  date.setMonth(date.getMonth() + months);
-  if (date.getDate() != d) {
-    date.setDate(0);
-  }
-  return date;
+function addDays(date: Date, days: number) {
+  var result = new Date(date);
+  result.setDate(result.getDate() + days);
+  return result;
 }

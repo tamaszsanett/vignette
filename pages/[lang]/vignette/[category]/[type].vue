@@ -301,8 +301,31 @@ watch( // Watch ValidityStart changes
 );
 
 watch(numberOfVignettes, (newValue, oldValue) => {
+  console.log(oldValue + "::" + newValue);
   if (newValue !== oldValue) {
       updateMonthEndDate();
+      if (newValue > oldValue) {
+        // add to cart
+        formData.value.multiples.forEach(async (item, index) => {
+          useAddAnotherVignetteToCart(
+            currentLanguage.value,
+            item.itemKey,
+            "EUR",
+            vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
+            vignetteInfo.value?.value.vignetteType.durationType ?? "",
+            item.countryCode,
+            item.plateNumber,
+            item.startDate,
+            item.endDate,
+            vignetteInfo.value?.value.vignetteType.amount ?? 0,
+            vignetteInfo.value?.value.vignetteType.transactionFee ?? 0,
+            oldValue, newValue, selectedCounties.value
+          );
+        });
+      }
+      else if (oldValue > newValue) {
+        // remove from cart
+      }
   }
 });
 
@@ -310,6 +333,7 @@ watch(selectedCounties, (newItems, oldItems) => {
   let removeable = oldItems.filter(x => !newItems.includes(x))[0];
   let newbie = newItems.filter(x => !oldItems.includes(x))[0];
 
+  console.log(newbie);
   if (newbie) {
     formData.value.multiples.forEach(async (item, index) => {
       useAddAnotherVignetteToCart(
@@ -324,7 +348,7 @@ watch(selectedCounties, (newItems, oldItems) => {
         item.endDate,
         vignetteInfo.value?.value.vignetteType.amount ?? 0,
         vignetteInfo.value?.value.vignetteType.transactionFee ?? 0,
-        0, numberOfVignettes.value, selectedCounties.value
+        0, numberOfVignettes.value, [newbie]
       );
     });
   }
@@ -417,7 +441,7 @@ const maxEndDate = computed(() => {
 
 const updateMonthEndDate = async () => {
   formData.value.multiples.forEach(async (item, index) => {
-
+    console.log(formData.value.multiples);
     if (item.startDate !== null) {
       var response = await fetchEndDate(
         vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
