@@ -254,7 +254,7 @@ export type GetOrderResponse = {
     metaDtridscription: number;
     userEmail: string;
     phoneNumber: string;
-    
+    phonePrefix: string;
     needInvoice: boolean;
     invoiceName: string;
     invoiceHUTaxNumber: string;

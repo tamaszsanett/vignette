@@ -89,13 +89,13 @@
                 id="PhoneNumberPrefix"
                 v-model="selectedCountryPhonePrefix"
                 :options="numbers"
-                :placeholder="numbers[0].number"
+                :placeholder="selectedCountryPhonePrefix ?? '+36'"
                 class="primary-select prefix-select"
               >
                 <template #value="slotProps">
                   <div v-if="slotProps.value" class="flex items-center">
-                    <div :class="`mr-2 flag flag-${slotProps.value.code}`">
-                      {{ slotProps.value.number }}
+                    <div :class="`mr-2 flag flag-${slotProps.value}`">
+                      {{ slotProps.value }}
                     </div>
                   </div>
                   <span v-else>
@@ -104,10 +104,7 @@
                 </template>
                 <template #option="slotProps">
                   <div class="flex items-center">
-                    <div :class="`mr-2 flag flag-${slotProps.option.code}`">
-                      {{ slotProps.option.code }} |
-                    </div>
-                    <div>{{ slotProps.option.number }}</div>
+                    <div>{{ slotProps.option }}</div>
                   </div>
                 </template>
               </Dropdown>
@@ -313,19 +310,12 @@
                 </button>
               </div>
             </section>
-            <!-- <section
-              class="flex flex-col gap-2"
-              v-if="
-                companyOrPrivatePerson === 'company' &&
-                orderData.value.invoiceCountry === 'Hungary'
-              "
-            > -->
             <section
               class="flex flex-col gap-2"
               v-if="
-                companyOrPrivatePerson === 'company'
-              "
-            >
+                companyOrPrivatePerson === 'company' && 
+                orderData.value.invoiceCountry === 'Hungary'
+              ">
               <label for="tax_number" class="primary-label">{{
                 $t("billing.tax_number")
               }}</label>
@@ -584,12 +574,12 @@ const companyOrPrivatePerson = ref(
 const inputMaskValue = ref("");
 const errorMessage = ref("");
 
-const selectedCountryPhonePrefix = ref();
+const selectedCountryPhonePrefix = ref(orderData.value?.phonePrefix);
 const numbers = ref([
-  { number: "+36", code: "HU" },
-  { number: "+42", code: "SK" },
-  { number: "+49", code: "DE" },
-  { number: "+380", code: "UK" },
+  "+36",
+  "+42",
+  "+49",
+  "+380",
 ]);
 
 const currentLanguage = ref("en");
@@ -672,6 +662,7 @@ async function sendForm() {
       sessionId: "string",
       clientId: "string",
       userEmail: orderData.value.userEmail,
+      phonePrefix: selectedCountryPhonePrefix.value,
       phoneNumber: orderData.value.phoneNumber,
       invoiceName: orderData.value.invoiceName,
       invoiceHuTaxNumber:

@@ -36,7 +36,7 @@
       </h1>
       <div class="w-full md:max-w-[500px] mx-auto flex flex-col gap-2 mt-2">
         <div class="text-sm lg:text-lg">
-          <div class="">
+          <div class="" v-if="orderData.value.phoneNumber != ''">
             <div>
               {{ $t("confirm.phone_number") }}
               <a class="base-link" href="#">{{
