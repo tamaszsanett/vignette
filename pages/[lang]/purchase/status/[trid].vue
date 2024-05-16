@@ -4,10 +4,10 @@
             <ConfirmPageSuccessful :purchaseData="purchaseData"></ConfirmPageSuccessful>
         </div>
         <div
-            v-if="purchaseData.value.purchaseStatus === 'VignetteOrderFailed' || purchaseData.value.purchaseStatus === 'PaymentFailed'">
+            v-else-if="purchaseData.value.purchaseStatus === 'VignetteOrderFailed' || purchaseData.value.purchaseStatus === 'PaymentFailed'">
             <ConfirmPageFailed :purchaseData="purchaseData"></ConfirmPageFailed>
         </div>
-        <div v-if="purchaseData.value.purchaseStatus === 'UnderPayment'">
+        <div v-else>
             <ConfirmPageUnderPayment :purchaseData="purchaseData"></ConfirmPageUnderPayment>
         </div>
         <template v-for="widget in widgets" :key="widget.widgetId">

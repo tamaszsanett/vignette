@@ -8,18 +8,13 @@
         <Card class="mb-5 shadow-lg">
           <template #content>
             <div class="payment-progress">
-              <div class="w-full clear-both">
-                <p class="error-message">
-                  TODO: Paymentresult: {{ purchaseData.value.paymentResult }}
-                </p>
-              </div>
               <div class="clear-both">
                 <p>
                   {{ $t("confirm_failed.payment_result_desc") }}
                 </p>
                 <section class="w-full flex items-center flex-wrap justify-center gap-4">
                   <NuxtLink id="refreshbutton" to="/vignette/D1/1month/type?backtrid=" class="btn-green" type="submit">
-                    <span>TODO: {{ $t("confirm_failed.reorder_btn_title") }}</span>
+                    <span>{{ $t("confirm_failed.reorder_btn_title") }}</span>
                   </NuxtLink>
                 </section>
               </div>
