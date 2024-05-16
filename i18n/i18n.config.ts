@@ -193,9 +193,9 @@ export default defineI18nConfig(() => ({
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
           terms_label: `I state that I have read and accepted the
-            <a class="whiteLink" href="https://www.new.hungary-vignette.eu/gtcc" target="_blank">General Terms and Conditions of Contract</a>
+            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
             as well as the
-            <a class="whiteLink" target="_blank" href="https://www.new.hungary-vignette.eu/privacy">Privacy Statement</a>
+            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Privacy Statement</a>
             and I consent to the data management contained therein. I accept the terms and conditions of use.`,
           important_text:
             "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
