@@ -39,15 +39,15 @@
           <div class="">
             <div>
               {{ $t("confirm.phone_number") }}
-              <a class="base-link" href="#">{{
+              <strong>{{
                 orderData.value.phoneNumber
-              }}</a>
+              }}</strong>
             </div>
           </div>
           <div class="" v-if="orderData.value.userEmail">
             <div>
               {{ $t("confirm.email_address") }}
-              <a class="base-link" href="#">{{ orderData.value.userEmail }}</a>
+              <strong>{{ orderData.value.userEmail }}</strong>
             </div>
           </div>
         </div>
