@@ -14,26 +14,19 @@
     </header>
     <form class="pb-10 max-w-[600px] mx-auto">
       <h1 class="purchase-h1">
-        <template v-for="(image, index) in imageMapping">
-          <img
-            v-if="
-              orderData.value.cartItems.find(
-                (item) => item.productCode === image.code
-              )
-            "
-            :key="index"
-            class="w-[45px]"
-            :src="image.src"
-            :alt="image.code + ' ' + $t('type.image.alt_vignette')"
-          />
-        </template>
-        <div v-if="orderData.value.cartItems.length > 0" class="flex items-center space-x-2">
-          <span>
-            {{ $t("vignette_type." + orderData.value.cartItems[0].productCode) }} -
-            {{ $t("type.title.after_title") }}
-          </span>
+      <img class="w-[45px]" :src="'/img/purchase/' + category + '.svg'" />
+      <div class="flex items-center space-x-2">
+          <span>{{ vignetteCategory }} -</span>
+          <span v-if="durationType === 'DAY'">{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }}) {{
+            $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'WEEK'">{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }}) {{
+            $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'YEAR_11'">{{ $t("type.title.year_11") }} {{ $t("type.title.after_title")
+            }}</span>
+          <span v-if="durationType === 'YEAR'">{{ $t("type.title.annual") }} {{ $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'MONTH'">{{ $t("type.title.monthly") }} {{ $t("type.title.after_title") }}</span>
         </div>
-      </h1>
+      </h1> 
       <div class="w-full md:max-w-[500px] mx-auto flex flex-col gap-2 mt-2">
         <div class="text-sm lg:text-lg">
           <div class="" v-if="orderData.value.phoneNumber != ''">
@@ -294,26 +287,12 @@ const goBack = () => {
   router.back();
 };
 
-const imageMapping = [
-  { code: 'D124', src: '/img/purchase/D1.svg' },
-  { code: 'D110', src: '/img/purchase/D1.svg' },
-  { code: 'D130', src: '/img/purchase/D1.svg' },
-  { code: 'D1365', src: '/img/purchase/D1.svg' },
+const categoryCookie = useCookie('category');
+const durationTypeCookie = useCookie('durationType');
 
-  { code: 'D224', src: '/img/purchase/D2.svg' },
-  { code: 'D210', src: '/img/purchase/D2.svg' },
-  { code: 'D230', src: '/img/purchase/D2.svg' },
-  { code: 'D2365', src: '/img/purchase/D2.svg' },
- 
-  { code: 'D1M24', src: '/img/purchase/D1M.svg' },
-  { code: 'D1M10', src: '/img/purchase/D1M.svg' },
-  { code: 'D1M30', src: '/img/purchase/D1M.svg' },
-
-  { code: 'U24', src: '/img/purchase/U.svg' },
-  { code: 'U10', src: '/img/purchase/U.svg' },
-  { code: 'U30', src: '/img/purchase/U.svg' },
-  { code: 'U365', src: '/img/purchase/U.svg' },
-];
+const category = ref(categoryCookie.value);
+const vignetteCategory = ref(categoryCookie.value);
+const durationType = ref(durationTypeCookie.value);
 
 
 /// ----------------- LOAD LANGUAGE -----------------------

@@ -202,7 +202,10 @@ let disableUpdate = ref(false);
 
 // Load cart key from cookie
 const cartKey = useCookie('cartKey');
-const categoryFromCookie = useCookie('vignetteType');
+const vignetteTypeFromCookie = useCookie('vignetteType');
+const durationTypeCookie = useCookie('durationType');
+const categoryCookie = useCookie('category');
+
 const isEmptyCart = ref(true);
 const { validateCounties, errorCountiesMessage, isAtLeastOneCountySelected } = useCountiesValidation(selectedCounties);
 
@@ -271,7 +274,7 @@ const addMore = (index: number) => {
 
 const numberOfVignettes = ref(1); // Default to 1, modify as necessary
 
-if (cartKey.value == null || categoryFromCookie.value != vignetteInfo.value?.value.vignetteType.vignetteCode) {
+if (cartKey.value == null || vignetteTypeFromCookie.value != vignetteInfo.value?.value.vignetteType.vignetteCode) {
   cartKey.value = uuid.v4();
   const orderId = useCookie('orderId');
   orderId.value = null;
@@ -458,7 +461,9 @@ else {
 }
 
 // Trigger category type change
-categoryFromCookie.value = vignetteInfo.value?.value.vignetteType.vignetteCode;
+vignetteTypeFromCookie.value = vignetteInfo.value?.value.vignetteType.vignetteCode;
+durationTypeCookie.value = vignetteInfo.value?.value.vignetteType.durationType;
+categoryCookie.value = vignetteInfo.value?.value.vignetteType.category;
 
 const isEuCountry = (country: any) => ["A", "B", "BG", "CY", "CZ", "D", "DK", "E", "EST", "FIN", "F", "GR", "HR", "H", "IRL", "I", "LT", "L", "LV", "M", "NA", "PL", "P", "RO", "S", "SLO", "SK"].includes(country.countryCode);
 

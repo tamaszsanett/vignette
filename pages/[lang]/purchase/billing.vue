@@ -439,13 +439,11 @@ import type {
 const { t, locale } = useI18n();
 
 const categoryCookie = useCookie('category');
-const vignetteCategoryCookie = useCookie('vignetteCategory');
 const durationTypeCookie = useCookie('durationType');
 
 const category = ref(categoryCookie.value);
-const vignetteCategory = ref(vignetteCategoryCookie.value);
+const vignetteCategory = ref(categoryCookie.value);
 const durationType = ref(durationTypeCookie.value);
-
 
 const orderId = useCookie("orderId", {
   watch: "shallow",
