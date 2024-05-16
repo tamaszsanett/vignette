@@ -131,7 +131,7 @@
             <div class="flex justify-center items-center space-x-4 calendar-wrapper">
               <div>
                 <Calendar :id="'start_date-' + i" v-model="item.startDate" :min-date="minStartDate"
-                  :max-date="maxEndDate" :disabled="isCalendarDisabled" :manualInput="false" dateFormat="yy-mm-dd" dataType="string" />
+                  :max-date="maxEndDate" :disabled="isCalendarDisabled" :manualInput="false" dateFormat="yy-mm-dd"/>
               </div>
               <div>
                 <Calendar :id="'end_date-' + i" v-model="item.endDate" :disabled="true" :manualInput="false"
@@ -180,7 +180,7 @@ import { usePlateValidation } from "~/composables/usePlateValidation";
 import { useVignetteInfo } from "~/composables/useVignetteInfo";
 import { useCountiesValidation } from "~/composables/useCountiesValidation";
 import type * as purchaseTypesTs from "~/types/purchaseTypes.ts";
-import type { VignetteInfoResponse } from "~/types/types.ts";
+import type { GetCartResponse, VignetteInfoResponse } from "~/types/types.ts";
 import countries from "~/data/countries";
 import counties from "~/data/counties";
 import { uuid } from "vue-uuid";
@@ -194,30 +194,15 @@ const category = route.params.category;
 const vignetteInfo = ref<VignetteInfoResponse | null>(null);
 const { fetchVignetteInfo } = useVignetteInfo();
 vignetteInfo.value = await fetchVignetteInfo();
+const lastAddedIndex = ref(0);
+
+let disableUpdate = ref(false);
+
 
 // Load cart key from cookie
 const cartKey = useCookie('cartKey');
 const categoryFromCookie = useCookie('vignetteType');
-
-// if (cartKey.value == null || categoryFromCookie.value != vignetteInfo.value?.value.vignetteType.vignetteCode) {
-//   cartKey.value = uuid.v4();
-//   const orderId = useCookie('orderId');
-//   orderId.value = null;
-// }
-// else {
-//   // TODO: Get cart info from server
-// }
-cartKey.value = uuid.v4();
-  const orderId = useCookie('orderId');
-  orderId.value = null;
-
-// Trigger category type change
-categoryFromCookie.value = vignetteInfo.value?.value.vignetteType.vignetteCode;
-
-const numberOfVignettes = ref(1); // Default to 1, modify as necessary
-// TODO: From cart
-const isEuCountry = (country: any) => ["A", "B", "BG", "CY", "CZ", "D", "DK", "E", "EST", "FIN", "F", "GR", "HR", "H", "IRL", "I", "LT", "L", "LV", "M", "NA", "PL", "P", "RO", "S", "SLO", "SK"].includes(country.countryCode);
-
+const isEmptyCart = ref(true);
 const { validateCounties, errorCountiesMessage, isAtLeastOneCountySelected } = useCountiesValidation(selectedCounties);
 
 validateCounties();
@@ -227,27 +212,254 @@ const countryOptions = computed(() => {
   return countries[locale.value] || [];
 });
 
+
+const updateMonthEndDate = async () => {
+  formData.value.multiples.forEach(async (item, index) => {
+    if (item.startDate !== null) {
+      var response = await fetchEndDate(
+        vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
+        item.startDate.toISOString().substring(0,10)
+      );
+
+      item.endDate = new Date(response == null ? "" : response.toString());
+    }
+  });
+};
 //counties select
 const countyOptions = computed(() => {
   return counties[locale.value] || [];
 });
 
 const formData = ref({
-  multiples: [
-    {
-      selectedCountry: countryOptions.value.find(
-        (country) => country.countryCode === "H"
-      ),
-      countryCode: "H",
-      plateNumber: "",
-      startDate: new Date(),
-      endDate: null,
-      formShowError: false,
-      invalidPlate: "",
-      itemKey: uuid.v4()
-    } as purchaseTypesTs.FormData,
-  ],
+  multiples: [] as purchaseTypesTs.FormData[],
 });
+const addMore = (index: number) => {
+  disableUpdate.value = true;
+  const newItem = {
+    selectedCountry: countryOptions.value.find(
+      (country) => country.countryCode === "H"
+    ),
+    countryCode: "H",
+    plateNumber: "",
+    startDate: new Date(),
+    endDate: new Date(),
+    formShowError: false,
+    invalidPlate: "",
+    itemKey: uuid.v4()
+  };
+
+  useAddAnotherVignetteToCart(
+    currentLanguage.value,
+    newItem.itemKey,
+    "EUR",
+    vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
+    vignetteInfo.value?.value.vignetteType.durationType ?? "",
+    newItem.countryCode,
+    newItem.plateNumber,
+    newItem.startDate,
+    newItem.endDate,
+    vignetteInfo.value?.value.vignetteType.amount ?? 0,
+    vignetteInfo.value?.value.vignetteType.transactionFee ?? 0,
+    0, numberOfVignettes.value, selectedCounties.value
+  );
+
+  formData.value.multiples.splice(index + 1, 0, newItem);
+  lastAddedIndex.value = index + 1;
+  disableUpdate.value = false;
+};
+
+const numberOfVignettes = ref(1); // Default to 1, modify as necessary
+
+if (cartKey.value == null || categoryFromCookie.value != vignetteInfo.value?.value.vignetteType.vignetteCode) {
+  cartKey.value = uuid.v4();
+  const orderId = useCookie('orderId');
+  orderId.value = null;
+  addMore(0);
+  lastAddedIndex.value = 0;
+}
+else {
+  // get items from cart
+  const cart =  await $fetch<GetCartResponse>(`https://test-gw.voxpay.hu/Webshop.Common/GetCart?CartKey=${cartKey.value}&CultureKey=${currentLanguage.value}`);
+
+  if (cart.error.code == "Webshop.CartNotExists" || (cart.isSuccess && cart.value.status == "Prepared" || cart.isFailure))
+  {
+    cartKey.value = uuid.v4();
+    const orderId = useCookie('orderId');
+    orderId.value = null;
+    addMore(0);
+    lastAddedIndex.value = 0;
+  }
+  else {  
+    if (cart.value.cartItems) {
+      var itemKeys = [] as string[];
+      cart.value.cartItems.forEach((item, index) => {
+        if (vignetteInfo.value?.value.vignetteType.durationType == "YEAR" 
+          || vignetteInfo.value?.value.vignetteType.durationType == "DAY"
+          || vignetteInfo.value?.value.vignetteType.durationType == "WEEK")
+        {
+          const newItem = {
+            selectedCountry: countryOptions.value.find(
+              (country) => country.countryCode === "H"
+            ),
+            countryCode: item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
+            plateNumber: item.properties.find((x) => x.key == "PlateNumber")?.value ?? "",
+            startDate: new Date((new Date(item.properties.find((x) => x.key == "ValidityStart")?.value ?? "")).getTime() - (new Date()).getTimezoneOffset() * 60000),
+            endDate: new Date((new Date(item.properties.find((x) => x.key == "ValidityEnd")?.value ?? "")).getTime() - (new Date()).getTimezoneOffset() * 60000),
+            formShowError: false,
+            invalidPlate: "",
+            itemKey: item.cartItemKey
+          }; 
+        formData.value.multiples.splice(index, 0, newItem);
+        lastAddedIndex.value = index;
+        }
+        else if (vignetteInfo.value?.value.vignetteType.durationType == "MONTH")
+        {
+          itemKeys.push(item.cartItemKey.split("_")[0]);
+        }
+      });
+
+      if (vignetteInfo.value?.value.vignetteType.durationType == "MONTH") // HANDLE MONTHLY VIGNETTE LOAD
+      {
+        var unique = itemKeys.filter((value, index, array) => array.indexOf(value) === index);
+        // single plate number = 1 or multiple month vignette for one vehicle
+        if (unique.length == 1) {   
+          var item = cart.value.cartItems[0];
+          var minDate = new Date("2040-01-01");
+          var maxDate = new Date("2000-01-01");
+          cart.value.cartItems.forEach((cartItem, index) => {
+              var validityStart = new Date(cartItem.properties.find((x) => x.key == "ValidityStart")?.value ?? "");
+              if (minDate > validityStart)
+              {
+                minDate = validityStart;
+              }
+              var validityEnd = new Date(cartItem.properties.find((x) => x.key == "ValidityEnd")?.value ?? "");
+              if (maxDate > validityEnd)
+              {
+                maxDate = validityEnd;
+              }
+            });
+
+          const newItem = {
+            selectedCountry: countryOptions.value.find(
+              (country) => country.countryCode === "H"
+            ),
+            countryCode: item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
+            plateNumber: item.properties.find((x) => x.key == "PlateNumber")?.value ?? "",
+            startDate: new Date((minDate).getTime() - (new Date()).getTimezoneOffset() * 60000),
+            endDate: new Date((maxDate).getTime() - (new Date()).getTimezoneOffset() * 60000),
+            formShowError: false,
+            invalidPlate: "",
+            itemKey: item.cartItemKey.substring(0,item.cartItemKey.length - 2) // remove _[numberofmonth]
+          }; 
+
+          formData.value.multiples.splice(0, 0, newItem);
+          lastAddedIndex.value = 0;          
+
+          numberOfVignettes.value = cart.value.cartItems.length;
+        }
+        else { // multiple plate number = 2 or more plate number with multiple months
+          numberOfVignettes.value = cart.value.cartItems.length / unique.length;
+          lastAddedIndex.value = -1;
+          unique.forEach((item, index) => {
+            // Get min start date
+            var minDate = new Date("2040-01-01");
+            var countryCode = "";
+            var itemKey = "";
+            var plateNumber = "";
+            
+              cart.value.cartItems.forEach((cartItem, index) => {
+                itemKey = cartItem.cartItemKey.split("_")[0];
+                if (itemKey == item)
+                {
+                  plateNumber = cartItem.properties.find((x) => x.key == "PlateNumber")?.value ?? "";
+                  countryCode = cartItem.properties.find((x) => x.key == "CountryCode")?.value ?? "";
+                  var validityStart = new Date(cartItem.properties.find((x) => x.key == "ValidityStart")?.value ?? "");
+                  if (minDate > validityStart)
+                  {
+                    minDate = validityStart;
+                  }
+                }
+              });
+              const newItem = {
+                selectedCountry: countryOptions.value.find(
+                  (country) => country.countryCode === "H"
+                ),
+                countryCode: countryCode ?? "",
+                plateNumber: plateNumber,
+                startDate: minDate,
+                endDate: new Date(),
+                formShowError: false,
+                invalidPlate: "",
+                itemKey: item // remove _[numberofmonth]
+              }; 
+              formData.value.multiples.splice(lastAddedIndex.value, 0, newItem);
+              lastAddedIndex.value = lastAddedIndex.value+1;
+          });
+        }
+      }
+      if (vignetteInfo.value?.value.vignetteType.durationType == "YEAR_11") // HANDLE MONTHLY VIGNETTE LOAD
+      {
+        var itemKeys = [] as string[];
+        var months = [] as string[];
+
+        cart.value.cartItems.forEach((item, index) => {
+          itemKeys.push(item.cartItemKey.split("_")[0]);
+          months.push(item.productCode);
+        });
+
+        var uniqueItemKeys = itemKeys.filter((value, index, array) => array.indexOf(value) === index);
+        var uniqueMonths = months.filter((value, index, array) => array.indexOf(value) === index);
+
+        selectedCounties.value = uniqueMonths;
+        lastAddedIndex.value = -1;
+        uniqueItemKeys.forEach((item, index) => {
+            // Get min start date
+            var minDate = new Date("2040-01-01");
+            var countryCode = "";
+            var plateNumber = "";
+            var itemKey = "";
+            
+              cart.value.cartItems.forEach((cartItem, index) => {
+                itemKey = cartItem.cartItemKey.split("_")[0];
+                if (itemKey == item)
+                {
+                  plateNumber = cartItem.properties.find((x) => x.key == "PlateNumber")?.value ?? "";
+                  countryCode = cartItem.properties.find((x) => x.key == "CountryCode")?.value ?? "";
+                  var validityStart = new Date(cartItem.properties.find((x) => x.key == "ValidityStart")?.value ?? "");
+                  if (minDate > validityStart)
+                  {
+                    minDate = validityStart;
+                  }
+                }
+              });
+              const newItem = {
+                selectedCountry: countryOptions.value.find(
+                  (country) => country.countryCode === "H"
+                ),
+                countryCode: countryCode ?? "",
+                plateNumber: plateNumber,
+                startDate: minDate,
+                endDate: new Date(),
+                formShowError: false,
+                invalidPlate: "",
+                itemKey: item
+              }; 
+              formData.value.multiples.splice(lastAddedIndex.value, 0, newItem);
+              lastAddedIndex.value = lastAddedIndex.value+1;
+          });
+      }
+    }
+    else {
+      lastAddedIndex.value = 0;
+    }
+  }
+  isEmptyCart.value = false;
+}
+
+// Trigger category type change
+categoryFromCookie.value = vignetteInfo.value?.value.vignetteType.vignetteCode;
+
+const isEuCountry = (country: any) => ["A", "B", "BG", "CY", "CZ", "D", "DK", "E", "EST", "FIN", "F", "GR", "HR", "H", "IRL", "I", "LT", "L", "LV", "M", "NA", "PL", "P", "RO", "S", "SLO", "SK"].includes(country.countryCode);
 
 const { validateAllPlates } = usePlateValidation("https://test-gw.voxpay.hu/Webshop.Vignette/ValidatePlateNumber");
 
@@ -331,7 +543,13 @@ watch(numberOfVignettes, (newValue, oldValue) => {
         });
       }
       else if (oldValue > newValue) {
-        // remove from cart
+        formData.value.multiples.forEach(async (item, index) => {
+          useRemoveVignetteFromCartByMoth(
+            item.itemKey,
+            newValue, 
+            oldValue
+          )
+        });
       }
   }
 });
@@ -371,45 +589,6 @@ watch(selectedCounties, (newItems, oldItems) => {
 })
 
 // ------------------------------- ADD/REMOVE/MODIFY vignette blocks ----------------------------------------
-const lastAddedIndex = ref(0);
-
-let disableUpdate = ref(false);
-
-const addMore = (index: number) => {
-  disableUpdate.value = true;
-  const newItem = {
-    selectedCountry: countryOptions.value.find(
-      (country) => country.countryCode === "H"
-    ),
-    countryCode: "H",
-    plateNumber: "",
-    startDate: new Date(),
-    endDate: new Date(),
-    formShowError: false,
-    invalidPlate: "",
-    itemKey: uuid.v4()
-  };
-
-  useAddAnotherVignetteToCart(
-    currentLanguage.value,
-    newItem.itemKey,
-    "EUR",
-    vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
-    vignetteInfo.value?.value.vignetteType.durationType ?? "",
-    newItem.countryCode,
-    newItem.plateNumber,
-    newItem.startDate,
-    newItem.endDate,
-    vignetteInfo.value?.value.vignetteType.amount ?? 0,
-    vignetteInfo.value?.value.vignetteType.transactionFee ?? 0,
-    0, numberOfVignettes.value, selectedCounties.value
-  );
-
-  formData.value.multiples.splice(index + 1, 0, newItem);
-  lastAddedIndex.value = index + 1;
-  disableUpdate.value = false;
-};
-
 const remove = (index: number) => {
   useRemoveVignetteFromCart(
     formData.value.multiples[index].itemKey,
@@ -445,56 +624,40 @@ const goBack = () => {
 const minStartDate = computed(() => {
   return vignetteInfo.value
     ? new Date(vignetteInfo.value.value.vignetteType.validityStartMin)
-    : new Date();
+    : new Date((new Date()).getTime() - (new Date()).getTimezoneOffset() * 60000);
 });
 const maxEndDate = computed(() => {
   return vignetteInfo.value
     ? new Date(vignetteInfo.value.value.vignetteType.validityStartMax)
-    : new Date();
+    : new Date((new Date()).getTime() - (new Date()).getTimezoneOffset() * 60000);
 });
-
-const updateMonthEndDate = async () => {
-  formData.value.multiples.forEach(async (item, index) => {
-    if (item.startDate !== null) {
-      var response = await fetchEndDate(
-        vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
-        item.startDate.toISOString(),
-        numberOfVignettes.value
-      );
-
-      item.endDate = new Date(response == null ? "" : response.toString());
-    }
-  });
-};
 
 
 //
 onMounted(async () => {
   try {
-    const info = await fetchVignetteInfo();
-    if (info) vignetteInfo.value = info;
     if (vignetteInfo.value) {
       var endDate = await fetchEndDate(
         vignetteInfo.value.value.vignetteType.vignetteCode,
-        new Date().toISOString().split("T")[0],
-        1
+        (new Date((formData.value.multiples[0].startDate ?? new Date()).getTime() - (new Date()).getTimezoneOffset() * 60000)).toISOString().split("T")[0]
       );
       formData.value.multiples[0].endDate = new Date(endDate == null ? "" : endDate.toString());
-
-      useAddAnotherVignetteToCart(
-        currentLanguage.value,
-        formData.value.multiples[0].itemKey, "EUR",
-        vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
-        vignetteInfo.value?.value.vignetteType.durationType ?? "",
-        formData.value.multiples[0].countryCode,
-        formData.value.multiples[0].plateNumber,
-        formData.value.multiples[0].startDate,
-        formData.value.multiples[0].endDate,
-        vignetteInfo.value?.value.vignetteType.amount ?? 0,
-        vignetteInfo.value?.value.vignetteType.transactionFee ?? 0,
-        0, numberOfVignettes.value, selectedCounties.value
-      );
-
+      if (isEmptyCart.value)
+      {
+        useAddAnotherVignetteToCart(
+          currentLanguage.value,
+          formData.value.multiples[0].itemKey, "EUR",
+          vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
+          vignetteInfo.value?.value.vignetteType.durationType ?? "",
+          formData.value.multiples[0].countryCode,
+          formData.value.multiples[0].plateNumber,
+          formData.value.multiples[0].startDate,
+          formData.value.multiples[0].endDate,
+          vignetteInfo.value?.value.vignetteType.amount ?? 0,
+          vignetteInfo.value?.value.vignetteType.transactionFee ?? 0,
+          0, numberOfVignettes.value, selectedCounties.value
+        );
+      }
     }
 
   } catch (error) {
@@ -639,20 +802,18 @@ formData.value.multiples.forEach(async (item, index) => {
   if (item.startDate !== null) {
     var response = await fetchEndDate(
       vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
-      item.startDate.toISOString().split('T')[0],
-      numberOfVignettes.value
+      item.startDate.toISOString().split('T')[0]
     );
     item.endDate = new Date(response == null ? "" : response.toString());
   }
 });
 
-async function fetchEndDate(vignetteCode: string, validityStart: string, numberOfVignettes: number) {
+async function fetchEndDate(vignetteCode: string, validityStart: string) {
   const requestBody = {
     vignetteCode,
     validityStart,
-    numberOfVignettes
+    numberOfVignettes: numberOfVignettes.value,
   };
-
   const apiEndpoint = 'https://test-gw.voxpay.hu/Webshop.Vignette/CountEndDate';
   try {
     const response = await fetch(apiEndpoint, {
@@ -697,8 +858,7 @@ async function calculateEndDate(index: number): Promise<void> {
   if (item.startDate !== null) {
     var response = await fetchEndDate(
       vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
-      item.startDate.toLocaleDateString("hu-HU").split('T')[0],
-      numberOfVignettes.value
+      item.startDate.toLocaleDateString("hu-HU").split('T')[0]
     );
 
     item.endDate = new Date(response == null ? "" : response.toString());

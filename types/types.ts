@@ -344,3 +344,22 @@ export type Vignette = {
     nmfrVignetteNumber: string
   
 }
+
+export type GetCartResponse = {
+  value: {
+    "userId": null,
+        "sessionId": string,
+        "clientId": string,
+        "serviceKey": string,
+        "cultureKey": string,
+        "currency": string,
+        "cartItems": CartItem[],
+    status: string,
+  },
+  isSuccess: true,
+  error: {
+    code: string,
+    message: string
+  },
+  isFailure: false
+}

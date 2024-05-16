@@ -22,6 +22,10 @@ export async function useUpdateCartItem(
   numberOfMonths: number,
   counties: string[]) {
 
+    
+  var correctedStartTime = new Date((validityStart ?? new Date()).getTime() - (new Date()).getTimezoneOffset() * 60000)
+  console.log(correctedStartTime);
+
   const cartKey = useCookie('cartKey');
 
   var items = [{} as CartItemToUpdate];
@@ -38,13 +42,13 @@ export async function useUpdateCartItem(
           value: carCountry
         }, {
           key: "PlateNumber",
-          value: plateNumber
+          value: plateNumber.toUpperCase()
         }, {
           key: "ValidityStart",
-          value: validityStart == null ? "" : validityStart.toISOString()
+          value: validityStart == null ? "" : correctedStartTime.toISOString().substring(0,10)
         }, {
           key: "ValidityEnd",
-          value: validityEnd == null ? "" : validityEnd.toISOString()
+          value: validityEnd == null ? "" : validityEnd.toISOString().substring(0,10)
         }, {
           key: "VignettePrice",
           value: vignettePrice.toString()
@@ -60,8 +64,8 @@ export async function useUpdateCartItem(
     
     for (let i = 1; i <= numberOfMonths; i++) {
       if (validityStart !== null && validityEnd !== null) {
-        let currentValidityStart = new Date(validityStart.toISOString());
-        let currentValidityEnd = new Date(validityStart.toISOString());
+        let currentValidityStart = new Date(correctedStartTime.toISOString());
+        let currentValidityEnd = new Date(correctedStartTime.toISOString());
 
         currentValidityStart.setMonth(validityStart.getMonth() + i-1);
         currentValidityEnd.setMonth(validityStart.getMonth() + i);

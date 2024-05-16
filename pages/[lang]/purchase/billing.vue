@@ -14,7 +14,7 @@
     </header>
     <section class="max-w-[800px] mx-auto">
       <h1 class="purchase-h1">
-        <template v-for="(image, index) in imageMapping">
+        <!-- <template v-for="(image, index) in imageMapping">
           <img
             v-if="
               orderData.value.cartItems.find(
@@ -25,10 +25,10 @@
             class="w-[45px]"
             :src="image.src"
             :alt="image.code + ' ' + $t('type.image.alt_vignette')"
-          />
-        </template>
+          /> 
+        </template> -->
         <div
-          v-if="orderData.value.cartItems.length > 0"
+          v-if="orderData.value?.cartItems?.length > 0"
           class="flex items-center space-x-2"
         >
           <span>

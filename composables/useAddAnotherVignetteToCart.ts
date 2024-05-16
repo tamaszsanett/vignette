@@ -48,10 +48,10 @@ export async function useAddAnotherVignetteToCart(
           value: plateNumber
         },{
           key: "ValidityStart",
-          value: validityStart == null ? "" : validityStart.toISOString()
+          value: validityStart == null ? "" : validityStart.toISOString().substring(0,10)
         },{
           key: "ValidityEnd",
-          value: validityEnd == null ? "" : validityEnd.toISOString()
+          value: validityEnd == null ? "" : validityEnd.toISOString().substring(0,10)
         },{
           key: "VignettePrice",
           value: vignettePrice.toString()
@@ -91,7 +91,7 @@ export async function useAddAnotherVignetteToCart(
               value: carCountry
             },{
               key: "PlateNumber",
-              value: plateNumber
+              value: plateNumber.toUpperCase()
             },{
               key: "ValidityStart",
               value: currentValidityStart == null ? "" : currentValidityStart.toISOString().substring(0,10)
