@@ -559,10 +559,12 @@ const fetchCompanyNameSuggestions = async (
 
 const onCompanySelect = (event: { value: InvoiceAddressData }) => {
   const selectedCompany = event.value;
+  orderData.value.invoiceName = selectedCompany.companyName;
   orderData.value.invoiceCity = selectedCompany.invoiceCity;
   orderData.value.invoiceStreetAddress = selectedCompany.invoiceStreetAddress;
   orderData.value.invoiceHUTaxNumber = selectedCompany.invoiceHUTaxNumber;
-  orderData.value.invoiceCountry = selectedCompany.invoiceCountry;
+  orderData.value.invoiceCountry = "Hungary";
+  selectedCountry.value = "Hungary";
   orderData.value.invoicePostalCode = selectedCompany.invoicePostalCode;
 };
 
