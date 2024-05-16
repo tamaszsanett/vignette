@@ -47,7 +47,7 @@
         <hr class="dashed-hr" />
         <div
           class="text-sm lg:text-lg"
-          v-for="item in orderData.value.cartItems"
+          v-for="item in sortedCartItems"
         >
           <div class="flex items-center">
             <div class="half-width">
@@ -295,6 +295,17 @@ const vignetteCategory = ref(categoryCookie.value);
 const durationType = ref(durationTypeCookie.value);
 
 
+/// ----------------- sort cartItems -----------------------
+
+const sortedCartItems = computed(() => {
+  return [...orderData.value.cartItems].sort((a, b) => {
+    const validityStartA = new Date(a.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
+    const validityStartB = new Date(b.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
+    return validityStartA - validityStartB;
+  });
+});
+
+
 /// ----------------- LOAD LANGUAGE -----------------------
 
 const currentLanguage = ref("en");
@@ -356,9 +367,10 @@ const loading = ref(false);
 
 async function sendForm() {
   loading.value = true;
-
+  
   if (!datasAreCorrect.value) {
     errorMessage.value = "GTCC required!!!";
+    loading.value = false;
     return;
   }
 

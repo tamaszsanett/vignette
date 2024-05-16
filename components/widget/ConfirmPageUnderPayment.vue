@@ -28,7 +28,7 @@
                       <td><strong>{{ $t("global.confirm_trid.table_validity_period_title") }}</strong></td>
                       <td><strong>{{ $t("global.confirm_trid.table_vignette_num_title") }}</strong></td>
                     </tr>
-                    <tr v-for="vignette in purchaseData.value.vignettes">
+                    <tr v-for="vignette in sortedVignettes" :key="vignette.nmfrVignetteNumber">
                       <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
                       <td>{{ vignette.validFrom?.substring(0, 10).replaceAll("-", ".") }} - {{ vignette.validTo?.substring(0, 10).replaceAll("-", ".") }}</td>
                       <td class="text-info">
@@ -53,7 +53,6 @@
                 <p class="text-info">
                   {{ $t("confirm_under_payment.card.info_text") }}
                 </p>
-                {{ $t("global.confirm_trid.card_time_text") }}
               </div>
             </div>
           </template>
@@ -73,6 +72,14 @@ const props = defineProps({
     type: Object as PropType<GetPurchaseResponse>,
     required: true,
   },
+});
+
+const sortedVignettes = computed(() => {
+  return [...props.purchaseData.value.vignettes].sort((a, b) => {
+    const validFromA = new Date(a.validFrom).getTime();
+    const validFromB = new Date(b.validFrom).getTime();
+    return validFromA - validFromB;
+  });
 });
 
 function reloadPage() {
