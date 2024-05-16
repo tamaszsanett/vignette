@@ -1150,6 +1150,7 @@ input[type="checkbox"] {
   border-spacing: 0;
   text-align: center;
   margin-top: 20px;
+  overflow-wrap: anywhere;
 }
 
 .payment-progress-table td,
