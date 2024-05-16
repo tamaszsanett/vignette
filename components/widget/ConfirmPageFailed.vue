@@ -60,14 +60,12 @@
                 <p>
                   {{ $t("confirm_failed.card.contact_us_text") }}
                 </p>
-                <p class="text-danger">
-                  {{ $t("confirm_failed.card.important_text") }}
-                </p>
+                <p class="text-danger" v-html="t('confirm_failed.card.important_text')"></p>
                 <address class="mt-5">
                   {{ $t("global.contact_data.title") }}<br />
                   {{ $t("global.contact_data.phone") }}<br />
                   {{ $t("global.contact_data.email_title") }}
-                  <strong>{{ $t("global.contact_data.mail") }}</strong>
+                  <strong>{{ $t("global.contact_data.mail").replace("[at]", "@") }}</strong>
                 </address>
               </div>
             </div>

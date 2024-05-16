@@ -50,8 +50,7 @@
                     <span id="refreshcounter"> ({{ timerCount }})</span>
                   </Button>
                 </section>
-                <p class="text-info">
-                  {{ $t("confirm_under_payment.card.info_text") }}
+                <p class="text-info" v-html="t('confirm_under_payment.card.info_text')">
                 </p>
               </div>
             </div>

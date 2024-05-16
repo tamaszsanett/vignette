@@ -47,9 +47,7 @@
                   </NuxtLink>
                 </section>
                 <p>{{ $t("confirm_successful.card.ty_text") }}</p>
-                <p class="my-0">
-                  {{ $t("confirm_successful.card.info_text") }}
-                </p>
+                <p class="my-0" v-html="t('confirm_successful.card.info_text')"></p>
                 <p class="text-danger my-0">
                   {{ $t("confirm_successful.card.spam_text") }}
                 </p>
@@ -57,7 +55,7 @@
                   {{ $t("global.contact_data.title") }}<br />
                   {{ $t("global.contact_data.phone") }}<br />
                   {{ $t("global.contact_data.email_title") }}
-                  <strong>{{ $t("global.contact_data.mail") }}</strong>
+                  <strong>{{ $t("global.contact_data.mail").replace("[at]", "@") }}</strong>
                 </address>
               </div>
             </div>
