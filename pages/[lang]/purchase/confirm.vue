@@ -32,15 +32,15 @@
           <div class="" v-if="orderData.value.phoneNumber">
             <div>
               {{ $t("confirm.phone_number") }}
-              <strong>{{
-                orderData.value.phoneNumber
+              <strong class="text-orange">{{
+                (orderData.value.phonePrefix ?? "+36") + "" + orderData.value.phoneNumber
               }}</strong>
             </div>
           </div>
-          <div class="" v-if="orderData.value.userEmail">
+          <div v-if="orderData.value.userEmail">
             <div>
               {{ $t("confirm.email_address") }}
-              <strong>{{ orderData.value.userEmail }}</strong>
+              <strong class="text-orange">{{ orderData.value.userEmail }}</strong>
             </div>
           </div>
         </div>
