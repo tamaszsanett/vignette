@@ -102,7 +102,7 @@ export default defineI18nConfig(() => ({
         number_of_month: "Number of month",
         validity_period: "Validity period",
         is_at_least_one_county_selected:
-          "Choose alt least one county!",
+          "Choose at least one county!",
         plate_num_paceholder: "e.g. ABC-123",
         country_error: "Country required!",
         image: {
