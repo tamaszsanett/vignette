@@ -424,6 +424,7 @@
 </template>
 
 <script setup lang="ts">
+import { phonePrefixes } from '@/data/phone_prefix';
 const route = useRoute();
 import { useRouter } from "nuxt/app";
 const router = useRouter();
@@ -547,12 +548,8 @@ const inputMaskValue = ref("");
 const errorMessage = ref("");
 
 const selectedCountryPhonePrefix = ref(orderData.value?.phonePrefix);
-const numbers = ref([
-  "+36",
-  "+42",
-  "+49",
-  "+380",
-]);
+const numbers = ref(phonePrefixes);
+
 
 const currentLanguage = ref("en");
 watch(
