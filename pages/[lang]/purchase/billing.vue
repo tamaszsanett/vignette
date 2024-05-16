@@ -13,11 +13,11 @@
       />
     </header>
     <section class="max-w-[800px] mx-auto">
-      <h1 class="purchase-h1">
-        <!-- <template v-for="(image, index) in imageMapping">
+      <!--  <h1 class="purchase-h1">
+       <template v-for="(image, index) in imageMapping">
           <img
             v-if="
-              orderData.value.cartItems.find(
+              orderData?.value?.cartItems?.find(
                 (item) => item.productCode === image.code
               )
             "
@@ -26,9 +26,9 @@
             :src="image.src"
             :alt="image.code + ' ' + $t('type.image.alt_vignette')"
           /> 
-        </template> -->
+        </template> 
         <div
-          v-if="orderData.value?.cartItems?.length > 0"
+          v-if="orderData?.value?.cartItems?.length > 0"
           class="flex items-center space-x-2"
         >
           <span>
@@ -39,7 +39,8 @@
             {{ $t("billing.title") }}
           </span>
         </div>
-      </h1>
+      </h1> -->
+      <h1 class="purchase-h1">{{ $t("billing.title") }}</h1>
     </section>
     <form class="pb-10 max-w-[450px] mx-auto">
       <div class="w-full mx-auto flex flex-col gap-4">
@@ -216,14 +217,14 @@
                   $t("billing.company_name")
                 }}</label>
                 <div class="relative flex items-center w-full gap-2">
-                  <AutoComplete class="w-full"
+                  <AutoComplete
+                    class="w-full"
                     id="companyName"
                     v-model="orderData.value.invoiceName"
                     :suggestions="companyNameSuggestions"
-                    @change="fetchCompanyNameSuggestions"
-                    field="name"
-                    data-key="name"
-                    @complete="onCompanyNameSelected"
+                    @complete="fetchCompanyNameSuggestions"
+                    @change="onCompanySelect"
+                    field="companyName"
                   />
                   <button
                     class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
@@ -236,7 +237,45 @@
                 </div>
               </div>
             </section>
-            <section class="flex flex-col gap-2">
+            <section class="flex flex-col gap-2" v-if="companyOrPrivatePerson === 'company'">
+              <label for="country" class="primary-label">{{
+                $t("billing.country")
+              }}</label>
+              <div class="relative flex items-center w-full gap-2">
+                <Dropdown
+                  id="invoiceCountry"
+                  v-model="orderData.value.invoiceCountry"
+                  :options="countries"
+                  filter
+                  optionLabel="name"
+                  placeholder="Select a Country"
+                  class="w-full primary-select"
+                >
+                  <template #value="slotProps">
+                    <div v-if="slotProps.value" class="flex items-center">
+                      <div>{{ slotProps.value }}</div>
+                    </div>
+                    <span v-else>
+                      {{ slotProps.placeholder }}
+                    </span>
+                  </template>
+                  <template #option="slotProps">
+                    <div class="flex items-center">
+                      <div>{{ slotProps.option }}</div>
+                    </div>
+                  </template>
+                </Dropdown>
+                <button
+                  class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
+                >
+                  ?
+                  <span class="tooltiptext">{{
+                    $t("billing.country_tooltip_text")
+                  }}</span>
+                </button>
+              </div>
+            </section>
+            <section class="flex flex-col gap-2" v-if="companyOrPrivatePerson === 'privatePerson'">
               <label for="country" class="primary-label">{{
                 $t("billing.country")
               }}</label>
@@ -274,11 +313,17 @@
                 </button>
               </div>
             </section>
-            <section
+            <!-- <section
               class="flex flex-col gap-2"
               v-if="
                 companyOrPrivatePerson === 'company' &&
                 orderData.value.invoiceCountry === 'Hungary'
+              "
+            > -->
+            <section
+              class="flex flex-col gap-2"
+              v-if="
+                companyOrPrivatePerson === 'company'
               "
             >
               <label for="tax_number" class="primary-label">{{
@@ -390,7 +435,6 @@
           </Button>
         </section>
       </div>
-      <PurchaseBox />
     </form>
     <template v-for="widget in widgets" :key="widget.widgetId">
       <div
@@ -407,10 +451,15 @@
 const route = useRoute();
 import { useRouter } from "nuxt/app";
 const router = useRouter();
-import { ref, computed } from "vue";
+import { ref, computed, watch, reactive } from "vue";
 import { useRoute } from "nuxt/app";
 import { uuid } from "vue-uuid";
 import type { GetOrderResponse } from "~/types/types";
+import type {
+  InvoiceAddressData,
+  InvoiceAddressResponse,
+  AutoCompleteCompleteEvent,
+} from "~/types/purchaseTypes";
 const { t, locale } = useI18n();
 
 const imageMapping = [
@@ -449,39 +498,72 @@ if (cartKey.value == null) {
 
 const commonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
 
-var orderData = {
+/* let orderData = {
   value: {
     needInvoice: false,
     userEmail: "",
     invoiceName: "", // ensure this property exists in the GetOrderResponse type
   },
-} as GetOrderResponse;
-if (orderId.value != null) {
+} as GetOrderResponse; */
+
+let orderData = reactive({
+  value: {
+    needInvoice: false,
+    userEmail: "",
+    invoiceName: "",
+    invoiceCity: "",
+    invoiceStreetAddress: "",
+    invoiceCountry: "",
+    invoicePostalCode: "",
+    invoiceHUTaxNumber: "",
+    // more
+  },
+} as GetOrderResponse);
+
+/* if (orderId.value != null) {
   orderData = await $fetch<GetOrderResponse>(
     `${commonApiEndpoint}?OrderId=${orderId.value}`
   );
+} */
+
+if (orderId.value != null) {
+  const fetchedData = await $fetch<GetOrderResponse>(
+    `${commonApiEndpoint}?OrderId=${orderId.value}`
+  );
+  Object.assign(orderData.value, fetchedData.value);
 }
 
-const companyNameSuggestions = ref([]);
+const companyNameSuggestions = ref<InvoiceAddressData[]>([]);
 
-const fetchCompanyNameSuggestions = async () => {
-  const query = orderData.value.invoiceName;
+const fetchCompanyNameSuggestions = async (
+  event: AutoCompleteCompleteEvent
+) => {
+  const query = event.query;
+
   if (!query || query.length < 2) return;
 
-  const companyNamesEndpoint = `${commonApiEndpoint}?OrderId=${orderId.value}&search=${query}`;
-
-
+  const companyNamesEndpoint = `https://test-gw.voxpay.hu/Webshop.Common/ListInvoiceAddressesByNamePart?InvoiceName=${query}`;
   try {
-    const response = await $fetch<GetOrderRespose[]>(companyNamesEndpoint);
-    companyNameSuggestions.value = response;
+    const response = await fetch(companyNamesEndpoint);
+    const data = (await response.json()) as InvoiceAddressResponse;
+
+    if (data.isSuccess) {
+      companyNameSuggestions.value = data.value.invoiceAddressData;
+    } else {
+      console.error("Error fetching company names:", data.error);
+    }
   } catch (error) {
-    console.error("Error fetching invoice names:", error);
+    console.error("Network error:", error);
   }
 };
 
-const onCompanyNameSelected =  (event: { value: string; }) => {
-  console.log("Event object:", event);
-  orderData.value.invoiceName = event.value;
+const onCompanySelect = (event: { value: InvoiceAddressData }) => {
+  const selectedCompany = event.value;
+  orderData.value.invoiceCity = selectedCompany.invoiceCity;
+  orderData.value.invoiceStreetAddress = selectedCompany.invoiceStreetAddress;
+  orderData.value.invoiceHUTaxNumber = selectedCompany.invoiceHUTaxNumber;
+  orderData.value.invoiceCountry = selectedCompany.invoiceCountry;
+  orderData.value.invoicePostalCode = selectedCompany.invoicePostalCode;
 };
 
 const vatInvoiceChecked = ref(
@@ -490,7 +572,6 @@ const vatInvoiceChecked = ref(
 const cityValue = ref(null);
 const emailValue = ref(null);
 const phoneValue = ref(null);
-const companyName = ref(null);
 const companyOrPrivatePerson = ref(
   orderData == null
     ? ""

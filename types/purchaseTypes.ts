@@ -40,3 +40,30 @@ export type FormData = {
 export type PlateValidation = {
   validateAllPlates: (multiples: FormData[], t: Function) => Promise<boolean>;
 }
+
+export type AutoCompleteCompleteEvent = {
+  query: string;
+};
+
+export type InvoiceAddressData = {
+  companyName: string;
+  invoiceCountry: string;
+  invoicePostalCode: string;
+  invoiceCity: string;
+  invoiceStreetAddress: string;
+  invoiceHUTaxNumber: string;
+};
+
+export type InvoiceAddressResponse = {
+  value: {
+    invoiceAddressData: InvoiceAddressData[];
+    statusCode: string;
+    errors: null | string[];
+  };
+  isSuccess: boolean;
+  error: {
+    code: string;
+    message: string;
+  };
+  isFailure: boolean;
+};
