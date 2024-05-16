@@ -26,6 +26,9 @@ export default defineI18nConfig(() => ({
         D1365_27: "Vas county",
         D1365_28: "Veszprém county",
         D1365_29: "Zala county",
+        D1M24: "D1M - 1 day",
+        D1M10: "D1M - 10 days",
+        D1M30: "D1M - 30 days",
         D224: "D2 - 1 day",
         D210: "D2 - 10 days",
         D230: "D2 - 30 days",
@@ -81,6 +84,7 @@ export default defineI18nConfig(() => ({
       },
       type: {
         empty_plate: "Filling in the registration number is mandatory!",
+        plate_number_duplicated: "Plate number duplicated on same time",
         invalid_plate:
           "The number plate is wrong. For example, it cannot contain a hyphen or does not meet the standard represented by your country.",
         plate_num_required: "Plate number required!",
@@ -351,6 +355,7 @@ export default defineI18nConfig(() => ({
       },
       type: {
         empty_plate: "Das Ausfüllen der Registrierungsnummer ist Pflicht!",
+        plate_number_duplicated: "Plate number duplicated on same time",
         invalid_plate:
           "Das Nummernschild ist falsch. Es darf beispielsweise keinen Bindestrich enthalten oder entspricht nicht dem in Ihrem Land vertretenen Standard.",
         plate_num_required: "Plate number required!",

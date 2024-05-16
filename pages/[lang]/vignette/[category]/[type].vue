@@ -167,6 +167,7 @@
       </div>
     </template>
   </main>
+  <div style="margin-bottom: 100px;"></div>
 </template>
 
 <script setup lang="ts">

@@ -10,12 +10,12 @@
             <div class="payment-progress">
               <div class="w-full clear-both">
                 <div class="control-label float-left px-2">
-                  {{ $t("global.confirm_trid.trans_id") }}
+                  {{ $t("global.confirm_trid.trans_id") }}:
                 </div>
                 <div class="float-left">
                   <p class="form-control-static">{{ purchaseData.value.trid }}</p>
                 </div>
-                <div class="control-label float-left px-2">{{ $t("global.confirm_trid.e_mail") }}</div>
+                <div class="control-label float-left px-2">| {{ $t("global.confirm_trid.e_mail") }}:</div>
                 <div class="float-left px-2">
                   <p class="form-control-static">{{ purchaseData.value.userEmail }}</p>
                 </div>

@@ -44,7 +44,7 @@
               }}</a>
             </div>
           </div>
-          <div class="">
+          <div class="" v-if="orderData.value.userEmail">
             <div>
               {{ $t("confirm.email_address") }}
               <a class="base-link" href="#">{{ orderData.value.userEmail }}</a>
@@ -225,7 +225,7 @@
         <div class="payment-method">
           <section class="flex items-center gap-2">
             <Checkbox
-              id="NewsletterSubscription"
+              inputId="NewsletterSubscription"
               v-model="newsletterSubscription"
               :binary="true"
             />
@@ -240,8 +240,8 @@
         <div class="info-warning mt-0">
           <section class="flex items-center gap-2">
             <Checkbox
-              id="DatasAreCorrect"
               v-model="datasAreCorrect"
+              inputId = "DatasAreCorrect"
               :binary="true"
             />
             <label

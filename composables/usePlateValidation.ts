@@ -6,10 +6,25 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
     var hasError = false;
 
     for (const item of multiples) {
+      item.invalidPlate = "";
+      
       if (!item.selectedCountry || !item.plateNumber) {
         item.invalidPlate = t("type.invalid_plate");
         hasError = true;
         continue;
+      }
+
+      for (const subitem of multiples) {
+        
+        if (subitem.itemKey != item.itemKey)
+          {
+            if (subitem.plateNumber == item.plateNumber && subitem.startDate?.toISOString() == item.startDate?.toISOString())
+            {
+              item.invalidPlate = t("type.plate_number_duplicated");
+              hasError = true;
+              continue;
+            }
+        }
       }
 
       try {
@@ -33,7 +48,7 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
             responseData.value.error || t("type.invalid_plate");
             hasError = true;
         } else {
-          item.invalidPlate = "";
+          //item.invalidPlate = "";
         }
       } catch (error) {
         item.invalidPlate = t("type.error_validating_plate");
