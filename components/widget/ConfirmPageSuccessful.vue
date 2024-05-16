@@ -28,7 +28,7 @@
                       <td><strong>{{ $t("global.confirm_trid.table_validity_period_title") }}</strong></td>
                       <td><strong>{{ $t("global.confirm_trid.table_vignette_num_title") }}</strong></td>
                     </tr>
-                    <tr v-for="vignette in purchaseData.value.vignettes" class="success-order">
+                    <tr v-for="vignette in sortedVignettes" :key="vignette.nmfrVignetteNumber" class="success-order">
                       <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
                       <td>{{ vignette.validFrom?.substring(0, 10).replaceAll("-", ".") }} - {{ vignette.validTo?.substring(0, 10).replaceAll("-", ".") }}</td>
                       <td class="text-info">
@@ -57,7 +57,7 @@
                   {{ $t("global.contact_data.title") }}<br />
                   {{ $t("global.contact_data.phone") }}<br />
                   {{ $t("global.contact_data.email_title") }}
-                  <a href="mailto: {{ $t('global.contact_data.mail').replace('[at]', '@'') }}">{{ $t("global.contact_data.mail").replace("[at]", "@") }}</a>
+                  <strong>{{ $t("global.contact_data.mail") }}</strong>
                 </address>
               </div>
             </div>
@@ -80,4 +80,11 @@ const props = defineProps({
   },
 });
 
+const sortedVignettes = computed(() => {
+  return [...props.purchaseData.value.vignettes].sort((a, b) => {
+    const validFromA = new Date(a.validFrom).getTime();
+    const validFromB = new Date(b.validFrom).getTime();
+    return validFromA - validFromB;
+  });
+});
 </script>
