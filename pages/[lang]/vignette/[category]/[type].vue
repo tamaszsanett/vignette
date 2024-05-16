@@ -422,6 +422,10 @@ if (
     lastAddedIndex.value = 0;
   } else {
     if (cart.value.cartItems) {
+      if (cart.value.cartItems.length == 0) {
+        addMore(0);
+      }
+      else  {
       var itemKeys = [] as string[];
       cart.value.cartItems.forEach((item, index) => {
         if (
@@ -619,6 +623,7 @@ if (
           lastAddedIndex.value = lastAddedIndex.value + 1;
         });
       }
+    }
     } else {
       lastAddedIndex.value = 0;
     }
