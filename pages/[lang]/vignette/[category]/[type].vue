@@ -68,7 +68,7 @@
       </div>
       <section v-if="isRegionalVignette">
         <div
-          v-if="!isAtLeastOneCountySelected"
+          v-if="errorCountiesMessage"
           class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
         >
           <img
@@ -298,7 +298,6 @@ import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "nuxt/app";
 import { usePlateValidation } from "~/composables/usePlateValidation";
 import { useVignetteInfo } from "~/composables/useVignetteInfo";
-import { useCountiesValidation } from "~/composables/useCountiesValidation";
 import type * as purchaseTypesTs from "~/types/purchaseTypes.ts";
 import type { GetCartResponse, VignetteInfoResponse } from "~/types/types.ts";
 import countries from "~/data/countries";
@@ -325,10 +324,12 @@ const durationTypeCookie = useCookie("durationType");
 const categoryCookie = useCookie("category");
 
 const isEmptyCart = ref(true);
-const { validateCounties, errorCountiesMessage, isAtLeastOneCountySelected } =
-  useCountiesValidation(selectedCounties);
 
-validateCounties();
+const isAtLeastOneCountySelected = computed(() => {
+    return selectedCounties.value.length > 0;
+  });
+  
+  const errorCountiesMessage = ref("");
 
 //countries select
 const countryOptions = computed(() => {
@@ -827,6 +828,16 @@ const loading = ref(false);
 const validate = async () => {
   loading.value = true;
   var hasErrors = await validateAllPlates(formData.value.multiples, t);
+
+  if (!isAtLeastOneCountySelected.value) {
+    // If no county is selected, set the error message
+    errorCountiesMessage.value = t("type.is_at_least_one_county_selected");
+    hasErrors = true;
+  }
+  else {
+    errorCountiesMessage.value = "";
+  }
+
   if (!hasErrors) {
     navigateTo("/" + currentLanguage.value + "/purchase/billing");
   }
