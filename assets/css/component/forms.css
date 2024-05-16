@@ -47,7 +47,7 @@
 }
 
 .p-dropdown:not(.p-disabled).p-focus, .p-multiselect:not(.p-disabled).p-focus {
-  @apply outline-base-orange;
+  @apply outline-base-black;
 }
 
 .calendar-wrapper {

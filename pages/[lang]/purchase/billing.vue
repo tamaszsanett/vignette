@@ -3,12 +3,12 @@
     <header class="flex justify-center py-5">
       <img
         class="w-full hidden sm:block"
-        :src="`/img/purchase/desktop/${$t('type.image.desktop_path')}`"
+        :src="`/img/purchase/desktop/${$t('type.image.desktop_billing')}`"
         alt="autópálya-matrica"
       />
       <img
         class="w-full block sm:hidden"
-        :src="`/img/purchase/mobile/${$t('type.image.mobile_path')}`"
+        :src="`/img/purchase/mobile/${$t('type.image.desktop_billing')}`"
         alt="autópálya-matrica"
       />
     </header>
@@ -412,6 +412,7 @@
         </section>
       </div>
     </form>
+    
     <template v-for="widget in widgets" :key="widget.widgetId">
       <div
         v-if="widget.widgetType === 'menuwidget'"

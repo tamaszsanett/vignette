@@ -109,6 +109,8 @@ export default defineI18nConfig(() => ({
           alt_vignette: "Vignette",
           desktop_path: "under-plate-number-line_en_EN.svg",
           mobile_path: "under-plate-number-line_en_EN.svg",
+          desktop_billing: "under-invoice-data-line_en_EN.svg",
+          mobile_billing: "under-invoice-data-line_en_EN.svg",
         },
         title: {
           year_11: "County region",
