@@ -129,7 +129,7 @@
         </section>
         <section class="card flex items-center gap-2">
           <Checkbox
-            id="vatInvoice"
+            inputId="vatInvoice"
             v-model="vatInvoiceChecked"
             :binary="true"
           />
