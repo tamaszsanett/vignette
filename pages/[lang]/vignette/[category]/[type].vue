@@ -440,7 +440,7 @@ if (
         ) {
           const newItem = {
             selectedCountry: countryOptions.value.find(
-              (country) => country.countryCode === "H"
+              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
             ),
             countryCode:
               item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
@@ -508,7 +508,7 @@ if (
 
           const newItem = {
             selectedCountry: countryOptions.value.find(
-              (country) => country.countryCode === "H"
+              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
             ),
             countryCode:
               item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
@@ -560,7 +560,7 @@ if (
             });
             const newItem = {
               selectedCountry: countryOptions.value.find(
-                (country) => country.countryCode === "H"
+                (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
               ),
               countryCode: countryCode ?? "",
               plateNumber: plateNumber,
@@ -621,7 +621,7 @@ if (
           });
           const newItem = {
             selectedCountry: countryOptions.value.find(
-              (country) => country.countryCode === "H"
+              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
             ),
             countryCode: countryCode ?? "",
             plateNumber: plateNumber,
@@ -703,13 +703,14 @@ const handleInputValidation = (index: number) => {
 watch(
   // Watch PlateNumber changes
   () => formData.value.multiples.map((item) => item.selectedCountry),
-  (newValues) => {
+  (newValues, oldValues) => {
     newValues.forEach((_, index) => {
-      formData.value.multiples[index].countryCode = _?.countryCode ?? "";
       if (
-        formData.value.multiples[index].selectedCountry?.countryCode !=
-        newValues[index]?.countryCode
+        oldValues.length == newValues.length &&
+        oldValues[index] != newValues[index]
       ) {
+        console.log( newValues[index]?.countryCode);
+        formData.value.multiples[index].countryCode = newValues[index]?.countryCode ?? "H";
         updateCartItem(index);
       }
     });
@@ -720,7 +721,7 @@ watch(
 watch(
   // Watch PlateNumber changes
   () => formData.value.multiples.map((item) => item.plateNumber),
-  (oldValues, newValues) => {
+  (newValues, oldValues) => {
     newValues.forEach((_, index) => {
       if (
         oldValues.length == newValues.length &&
@@ -1121,6 +1122,7 @@ async function calculateEndDate(index: number): Promise<void> {
 
 function updateCartItem(index: number) {
   var item = formData.value.multiples[index];
+  console.log(item);
   useUpdateCartItem(
     item.itemKey,
     item.countryCode,
