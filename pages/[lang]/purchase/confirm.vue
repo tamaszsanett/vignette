@@ -247,7 +247,7 @@
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <Button class="btn-gray" @click="goBack">{{ $t("type.back") }}</Button>
-          <Button class="btn btn-green cursor-pointer" @click="sendForm">
+          <Button class="btn btn-green cursor-pointer" @click="sendForm" :disabled="loading" :class="{ 'btn-disabled': loading }">
             <span v-if="!loading">{{
               $t("confirm.payment.order_vignette_btn_title")
             }}</span>
