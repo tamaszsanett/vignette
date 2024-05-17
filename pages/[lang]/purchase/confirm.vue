@@ -369,7 +369,7 @@ async function sendForm() {
   loading.value = true;
   
   if (!datasAreCorrect.value) {
-    errorMessage.value = "GTCC required!!!";
+    errorMessage.value = "Acceptance of GTCC and Privacy Statement is mandatory!";
     loading.value = false;
     return;
   }
