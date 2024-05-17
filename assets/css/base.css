@@ -190,3 +190,15 @@ html, body {
 #barion-card {
   width: 255px;
 }
+
+/* .whyToBuyHere > div {
+  grid-template-columns:
+    minmax(auto, 285px) minmax(auto, 285px) minmax(auto, 285px)
+    minmax(auto, 285px);
+  grid-template-columns: minmax(auto, 310px) minmax(auto, 310px);
+  @apply grid gap-5;
+}
+
+@media screen  {
+  
+} */

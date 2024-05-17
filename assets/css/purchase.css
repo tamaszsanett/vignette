@@ -46,6 +46,10 @@
   @apply m-0;
 }
 
+.p-dropdown .p-dropdown-label.p-placeholder {
+  @apply text-base-black text-lg;
+}
+
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
   padding: 0.5rem 1rem;
 }
