@@ -407,9 +407,9 @@ export default defineI18nConfig(() => ({
         phone_tooltip_text: "In case of connection problems",
         invoice_request_title: "I would like a VAT invoice",
         request_title_tooltip_text:
-          "If you want to pay by bank transfer, please check the I want an invoice option",
+          "If you want an invoice, please check the I want an invoice option",
         request_after_text1:
-          "If you want to pay by bank transfer, please check the I want an invoice option. We are unable to issue an invoice afterwards.",
+          "If you want an invoice, please check the I want an invoice option. We are unable to issue an invoice afterwards.",
         request_after_text2:
           "Without requesting a VAT invoice, you can only pay by credit card on our website",
         company: "Company",
