@@ -3832,6 +3832,10 @@ a {
   background-color: white;
 }
 
+.bg-inherit {
+  background-color: #00000000;
+}
+
 .radius-plus {
   border-radius: 40px;
 }

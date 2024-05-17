@@ -55,7 +55,7 @@
 }
 
 .p-calendar input {
-  @apply shadow-none px-2 py-3 bg-white hover:text-base-green text-lg cursor-pointer text-center;
+  @apply shadow-none px-2 py-3 bg-inherit text-lg cursor-pointer text-center bg-base-inherit;
 }
 
 .p-calendar.p-calendar-disabled input {
@@ -63,7 +63,7 @@
 }
 
 .p-calendar:not(.p-calendar-disabled).p-focus > .p-inputtext {
-  @apply outline-base-green;
+  @apply outline-base-inherit;
 }
 
 .p-datepicker {
