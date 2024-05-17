@@ -299,8 +299,13 @@ const durationType = ref(durationTypeCookie.value);
 
 const sortedCartItems = computed(() => {
   return [...orderData.value.cartItems].sort((a, b) => {
+    const plateNumberA = a.properties.find((x) => x.key == "PlateNumber")?.value ?? "";
+    const plateNumberB = b.properties.find((x) => x.key == "PlateNumber")?.value ?? "";
     const validityStartA = new Date(a.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
     const validityStartB = new Date(b.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
+
+    if (plateNumberA < plateNumberB) return -1;
+    if (plateNumberA > plateNumberB) return 1;
     return validityStartA - validityStartB;
   });
 });
