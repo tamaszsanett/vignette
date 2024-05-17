@@ -18,7 +18,7 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
         
         if (subitem.itemKey != item.itemKey)
           {
-            if (subitem.plateNumber == item.plateNumber && subitem.startDate?.toISOString() == item.startDate?.toISOString())
+            if (subitem.plateNumber.toUpperCase() == item.plateNumber.toUpperCase() && subitem.startDate?.toISOString().substring(0,10) == item.startDate?.toISOString().substring(0,10) )
             {
               item.invalidPlate = t("type.plate_number_duplicated");
               hasError = true;

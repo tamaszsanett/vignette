@@ -459,6 +459,13 @@ if (
             invalidPlate: "",
             itemKey: item.cartItemKey,
           };
+
+          var today = new Date(((new Date())).getTime() - new Date().getTimezoneOffset() * 60000);
+          if (newItem.startDate < today)
+            {
+              newItem.startDate = today;
+            }
+
           formData.value.multiples.splice(index, 0, newItem);
           lastAddedIndex.value = index;
         } else if (
@@ -829,13 +836,16 @@ const validate = async () => {
   loading.value = true;
   var hasErrors = await validateAllPlates(formData.value.multiples, t);
 
-  if (!isAtLeastOneCountySelected.value) {
-    // If no county is selected, set the error message
-    errorCountiesMessage.value = t("type.is_at_least_one_county_selected");
-    hasErrors = true;
-  }
-  else {
-    errorCountiesMessage.value = "";
+  if (vignetteInfo.value?.value.vignetteType.durationType == "YEAR_11")
+  {
+    if (!isAtLeastOneCountySelected.value) {
+      // If no county is selected, set the error message
+      errorCountiesMessage.value = t("type.is_at_least_one_county_selected");
+      hasErrors = true;
+    }
+    else {
+      errorCountiesMessage.value = "";
+    }
   }
 
   if (!hasErrors) {
