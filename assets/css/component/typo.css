@@ -67,9 +67,15 @@
   }
 }
 
+@layer base {  
+  a {
+    @apply text-secondary-orange;
+  }
+}
+
 a,
 .base-link {
-  @apply font-medium text-base-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
+  @apply font-medium text-secondary-orange active:text-purple-500 hover:text-base-black transition-all duration-500 ease-out;
 }
 
 .v-shop-h2 {
