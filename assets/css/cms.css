@@ -4557,24 +4557,16 @@ td {
   text-align: center;
 }
 
-.whyToBuyHere > div {
+/* .whyToBuyHere > div {
   display: inline-grid;
   grid-template-columns:
     minmax(auto, 285px) minmax(auto, 285px) minmax(auto, 285px)
     minmax(auto, 285px);
   grid-gap: 20px;
   justify-content: center;
-}
+} */
 
-.whyToBuyHere .whyToBuyHereElement {
-  background-image: url(/assets/content/miert_nalunk_vasarold_alap.svg);
-  background-repeat: no-repeat;
-  height: 133px;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-}
+
 
 .my-4 .col-9.horizontal-set {
   width: 100%;
@@ -5372,9 +5364,9 @@ mark {
     height: 132px !important;
   }
 
-  .whyToBuyHere > div {
+  /* .whyToBuyHere > div {
     grid-template-columns: minmax(auto, 310px);
-  }
+  } */
 
   .downloadAppMainPage > .col-12 {
     padding: 0;
@@ -7003,9 +6995,9 @@ mark {
     padding: 0 20px;
   }
 
-  .whyToBuyHere > div {
+/*   .whyToBuyHere > div {
     grid-template-columns: minmax(auto, 310px) minmax(auto, 310px);
-  }
+  } */
 
   .black-desing > div:nth-child(3) > div:nth-child(3) {
     display: flex;

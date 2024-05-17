@@ -50,7 +50,7 @@ export default defineI18nConfig(() => ({
         D2365_26: "Tolna county",
         D2365_27: "Vas county",
         D2365_28: "Veszprém county",
-        D2365_29: "Zala county", 
+        D2365_29: "Zala county",
         U24: "U - 1 day",
         U10: "U - 10 days",
         U30: "U - 30 days",
@@ -73,14 +73,14 @@ export default defineI18nConfig(() => ({
         U365_27: "Vas county",
         U365_28: "Veszprém county",
         U365_29: "Zala county",
-        '1week': "1 week",
-        '1day': "1 day",
-        '1year': "1 year",
-        '1month': "1 month",
-        '2month': "2 months",
-        '3month': "3 months",
-        '4month': "4 months",
-        '5month': "5 months"
+        "1week": "1 week",
+        "1day": "1 day",
+        "1year": "1 year",
+        "1month": "1 month",
+        "2month": "2 months",
+        "3month": "3 months",
+        "4month": "4 months",
+        "5month": "5 months",
       },
       type: {
         empty_plate: "Filling in the registration number is mandatory!",
@@ -101,8 +101,7 @@ export default defineI18nConfig(() => ({
         regional_error: "Choose at least one county!",
         number_of_month: "Number of month",
         validity_period: "Validity period",
-        is_at_least_one_county_selected:
-          "Choose at least one county!",
+        is_at_least_one_county_selected: "Choose at least one county!",
         plate_num_paceholder: "e.g. ABC-123",
         country_error: "Country required!",
         image: {
@@ -196,7 +195,8 @@ export default defineI18nConfig(() => ({
         payment: {
           title: "Choice of payment method",
           card_type_label_barion: "Bank card - Barion",
-          barion_accordion_title: "Payment takes place through Barion’s secure payment page.",
+          barion_accordion_title:
+            "Payment takes place through Barion’s secure payment page.",
           barion_desc:
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
@@ -269,6 +269,29 @@ export default defineI18nConfig(() => ({
           </p>`,
         },
       },
+      resend: {
+        title: "Resend vignette confirmation",
+        desc: `
+          Resend confirmation of e-vignettes bought exclusively from
+          <a href="http://www.ungarn-vignette.eu">www.ungarn-vignette.eu</a>,
+          <a href="http://www.hungary-vignette.eu">www.hungary-vignette.eu</a>
+          &nbsp;&nbsp; and
+          <a href="http://www.autopalyamatrica.hu/">autopalyamatrica.hu</a>
+          within the last 8 hours, to the email address provided when purchasing
+          the vignettes.
+        `,
+        important_text: "Please take special care to enter the e-mail address used at the time of purchase.",
+        email_label: "E-mail",
+        reg_plate_num: "Registration plate number",
+        mail_tooltip_text: "E-mail address used when purchasing a motorway sticker.",
+        reg_num_tooltip_text: `The registration number of the vehicle whose road use
+          authorization you are querying. Only English ABC letters and
+          numbers can be used (e.g. ABC123)`,
+        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
+        I have read and accept it, I consent to the data processing included
+        in it.`,
+        resend_btn_title: "Resend notification",
+      },
     },
     de: {
       vignette_type: {
@@ -315,7 +338,7 @@ export default defineI18nConfig(() => ({
         D2365_26: "Tolna county",
         D2365_27: "Vas county",
         D2365_28: "Veszprém county",
-        D2365_29: "Zala county", 
+        D2365_29: "Zala county",
         D1M24: "D1 - 1 day",
         D1M110: "D1 - 10 days",
         D1M130: "D1 - 30 days",
@@ -359,7 +382,7 @@ export default defineI18nConfig(() => ({
         U365_26: "Tolna county",
         U365_27: "Vas county",
         U365_28: "Veszprém county",
-        U365_29: "Zala county"
+        U365_29: "Zala county",
       },
       type: {
         empty_plate: "Das Ausfüllen der Registrierungsnummer ist Pflicht!",
@@ -469,7 +492,8 @@ export default defineI18nConfig(() => ({
         payment: {
           title: "Choice of payment method",
           card_type_label_barion: "Bank card - Barion",
-          barion_accordion_title: "Payment takes place through Barion’s secure payment page.",
+          barion_accordion_title:
+            "Payment takes place through Barion’s secure payment page.",
           barion_desc:
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
