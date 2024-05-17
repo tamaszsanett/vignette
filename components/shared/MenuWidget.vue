@@ -66,7 +66,7 @@
       </button>
       <transition name="slide">
         <div
-          v-if="isMobileMenuOpen"
+          v-if="isMobileMenuOpen" v-click-outside="closeMobileMenu"
           class="text-white fixed h-screen left-0 top-0 w-full max-w-xs mx-auto bg-base-black p-4 z-30"
         >
           <div class="mt-5 flex flex-col items-start">
@@ -158,11 +158,10 @@
 
 <script setup lang="ts">
 import type { MenuWidget, LanguageSelectionItem } from "~/types/types";
-
 import type { PropType } from "vue";
 import Dialog from "primevue/dialog";
 import Button from "primevue/button";
-import { ref, onMounted, reactive } from "vue";
+import { ref, onMounted, onUnmounted, reactive } from "vue";
 import { useRoute, useRouter } from "vue-router";
 import { useWidgets } from "~/composables/useWidgets";
 const route = useRoute();
@@ -200,6 +199,10 @@ const isActive = (url: string): boolean => route.path === url;
 
 const toggleMobileMenu = (): void => {
   isMobileMenuOpen.value = !isMobileMenuOpen.value;
+};
+
+const closeMobileMenu = (): void => {
+  isMobileMenuOpen.value = false;
 };
 
 // Initialize langSelection based on the current language in the URL

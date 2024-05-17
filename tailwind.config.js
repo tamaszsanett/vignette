@@ -32,6 +32,7 @@ module.exports = {
         "red": "#F25532",
         "gray": "#bfb7a7",
         "dark-gray": "#777",
+        "grad-base-orange": "#f58220",
       },
     },
   },

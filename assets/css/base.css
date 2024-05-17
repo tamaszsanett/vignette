@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 @layer utilities {
   .font-regular {
@@ -6,12 +6,14 @@
   }
 }
 
-html, body {
+html,
+body {
   font-family: "Roboto Condensed", sans-serif !important;
   @apply font-regular text-base-black;
 }
 
-.p-component, .p-inputtext {
+.p-component,
+.p-inputtext {
   font-family: "Roboto Condensed", system-ui, sans-serif;
 }
 
@@ -191,14 +193,27 @@ html, body {
   width: 255px;
 }
 
-/* .whyToBuyHere > div {
-  grid-template-columns:
-    minmax(auto, 285px) minmax(auto, 285px) minmax(auto, 285px)
-    minmax(auto, 285px);
-  grid-template-columns: minmax(auto, 310px) minmax(auto, 310px);
-  @apply grid gap-5;
+.whyToBuyHere > div {
+  grid-template-columns: minmax(auto, 310px);
+  @apply grid gap-5 justify-center;
 }
 
-@media screen  {
-  
-} */
+@media all and (min-width: 540px) {
+  .whyToBuyHere > div {
+   grid-template-columns: minmax(auto, 310px) minmax(auto, 310px);
+  }
+}
+
+@media all and (min-width: 1100px) {
+  .whyToBuyHere > div {
+    grid-template-columns:
+    minmax(auto, 285px) minmax(auto, 285px) minmax(auto, 285px)
+    minmax(auto, 285px);
+  }
+}
+
+
+.whyToBuyHere .whyToBuyHereElement {
+  background-image: url("/assets/content/miert_nalunk_vasarold_alap.svg");
+  @apply flex justify-center flex-col items-center h-[133px] bg-no-repeat rounded-lg bg-grad-base-orange;
+}

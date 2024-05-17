@@ -90,8 +90,15 @@ const props = defineProps({
 
 const sortedVignettes = computed(() => {
   return [...props.purchaseData.value.vignettes].sort((a, b) => {
+    const plateNumberA = a.plateNumber ?? "";
+    const plateNumberB = b.plateNumber ?? "";
     const validFromA = new Date(a.validFrom).getTime();
     const validFromB = new Date(b.validFrom).getTime();
+
+    // first order by plate number 
+    if (plateNumberA < plateNumberB) return -1;
+    if (plateNumberA > plateNumberB) return 1;
+    // if the plate numbers are the same, sort by the start of validity
     return validFromA - validFromB;
   });
 });

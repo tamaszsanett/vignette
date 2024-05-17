@@ -247,7 +247,7 @@
         </div>
         <section class="flex items-center flex-wrap justify-center gap-4">
           <Button class="btn-gray" @click="goBack">{{ $t("type.back") }}</Button>
-          <Button class="btn btn-green cursor-pointer" @click="sendForm">
+          <Button class="btn btn-green cursor-pointer" @click="sendForm" :disabled="loading" :class="{ 'btn-disabled': loading }">
             <span v-if="!loading">{{
               $t("confirm.payment.order_vignette_btn_title")
             }}</span>
@@ -299,12 +299,18 @@ const durationType = ref(durationTypeCookie.value);
 
 const sortedCartItems = computed(() => {
   return [...orderData.value.cartItems].sort((a, b) => {
+    const plateNumberA = a.properties.find((x) => x.key == "PlateNumber")?.value ?? "";
+    const plateNumberB = b.properties.find((x) => x.key == "PlateNumber")?.value ?? "";
     const validityStartA = new Date(a.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
     const validityStartB = new Date(b.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
+
+    // first order by plate number 
+    if (plateNumberA < plateNumberB) return -1;
+    if (plateNumberA > plateNumberB) return 1;
+    // if the plate numbers are the same, sort by the start of validity
     return validityStartA - validityStartB;
   });
 });
-
 
 /// ----------------- LOAD LANGUAGE -----------------------
 

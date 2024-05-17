@@ -269,7 +269,7 @@
     />
     <section class="flex items-center flex-wrap justify-center gap-4">
       <Button class="btn-gray" @click="goBack">{{ $t("type.back") }}</Button>
-      <Button class="btn btn-green cursor-pointer" @click.prevent="validate">
+      <Button class="btn btn-green cursor-pointer" @click.prevent="validate" :disabled="loading" :class="{ 'btn-disabled': loading }">
         <span v-if="!loading">{{ $t("type.next") }}</span>
         <span class="h-5 w-5" v-else>
           <svg
