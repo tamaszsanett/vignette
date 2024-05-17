@@ -108,6 +108,7 @@ export default defineNuxtConfig({
     "/vignette/U/year": { redirect: { to: "/en/vignette/U/year", statusCode: 301 } },
     "/vignette-info": { redirect: { to: "/en/vignette-info", statusCode: 301 } },
     "/en/six-month-vignette":  { redirect: { to: "/en/combined-monthly-vignettes", statusCode: 301 } },
+    "/undefined":  { redirect: { to: "/en", statusCode: 301 } },
     
     "/vigneta-pentru-autostrada-din-ungaria-2024": { redirect: { to: "/ro", statusCode: 301 } },
     "/madarska-vinjeta-2024": { redirect: { to: "/sb", statusCode: 301 } },

@@ -253,7 +253,7 @@
             </div>
           </section>
           <button
-            v-if="lastAddedIndex === i"
+            v-if="lastAddedIndex === i && numberOfVignettes == 1"
             type="button"
             @click.prevent="addMore(i)"
             class="base-link cursor-pointer flex w-auto justify-center mx-auto my-4"
@@ -755,25 +755,32 @@ watch(numberOfVignettes, (newValue, oldValue) => {
   if (newValue !== oldValue) {
     updateMonthEndDate();
     if (newValue > oldValue) {
+
+      //console.log(formData.value.multiples.length);
+      let ton = formData.value.multiples.length;
+      console.log(ton);
+      for (var i = ton-1; i > 0; i--)
+      {
+        console.log("remove: "+i);
+          remove(i);
+      };
       // add to cart
-      formData.value.multiples.forEach(async (item, index) => {
-        useAddAnotherVignetteToCart(
+      useAddAnotherVignetteToCart(
           currentLanguage.value,
-          item.itemKey,
+          formData.value.multiples[0].itemKey,
           "EUR",
           vignetteInfo.value?.value.vignetteType.vignetteCode ?? "",
           vignetteInfo.value?.value.vignetteType.durationType ?? "",
-          item.countryCode,
-          item.plateNumber,
-          item.startDate,
-          item.endDate,
+          formData.value.multiples[0].countryCode,
+          formData.value.multiples[0].plateNumber,
+          formData.value.multiples[0].startDate,
+          formData.value.multiples[0].endDate,
           vignetteInfo.value?.value.vignetteType.amount ?? 0,
           vignetteInfo.value?.value.vignetteType.transactionFee ?? 0,
           oldValue,
           newValue,
           selectedCounties.value
         );
-      });
     } else if (oldValue > newValue) {
       formData.value.multiples.forEach(async (item, index) => {
         useRemoveVignetteFromCartByMoth(item.itemKey, newValue, oldValue);
@@ -819,6 +826,7 @@ watch(selectedCounties, (newItems, oldItems) => {
 
 // ------------------------------- ADD/REMOVE/MODIFY vignette blocks ----------------------------------------
 const remove = (index: number) => {
+  console.log(index);
   useRemoveVignetteFromCart(
     formData.value.multiples[index].itemKey,
     vignetteInfo.value?.value.vignetteType.durationType ?? "",
