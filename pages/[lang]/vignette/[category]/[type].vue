@@ -539,6 +539,7 @@ if (
             var countryCode = "";
             var itemKey = "";
             var plateNumber = "";
+            var selectedCountry;
 
             cart.value.cartItems.forEach((cartItem, index) => {
               itemKey = cartItem.cartItemKey.split("_")[0];
@@ -556,12 +557,13 @@ if (
                 if (minDate > validityStart) {
                   minDate = validityStart;
                 }
+                selectedCountry = countryOptions.value.find(
+                  (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value ?? ""
+                );
               }
             });
             const newItem = {
-              selectedCountry: countryOptions.value.find(
-                (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
-              ),
+              selectedCountry: selectedCountry,
               countryCode: countryCode ?? "",
               plateNumber: plateNumber,
               startDate: minDate,
@@ -600,6 +602,7 @@ if (
           var countryCode = "";
           var plateNumber = "";
           var itemKey = "";
+          var selectedCountry;
 
           cart.value.cartItems.forEach((cartItem, index) => {
             itemKey = cartItem.cartItemKey.split("_")[0];
@@ -617,12 +620,14 @@ if (
               if (minDate > validityStart) {
                 minDate = validityStart;
               }
+
+              selectedCountry = countryOptions.value.find(
+                (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value ?? ""
+              )
             }
           });
           const newItem = {
-            selectedCountry: countryOptions.value.find(
-              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
-            ),
+            selectedCountry: selectedCountry,
             countryCode: countryCode ?? "",
             plateNumber: plateNumber,
             startDate: minDate,
