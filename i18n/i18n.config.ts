@@ -198,7 +198,7 @@ export default defineI18nConfig(() => ({
             <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
             as well as the
             <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Privacy Statement</a>
-            and I consent to the data management contained therein. I accept the terms and conditions of use.`,
+            and I consent to the data management contained therein.`,
           important_text:
             "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
           important_text_old:

@@ -216,6 +216,10 @@
                 :id="'licence_plate-' + i"
                 v-model="item.plateNumber"
                 class="primary-input group-input"
+                autocomplete="off" 
+                autocorrect="off" 
+                autocapitalize="off"
+                spellcheck="false"
               />
             </InputGroup>
           </section>
