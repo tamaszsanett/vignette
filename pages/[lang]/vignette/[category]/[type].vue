@@ -507,7 +507,7 @@ if (
 
           const newItem = {
             selectedCountry: countryOptions.value.find(
-              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
+              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value
             ),
             countryCode:
               item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
@@ -557,7 +557,7 @@ if (
                   minDate = validityStart;
                 }
                 selectedCountry = countryOptions.value.find(
-                  (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value ?? ""
+                  (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value
                 );
               }
             });
@@ -621,7 +621,7 @@ if (
               }
 
               selectedCountry = countryOptions.value.find(
-                (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value ?? ""
+                (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value
               )
             }
           });

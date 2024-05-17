@@ -203,7 +203,7 @@
                   <AutoComplete
                     class="w-full"
                     id="companyName"
-                    v-model="orderData.value.invoiceName"
+                    v-model="orderData.value.companyName"
                     :suggestions="companyNameSuggestions"
                     @complete="fetchCompanyNameSuggestions"
                     @change="onCompanySelect"
@@ -505,6 +505,7 @@ const companyNameSuggestions = ref<InvoiceAddressData[]>([]);
 const fetchCompanyNameSuggestions = async (
   event: AutoCompleteCompleteEvent
 ) => {
+  console.log("fetch");
   const query = event.query;
 
   if (!query || query.length < 2) return;
@@ -525,14 +526,17 @@ const fetchCompanyNameSuggestions = async (
 };
 
 const onCompanySelect = (event: { value: InvoiceAddressData }) => {
-  const selectedCompany = event.value;
-  orderData.value.invoiceName = selectedCompany.companyName;
-  orderData.value.invoiceCity = selectedCompany.invoiceCity;
-  orderData.value.invoiceStreetAddress = selectedCompany.invoiceStreetAddress;
-  orderData.value.invoiceHUTaxNumber = selectedCompany.invoiceHUTaxNumber;
-  orderData.value.invoiceCountry = "Magyarország | Hungary ";
-  selectedCountry.value = "Magyarország | Hungary ";
-  orderData.value.invoicePostalCode = selectedCompany.invoicePostalCode;
+  if (event.value.companyName != null) {
+    console.log("select");
+    const selectedCompany = event.value;
+    orderData.value.invoiceName = selectedCompany.companyName;
+    orderData.value.invoiceCity = selectedCompany.invoiceCity;
+    orderData.value.invoiceStreetAddress = selectedCompany.invoiceStreetAddress;
+    orderData.value.invoiceHUTaxNumber = selectedCompany.invoiceHUTaxNumber;
+    orderData.value.invoiceCountry = "Magyarország | Hungary ";
+    selectedCountry.value = "Magyarország | Hungary ";
+    orderData.value.invoicePostalCode = selectedCompany.invoicePostalCode;
+  }
 };
 
 const vatInvoiceChecked = ref(
@@ -570,9 +574,7 @@ const selectedCountry = ref(orderData.value?.invoiceCountry);
 const postalCodeItems = ref<string[]>([]);
 
 const search = (event: { query: string }) => {
-  postalCodeItems.value = [...Array(10).keys()].map(
-    (item) => `${event.query}-${item}`
-  );
+  postalCodeItems.value = [`${event.query}`];
 };
 
 const pageUri = computed(() => {
@@ -619,7 +621,7 @@ async function sendForm() {
       userEmail: orderData.value.userEmail,
       phonePrefix: selectedCountryPhonePrefix.value,
       phoneNumber: orderData.value.phoneNumber,
-      invoiceName: orderData.value.invoiceName,
+      invoiceName: orderData.value.companyName != null ? orderData.value.companyName : orderData.value.invoiceName,
       invoiceHuTaxNumber:
         orderData.value.invoiceHUTaxNumber == ""
           ? null

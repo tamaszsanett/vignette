@@ -257,6 +257,7 @@ export type GetOrderResponse = {
     phonePrefix: string;
     needInvoice: boolean;
     invoiceName: string;
+    companyName: string;
     invoiceHUTaxNumber: string;
     invoiceHUGroupTaxNumber: string;
     invoiceEUTaxNumber: string;
