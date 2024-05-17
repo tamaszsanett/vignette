@@ -4,7 +4,8 @@
             <ConfirmPageSuccessful :purchaseData="purchaseData"></ConfirmPageSuccessful>
         </div>
         <div
-            v-else-if="purchaseData.value.purchaseStatus === 'VignetteOrderFailed' || purchaseData.value.purchaseStatus === 'PaymentFailed'">
+            v-else-if="purchaseData.value.purchaseStatus === 'VignetteOrderFailed' || purchaseData.value.purchaseStatus === 'PaymentFailed'
+            || purchaseData.value.purchaseStatus === 'MissingVignettes'">
             <ConfirmPageFailed :purchaseData="purchaseData"></ConfirmPageFailed>
         </div>
         <div v-else>
