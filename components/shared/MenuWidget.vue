@@ -31,29 +31,37 @@
           v-if="langSelection"
         >
           <span>{{ langSelection.title }}</span>
-          <img class="max-w-[20px] ml-2" :src="langSelection.imgSrc" alt="Language" />
+          <img
+            class="max-w-[20px] ml-2"
+            :src="langSelection.imgSrc"
+            alt="Language"
+          />
         </Button>
         <!--   <transition name="drop-down">
           <Button v-if="isLanguageDropdownOpen" label="show" @click="visible = true" class="lang-switcher mt-5">
           </Button>
         </transition> -->
       </div>
-      <button type="button" class="md:hidden p-4" @click="toggleMobileMenu" aria-label="Toggle menu">
+      <button
+        type="button"
+        class="md:hidden p-4"
+        @click="toggleMobileMenu"
+        aria-label="Toggle menu"
+      >
         <!-- Menu Icon -->
         <svg
+          xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
-          fill="none"
           viewBox="0 0 24 24"
-          stroke="currentColor"
-          aria-hidden="true"
         >
           <path
+            fill="none"
+            stroke="currentColor"
             stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"
-          ></path>
+            stroke-width="1.5"
+            d="M20 7H4m16 5H4m16 5H4"
+          />
         </svg>
       </button>
       <transition name="slide">
@@ -62,7 +70,11 @@
           class="text-white fixed h-screen left-0 top-0 w-full max-w-xs mx-auto bg-base-black p-4 z-30"
         >
           <div class="mt-5 flex flex-col items-start">
-            <button class="self-end" @click="toggleMobileMenu" aria-label="Toggle menu">
+            <button
+              class="self-end"
+              @click="toggleMobileMenu"
+              aria-label="Toggle menu"
+            >
               <!-- Close Icon -->
               <svg
                 class="h-6 w-6"
@@ -120,13 +132,12 @@
             :key="item.title"
             class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1"
           >
-          <img
+            <img
               :src="`${item.imgSrc}`"
               :alt="item.alt"
               class="inline-block ml-2 w-5 h-5"
-            />  
-          <span>{{ item.title }}</span>
-            
+            />
+            <span>{{ item.title }}</span>
           </div>
         </div>
         <template #footer>
@@ -178,11 +189,9 @@ const changeLanguage = (langCode: string, url: string): void => {
     langSelection.value = newLang;
   }
   url = url.replace("https://new-hungary-vignette.voxpay.hu", "");
-  if (url.startsWith("https"))
-  {
-    navigateTo(url, { external: true }); 
-  }
-  else {
+  if (url.startsWith("https")) {
+    navigateTo(url, { external: true });
+  } else {
     navigateTo(url);
   }
 };

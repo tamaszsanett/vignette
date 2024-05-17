@@ -81,7 +81,7 @@
                 <template #value="slotProps">
                   <div v-if="slotProps.value" class="flex items-center">
                     <div :class="`mr-2 flag flag-${slotProps.value}`">
-                      {{ slotProps.value }}
+                      <div>{{ slotProps.value }}</div>
                     </div>
                   </div>
                   <span v-else>
@@ -208,8 +208,9 @@
                     @complete="fetchCompanyNameSuggestions"
                     @change="onCompanySelect"
                     field="companyName"
+                    :placeholder="$t('billing.company_name_placeholder')"
                   />
-                  <button
+                  <button type="button"
                     class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                   >
                     ?
@@ -228,7 +229,7 @@
                 <Dropdown
                   id="invoiceCountry"
                   v-model="orderData.value.invoiceCountry"
-                  :options="countries"
+                  :options="invoiceCountries"
                   filter
                   optionLabel="name"
                   placeholder="Select a Country"
@@ -248,7 +249,7 @@
                     </div>
                   </template>
                 </Dropdown>
-                <button
+                <button type="button"
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
@@ -266,7 +267,7 @@
                 <Dropdown
                   id="invoiceCountry"
                   v-model="selectedCountry"
-                  :options="countries"
+                  :options="invoiceCountries"
                   filter
                   optionLabel="name"
                   placeholder="Select a Country"
@@ -286,7 +287,7 @@
                     </div>
                   </template>
                 </Dropdown>
-                <button
+                <button type="button"
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
@@ -300,7 +301,7 @@
               class="flex flex-col gap-2"
               v-if="
                 companyOrPrivatePerson === 'company' && 
-                orderData.value.invoiceCountry === 'Hungary'
+                orderData.value.invoiceCountry === 'Magyarország | Hungary '
               ">
               <label for="tax_number" class="primary-label">{{
                 $t("billing.tax_number")
@@ -336,6 +337,7 @@
                   v-model="orderData.value.invoicePostalCode"
                   :suggestions="postalCodeItems"
                   @complete="search"
+                  :placeholder="$t('billing.zip_code_placeholder')"
                 />
                 <button
                   type="button"
@@ -431,6 +433,7 @@ const router = useRouter();
 import { ref, computed, watch, reactive } from "vue";
 import { useRoute } from "nuxt/app";
 import { uuid } from "vue-uuid";
+import invoiceCountries  from "~/data/invoice_countries";
 import type { GetOrderResponse } from "~/types/types";
 import type {
   InvoiceAddressData,
@@ -476,7 +479,7 @@ let orderData = reactive({
     invoiceName: "",
     invoiceCity: "",
     invoiceStreetAddress: "",
-    invoiceCountry: "",
+    invoiceCountry: "Magyarország | Hungary ",
     invoicePostalCode: "",
     invoiceHUTaxNumber: "",
     // more
@@ -526,8 +529,8 @@ const onCompanySelect = (event: { value: InvoiceAddressData }) => {
   orderData.value.invoiceCity = selectedCompany.invoiceCity;
   orderData.value.invoiceStreetAddress = selectedCompany.invoiceStreetAddress;
   orderData.value.invoiceHUTaxNumber = selectedCompany.invoiceHUTaxNumber;
-  orderData.value.invoiceCountry = "Hungary";
-  selectedCountry.value = "Hungary";
+  orderData.value.invoiceCountry = "Magyarország | Hungary ";
+  selectedCountry.value = "Magyarország | Hungary ";
   orderData.value.invoicePostalCode = selectedCompany.invoicePostalCode;
 };
 
@@ -561,24 +564,6 @@ watch(
   },
   { immediate: true }
 );
-
-const countries = ref([
-  "Hungary",
-  "Slovakia",
-  "Germany",
-  "Ukrain",
-  "Slovenia",
-  "Australia",
-  "Brazil",
-  "China",
-  "Egypt",
-  "France",
-  "Germany",
-  "India",
-  "Japan",
-  "Spain",
-  "United States",
-]);
 
 const selectedCountry = ref(orderData.value?.invoiceCountry);
 const postalCodeItems = ref<string[]>([]);
