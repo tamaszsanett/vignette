@@ -6,7 +6,7 @@
   }
 
   .primary-select {
-    @apply py-1 px-1;
+    @apply py-1 px-1 max-h-[50px];
   }
 
   .input-border {
@@ -208,4 +208,8 @@ input:disabled {
 
 .p-multiselect-item {
   @apply text-base text-base-black mb-0 leading-[10px];
+}
+
+#companyName_list {
+  @apply max-w-[350px]
 }

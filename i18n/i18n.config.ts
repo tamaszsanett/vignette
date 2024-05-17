@@ -157,6 +157,8 @@ export default defineI18nConfig(() => ({
         zip_code_tooltip_text: "Billing Zip Code",
         city_tooltip_text: "Billing City",
         address_tooltip_text: "Billing address (street, house number)",
+        company_name_placeholder: "Start writing for suggestions...",
+        zip_code_placeholder: "Start writing for suggestions...",
       },
       confirm: {
         main_title: "Check the entered data",
@@ -428,6 +430,8 @@ export default defineI18nConfig(() => ({
         zip_code_tooltip_text: "Billing Zip Code",
         city_tooltip_text: "Billing City",
         address_tooltip_text: "Billing address (street, house number)",
+        company_name_placeholder: "Start writing for suggestions...",
+        zip_code_placeholder: "Start writing for suggestions...",
       },
       confirm: {
         main_title: "Check the entered data",
