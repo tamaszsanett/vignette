@@ -304,12 +304,13 @@ const sortedCartItems = computed(() => {
     const validityStartA = new Date(a.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
     const validityStartB = new Date(b.properties.find((x) => x.key == "ValidityStart")?.value ?? "").getTime();
 
+    // first order by plate number 
     if (plateNumberA < plateNumberB) return -1;
     if (plateNumberA > plateNumberB) return 1;
+    // if the plate numbers are the same, sort by the start of validity
     return validityStartA - validityStartB;
   });
 });
-
 
 /// ----------------- LOAD LANGUAGE -----------------------
 
