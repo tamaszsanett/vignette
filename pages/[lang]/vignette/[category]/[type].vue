@@ -19,26 +19,25 @@
           :src="'/img/purchase/' + category + '.svg'"
           :alt="category + ' ' + $t('type.image.alt_vignette')"
         />
-        <div class="flex items-center space-x-2">
-          <span>{{ vignetteCategory }} -</span>
+        <div class="flex space-x-2">
           <span v-if="durationType === 'DAY'"
-            >{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }})
+            > {{ vignetteCategory }} - {{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }})
             {{ $t("type.title.after_title") }}</span
           >
           <span v-if="durationType === 'WEEK'"
-            >{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
+            > {{ vignetteCategory }} - {{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }})
             {{ $t("type.title.after_title") }}</span
           >
           <span v-if="durationType === 'YEAR_11'"
-            >{{ $t("type.title.year_11") }}
+            > {{ vignetteCategory }} - {{ $t("type.title.year_11") }}
             {{ $t("type.title.after_title") }}</span
           >
           <span v-if="durationType === 'YEAR'"
-            >{{ $t("type.title.annual") }}
+            > {{ vignetteCategory }} - {{ $t("type.title.annual") }}
             {{ $t("type.title.after_title") }}</span
           >
           <span v-if="durationType === 'MONTH'"
-            >{{ $t("type.title.monthly") }}
+            > {{ vignetteCategory }} - {{ $t("type.title.monthly") }}
             {{ $t("type.title.after_title") }}</span
           >
         </div>

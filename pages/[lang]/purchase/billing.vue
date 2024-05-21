@@ -15,16 +15,15 @@
     <section class="max-w-[800px] mx-auto">
      <h1 class="purchase-h1">
       <img class="w-[45px]" :src="'/img/purchase/' + category + '.svg'" />
-      <div class="flex items-center space-x-2">
-          <span>{{ vignetteCategory }} -</span>
-          <span v-if="durationType === 'DAY'">{{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }}) {{
+      <div class="flex space-x-2">
+          <span v-if="durationType === 'DAY'">{{ vignetteCategory }} - {{ $t("type.title.daily") }} ({{ $t("type.title.one_day") }}) {{
             $t("type.title.after_title") }}</span>
-          <span v-if="durationType === 'WEEK'">{{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }}) {{
+          <span v-if="durationType === 'WEEK'">{{ vignetteCategory }} - {{ $t("type.title.weekly") }} ({{ $t("type.title.ten_days") }}) {{
             $t("type.title.after_title") }}</span>
-          <span v-if="durationType === 'YEAR_11'">{{ $t("type.title.year_11") }} {{ $t("type.title.after_title")
+          <span v-if="durationType === 'YEAR_11'">{{ vignetteCategory }} - {{ $t("type.title.year_11") }} {{ $t("type.title.after_title")
             }}</span>
-          <span v-if="durationType === 'YEAR'">{{ $t("type.title.annual") }} {{ $t("type.title.after_title") }}</span>
-          <span v-if="durationType === 'MONTH'">{{ $t("type.title.monthly") }} {{ $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'YEAR'">{{ vignetteCategory }} - {{ $t("type.title.annual") }} {{ $t("type.title.after_title") }}</span>
+          <span v-if="durationType === 'MONTH'">{{ vignetteCategory }} - {{ $t("type.title.monthly") }} {{ $t("type.title.after_title") }}</span>
         </div>
       </h1> 
     </section>
@@ -166,7 +165,7 @@
               }}</span>
             </button>
           </div>
-          <div class="w-full flex flex-col gap-4">
+          <div class="w-full flex flex-col gap-4" v-if="vatInvoiceChecked && companyOrPrivatePerson === 'company' || vatInvoiceChecked && companyOrPrivatePerson === 'privatePerson'">
             <!-- Section visible only when 'privatePerson' is selected -->
             <section
               class="flex flex-col gap-2"
@@ -492,6 +491,39 @@ let orderData = reactive({
   },
 } as GetOrderResponse);
 
+
+const vatInvoiceChecked = ref(
+  orderData == null ? false : orderData.value?.needInvoice
+);
+
+const companyOrPrivatePerson = ref("");
+
+
+ watch(vatInvoiceChecked, (newVal, oldVal) => {
+  if (!newVal) {
+    orderData.value.needInvoice = false;
+    orderData.value.invoiceName = "";
+    orderData.value.invoiceCity = "";
+    orderData.value.invoiceStreetAddress = "";
+    orderData.value.invoiceCountry = "Magyarország | Hungary";
+    orderData.value.invoicePostalCode = "";
+    orderData.value.invoiceHUTaxNumber = "";
+    orderData.value.invoiceCity = "";
+    companyOrPrivatePerson.value = "";
+    orderData.value.companyName = "";
+    selectedCountry.value = "Magyarország | Hungary ";
+  }
+});
+
+/* const companyOrPrivatePerson = ref(
+  orderData == null
+    ? ""
+    : orderData.value?.invoiceHUTaxNumber == null
+    ? "privatePerson"
+    : "company"
+);
+ */
+
 /* if (orderId.value != null) {
   orderData = await $fetch<GetOrderResponse>(
     `${commonApiEndpoint}?OrderId=${orderId.value}`
@@ -586,17 +618,7 @@ const onPostalCodeSelection = (event: { value: Suggestion }) => {
 // -------------------------------------- AutoCompletes END -------------------------------------------
 
 
-const vatInvoiceChecked = ref(
-  orderData == null ? false : orderData.value?.needInvoice
-);
 
-const companyOrPrivatePerson = ref(
-  orderData == null
-    ? ""
-    : orderData.value?.invoiceHUTaxNumber == null
-    ? "privatePerson"
-    : "company"
-);
 
 const errorMessage = ref("");
 
