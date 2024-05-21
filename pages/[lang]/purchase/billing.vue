@@ -335,8 +335,9 @@
                   class="w-full"
                   id="postalCode"
                   v-model="orderData.value.invoicePostalCode"
-                  :suggestions="postalCodeItems"
-                  @complete="search"
+                  :suggestions="suggestions"
+                  @complete="fetchPostalCodeSuggestions"
+                  @select="handleSelection" field="label"
                   :placeholder="$t('billing.zip_code_placeholder')"
                 />
                 <button
@@ -442,7 +443,6 @@ import type {
   AutoCompleteCompleteEvent,
 } from "~/types/purchaseTypes";
 const { t, locale } = useI18n();
-
 const categoryCookie = useCookie('category');
 const durationTypeCookie = useCookie('durationType');
 
@@ -524,6 +524,28 @@ const fetchCompanyNameSuggestions = async (
   }
 };
 
+const suggestions = ref([]);
+
+// Fetch postal code and city data
+
+async function fetchPostalCodeSuggestions(event: { query: any; }) {
+  const query = event.query;
+  const response = await fetch(`https://test-gw.voxpay.hu/Webshop.Common/ListCityByPostalCodePart?InvoicePostalCode=${query}`);
+  const data = await response.json();
+  if (data.isSuccess) {
+    suggestions.value = data.value.postalCodeData.map((item: { postalCode: any; city: any; }) => ({
+      label: `${item.postalCode} ${item.city}`,
+      value: item
+    }));
+  }
+}
+
+const handleSelection = (event: { value: any; }) =>{
+  const selectedItem = event.value;
+  orderData.value.invoicePostalCode = selectedItem.postalCode;
+  orderData.value.invoiceCity = selectedItem.city;
+}
+
 const onCompanySelect = (event: { value: InvoiceAddressData }) => {
   const selectedCompany = event.value;
   orderData.value.invoiceName = selectedCompany.companyName;
@@ -534,6 +556,8 @@ const onCompanySelect = (event: { value: InvoiceAddressData }) => {
   selectedCountry.value = "Magyarország | Hungary ";
   orderData.value.invoicePostalCode = selectedCompany.invoicePostalCode;
 };
+
+
 
 const vatInvoiceChecked = ref(
   orderData == null ? false : orderData.value?.needInvoice
@@ -567,13 +591,6 @@ watch(
 );
 
 const selectedCountry = ref(orderData.value?.invoiceCountry);
-const postalCodeItems = ref<string[]>([]);
-
-const search = (event: { query: string }) => {
-  postalCodeItems.value = [...Array(10).keys()].map(
-    (item) => `${event.query}-${item}`
-  );
-};
 
 const pageUri = computed(() => {
   const slug = (route.params.slug as string) || "";
