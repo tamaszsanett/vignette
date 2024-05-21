@@ -269,6 +269,33 @@
       </div>
     </template>
   </main>
+  <Dialog
+        v-model:visible="generalError"
+        modal
+        dismissableMask
+        :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
+        class="max-w-sm w-full top-40 absolute rounded-md"
+      >
+        <template #header>
+          <div class="inline-flex items-center gap-2 pb-2 border-b w-full">
+            <span class="font-bold whitespace-nowrap">{{t('Error')}}</span>
+          </div>
+        </template>
+        <div >
+          {{ generalErrorMsg }}
+        </div>
+        <template #footer>
+          <div class="border-t pt-5 w-full">
+            <Button
+              class="btn primary-btn btn-sm mx-auto"
+              :label="t('Restart purchase')"
+              icon="pi pi-refresh"
+              @click="goHome()"
+              autofocus
+            />
+          </div>
+        </template>
+      </Dialog>
 </template>
 
 <script setup lang="ts">
@@ -347,6 +374,8 @@ var orderData = await $fetch<GetOrderResponse>(
 const sum = ref(0.0);
 const sumConvenienceFee = ref(0.0);
 const sumVignettePrice = ref(0.0);
+const generalError = ref(false);
+const generalErrorMsg = ref("");
 
 for (var i = 0; i < orderData.value.cartItems.length; i++) {
   var item = orderData.value.cartItems[i];
@@ -414,45 +443,21 @@ async function sendForm() {
       "https://tools.ietf.org/html/rfc9110#section-15.5.1"
     ) {
       var errors = JSON.parse(response.error.message);
-
-      if (errors.UserEmail != null) {
-        errorMessage.value += errors.UserEmail[0] + "<br />";
-      }
-      if (errors.PhoneNumber != null) {
-        errorMessage.value += errors.PhoneNumber[0] + "<br />";
-      }
-      if (errors.InvoiceName != null) {
-        errorMessage.value += errors.InvoiceName[0] + "<br />";
-      }
-      if (errors.InvoiceHUTaxNumber != null) {
-        errorMessage.value += errors.InvoiceHUTaxNumber[0] + "<br />";
-      }
-      if (errors.InvoiceHUGroupTaxNumber != null) {
-        errorMessage.value += errors.InvoiceHUGroupTaxNumber[0] + "<br />";
-      }
-      if (errors.InvoiceEUTaxNumber != null) {
-        errorMessage.value += errors.InvoiceEUTaxNumber[0] + "<br />";
-      }
-      if (errors.InvoiceCountry != null) {
-        errorMessage.value += errors.InvoiceCountry[0] + "<br />";
-      }
-      if (errors.InvoicePostalCode != null) {
-        errorMessage.value += errors.InvoicePostalCode[0] + "<br />";
-      }
-      if (errors.InvoiceCity != null) {
-        errorMessage.value += errors.InvoiceCity[0] + "<br />";
-      }
-      if (errors.InvoiceStreetAddress != null) {
-        errorMessage.value += errors.InvoiceStreetAddress[0] + "<br />";
-      }
-      if (errors.InvoicePostalCode != null) {
-        errorMessage.value += errors.InvoicePostalCode[0] + "<br />";
-      }
-      if (errors.NeedInvoice != null) {
-        errorMessage.value += errors.NeedInvoice[0] + "<br />";
-      }
+      console.log(errors);
+      
     } else {
       errorMessage.value = response.error.message;
+      if (response.error.message == "Transaction is already in progress!")
+      {
+        generalError.value = true;
+        generalErrorMsg.value = t("Transaction is already in progress!");
+        errorMessage.value = "";
+      }
+      else {
+        generalError.value = false;
+        generalErrorMsg.value = "";
+      }
+
     }
   } else {
     navigateTo(response.value.redirectUrl, { external: true });
@@ -490,6 +495,22 @@ const widgets = response.value.widgets.map((widget) => {
     };
   }
 });
+
+function goHome() {
+  const cartKey = useCookie("cartKey");
+  const vignetteTypeFromCookie = useCookie("vignetteType");
+  const durationTypeCookie = useCookie("durationType");
+  const categoryCookie = useCookie("category");
+  const orderId = useCookie("orderId");
+
+  cartKey.value = null;
+  vignetteTypeFromCookie.value = null;
+  durationTypeCookie.value = null;
+  categoryCookie.value = null;
+  orderId.value = null;
+
+  navigateTo("/"+currentLanguage.value);
+}
 
 /// ----------------- /ROUTING -----------------------
 </script>
