@@ -20,7 +20,7 @@
 }
 
 .purchase-calculator {
-  @apply w-full lg:max-w-[220px] xl:max-w-[270px] text-center lg:absolute right-10 2xl:right-36 top-[22rem] my-5;
+  @apply w-full lg:max-w-[220px] xl:max-w-[270px] lg:absolute right-10 2xl:right-36 top-[22rem] my-5;
 }
 
 .purchase-step-3 .prefix-select {

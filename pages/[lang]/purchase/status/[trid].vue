@@ -1,5 +1,5 @@
 <template>
-    <main class="container mx-auto px-4 lg:px-0 mt-48 under-payment">
+    <main class="container mx-auto px-2 lg:px-0 mt-48 trid-page">
         <div v-if="purchaseData.value.purchaseStatus === 'VignetteOrdered'">
             <ConfirmPageSuccessful :purchaseData="purchaseData"></ConfirmPageSuccessful>
         </div>

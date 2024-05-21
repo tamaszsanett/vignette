@@ -137,7 +137,7 @@ input:disabled {
 }
 
 .p-radiobutton, .p-radiobutton-input {
-  @apply h-full w-full max-w-[16px] flex items-center justify-center;
+  @apply h-full w-full flex items-center justify-center;
 }
 
 .p-radiobutton-icon {
