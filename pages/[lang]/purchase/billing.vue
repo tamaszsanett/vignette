@@ -301,7 +301,7 @@
               class="flex flex-col gap-2"
               v-if="
                 companyOrPrivatePerson === 'company' && 
-                orderData.value.invoiceCountry === 'Magyarország | Hungary '
+                orderData.value.invoiceCountry === 'Magyarország | Hungary'
               ">
               <label for="tax_number" class="primary-label">{{
                 $t("billing.tax_number")
@@ -485,7 +485,7 @@ let orderData = reactive({
     invoiceName: "",
     invoiceCity: "",
     invoiceStreetAddress: "",
-    invoiceCountry: "Magyarország | Hungary ",
+    invoiceCountry: "Magyarország | Hungary",
     invoicePostalCode: "",
     invoiceHUTaxNumber: "",
     // more
@@ -539,8 +539,8 @@ const onCompanySelect = (event: { value: InvoiceAddressData }) => {
     orderData.value.invoiceCity = selectedCompany.invoiceCity;
     orderData.value.invoiceStreetAddress = selectedCompany.invoiceStreetAddress;
     orderData.value.invoiceHUTaxNumber = selectedCompany.invoiceHUTaxNumber;
-    orderData.value.invoiceCountry = "Magyarország | Hungary ";
-    selectedCountry.value = "Magyarország | Hungary ";
+    orderData.value.invoiceCountry = "Magyarország | Hungary";
+    selectedCountry.value = "Magyarország | Hungary";
     orderData.value.invoicePostalCode = selectedCompany.invoicePostalCode;
   }
 };
