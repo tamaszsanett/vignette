@@ -335,9 +335,9 @@
                   class="w-full"
                   id="postalCode"
                   v-model="orderData.value.invoicePostalCode"
-                  :suggestions="suggestions"
+                  :suggestions="postalCodeDataSuggestions"
                   @complete="fetchPostalCodeSuggestions"
-                  @select="handleSelection" field="label"
+                  @change="onPostalCodeSelection" field="label"
                   :placeholder="$t('billing.zip_code_placeholder')"
                 />
                 <button
@@ -441,6 +441,10 @@ import type {
   InvoiceAddressData,
   InvoiceAddressResponse,
   AutoCompleteCompleteEvent,
+PostalCodeResponse,
+PostalCodeData,
+Suggestion,
+PostalCodeChangeEvent,
 } from "~/types/purchaseTypes";
 const { t, locale } = useI18n();
 
@@ -501,12 +505,14 @@ if (orderId.value != null) {
   Object.assign(orderData.value, fetchedData.value);
 }
 
+// -------------------------------------- AutoCompletes -------------------------------------------
+
+
 const companyNameSuggestions = ref<InvoiceAddressData[]>([]);
 
 const fetchCompanyNameSuggestions = async (
   event: AutoCompleteCompleteEvent
 ) => {
-  console.log("fetch");
   const query = event.query;
 
   if (!query || query.length < 2) return;
@@ -526,31 +532,8 @@ const fetchCompanyNameSuggestions = async (
   }
 };
 
-const suggestions = ref([]);
-
-// Fetch postal code and city data
-
-async function fetchPostalCodeSuggestions(event: { query: any; }) {
-  const query = event.query;
-  const response = await fetch(`https://test-gw.voxpay.hu/Webshop.Common/ListCityByPostalCodePart?InvoicePostalCode=${query}`);
-  const data = await response.json();
-  if (data.isSuccess) {
-    suggestions.value = data.value.postalCodeData.map((item: { postalCode: any; city: any; }) => ({
-      label: `${item.postalCode} ${item.city}`,
-      value: item
-    }));
-  }
-}
-
-const handleSelection = (event: { value: any; }) =>{
-  const selectedItem = event.value;
-  orderData.value.invoicePostalCode = selectedItem.postalCode;
-  orderData.value.invoiceCity = selectedItem.city;
-}
-
 const onCompanySelect = (event: { value: InvoiceAddressData }) => {
   if (event.value.companyName != null) {
-    console.log("select");
     const selectedCompany = event.value;
     orderData.value.invoiceName = selectedCompany.companyName;
     orderData.value.invoiceCity = selectedCompany.invoiceCity;
@@ -562,12 +545,51 @@ const onCompanySelect = (event: { value: InvoiceAddressData }) => {
   }
 };
 
+const postalCodeDataSuggestions = ref<Suggestion[]>([]);
+
+// Fetch postalcode data
+async function fetchPostalCodeSuggestions(event: PostalCodeChangeEvent) {
+  const query = event.query;
+  if (!query) {
+    console.error("No query provided for postal code suggestions.");
+    return;
+  }
+
+  const endpoint = `https://test-gw.voxpay.hu/Webshop.Common/ListCityByPostalCodePart?InvoicePostalCode=${query}`;
+  try {
+    const response = await fetch(endpoint);
+    const data = (await response.json()) as PostalCodeResponse;
+
+    if (data.isSuccess && data.value.postalCodeData) {
+      postalCodeDataSuggestions.value = data.value.postalCodeData.map((item: PostalCodeData) => ({
+        label: `${item.postalCode} ${item.city}`,
+        value: item.postalCode,
+        city: item.city
+      }));
+    } else {
+      console.error('Error fetching postalcode data:', data.error.message);
+    }
+  } catch (error) {
+    console.error('Network error:', error);
+  }
+}
+
+const onPostalCodeSelection = (event: { value: Suggestion }) => {
+  if (!event.value || typeof event.value !== 'object' || !event.value.value || !event.value.city) {
+   return;
+  }
+  
+  orderData.value.invoicePostalCode = event.value.value; // Update the postalcode
+  orderData.value.invoiceCity = event.value.city; // Update the city
+}
+
+// -------------------------------------- AutoCompletes END -------------------------------------------
+
+
 const vatInvoiceChecked = ref(
   orderData == null ? false : orderData.value?.needInvoice
 );
-const cityValue = ref(null);
-const emailValue = ref(null);
-const phoneValue = ref(null);
+
 const companyOrPrivatePerson = ref(
   orderData == null
     ? ""
@@ -575,7 +597,7 @@ const companyOrPrivatePerson = ref(
     ? "privatePerson"
     : "company"
 );
-const inputMaskValue = ref("");
+
 const errorMessage = ref("");
 
 const selectedCountryPhonePrefix = ref(orderData.value?.phonePrefix);
