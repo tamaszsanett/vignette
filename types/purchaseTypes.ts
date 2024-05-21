@@ -59,3 +59,32 @@ export type InvoiceAddressResponse = {
   };
   isFailure: boolean;
 };
+
+export type PostalCodeChangeEvent = {
+  query: string;
+};
+
+export type PostalCodeResponse = {
+  value: {
+    postalCodeData: PostalCodeData[];
+    statusCode: string;
+    errors: null | string[];
+  };
+  isSuccess: boolean;
+  error: {
+    code: string;
+    message: string;
+  };
+  isFailure: boolean;
+};
+
+export type PostalCodeData = {
+  postalCode: string;
+  city: string;
+};
+
+export type Suggestion = {
+  label: string;
+  value: string;
+  city: string;
+};
