@@ -335,8 +335,9 @@
                   class="w-full"
                   id="postalCode"
                   v-model="orderData.value.invoicePostalCode"
-                  :suggestions="postalCodeItems"
-                  @complete="search"
+                  :suggestions="suggestions"
+                  @complete="fetchPostalCodeSuggestions"
+                  @select="handleSelection" field="label"
                   :placeholder="$t('billing.zip_code_placeholder')"
                 />
                 <button
@@ -525,6 +526,28 @@ const fetchCompanyNameSuggestions = async (
   }
 };
 
+const suggestions = ref([]);
+
+// Fetch postal code and city data
+
+async function fetchPostalCodeSuggestions(event: { query: any; }) {
+  const query = event.query;
+  const response = await fetch(`https://test-gw.voxpay.hu/Webshop.Common/ListCityByPostalCodePart?InvoicePostalCode=${query}`);
+  const data = await response.json();
+  if (data.isSuccess) {
+    suggestions.value = data.value.postalCodeData.map((item: { postalCode: any; city: any; }) => ({
+      label: `${item.postalCode} ${item.city}`,
+      value: item
+    }));
+  }
+}
+
+const handleSelection = (event: { value: any; }) =>{
+  const selectedItem = event.value;
+  orderData.value.invoicePostalCode = selectedItem.postalCode;
+  orderData.value.invoiceCity = selectedItem.city;
+}
+
 const onCompanySelect = (event: { value: InvoiceAddressData }) => {
   if (event.value.companyName != null) {
     console.log("select");
@@ -571,11 +594,6 @@ watch(
 );
 
 const selectedCountry = ref(orderData.value?.invoiceCountry);
-const postalCodeItems = ref<string[]>([]);
-
-const search = (event: { query: string }) => {
-  postalCodeItems.value = [`${event.query}`];
-};
 
 const pageUri = computed(() => {
   const slug = (route.params.slug as string) || "";
