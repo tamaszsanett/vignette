@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto px-4 lg:px-0 mt-48 under-payment">
+  <main class="container mx-auto px-2 lg:px-0 mt-48 sucessful-payment">
     <form class="pb-10 max-w-[600px] mx-auto">
       <h1 class="purchase-h1">
         <span class="ml-2">{{ $t("confirm_successful.title") }}</span>
@@ -8,16 +8,17 @@
         <Card class="mb-5 shadow-lg">
           <template #content>
             <div class="payment-progress">
-              <div class="w-full clear-both">
-                <div class="control-label float-left px-2">
+              <div class="w-full">
+                <div class="float-left pr-2">
                   {{ $t("global.confirm_trid.trans_id") }}:
                 </div>
                 <div class="float-left">
-                  <p class="form-control-static">{{ purchaseData.value.trid }}</p>
+                  {{ purchaseData.value.trid }}
                 </div>
-                <div class="control-label float-left px-2">| {{ $t("global.confirm_trid.e_mail") }}:</div>
-                <div class="float-left px-2">
-                  <p class="form-control-static">{{ purchaseData.value.userEmail }}</p>
+                <div class="clear-both lg:hidden"></div>
+                <div class="float-left pr-2"><span class="hidden lg:inline-block lg:px-2">|</span>{{ $t("global.confirm_trid.e_mail") }}:</div>
+                <div class="float-left">
+                  {{ purchaseData.value.userEmail }}
                 </div>
               </div>
               <div class="design-table w-full clear-both pt-[2px]">
