@@ -425,7 +425,6 @@ async function sendForm() {
         paymentMode: paymentMethod.value,
         subscribeNewsletter: newsletterSubscription.value,
         participatePrizeGame: false,
-        isFleet: false,
         forGift: false,
         currency: "EUR",
         sourceShop: "hungary-vignette.eu/" + currentLanguage.value,

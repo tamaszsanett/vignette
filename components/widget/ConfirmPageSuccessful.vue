@@ -43,9 +43,9 @@
               </div>
               <div class="clear-both">
                 <section class="flex items-center flex-wrap my-5 gap-4 w-full">
-                  <NuxtLink id="downloadOrder" to="#" class="btn-green" type="submit" style="max-width: 250px">
+                  <Button id="downloadOrder" v-on:click="downloadSummary()" class="btn-green" style="max-width: 250px">
                     <span>{{ $t("confirm_successful.card.download_order_btn_title") }}</span>
-                  </NuxtLink>
+                  </Button>
                 </section>
                 <p>{{ $t("confirm_successful.card.ty_text") }}</p>
                 <p class="my-0" v-html="t('confirm_successful.card.info_text')"></p>
@@ -71,6 +71,7 @@
 import type { GetPurchaseResponse } from "~/types/types";
 import Card from "primevue/card";
 const { t, locale } = useI18n();
+var route = useRoute();
 
 const cartKey = useCookie("cartKey");
 const orderId = useCookie("orderId");
@@ -105,4 +106,8 @@ const sortedVignettes = computed(() => {
     return validFromA - validFromB;
   });
 });
+
+function downloadSummary() {
+  navigateTo("/"+route.params.lang+"/purchase/orderdetails/"+props.purchaseData.value.trid+".pdf", { open: {target: "_blank"}});
+}
 </script>

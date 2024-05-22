@@ -766,9 +766,9 @@ async function sendForm() {
         errorMessage.value += errors.NeedInvoice[0] + "<br />";
       }
     } else {
-      errorMessage.value = response.error.message;
+      errorMessage.value = response.error.message.replaceAll(";","<br />").replaceAll("|","<br />");
 
-      if (errorMessage.value = "Cart not exists!")
+      if (errorMessage.value == "Cart not exists!")
       {
         cartKey.value = null;
         orderId.value = null;
