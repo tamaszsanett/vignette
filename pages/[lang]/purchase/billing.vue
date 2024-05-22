@@ -565,6 +565,7 @@ const fetchCompanyNameSuggestions = async (
 
     if (data.isSuccess) {
       companyNameSuggestions.value = data.value.invoiceAddressData;
+      orderData.value.invoiceName = query;
     } else {
       console.error("Error fetching company names:", data.error);
     }
@@ -679,7 +680,6 @@ const loading = ref(false);
 
 async function sendForm() {
   loading.value = true;
-  
 
   const createOrderEndpoint =
     "https://test-gw.voxpay.hu/Webshop.Common/CreateOrder";
@@ -693,7 +693,7 @@ async function sendForm() {
       userEmail: orderData.value.userEmail,
       phonePrefix: selectedCountryPhonePrefix.value,
       phoneNumber: orderData.value.phoneNumber,
-      invoiceName: orderData.value.companyName != null ? (orderData.value.companyName.companyName != undefined ? orderData.value.companyName.companyName : orderData.value.companyName) : orderData.value.invoiceName,
+      invoiceName: orderData.value.invoiceName,
       invoiceHuTaxNumber:
         orderData.value.invoiceHUTaxNumber == ""
           ? null
