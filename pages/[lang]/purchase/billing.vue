@@ -761,12 +761,17 @@ async function sendForm() {
       }
     } else {
       errorMessage.value = response.error.message;
+
+      if (errorMessage.value = "Cart not exists!")
+      {
+        cartKey.value = null;
+        orderId.value = null;
+        goBack();
+      }
     }
     window.scrollTo(0, 0);
   } else {
     orderId.value = response.value.orderId;
-    console.log(response);
-
     navigateTo("/" + currentLanguage.value + "/purchase/confirm");
   }
   loading.value = false;
