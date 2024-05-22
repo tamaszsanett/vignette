@@ -72,6 +72,18 @@ import type { GetPurchaseResponse } from "~/types/types";
 import Card from "primevue/card";
 const { t, locale } = useI18n();
 
+const cartKey = useCookie("cartKey");
+const orderId = useCookie("orderId");
+const vignetteTypeFromCookie = useCookie("vignetteType");
+const durationTypeCookie = useCookie("durationType");
+const categoryCookie = useCookie("category");
+
+cartKey.value = null;
+orderId.value = null;
+vignetteTypeFromCookie.value = null;
+durationTypeCookie.value = null;
+categoryCookie.value = null;
+
 const props = defineProps({
   purchaseData: {
     type: Object as PropType<GetPurchaseResponse>,
