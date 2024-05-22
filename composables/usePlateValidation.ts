@@ -1,15 +1,12 @@
 import type { FormData, PlateValidation } from "~/types/purchaseTypes";
 
 export function usePlateValidation(apiEndpoint: string): PlateValidation {
-
   const validateAllPlates = async (multiples: FormData[], t: Function) => {
     var hasError = false;
 
     for (const item of multiples) {
-      item.invalidPlate = "";
       
-      if (!item.selectedCountry || !item.plateNumber) {
-        item.invalidPlate = t("type.invalid_plate");
+      if (!item.selectedCountry) {
         hasError = true;
         continue;
       }
@@ -41,19 +38,26 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
           }),
         });
         const responseData = await response.json();
+        if (item.plateNumber.trim() === "") {
+          item.formShowError = true;
+          item.emptyMessage = t("type.empty_plate");
+          hasError = true;
+        } else {
+          item.formShowError = false;
+          item.emptyMessage = "";
+        }
 
         if (
-          !responseData.isSuccess ||
-          (responseData.value && !responseData.value.isValid)
+          item.plateNumber.trim() != "" &&
+          responseData.value.isValid === false
         ) {
           item.invalidPlate =
             responseData.value.error || t("type.invalid_plate");
-            hasError = true;
+          hasError = true;
         } else {
-          //item.invalidPlate = "";
+          item.invalidPlate = "";
         }
       } catch (error) {
-        item.invalidPlate = t("type.error_validating_plate");
         console.error("Error validating data:", error);
         hasError = true;
       }
@@ -63,6 +67,6 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
   };
 
   return {
-    validateAllPlates
+    validateAllPlates,
   };
 }

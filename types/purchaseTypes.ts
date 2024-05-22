@@ -21,7 +21,10 @@ export type County = {
 export type FormData = {
   itemKey: string;
   formShowError: boolean;
+  selectionIsValid: boolean;
   invalidPlate: string;
+  emptyMessage: string;
+  errorSelection: string;
   selectedCountry: { name: string; countryCode: string } | undefined;
   countryCode: string;
   plateNumber: string;

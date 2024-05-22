@@ -24,7 +24,7 @@ export async function useUpdateCartItem(
 
     
   var correctedStartTime = new Date((validityStart ?? new Date()).getTime() - (new Date()).getTimezoneOffset() * 60000)
-  console.log(correctedStartTime);
+  //console.log(correctedStartTime);
 
   const cartKey = useCookie('cartKey');
 
