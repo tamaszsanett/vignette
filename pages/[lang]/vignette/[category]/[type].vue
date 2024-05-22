@@ -132,7 +132,7 @@
               class="w-5 h-5"
               style="width: 20px; height: 20px"
             />
-            <p class="error-message my-0">{{ emptyMessage }}</p>
+            <p class="error-message my-0">{{ item.emptyMessage }}</p>
           </div>
           <div
             v-if="item.invalidPlate"
@@ -145,6 +145,18 @@
               style="width: 20px; height: 20px"
             />
             <p class="error-message my-0">{{ item.invalidPlate }}</p>
+          </div>
+          <div
+            v-if="item.selectionIsValid"
+            class="my-2 w-full inline-flex flex-wrap gap-2 text-center justify-center"
+            >
+            <img
+              src="/img/purchase/danger-icon.svg"
+              alt="Hiba történt"
+              class="w-5 h-5"
+              style="width: 20px; height: 20px"
+            />
+            <p class="error-message my-0">{{ item.errorSelection }}</p>
           </div>
           <section
             class="card flex flex-col gap-2 w-full md:max-w-[350px] mx-auto"
@@ -204,9 +216,7 @@
                   }"
                 >
                   {{
-                    item.selectedCountry
-                      ? item.selectedCountry.countryCode
-                      : "H"
+                  item.selectedCountry?.countryCode
                   }}
                 </div>
               </InputGroupAddon>
@@ -300,8 +310,8 @@ import { ref, computed, onMounted, watch } from "vue";
 import { useRoute } from "nuxt/app";
 import { usePlateValidation } from "~/composables/usePlateValidation";
 import { useVignetteInfo } from "~/composables/useVignetteInfo";
-import type * as purchaseTypesTs from "~/types/purchaseTypes.ts";
-import type { GetCartResponse, VignetteInfoResponse } from "~/types/types.ts";
+import type * as purchaseTypesTs from "~/types/purchaseTypes";
+import type { GetCartResponse, VignetteInfoResponse } from "~/types/types";
 import countries from "~/data/countries";
 import counties from "~/data/counties";
 import { uuid } from "vue-uuid";
@@ -361,15 +371,15 @@ const formData = ref({
 const addMore = (index: number) => {
   disableUpdate.value = true;
   const newItem = {
-    selectedCountry: countryOptions.value.find(
-      (country) => country.countryCode === "H"
-    ),
-    countryCode: "H",
+    selectedCountry: undefined,
+    countryCode: "",
     plateNumber: "",
     startDate: new Date(),
     endDate: new Date(),
     formShowError: false,
     invalidPlate: "",
+    errorSelection: "",
+    selectionIsValid: false,
     itemKey: uuid.v4(),
   };
 
@@ -437,9 +447,7 @@ if (
           vignetteInfo.value?.value.vignetteType.durationType == "WEEK"
         ) {
           const newItem = {
-            selectedCountry: countryOptions.value.find(
-              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value ?? ""
-            ),
+            selectedCountry: undefined,
             countryCode:
               item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
             plateNumber:
@@ -459,6 +467,7 @@ if (
             ),
             formShowError: false,
             invalidPlate: "",
+            errorSelection: "",
             itemKey: item.cartItemKey,
           };
 
@@ -505,9 +514,7 @@ if (
           });
 
           const newItem = {
-            selectedCountry: countryOptions.value.find(
-              (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value
-            ),
+            selectedCountry: undefined,
             countryCode:
               item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
             plateNumber:
@@ -519,7 +526,9 @@ if (
               maxDate.getTime() - new Date().getTimezoneOffset() * 60000
             ),
             formShowError: false,
+            selectionIsValid: false,
             invalidPlate: "",
+            errorSelection: "",
             itemKey: item.cartItemKey.substring(0, item.cartItemKey.length - 2), // remove _[numberofmonth]
           };
 
@@ -533,11 +542,11 @@ if (
           lastAddedIndex.value = -1;
           unique.forEach((item, index) => {
             // Get min start date
-            var minDate = new Date("2040-01-01");
-            var countryCode = "";
-            var itemKey = "";
-            var plateNumber = "";
-            var selectedCountry;
+            let minDate = new Date("2040-01-01");
+            let countryCode = "";
+            let itemKey = "";
+            let plateNumber = "";
+            let selectedCountry;
 
             cart.value.cartItems.forEach((cartItem, index) => {
               itemKey = cartItem.cartItemKey.split("_")[0];
@@ -562,12 +571,15 @@ if (
             });
             const newItem = {
               selectedCountry: selectedCountry,
-              countryCode: countryCode ?? "",
+              countryCode: "",
               plateNumber: plateNumber,
               startDate: minDate,
               endDate: new Date(),
               formShowError: false,
+              selectionIsValid: false,
               invalidPlate: "",
+              errorSelection: "",
+              
               itemKey: item, // remove _[numberofmonth]
             };
             formData.value.multiples.splice(lastAddedIndex.value, 0, newItem);
@@ -596,11 +608,11 @@ if (
         lastAddedIndex.value = -1;
         uniqueItemKeys.forEach((item, index) => {
           // Get min start date
-          var minDate = new Date("2040-01-01");
-          var countryCode = "";
-          var plateNumber = "";
-          var itemKey = "";
-          var selectedCountry;
+          let minDate = new Date("2040-01-01");
+          let countryCode = "";
+          let plateNumber = "";
+          let itemKey = "";
+          let selectedCountry;
 
           cart.value.cartItems.forEach((cartItem, index) => {
             itemKey = cartItem.cartItemKey.split("_")[0];
@@ -619,19 +631,19 @@ if (
                 minDate = validityStart;
               }
 
-              selectedCountry = countryOptions.value.find(
-                (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value
-              )
+              selectedCountry = undefined;
             }
           });
           const newItem = {
             selectedCountry: selectedCountry,
-            countryCode: countryCode ?? "",
+            countryCode: "",
             plateNumber: plateNumber,
             startDate: minDate,
             endDate: new Date(),
             formShowError: false,
+            selectionIsValid: false,
             invalidPlate: "",
+            errorSelection: "",
             itemKey: item,
           };
           formData.value.multiples.splice(lastAddedIndex.value, 0, newItem);
@@ -687,18 +699,18 @@ const { validateAllPlates } = usePlateValidation(
   "https://test-gw.voxpay.hu/Webshop.Vignette/ValidatePlateNumber"
 );
 
-const emptyMessage = ref("");
-
 const handleInputValidation = (index: number) => {
   const item = formData.value.multiples[index];
   if (item) {
     if (item.plateNumber.trim() === "") {
       item.formShowError = true; // Show error if input is empty
-      emptyMessage.value = t("type.empty_plate");
+      item.emptyMessage = t("type.empty_plate");
     } else {
+      item.emptyMessage = "";
       item.formShowError = false; // Hide error if input is not empty
     }
   }
+  
 };
 
 // -------------------------------------- WATCH INPUT CHANGES -------------------------------------------
@@ -712,8 +724,9 @@ watch(
         oldValues.length == newValues.length &&
         oldValues[index] != newValues[index]
       ) {
-        console.log( newValues[index]?.countryCode);
+        //console.log( newValues[index]?.countryCode);
         formData.value.multiples[index].countryCode = newValues[index]?.countryCode ?? "H";
+        formData.value.multiples[index].selectionIsValid = false;
         updateCartItem(index);
       }
     });
@@ -762,12 +775,12 @@ watch(numberOfVignettes, (newValue, oldValue) => {
 
       //console.log(formData.value.multiples.length);
       let ton = formData.value.multiples.length;
-      console.log(ton);
-      for (var i = ton-1; i > 0; i--)
+      //console.log(ton);
+      /* for (var i = ton-1; i > 0; i--)
       {
         console.log("remove: "+i);
           remove(i);
-      };
+      }; */
       // add to cart
       useAddAnotherVignetteToCart(
           currentLanguage.value,
@@ -830,7 +843,7 @@ watch(selectedCounties, (newItems, oldItems) => {
 
 // ------------------------------- ADD/REMOVE/MODIFY vignette blocks ----------------------------------------
 const remove = (index: number) => {
-  console.log(index);
+  //console.log(index);
   useRemoveVignetteFromCart(
     formData.value.multiples[index].itemKey,
     vignetteInfo.value?.value.vignetteType.durationType ?? "",
@@ -848,9 +861,22 @@ const remove = (index: number) => {
 
 const loading = ref(false);
 
+const validateSelections = () => {
+
+  formData.value.multiples.forEach((item, index) => {
+    if (!item.selectedCountry) {
+       item.errorSelection = t("type.error_selection");
+       item.selectionIsValid = true;
+    } else {
+      item.selectionIsValid = false;
+    }
+  });
+};
+
 const validate = async () => {
+  validateSelections();
   loading.value = true;
-  var hasErrors = await validateAllPlates(formData.value.multiples, t);
+  let hasErrors = await validateAllPlates(formData.value.multiples, t);
 
   if (vignetteInfo.value?.value.vignetteType.durationType == "YEAR_11")
   {
@@ -1125,7 +1151,7 @@ async function calculateEndDate(index: number): Promise<void> {
 
 function updateCartItem(index: number) {
   var item = formData.value.multiples[index];
-  console.log(item);
+  //console.log(item);
   useUpdateCartItem(
     item.itemKey,
     item.countryCode,

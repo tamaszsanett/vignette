@@ -756,7 +756,7 @@ async function sendForm() {
     window.scrollTo(0, 0);
   } else {
     orderId.value = response.value.orderId;
-    console.log(response);
+    //console.log(response);
 
     navigateTo("/" + currentLanguage.value + "/purchase/confirm");
   }

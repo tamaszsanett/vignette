@@ -83,11 +83,12 @@ export default defineI18nConfig(() => ({
         "5month": "5 months",
       },
       type: {
-        empty_plate: "Filling in the registration number is mandatory!",
+        empty_plate: "Plate number is required!",
         plate_number_duplicated: "Plate number duplicated on same time",
         invalid_plate:
           "The number plate is wrong. For example, it cannot contain a hyphen or does not meet the standard represented by your country.",
         plate_num_required: "Plate number required!",
+        error_selection: "Country is required!",
         car_country: "Car country",
         licence_plate_number: "License plate number",
         add_another_widget: "add another vignette",
@@ -98,7 +99,6 @@ export default defineI18nConfig(() => ({
         day: "day",
         year: "year",
         select_country_placeholder: "Select a Country",
-        regional_error: "Choose at least one county!",
         number_of_month: "Number of month",
         validity_period: "Validity period",
         is_at_least_one_county_selected: "Choose at least one county!",
@@ -390,6 +390,7 @@ export default defineI18nConfig(() => ({
         invalid_plate:
           "Das Nummernschild ist falsch. Es darf beispielsweise keinen Bindestrich enthalten oder entspricht nicht dem in Ihrem Land vertretenen Standard.",
         plate_num_required: "Plate number required!",
+        error_selection: "Country is required!",
         car_country: "Nationalitätszeichen",
         licence_plate_number: "Nummernschild",
         add_another_widget: "eine weitere Vignette hinzufügen",
@@ -400,7 +401,6 @@ export default defineI18nConfig(() => ({
         day: "Tag",
         year: "Jahr",
         select_country_placeholder: "Wähle ein Land",
-        regional_error: "Die Auswahl eines Landkreises ist obligatorisch!",
         number_of_month: "Wie viele Monate",
         validity_period: "Gültigkeitszeitraum",
         is_at_least_one_county_selected:
