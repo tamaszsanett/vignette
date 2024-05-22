@@ -130,12 +130,12 @@
             v-for="item in menuWidget.languageSelection"
             @click="() => changeLanguage(item.code, item.url)"
             :key="item.title"
-            class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1"
+            class="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 rounded-[4px] flex items-center gap-1 capitalize"
           >
             <img
               :src="`${item.imgSrc}`"
               :alt="item.alt"
-              class="inline-block ml-2 w-5 h-5"
+              class="inline-block ml-2 w-5 h-5 object-contain"
             />
             <span>{{ item.title }}</span>
           </div>
