@@ -497,19 +497,28 @@ const widgets = response.value.widgets.map((widget) => {
 });
 
 function goHome() {
+  console.log("goHome");
   const cartKey = useCookie("cartKey");
   const vignetteTypeFromCookie = useCookie("vignetteType");
   const durationTypeCookie = useCookie("durationType");
   const categoryCookie = useCookie("category");
   const orderId = useCookie("orderId");
 
-  cartKey.value = null;
-  vignetteTypeFromCookie.value = null;
-  durationTypeCookie.value = null;
+  if (cartKey)
+    cartKey.value = null;
+  if (vignetteTypeFromCookie)
+    vignetteTypeFromCookie.value = null;
+  if (durationTypeCookie)
+    durationTypeCookie.value = null;
+  if (categoryCookie)
   categoryCookie.value = null;
-  orderId.value = null;
+  if (orderId)
+    orderId.value = null;
 
-  navigateTo("/"+currentLanguage.value);
+  if (currentLanguage)
+    navigateTo("/"+currentLanguage.value);
+  else
+    navigateTo("/");
 }
 
 /// ----------------- /ROUTING -----------------------
