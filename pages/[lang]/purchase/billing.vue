@@ -679,6 +679,12 @@ const widgets = response.value.widgets.map((widget) => {
 const loading = ref(false);
 
 async function sendForm() {
+
+  if (vatInvoiceChecked.value && companyOrPrivatePerson.value == "") {
+    errorMessage.value = t("billing.billing_type_required");
+    return;
+  }
+
   loading.value = true;
 
   const createOrderEndpoint =

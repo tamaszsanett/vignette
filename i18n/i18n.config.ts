@@ -162,6 +162,7 @@ export default defineI18nConfig(() => ({
         address_tooltip_text: "Billing address (street, house number)",
         company_name_placeholder: "Start writing for suggestions...",
         zip_code_placeholder: "Start writing for suggestions...",
+        billing_type_required: "You must select a billing type!"
       },
       confirm: {
         main_title: "Check the entered data",
@@ -459,6 +460,7 @@ export default defineI18nConfig(() => ({
         address_tooltip_text: "Billing address (street, house number)",
         company_name_placeholder: "Start writing for suggestions...",
         zip_code_placeholder: "Start writing for suggestions...",
+        billing_type_required: "You must select a billing type!"
       },
       confirm: {
         main_title: "Check the entered data",
