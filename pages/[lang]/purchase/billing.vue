@@ -498,6 +498,12 @@ const vatInvoiceChecked = ref(
 
 const companyOrPrivatePerson = ref("");
 
+watch(companyOrPrivatePerson, (newVal, oldVal) => {
+if (newVal == "privatePerson")
+{
+  orderData.value.invoiceHUTaxNumber = "";
+}
+});
 
  watch(vatInvoiceChecked, (newVal, oldVal) => {
   if (!newVal) {
@@ -535,6 +541,9 @@ if (orderId.value != null) {
     `${commonApiEndpoint}?OrderId=${orderId.value}`
   );
   Object.assign(orderData.value, fetchedData.value);
+  vatInvoiceChecked.value = fetchedData.value.needInvoice;
+  companyOrPrivatePerson.value = fetchedData.value.invoiceHUTaxNumber == null ? "privatePerson" : "company";
+  orderData.value.companyName = orderData.value.invoiceName;
 }
 
 // -------------------------------------- AutoCompletes -------------------------------------------
