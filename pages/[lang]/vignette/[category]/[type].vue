@@ -396,6 +396,9 @@ const addMore = (index: number) => {
 };
 
 const numberOfVignettes = ref(1); // Default to 1, modify as necessary
+if (router.currentRoute.value.query.months) {
+  numberOfVignettes.value = parseInt(router.currentRoute.value.query.months.toString());
+}
 
 if (
   cartKey.value == null ||
@@ -478,6 +481,7 @@ if (
       });
 
       if (vignetteInfo.value?.value.vignetteType.durationType == "MONTH") {
+        
         // HANDLE MONTHLY VIGNETTE LOAD
         var unique = itemKeys.filter(
           (value, index, array) => array.indexOf(value) === index
@@ -573,6 +577,10 @@ if (
             formData.value.multiples.splice(lastAddedIndex.value, 0, newItem);
             lastAddedIndex.value = lastAddedIndex.value + 1;
           });
+        }
+
+        if (router.currentRoute.value.query.months) {
+          numberOfVignettes.value = parseInt(router.currentRoute.value.query.months.toString());
         }
       }
       if (vignetteInfo.value?.value.vignetteType.durationType == "YEAR_11") {
