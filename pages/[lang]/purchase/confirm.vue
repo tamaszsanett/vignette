@@ -105,6 +105,12 @@
               </div>
               <div class="half-width">{{ orderData.value.invoiceName }}</div>
             </div>
+            <div class="flex items-center" v-if="orderData.value.invoiceHUTaxNumber">
+              <div class="half-width">
+                {{ $t("billing.tax_number") }}
+              </div>
+              <div class="half-width">{{ orderData.value.invoiceHUTaxNumber }}</div>
+            </div>
             <div class="flex items-center">
               <div class="half-width">
                 {{ $t("confirm.billing_info.country") }}
