@@ -148,7 +148,18 @@ export async function useUpdateCartItem(
           body: JSON.stringify(items[i])
         });
         if (!response.ok) {
-          throw new Error('Network response was not ok');
+          setTimeout(async function () {
+            const response = await fetch(apiEndpointBase+"/RemoveFromCart", {
+              method: 'DELETE',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(items[i])});
+              if (response.ok) {
+                const data: BaseResponse = await response.json();
+                return data;
+              }
+          }, 1000);
         }
         const data: BaseResponse = await response.json();
       } catch (error) {
