@@ -33,7 +33,7 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            countryCode: item.selectedCountry!.countryCode,
+            countryCode: item.selectedCountry.countryCode,
             plateNumber: item.plateNumber,
           }),
         });
