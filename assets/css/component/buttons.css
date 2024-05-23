@@ -21,7 +21,7 @@
 }
 
 .primary-btn,
-[type="button"].primary-btn {
+[type="button"].primary-btn, [type="submit"].primary-btn {
   @apply bg-base-orange text-white hover:text-base-orange hover:bg-white border-base-orange focus:ring-base-orange;
 }
 
@@ -32,6 +32,11 @@
 .btn-green[type='submit'], .btn-green[type='button'], .btn-green, .p-button.btn-green {
   @apply btn bg-base-green text-white hover:bg-white hover:text-base-green border border-base-green max-w-[150px] w-full;
 }
+
+.btn-error[type='submit'], .btn-error[type='button'], .btn-error, .p-button.btn-error {
+  @apply btn bg-red text-white hover:bg-white hover:text-red border border-red max-w-[150px] w-full;
+}
+
 
 .btn-green.disabled {
   @apply btn-disabled;
