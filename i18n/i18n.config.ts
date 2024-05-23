@@ -142,8 +142,6 @@ export default defineI18nConfig(() => ({
           "If you want an invoice, please check the I want an invoice option",
         request_after_text1:
           "If you want an invoice, please check the I want an invoice option. We are unable to issue an invoice afterwards.",
-        request_after_text2:
-          "Without requesting a VAT invoice, you can only pay by credit card on our website",
         company: "Company",
         private_person: "Private person",
         checkbox_tooltip_text: "Your selection is mandatory",
@@ -208,8 +206,6 @@ export default defineI18nConfig(() => ({
             and I consent to the data management contained therein.`,
           important_text:
             "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
-          important_text_old:
-            "IMPORTANT! Using the motorway is only allowed with a valid vignette!",
           back: "Back",
           order_vignette_btn_title: "Order vignette",
         },
@@ -217,28 +213,22 @@ export default defineI18nConfig(() => ({
       confirm_failed: {
         title: "Vignette purchase failed!",
         payment_result_text: "Payment result",
-        payment_result_desc: `In the case of online bank card purchases, due to the strong
-          customer authentication introduced on January 1st, the rate of
-          unsuccessful payments increased in the initial period.`,
         reorder_btn_title: "Reorder",
         card: {
-          contact_us_text: `If you think that your payment was successful, but the vignette
-            validation failed, please contact us!`,
-          important_text: `IMPORTANT: The fact that the financial performance has been
-            fulfilled does not automatically mean that you are entitled to
-            use the track! You can only drive onto the highway if you have
-            a successful vignette after paying received confirmation of
-            validation by e-mail, or in your browser.`,
+          contact_us_text: `If you think that your payment was successful, but the e-vignette
+          validation failed, please contact us!`,
+          important_text: `MPORTANT: Successful financial completion does not automatically entitle you to use the motorway! You can only drive onto the highway if you have
+          a successful vignette after paying received confirmation of
+          validation by e-mail, or in your browser.`,
         },
       },
       confirm_successful: {
-        title: "Successful vignette orders",
+        title: "Successful vignette purchase",
         card: {
           download_order_btn_title: "Download order summary",
           ty_text: "Thank you for your purchase!",
           info_text: "We will send you the purchase receipt by e-mail.",
-          spam_text: `ATTENTION: if you can't find the notification letter, look for
-            it in the SPAM folder of your account.`,
+          spam_text: `ATTENTION: if you can't find our confirmation email, check your SPAM folder.`,
         },
       },
       confirm_under_payment: {
@@ -591,8 +581,6 @@ export default defineI18nConfig(() => ({
           "If you want an invoice, please check the I want an invoice option",
         request_after_text1:
           "If you want an invoice, please check the I want an invoice option. We are unable to issue an invoice afterwards.",
-        request_after_text2:
-          "Without requesting a VAT invoice, you can only pay by credit card on our website",
         company: "Company",
         private_person: "Private person",
         checkbox_tooltip_text: "Your selection is mandatory",
@@ -657,8 +645,6 @@ export default defineI18nConfig(() => ({
             and I consent to the data management contained therein.`,
           important_text:
             "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
-          important_text_old:
-            "IMPORTANT! Using the motorway is only allowed with a valid vignette!",
           back: "Back",
           order_vignette_btn_title: "Order vignette",
         },
@@ -666,28 +652,22 @@ export default defineI18nConfig(() => ({
       confirm_failed: {
         title: "Vignette purchase failed!",
         payment_result_text: "Payment result",
-        payment_result_desc: `In the case of online bank card purchases, due to the strong
-          customer authentication introduced on January 1st, the rate of
-          unsuccessful payments increased in the initial period.`,
         reorder_btn_title: "Reorder",
         card: {
-          contact_us_text: `If you think that your payment was successful, but the vignette
-            validation failed, please contact us!`,
-          important_text: `IMPORTANT: The fact that the financial performance has been
-            fulfilled does not automatically mean that you are entitled to
-            use the track! You can only drive onto the highway if you have
-            a successful vignette after paying received confirmation of
-            validation by e-mail, or in your browser.`,
+          contact_us_text: `If you think that your payment was successful, but the e-vignette
+          validation failed, please contact us!`,
+          important_text: `MPORTANT: Successful financial completion does not automatically entitle you to use the motorway! You can only drive onto the highway if you have
+          a successful vignette after paying received confirmation of
+          validation by e-mail, or in your browser.`,
         },
       },
       confirm_successful: {
-        title: "Successful vignette orders",
+        title: "Successful vignette purchase",
         card: {
           download_order_btn_title: "Download order summary",
           ty_text: "Thank you for your purchase!",
           info_text: "We will send you the purchase receipt by e-mail.",
-          spam_text: `ATTENTION: if you can't find the notification letter, look for
-            it in the SPAM folder of your account.`,
+          spam_text: `ATTENTION: if you can't find our confirmation email, check your SPAM folder.`,
         },
       },
       confirm_under_payment: {
