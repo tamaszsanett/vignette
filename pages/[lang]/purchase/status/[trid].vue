@@ -71,13 +71,11 @@ const widgets = response.value.widgets.map((widget) => {
 
 /// ----------------- LOAD ORDER -----------------------
 
-console.log(route.params.trid);
 
 const commmonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Vignette/GetPurchase";
 
 var purchaseData = await $fetch<GetPurchaseResponse>(`${commmonApiEndpoint}?Trid=${route.params.trid}`);
 
-console.log(purchaseData);
 
 /// ----------------- /LOAD ORDER -----------------------
 

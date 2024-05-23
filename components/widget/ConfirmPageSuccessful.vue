@@ -73,6 +73,7 @@
 import type { GetPurchaseResponse } from "~/types/types";
 import Card from "primevue/card";
 const { t, locale } = useI18n();
+const { gtag } = useGtag();
 var route = useRoute();
 
 const cartKey = useCookie("cartKey");
@@ -114,14 +115,8 @@ function downloadSummary() {
 }
 
 onNuxtReady(() => {
-  uet_report_conversion( props.purchaseData.value.margin,  props.purchaseData.value.currency);
   SendEventsToGA4( props.purchaseData.value.trid, props.purchaseData.value.margin);
 });
-
-function uet_report_conversion(revenue_value : number, currency : string) {
-  window.uetq = window.uetq || [];
-  window.uetq.push("event", "", { "revenue_value": revenue_value, "currency": currency });
-}
 
 function SendEventsToGA4(trid : number, margin: number) {
 
@@ -131,7 +126,6 @@ function SendEventsToGA4(trid : number, margin: number) {
   var index = 0;
 
   for (var i = 0; i < props.purchaseData.value.vignettes.length; i++) {
-    console.log(props.purchaseData.value.vignettes[i].amount);
     var item =
     {
       

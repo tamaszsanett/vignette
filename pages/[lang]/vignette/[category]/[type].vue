@@ -643,7 +643,9 @@ if (
                 minDate = validityStart;
               }
 
-              selectedCountry = undefined;
+              selectedCountry = countryOptions.value.find(
+                  (country) => country.countryCode === cartItem.properties.find((x) => x.key == "CountryCode")?.value
+                );
             }
           });
           const newItem = {

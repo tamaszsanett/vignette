@@ -142,7 +142,8 @@ export default defineNuxtConfig({
     "nuxt-aos",
     "nuxt-primevue",
     "@nuxtjs/i18n",
-    "nuxt-gtag"
+    "nuxt-gtag",
+    "@zadigetvoltaire/nuxt-gtm"
   ],
   imports: {
     dirs: [
@@ -197,5 +198,18 @@ export default defineNuxtConfig({
         wait_for_update: 500,
       }]
     ]
+  },
+  gtm: {
+    id: 'GTM-NJKJX3PX',
+    defer: false,
+    compatibility: false,
+    nonce: '2726c7f26c',
+    enabled: true,
+    debug: true,
+    loadScript: true,
+    enableRouterSync: true,
+    ignoredViews: ['homepage'],
+    trackOnNextTick: false,
+    devtools: true,
   },
 });
