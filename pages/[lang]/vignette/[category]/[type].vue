@@ -221,7 +221,7 @@
                 </div>
               </InputGroupAddon>
               <InputText
-                placeholder="e.g. ABC-123"
+                :placeholder="t('type.plate_num_placeholder')"
                 :id="'licence_plate-' + i"
                 v-model="item.plateNumber"
                 class="primary-input group-input"
