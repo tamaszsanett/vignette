@@ -76,7 +76,13 @@ export async function useAddAnotherVignetteToCart(
 
           currentValidityStart.setMonth(validityStart.getMonth() + i-1);
           currentValidityEnd.setMonth(validityStart.getMonth() + i);
-
+          
+          if (i > 1) {
+            currentValidityStart.setDate(currentValidityStart.getDate() + i-1);
+            currentValidityEnd.setDate(currentValidityEnd.getDate() + i-1);
+          }
+          console.log(currentValidityStart);
+          console.log(currentValidityEnd);
 
         items[j] = {
           cartItemKey: itemKey + "_" + i,
