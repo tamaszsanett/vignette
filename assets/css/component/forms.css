@@ -161,7 +161,7 @@ input:disabled {
   bottom: 25px;
   right: -10px;
   font-weight: 700;
-  @apply absolute z-10 rounded-md base-radius py-2 px-0 text-center text-xs bg-base-gray 
+  @apply absolute z-10 rounded-md base-radius py-2 px-[2px] text-center text-xs bg-base-gray 
   text-base-black w-auto h-auto max-w-[200px] min-w-[200px] shadow-xl;
 }
 
