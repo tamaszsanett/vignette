@@ -318,6 +318,7 @@ export type GetPurchaseResponse = {
     invoiceStatus: string,
     invoiceReceiptNumber: string,
     amount: number,
+    margin: number,
     transactionFee: number,
     currency: string,
     paymentAmount: number,
@@ -342,7 +343,8 @@ export type Vignette = {
     validFrom: string,
     validTo: string,
     status: string,
-    nmfrVignetteNumber: string
+    nmfrVignetteNumber: string,
+    amount: number,
   
 }
 

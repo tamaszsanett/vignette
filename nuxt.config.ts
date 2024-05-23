@@ -131,8 +131,6 @@ export default defineNuxtConfig({
       
       link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }],
       script: [
-        { src: "https://www.googletagmanager.com/gtag/js?id=G-V8GTFLHHBY" },
-        { src: "/js/googletagmanager.js"},
        // { src: "//cdn.cookie-script.com/s/2fa8a850d3f1925a0be8ab712caaa7d9.js"}
       ]
     },
@@ -143,7 +141,8 @@ export default defineNuxtConfig({
     "nuxt-simple-robots",
     "nuxt-aos",
     "nuxt-primevue",
-    "@nuxtjs/i18n"
+    "@nuxtjs/i18n",
+    "nuxt-gtag"
   ],
   imports: {
     dirs: [
@@ -184,5 +183,19 @@ export default defineNuxtConfig({
       // overrides the default nitro web.config file all together
       overrideConfig: false,
     },
+  },
+  
+  gtag: {
+    id: 'G-X1MZEJ9MFM',
+    initCommands: [
+      // Setup up consent mode
+      ['consent', 'default', {
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        wait_for_update: 500,
+      }]
+    ]
   },
 });

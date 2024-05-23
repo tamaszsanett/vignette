@@ -16,7 +16,8 @@
                   {{ purchaseData.value.trid }}
                 </div>
                 <div class="clear-both lg:hidden"></div>
-                <div class="float-left pr-2"><span class="hidden lg:inline-block lg:px-2">|</span>{{ $t("global.confirm_trid.e_mail") }}:</div>
+                <div class="float-left pr-2"><span class="hidden lg:inline-block lg:px-2">|</span>{{
+                  $t("global.confirm_trid.e_mail") }}:</div>
                 <div class="float-left">
                   {{ purchaseData.value.userEmail }}
                 </div>
@@ -31,9 +32,10 @@
                     </tr>
                     <tr v-for="vignette in sortedVignettes" :key="vignette.nmfrVignetteNumber" class="success-order">
                       <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
-                      <td>{{ vignette.validFrom?.substring(0, 10).replaceAll("-", ".") }} - {{ vignette.validTo?.substring(0, 10).replaceAll("-", ".") }}</td>
+                      <td>{{ vignette.validFrom?.substring(0, 10).replaceAll("-", ".") }} - {{
+                        vignette.validTo?.substring(0, 10).replaceAll("-", ".") }}</td>
                       <td class="text-info">
-                        {{ $t("vignette_type."+ vignette.vignetteType) }}<br />
+                        {{ $t("vignette_type." + vignette.vignetteType) }}<br />
                         <strong class="uppercase">{{ vignette.status }}</strong><br />
                         <strong>{{ vignette.nmfrVignetteNumber }}</strong>
                       </td>
@@ -108,6 +110,82 @@ const sortedVignettes = computed(() => {
 });
 
 function downloadSummary() {
-  navigateTo("/"+route.params.lang+"/purchase/orderdetails/"+props.purchaseData.value.trid+".pdf", { open: {target: "_blank"}});
+  navigateTo("/" + route.params.lang + "/purchase/orderdetails/" + props.purchaseData.value.trid + ".pdf", { open: { target: "_blank" } });
 }
+
+onNuxtReady(() => {
+  uet_report_conversion( props.purchaseData.value.margin,  props.purchaseData.value.currency);
+  SendEventsToGA4( props.purchaseData.value.trid, props.purchaseData.value.margin);
+});
+
+function uet_report_conversion(revenue_value : number, currency : string) {
+  window.uetq = window.uetq || [];
+  window.uetq.push("event", "", { "revenue_value": revenue_value, "currency": currency });
+}
+
+function SendEventsToGA4(trid : number, margin: number) {
+
+  var currency = 'HUF';
+  var parsedMargin = parseInt(margin.toString());
+  var vignettes = [];
+  var index = 0;
+
+  for (var i = 0; i < props.purchaseData.value.vignettes.length; i++) {
+    console.log(props.purchaseData.value.vignettes[i].amount);
+    var item =
+    {
+      
+      item_id: props.purchaseData.value.vignettes[i].vignetteType,
+      item_name: t("vignette_type."+props.purchaseData.value.vignettes[i].vignetteType),
+      index: index,
+      item_brand: "Matrica",
+      item_category: t("category."+props.purchaseData.value.vignettes[i].vignetteType),
+      item_category2: t("duration_type."+props.purchaseData.value.vignettes[i].vignetteType),
+      price: props.purchaseData.value.vignettes[i].amount,
+      quantity: 1
+    };
+
+    vignettes.push(item);
+    index++;
+  }
+
+
+  gtag("event", "add_to_cart", {
+    currency: currency,
+    value: parsedMargin,
+    items: vignettes
+  });
+
+  gtag("event", "add_payment_info", {
+    currency: currency,
+    value: parsedMargin,
+    items: vignettes
+  });
+
+  gtag("event", "view_cart", {
+    currency: currency,
+    value: parsedMargin,
+    items: vignettes
+  });
+
+  gtag("event", "view_item", {
+    currency: currency,
+    value: parsedMargin,
+    items: vignettes
+  });
+
+  gtag("event", "begin_checkout", {
+    currency: currency,
+    value: parsedMargin,
+    items: vignettes
+  });
+
+  gtag("event", "purchase", {
+    transaction_id: trid,
+    value: parsedMargin,
+    currency: currency,
+    items: vignettes
+  });
+}
+
 </script>
