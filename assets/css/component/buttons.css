@@ -21,7 +21,7 @@
 }
 
 .primary-btn,
-[type="button"].primary-btn {
+[type="button"].primary-btn, [type="submit"].primary-btn {
   @apply bg-base-orange text-white hover:text-base-orange hover:bg-white border-base-orange focus:ring-base-orange;
 }
 

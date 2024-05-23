@@ -271,17 +271,6 @@ export default defineI18nConfig(() => ({
         },
       },
       resend: {
-        title: "Resend vignette confirmation",
-        desc: `
-          Resend confirmation of e-vignettes bought exclusively from
-          <a href="http://www.ungarn-vignette.eu">www.ungarn-vignette.eu</a>,
-          <a href="http://www.hungary-vignette.eu">www.hungary-vignette.eu</a>
-          &nbsp;&nbsp; and
-          <a href="http://www.autopalyamatrica.hu/">autopalyamatrica.hu</a>
-          within the last 8 hours, to the email address provided when purchasing
-          the vignettes.
-        `,
-        important_text: "Please take special care to enter the e-mail address used at the time of purchase.",
         email_label: "E-mail",
         reg_plate_num: "Registration plate number",
         mail_tooltip_text: "E-mail address used when purchasing a motorway sticker.",
@@ -292,6 +281,9 @@ export default defineI18nConfig(() => ({
         I have read and accept it, I consent to the data processing included
         in it.`,
         resend_btn_title: "Resend notification",
+        error_email_required: "The email address is required!",
+        error_plate_required: "Plate number required!",
+        error_terms_required: "Acceptance of Terms and Conditions and Privacy Statement are required!",
       },
     },
     de: {
@@ -567,6 +559,21 @@ export default defineI18nConfig(() => ({
             minutes.
           </p>`,
         },
+      },
+      resend: {
+        email_label: "E-mail",
+        reg_plate_num: "Registration plate number",
+        mail_tooltip_text: "E-mail address used when purchasing a motorway sticker.",
+        reg_num_tooltip_text: `The registration number of the vehicle whose road use
+          authorization you are querying. Only English ABC letters and
+          numbers can be used (e.g. ABC123)`,
+        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
+        I have read and accept it, I consent to the data processing included
+        in it.`,
+        resend_btn_title: "Resend notification",
+        error_email_required: "The email address is required!",
+        error_plate_required: "Plate number required!",
+        error_terms_required: "Acceptance of Terms and Conditions and Privacy Statement are required!",
       },
     },
   },
