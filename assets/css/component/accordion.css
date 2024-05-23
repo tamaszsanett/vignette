@@ -76,3 +76,11 @@ svg.p-icon.p-accordion-toggle-icon {
 .p-accordion-header-link.p-accordion-header-action {
   @apply px-0 py-2;
 }
+
+.p-dialog .p-dialog-content {
+  padding: 0 1rem 1rem 1rem;
+}
+
+.p-dialog .p-dialog-header {
+  padding: 1rem;
+}
