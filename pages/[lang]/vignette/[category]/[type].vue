@@ -450,7 +450,9 @@ if (
           vignetteInfo.value?.value.vignetteType.durationType == "WEEK"
         ) {
           const newItem = {
-            selectedCountry: undefined,
+            selectedCountry: countryOptions.value.find(
+                  (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value
+                ),
             countryCode:
               item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
             plateNumber:
@@ -518,7 +520,9 @@ if (
           });
 
           const newItem = {
-            selectedCountry: undefined,
+            selectedCountry: countryOptions.value.find(
+                  (country) => country.countryCode === item.properties.find((x) => x.key == "CountryCode")?.value
+                ),
             countryCode:
               item.properties.find((x) => x.key == "CountryCode")?.value ?? "",
             plateNumber:

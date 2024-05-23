@@ -40,7 +40,6 @@
 </template>
 
 <script lang="ts" setup>
-import { defineProps } from "vue";
 import Accordion from "primevue/accordion";
 import AccordionTab from "primevue/accordiontab";
 
