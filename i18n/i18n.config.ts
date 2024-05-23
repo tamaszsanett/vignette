@@ -102,7 +102,7 @@ export default defineI18nConfig(() => ({
         number_of_month: "Number of month",
         validity_period: "Validity period",
         is_at_least_one_county_selected: "Choose at least one county!",
-        plate_num_paceholder: "e.g. ABC-123",
+        plate_num_placeholder: "e.g. ABC123",
         country_error: "Country required!",
         image: {
           alt_vignette: "Vignette",
@@ -162,7 +162,7 @@ export default defineI18nConfig(() => ({
         address_tooltip_text: "Billing address (street, house number)",
         company_name_placeholder: "Start writing for suggestions...",
         zip_code_placeholder: "Start writing for suggestions...",
-        billing_type_required: "You must select a billing type!"
+        billing_type_required: "You must select a billing type!",
       },
       confirm: {
         main_title: "Check the entered data",
@@ -273,17 +273,26 @@ export default defineI18nConfig(() => ({
       resend: {
         email_label: "E-mail",
         reg_plate_num: "Registration plate number",
-        mail_tooltip_text: "E-mail address used when purchasing a motorway sticker.",
+        mail_tooltip_text:
+          "E-mail address used when purchasing a motorway sticker.",
         reg_num_tooltip_text: `The registration number of the vehicle whose road use
           authorization you are querying. Only English ABC letters and
           numbers can be used (e.g. ABC123)`,
         checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
         I have read and accept it, I consent to the data processing included
         in it.`,
-        resend_btn_title: "Resend notification",
+        resend_btn_title: "Resend confirmation",
         error_email_required: "The email address is required!",
-        error_plate_required: "Plate number required!",
+        error_plate_required: "Plate number is required!",
         error_terms_required: "Acceptance of Terms and Conditions and Privacy Statement are required!",
+        dialog: {
+          success_title: "Successful submission!",
+          failed_title: "Submission failed!",
+          success_desc: "The confirmation of your vignette has been resent to the e-mail address you provided. Thank you for choosing our service!",
+          failed_desc: "Your request could not be completed because of the following errors:",
+          failed_error: "Highway Vignette not found!",
+          close_btn: "Close",
+        },
       },
     },
     de: {
@@ -398,7 +407,7 @@ export default defineI18nConfig(() => ({
         validity_period: "Gültigkeitszeitraum",
         is_at_least_one_county_selected:
           "Die Auswahl eines Landkreises ist zwingend erforderlich!",
-        plate_num_placeholder: "e.g. ABC-123",
+        plate_num_placeholder: "e.g. ABC123",
         country_error: "Country required!",
         image: {
           alt_vignette: "Vignette",
@@ -452,30 +461,30 @@ export default defineI18nConfig(() => ({
         address_tooltip_text: "Billing address (street, house number)",
         company_name_placeholder: "Start writing for suggestions...",
         zip_code_placeholder: "Start writing for suggestions...",
-        billing_type_required: "You must select a billing type!"
+        billing_type_required: "You must select a billing type!",
       },
       confirm: {
         main_title: "Check the entered data",
         phone_number: "Phone number:",
         email_address: "E-mail address:",
         vignette_info: {
-          vignette_type_title: "Vignette type",
-          plate_number: "Plate number",
-          car_country: "Car country",
-          validity_period: "Validity period",
+          vignette_type_title: "Vignette type:",
+          plate_number: "Plate number:",
+          car_country: "Car country:",
+          validity_period: "Validity period:",
         },
         billing_info: {
           title: "Billing information",
-          name_title: "Name / Company name",
-          country: "Country",
-          zip_code: "Zip code",
-          city: "City",
-          address: "Address (street, number)",
+          name_title: "Name / Company name:",
+          country: "Country:",
+          zip_code: "Zip code:",
+          city: "City:",
+          address: "Address (street, number):",
         },
         price: {
-          price_title: "Vignette price",
-          convenience_fee: "Convenience fee",
-          total: "Total",
+          price_title: "Vignette price:",
+          convenience_fee: "Convenience fee:",
+          total: "Total:",
           currency: "EUR",
         },
         errors: {
@@ -492,10 +501,10 @@ export default defineI18nConfig(() => ({
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
           terms_label: `I state that I have read and accepted the
-            <a class="whiteLink" href="https://www.new.hungary-vignette.eu/gtcc" target="_blank">General Terms and Conditions of Contract</a>
+            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
             as well as the
-            <a class="whiteLink" target="_blank" href="https://www.new.hungary-vignette.eu/privacy">Privacy Statement</a>
-            and I consent to the data management contained therein. I accept the terms and conditions of use.`,
+            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Privacy Statement</a>
+            and I consent to the data management contained therein.`,
           important_text:
             "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
           important_text_old:
@@ -546,7 +555,7 @@ export default defineI18nConfig(() => ({
           title: "Customer Service:",
           phone: "Phone: (36-1) 225-7603",
           email_title: "E-mail:",
-          mail: "support@hungary-vignette.eu",
+          mail: "support[at]hungary-vignette.eu",
         },
         confirm_trid: {
           trans_id: "Transaction identifier",
@@ -563,17 +572,26 @@ export default defineI18nConfig(() => ({
       resend: {
         email_label: "E-mail",
         reg_plate_num: "Registration plate number",
-        mail_tooltip_text: "E-mail address used when purchasing a motorway sticker.",
+        mail_tooltip_text:
+          "E-mail address used when purchasing a motorway sticker.",
         reg_num_tooltip_text: `The registration number of the vehicle whose road use
           authorization you are querying. Only English ABC letters and
           numbers can be used (e.g. ABC123)`,
         checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
         I have read and accept it, I consent to the data processing included
         in it.`,
-        resend_btn_title: "Resend notification",
+        resend_btn_title: "Resend confirmation",
         error_email_required: "The email address is required!",
-        error_plate_required: "Plate number required!",
+        error_plate_required: "Plate number is required!",
         error_terms_required: "Acceptance of Terms and Conditions and Privacy Statement are required!",
+        dialog: {
+          success_title: "Successful submission!",
+          failed_title: "Submission failed!",
+          success_desc: "The confirmation of your vignette has been resent to the e-mail address you provided. Thank you for choosing our service!",
+          failed_desc: "Your request could not be completed because of the following errors:",
+          failed_error: "Highway Vignette not found!",
+          close_btn: "Close",
+        },
       },
     },
   },

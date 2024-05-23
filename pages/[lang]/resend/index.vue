@@ -2,7 +2,10 @@
   <main class="container mx-auto px-4 lg:px-0 pt-6 mt-24 max-w-[1070px]">
     <template v-for="widget in widgets" :key="widget.widgetId">
       <div v-if="widget.widgetType === 'html'" class="my-4">
-        <div v-html="widget.content" class="text-center max-w-[800px] mx-auto"></div>
+        <div
+          v-html="widget.content"
+          class="text-center max-w-[800px] mx-auto"
+        ></div>
       </div>
     </template>
     <form
@@ -31,7 +34,18 @@
             }}</span>
           </button>
         </div>
-        <p v-if="errors.email" class="text-red-500">{{ errors.email }}</p>
+        <div
+          v-if="errors.email"
+          class="my-2 w-full inline-flex flex-wrap gap-2"
+        >
+          <img
+            src="/img/purchase/danger-icon.svg"
+            :alt="`${errors.email}`"
+            class="w-5 h-5"
+            style="width: 20px; height: 20px"
+          />
+          <p class="error-message my-0">{{ errors.email }}</p>
+        </div>
       </section>
       <section class="flex flex-col gap-2">
         <label for="reg_plate_num" class="primary-label">{{
@@ -58,9 +72,18 @@
             }}</span>
           </button>
         </div>
-        <p v-if="errors.plateNumber" class="text-red-500">
-          {{ errors.plateNumber }}
-        </p>
+        <div
+          v-if="errors.plateNumber"
+          class="my-2 w-full inline-flex flex-wrap gap-2"
+        >
+          <img
+            src="/img/purchase/danger-icon.svg"
+            :alt="`${errors.plateNumber}`"
+            class="w-5 h-5"
+            style="width: 20px; height: 20px"
+          />
+          <p class="error-message my-0">{{ errors.plateNumber }}</p>
+        </div>
       </section>
       <section class="card flex items-center gap-2">
         <Checkbox inputId="terms" v-model="terms" :binary="true" />
@@ -70,44 +93,84 @@
           v-html="$t('resend.checkbox_label')"
         ></label>
       </section>
-      <p v-if="errors.terms" class="text-red-500">{{ errors.terms }}</p>
-      <Button type="submit" class="btn primary-btn w-auto mx-auto mt-4">{{
-        $t("resend.resend_btn_title")
-      }}</Button>
-      <!-- <p v-if="errors.apiError" class="text-red-500">{{ errors.apiError }}</p> -->
-    </form>
-    <Dialog
-      v-model:visible="dialogVisible"
-      modal
-      dismissableMask
-      @hide="dialogSuccess ? resetForm() : (dialogVisible = false)"
-      :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
-      class="max-w-sm w-full top-40 absolute rounded-md"
-    >
-      <template #header>
-        <div class="flex items-center justify-between">
-          <h2 class="text-lg font-bold">
+      <div v-if="errors.terms" class="my-2 w-full inline-flex flex-wrap gap-2">
+        <img
+          src="/img/purchase/danger-icon.svg"
+          :alt="`${errors.terms}`"
+          class="w-5 h-5"
+          style="width: 20px; height: 20px"
+        />
+        <p class="error-message my-0">{{ errors.terms }}</p>
+      </div>
+      <Button type="submit" class="btn primary-btn w-auto mx-auto mt-4" :disabled="loading" :class="{ 'btn-disabled': loading }">
+        <span v-if="!loading">{{ $t("resend.resend_btn_title") }}</span>
+        <span class="h-5 w-5" v-else>
+          <svg
+            class="animate-spin h-5 w-5 mr-3 border-4 border-t-transparent border-green-500 rounded-full"
+            viewBox="0 0 24 24"
+          ></svg>
+        </span>
+      </Button>
+
+      <Dialog
+        v-model:visible="dialogVisible"
+        modal
+        dismissableMask
+        @hide="dialogSuccess ? resetForm() : (dialogVisible = false)"
+        :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
+        class="max-w-sm w-full top-40 absolute rounded-md text-center"
+      >
+        <template #header>
+          <h2
+            class="inline-flex items-center gap-2 pb-2 border-b w-full my-0 text-xl justify-center"
+          >
             {{
               dialogSuccess
-                ? $t("resend.success_title")
-                : $t("resend.error_title")
+                ? $t("resend.dialog.success_title")
+                : $t("resend.dialog.failed_title")
             }}
           </h2>
+        </template>
+        <div class="w-full">
+          <div v-if="dialogSuccess">
+            <img
+              src="/img/icons/modal_success.svg"
+              :alt="t('resend.dialog.success_title')"
+              class="w-24 h-24 mx-auto"
+            />
+          </div>
+          <div v-if="!dialogSuccess">
+            <img
+              src="/img/icons/modal_error.svg"
+              :alt="t('resend.dialog.failed_title')"
+              class="w-24 h-24 mx-auto"
+            />
+          </div>
+          <p v-html="dialogMessage"></p>
+          <p v-if="!dialogSuccess" class="text-lg text-red">
+            <strong>
+              {{ $t("resend.dialog.failed_error") }}
+            </strong>
+          </p>
         </div>
-      </template>
-      <div class="p-4">
-        <p>{{ dialogMessage }}</p>
-      </div>
-      <template #footer>
-        <div class="border-t pt-5 w-full">
-          <Button
-            class="btn primary-btn btn-sm mx-auto"
-            label="Close"
-            @click="dialogSuccess ? resetForm() : (dialogVisible = false)"
-          />
-        </div>
-      </template>
-    </Dialog>
+        <template #footer class="bg-red-500">
+          <div v-if="dialogSuccess" class="border-t pt-5 w-full">
+            <Button
+              class="btn btn-green btn-sm mx-auto"
+              label="Close"
+              @click="dialogSuccess ? resetForm() : (dialogVisible = false)"
+            />
+          </div>
+          <div v-if="!dialogSuccess" class="border-t pt-5 w-full">
+            <Button
+              class="btn btn-error btn-sm mx-auto"
+              label="Close"
+              @click="dialogSuccess ? resetForm() : (dialogVisible = false)"
+            />
+          </div>
+        </template>
+      </Dialog>
+    </form>
     <template v-for="widget in widgets" :key="widget.widgetId">
       <div v-if="widget.widgetType === 'footerwidget'">
         <SharedFooterWidget
@@ -143,6 +206,7 @@ import type { ApiResponse, ApiError, FormErrors } from "~/types/resend";
 const email = ref("");
 const reg_plate_num = ref("");
 const terms = ref(false);
+const loading = ref(false);
 
 const errors = ref<FormErrors>({
   email: "",
@@ -176,6 +240,7 @@ const validateInputs = () => {
 
 const sendResendConfirmation = async () => {
   if (!validateInputs()) return;
+  loading.value = true; // Start loading
   try {
     const response = await $fetch<ApiResponse>(
       "https://test-gw.voxpay.hu/Webshop.Vignette/ResendConfirmation",
@@ -194,25 +259,26 @@ const sendResendConfirmation = async () => {
 
     dialogVisible.value = true; // Show dialog
     if (response.isSuccess) {
-      dialogMessage.value = t("resend.success_message");
+      dialogMessage.value = t("resend.dialog.success_desc");
       dialogSuccess.value = true;
     } else {
-      dialogMessage.value = t("resend.failure_message"); 
+      dialogMessage.value = t("resend.dialog.failed_desc");
       dialogSuccess.value = false;
     }
 
     if (!response.isSuccess) {
-      throw new Error(response.error.message || 'Unknown error');
-    } 
+      throw new Error(response.error.message || "Unknown error");
+    }
 
     console.log("Confirmation resent successfully!");
   } catch (error) {
     dialogVisible.value = true;
     dialogSuccess.value = false;
-    const typedError = error as ApiError;
-    errors.value.apiError = typedError.message;
-    dialogMessage.value = errors.value.apiError;
-
+    /* const typedError = error as ApiError;
+    errors.value.apiError = typedError.message; */
+    dialogMessage.value = t("resend.dialog.failed_desc");
+  } finally {
+    loading.value = false; // Stop loading
   }
 };
 
@@ -224,6 +290,7 @@ const resetForm = () => {
 };
 
 const currentLanguage = ref("en");
+
 watch(
   () => route.params.lang,
   (newLang) => {
