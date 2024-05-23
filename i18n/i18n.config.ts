@@ -106,10 +106,12 @@ export default defineI18nConfig(() => ({
         country_error: "Country required!",
         image: {
           alt_vignette: "Vignette",
-          desktop_path: "under-plate-number-line_en_EN.svg",
-          mobile_path: "under-plate-number-line_en_EN.svg",
+          desktop_plate_num: "under-plate-number-line_en_EN.svg",
+          mobile_plate_num: "under-plate-number-line_en_EN.svg",
           desktop_billing: "under-invoice-data-line_en_EN.svg",
           mobile_billing: "under-invoice-data-line_en_EN.svg",
+          desktop_confirm: "under-confirm-line_en_EN.svg",
+          mobile_confirm: "under-confirm-line_en_EN.svg",
         },
         title: {
           year_11: "County region",
@@ -561,8 +563,12 @@ export default defineI18nConfig(() => ({
         country_error: "Country required!",
         image: {
           alt_vignette: "Vignette",
-          desktop_path: "under-plate-number-line_de_DE.svg",
-          mobile_path: "under-plate-number-line_de_DE.svg",
+          desktop_plate_num: "under-plate-number-line_de_DE.svg",
+          mobile_plate_num: "under-plate-number-line_de_DE.svg",
+          desktop_billing: "under-invoice-data-line_de_DE.svg",
+          mobile_billing: "under-invoice-data-line_de_DE.svg",
+          desktop_confirm: "under-confirm-line_de_DE.svg",
+          mobile_confirm: "under-confirm-line_de_DE.svg",
         },
         title: {
           year_11: "Landkreisregion",

@@ -4,12 +4,12 @@
       <img
         class="w-full hidden sm:block"
         :src="`/img/purchase/desktop/${$t('type.image.desktop_billing')}`"
-        alt="autópálya-matrica"
+        :alt="category + ' ' + $t('type.image.alt_vignette')"
       />
       <img
         class="w-full block sm:hidden"
         :src="`/img/purchase/mobile/${$t('type.image.desktop_billing')}`"
-        alt="autópálya-matrica"
+        :alt="category + ' ' + $t('type.image.alt_vignette')"
       />
     </header>
     <section class="max-w-[800px] mx-auto">

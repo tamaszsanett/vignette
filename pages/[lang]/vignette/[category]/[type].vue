@@ -3,13 +3,13 @@
     <header class="flex justify-center py-5">
       <img
         class="w-full hidden sm:block"
-        :src="`/img/purchase/desktop/${$t('type.image.desktop_path')}`"
-        alt="autópálya-matrica"
+        :src="`/img/purchase/desktop/${$t('type.image.desktop_plate_num')}`"
+        :alt="category + ' ' + $t('type.image.alt_vignette')"
       />
       <img
         class="w-full block sm:hidden"
-        :src="`/img/purchase/mobile/${$t('type.image.mobile_path')}`"
-        alt="autópálya-matrica"
+        :src="`/img/purchase/mobile/${$t('type.image.mobile_plate_num')}`"
+        :alt="category + ' ' + $t('type.image.alt_vignette')"
       />
     </header>
     <section class="max-w-[800px] mx-auto">
