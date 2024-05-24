@@ -22,11 +22,7 @@ export async function useUpdateCartItem(
   numberOfMonths: number,
   counties: string[]) {
 
-    
-  var correctedStartTime = new Date((validityStart ?? new Date()).getTime() - (new Date()).getTimezoneOffset() * 60000)
-  //console.log(correctedStartTime);
-
-  const cartKey = useCookie('cartKey');
+    const cartKey = useCookie('cartKey');
 
   var items = [{} as CartItemToUpdate];
 
@@ -45,10 +41,10 @@ export async function useUpdateCartItem(
           value: plateNumber.toUpperCase()
         }, {
           key: "ValidityStart",
-          value: validityStart == null ? "" : correctedStartTime.toISOString().substring(0,10)
+          value: validityStart == null ? "" : calcIsoDateStr(validityStart)
         }, {
           key: "ValidityEnd",
-          value: validityEnd == null ? "" : validityEnd.toISOString().substring(0,10)
+          value: validityEnd == null ? "" : calcIsoDateStr(validityEnd)
         }, {
           key: "VignettePrice",
           value: vignettePrice.toString()
@@ -62,17 +58,20 @@ export async function useUpdateCartItem(
   // In case of MONTH duration type, add the different between previous and current month 
   else if (durationType == "MONTH") {
     
+    let currentValidityStart = new Date();
+    let currentValidityEnd = new Date();
+
+    if (validityStart !== null && validityEnd !== null) {
+      currentValidityStart = new Date(validityStart);
+    }
+
     for (let i = 1; i <= numberOfMonths; i++) {
       if (validityStart !== null && validityEnd !== null) {
-        let currentValidityStart = new Date(correctedStartTime.toISOString());
-        let currentValidityEnd = new Date(correctedStartTime.toISOString());
+        currentValidityEnd = calcEndDate(new Date(currentValidityStart), 1);
 
-        currentValidityStart.setMonth(validityStart.getMonth() + i-1);
-        currentValidityEnd.setMonth(validityStart.getMonth() + i);
-
-        currentValidityStart = addDays(currentValidityStart, i-1);
-        currentValidityEnd = addDays(currentValidityEnd, i-1);
-
+        var startStr = calcIsoDateStr(currentValidityStart);
+        var endStr = calcIsoDateStr(currentValidityEnd)
+        console.log(startStr + " #> " + endStr);
 
         items[i - 1] = {
           cartKey: cartKey.value?.toString(),
@@ -87,10 +86,10 @@ export async function useUpdateCartItem(
               value: plateNumber
             }, {
               key: "ValidityStart",
-              value: currentValidityStart == null ? "" : currentValidityStart.toISOString().substring(0,10)
+              value: currentValidityStart == null ? "" : startStr
             }, {
               key: "ValidityEnd",
-              value: currentValidityEnd == null ? "" : currentValidityEnd.toISOString().substring(0,10)
+              value: currentValidityEnd == null ? "" : endStr
             }, {
               key: "VignettePrice",
               value: vignettePrice.toString()
@@ -101,6 +100,9 @@ export async function useUpdateCartItem(
           ]
         };
       }
+      
+      currentValidityStart = new Date(currentValidityEnd);
+      currentValidityStart.setDate(currentValidityStart.getDate()+1);
     }
   }
   else { // YEAR_11
@@ -119,10 +121,10 @@ export async function useUpdateCartItem(
             value: plateNumber
           }, {
             key: "ValidityStart",
-            value: validityStart == null ? "" : validityStart.toISOString()
+            value: validityStart == null ? "" : calcIsoDateStr(validityStart)
           }, {
             key: "ValidityEnd",
-            value: validityEnd == null ? "" : validityEnd.toISOString()
+            value: validityEnd == null ? "" : calcIsoDateStr(validityEnd)
           }, {
             key: "VignettePrice",
             value: vignettePrice.toString()
@@ -134,6 +136,8 @@ export async function useUpdateCartItem(
       };
     }
   }
+
+  console.log(items);
 
   for (let i = 0; i < items.length; i++) {
     if (items[i].cartItemKey) {
@@ -178,4 +182,47 @@ function addDays(date: Date, days: number) {
   var result = new Date(date);
   result.setDate(result.getDate() + days);
   return result;
+}
+
+
+function calcEndDate(startDate:Date, numberOfMonths: number) {
+  //console.log("-----------------start # calcEndDate");
+  var validityEnd = startDate;
+  let sdate = new Date(startDate);
+  //console.log(calcIsoDateStr(sdate));
+
+  for (let i = 1; i<=numberOfMonths; i++) {
+    //console.log("numberOfMonths: " +i);
+    var Syear = sdate.getFullYear();
+    var Smonth= sdate.getMonth()+1;
+    var Sday = sdate.getDate();
+
+    console.log("start : " + Syear +"|"+Smonth+"|"+Sday);
+    
+    var firstDayOfNextMonth = new Date(Syear, Smonth, 1);
+
+    console.log("firstDayOfNextMonth : " + firstDayOfNextMonth);
+
+    var Nyear = firstDayOfNextMonth.getFullYear();
+    var Nmonth = firstDayOfNextMonth.getMonth();
+    
+    var DayInTheNextMonth = new Date(Nyear, Nmonth+1, 0);
+    console.log("lastDayOfNextMonth : " + DayInTheNextMonth);
+    var DaysInNextMonth = DayInTheNextMonth.getDate();
+
+    var DayInNextMonth = DaysInNextMonth < Sday ? DaysInNextMonth : Sday
+    validityEnd = new Date(Nyear, Nmonth, DayInNextMonth);
+    
+    sdate.setDate(validityEnd.getDate()+1);
+  }
+  //console.log("-----------------end # calcEndDate");
+  //console.log(calcIsoDateStr(validityEnd));
+  return validityEnd;
+}
+
+function calcIsoDateStr(date:Date) {
+  const offset = date.getTimezoneOffset()
+  var startBase = new Date(date.getTime() - (offset*60*1000))
+  var startStr = startBase.toISOString().split('T')[0]
+  return startStr;
 }
