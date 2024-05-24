@@ -48,10 +48,10 @@ export async function useAddAnotherVignetteToCart(
           value: plateNumber
         },{
           key: "ValidityStart",
-          value: validityStart == null ? "" : validityStart.toISOString().substring(0,10)
+          value: validityStart == null ? "" : calcIsoDateStr(validityStart)
         },{
           key: "ValidityEnd",
-          value: validityEnd == null ? "" : validityEnd.toISOString().substring(0,10)
+          value: validityEnd == null ? "" : calcIsoDateStr(validityEnd)
         },{
           key: "VignettePrice",
           value: vignettePrice.toString()
@@ -66,56 +66,60 @@ export async function useAddAnotherVignetteToCart(
   else if (durationType == "MONTH")
   {
     var j = 0;
-    for (let i = previousNumberOfMonths+1; i <= numberOfMonths; i++)
+
+    let currentValidityStart = new Date();
+    let currentValidityEnd = new Date();
+
+    if (validityStart !== null && validityEnd !== null) {
+      currentValidityStart = new Date(validityStart);
+    }
+
+    for (let i = 1; i <= numberOfMonths; i++)
       {
-        
-        if (validityStart !== null && validityEnd !== null) {
+        currentValidityEnd = calcEndDate(new Date(currentValidityStart), 1);
 
-          let currentValidityStart = new Date(validityStart.toISOString());
-          let currentValidityEnd = new Date(validityStart.toISOString());
+        var startStr = calcIsoDateStr(currentValidityStart);
+        var endStr = calcIsoDateStr(currentValidityEnd)
+        console.log(startStr + " #> " + endStr);
 
-          currentValidityStart.setMonth(validityStart.getMonth() + i-1);
-          currentValidityEnd.setMonth(validityStart.getMonth() + i);
-          
-          if (i > 1) {
-            currentValidityStart.setDate(currentValidityStart.getDate() + i-1);
-            currentValidityEnd.setDate(currentValidityEnd.getDate() + i-1);
-          }
-          console.log(currentValidityStart);
-          console.log(currentValidityEnd);
+        if (i >= previousNumberOfMonths + 1) // add to items if necesseraly
+        {
 
-        items[j] = {
-          cartItemKey: itemKey + "_" + i,
-          productCode: productCode,
-          quantity: 1,
-          netUnitPrice: Math.round((vignettePrice + transactionFee) * 100 / 1.27) / 100,
-          grossUnitPrice: vignettePrice + transactionFee,
-          vat: 27,
-          properties: [
-            {
-              key: "CountryCode",
-              value: carCountry
-            },{
-              key: "PlateNumber",
-              value: plateNumber.toUpperCase()
-            },{
-              key: "ValidityStart",
-              value: currentValidityStart == null ? "" : currentValidityStart.toISOString().substring(0,10)
-            },{
-              key: "ValidityEnd",
-              value: currentValidityEnd == null ? "" : currentValidityEnd.toISOString().substring(0,10)
-            },{
-              key: "VignettePrice",
-              value: vignettePrice.toString()
-            },{
-              key: "TransactionFee",
-              value: transactionFee.toString()
-            }
-          ]
-        };
+          items[j] = {
+            cartItemKey: itemKey + "_" + i,
+            productCode: productCode,
+            quantity: 1,
+            netUnitPrice: Math.round((vignettePrice + transactionFee) * 100 / 1.27) / 100,
+            grossUnitPrice: vignettePrice + transactionFee,
+            vat: 27,
+            properties: [
+              {
+                key: "CountryCode",
+                value: carCountry
+              },{
+                key: "PlateNumber",
+                value: plateNumber.toUpperCase()
+              },{
+                key: "ValidityStart",
+                value: currentValidityStart == null ? "" : startStr
+              },{
+                key: "ValidityEnd",
+                value: currentValidityEnd == null ? "" : endStr
+              },{
+                key: "VignettePrice",
+                value: vignettePrice.toString()
+              },{
+                key: "TransactionFee",
+                value: transactionFee.toString()
+              }
+            ]
+          };
 
         j++;
       }
+      
+      currentValidityStart = new Date(currentValidityEnd);
+      currentValidityStart.setDate(currentValidityStart.getDate()+1);
       }
   }
   else { // YEAR_11
@@ -137,10 +141,10 @@ export async function useAddAnotherVignetteToCart(
             value: plateNumber
           },{
             key: "ValidityStart",
-            value: validityStart == null ? "" : validityStart.toISOString()
+            value: validityStart == null ? "" : calcIsoDateStr(validityStart)
           },{
             key: "ValidityEnd",
-            value: validityEnd == null ? "" : validityEnd.toISOString()
+            value: validityEnd == null ? "" : calcIsoDateStr(validityEnd)
           },{
             key: "VignettePrice",
             value: vignettePrice.toString()
@@ -153,7 +157,7 @@ export async function useAddAnotherVignetteToCart(
     }
   }
 
-
+  console.log(items);
   if (items.length > 0 && items[0].cartItemKey !== undefined)
     {
     const requestBody = {
@@ -199,4 +203,46 @@ export async function useAddAnotherVignetteToCart(
   else {
     return null;
   }
+}
+
+function calcEndDate(startDate:Date, numberOfMonths: number) {
+  //console.log("-----------------start # calcEndDate");
+  var validityEnd = startDate;
+  let sdate = new Date(startDate);
+  //console.log(calcIsoDateStr(sdate));
+
+  for (let i = 1; i<=numberOfMonths; i++) {
+    //console.log("numberOfMonths: " +i);
+    var Syear = sdate.getFullYear();
+    var Smonth= sdate.getMonth()+1;
+    var Sday = sdate.getDate();
+
+    console.log("start : " + Syear +"|"+Smonth+"|"+Sday);
+    
+    var firstDayOfNextMonth = new Date(Syear, Smonth, 1);
+
+    console.log("firstDayOfNextMonth : " + firstDayOfNextMonth);
+
+    var Nyear = firstDayOfNextMonth.getFullYear();
+    var Nmonth = firstDayOfNextMonth.getMonth();
+    
+    var DayInTheNextMonth = new Date(Nyear, Nmonth+1, 0);
+    console.log("lastDayOfNextMonth : " + DayInTheNextMonth);
+    var DaysInNextMonth = DayInTheNextMonth.getDate();
+
+    var DayInNextMonth = DaysInNextMonth < Sday ? DaysInNextMonth : Sday
+    validityEnd = new Date(Nyear, Nmonth, DayInNextMonth);
+    
+    sdate.setDate(validityEnd.getDate()+1);
+  }
+  //console.log("-----------------end # calcEndDate");
+  //console.log(calcIsoDateStr(validityEnd));
+  return validityEnd;
+}
+
+function calcIsoDateStr(date:Date) {
+  const offset = date.getTimezoneOffset()
+  var startBase = new Date(date.getTime() - (offset*60*1000))
+  var startStr = startBase.toISOString().split('T')[0]
+  return startStr;
 }
