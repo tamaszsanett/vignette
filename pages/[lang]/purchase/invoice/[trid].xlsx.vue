@@ -8,7 +8,7 @@ const res = ref(Blob);
 const route = useRoute();
 trid.value = route.params.trid;
 
-res.value = await $fetch( `https://test-gw.voxpay.hu/Webshop.Vignette/GetInvoiceOrReceiptPdf?Trid=${trid.value}&InvoiceType=Normal`);
+res.value = await $fetch( `https://test-gw.voxpay.hu/Webshop.Vignette/GetCollectionInvoiceXlsx?Trid=${trid.value}`);
 
 onMounted(() => {
     const url = window.URL.createObjectURL(
@@ -16,7 +16,7 @@ onMounted(() => {
     );
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute('download', ''+trid.value+'_invoice.pdf');
+    link.setAttribute('download', ''+trid.value+'_invoice.xlsx');
 
     document.body.appendChild(link);
     link.click();
