@@ -3,13 +3,13 @@
     <header class="flex justify-center py-5">
       <img
         class="w-full hidden sm:block"
-        src="/img/purchase/desktop/under-confirm-line_en-EN.svg"
-        alt="autópálya-matrica"
+        :src="`/img/purchase/desktop/${$t('type.image.desktop_confirm')}`"
+        :alt="category + ' ' + $t('type.image.alt_vignette')"
       />
       <img
         class="w-full block sm:hidden"
-        src="/img/purchase/mobile/under-confirm-line_en-EN.svg"
-        alt="autópálya-matrica"
+        :src="`/img/purchase/mobile/${$t('type.image.desktop_confirm')}`"
+        :alt="category + ' ' + $t('type.image.alt_vignette')"
       />
     </header>
     <form class="pb-10 max-w-[600px] mx-auto">
