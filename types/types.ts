@@ -318,7 +318,7 @@ export type GetPurchaseResponse = {
     invoiceStatus: string,
     invoiceReceiptNumber: string,
     amount: number,
-    margin: number,
+    totalMargin: number,
     transactionFee: number,
     currency: string,
     paymentAmount: number,

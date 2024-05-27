@@ -115,13 +115,13 @@ function downloadSummary() {
 }
 
 onNuxtReady(() => {
-  SendEventsToGA4( props.purchaseData.value.trid, props.purchaseData.value.margin);
+  SendEventsToGA4( props.purchaseData.value.trid, props.purchaseData.value.totalMargin);
 });
 
-function SendEventsToGA4(trid : number, margin: number) {
+function SendEventsToGA4(trid : number, totalMargin: number) {
 
   var currency = 'HUF';
-  var parsedMargin = parseInt(margin.toString());
+  var parsedMargin = parseInt(totalMargin.toString());
   var vignettes = [];
   var index = 0;
 
