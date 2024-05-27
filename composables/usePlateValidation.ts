@@ -25,6 +25,9 @@ export function usePlateValidation(apiEndpoint: string): PlateValidation {
           }
         }
       }
+      if (hasError) {
+        continue;
+      }
 
       try {
         const response = await fetch(apiEndpoint, {

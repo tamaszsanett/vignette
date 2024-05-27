@@ -117,10 +117,10 @@
             "
           >
             <hr class="dashed-hr my-8" />
-            <button
+            <a
               @click.prevent="remove(i)"
               class="del absolute top-10 right-0 lg:top-4 lg:-right-10"
-            ></button>
+            ></a>
           </div>
           <div
             v-if="item.formShowError"
@@ -383,6 +383,7 @@ const addMore = (index: number) => {
     itemKey: uuid.v4(),
   };
 
+
   useAddAnotherVignetteToCart(
     currentLanguage.value,
     newItem.itemKey,
@@ -403,6 +404,9 @@ const addMore = (index: number) => {
   formData.value.multiples.splice(index + 1, 0, newItem);
   lastAddedIndex.value = index + 1;
   disableUpdate.value = false;
+
+  calculateEndDate(index+1);
+  setTimeout(function() {updateCartItem(index+1);}, 50);
 };
 
 const numberOfVignettes = ref(1); // Default to 1, modify as necessary
