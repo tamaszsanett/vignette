@@ -422,8 +422,10 @@ if (
   cartKey.value = uuid.v4();
   const orderId = useCookie("orderId");
   orderId.value = null;
-  addMore(0);
-  lastAddedIndex.value = 0;
+  setTimeout(function() {
+      addMore(0);
+      lastAddedIndex.value = 0;
+    },100)
 } else {
   // get items from cart
   const cart = await $fetch<GetCartResponse>(
@@ -438,8 +440,11 @@ if (
     cartKey.value = uuid.v4();
     const orderId = useCookie("orderId");
     orderId.value = null;
-    addMore(0);
-    lastAddedIndex.value = 0;
+    setTimeout(function() {
+      addMore(0);
+      lastAddedIndex.value = 0;
+    },100)
+    
   } else {
     if (cart.value.cartItems) {
       if (cart.value.cartItems.length == 0) {
