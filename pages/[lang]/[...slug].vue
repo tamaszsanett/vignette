@@ -8,7 +8,7 @@
         <WidgetVignetteAccordion :widget="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'vignettepurchaseflowwidget'">
-        <WidgetPurchaseFlow :widget-data="widget.content" />
+        <WidgetPurchaseFlow :widget="widget.content" />
       </div>
       <div v-if="widget.widgetType === 'faqwidget'">
         <WidgetFaq :widget="widget.content" :show-search="showSearch" />

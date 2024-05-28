@@ -164,7 +164,7 @@ export type FlowContent = {
   mainSvgAlt: string;
   buttonText: string;
   buttonUrl: string;
-  items: Step[];
+  steps: Step[];
 };
 
 // simple widgets
