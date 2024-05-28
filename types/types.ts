@@ -366,3 +366,17 @@ export type GetCartResponse = {
   },
   isFailure: false
 }
+
+
+export type GenerateOrderByTridResponse = {
+  value: {
+    orderId: string;
+    cartId: string;
+    redirectUri: string;
+  },
+  isSuccess: boolean;
+  error: {
+    message: string;
+    code: string;
+  }
+}
