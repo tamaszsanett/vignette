@@ -984,7 +984,8 @@ const calculatedVignettes = computed(() => {
       selectedCounties.value.forEach((item, index) => {
         items.push({
           category: vignetteInfo.value?.value.vignetteType.category,
-          durationType: t("vignette_type." + item),
+          durationType: t("vignette_type." + item) +(formData.value.multiples.length == 1 ? "" : (" x" +(
+              formData.value.multiples.length))),
           numberOfMonths: numberOfVignettes.value,
           price: `${(
             (vignetteInfo.value?.value.vignetteType.amount ?? 0) *
@@ -1005,6 +1006,8 @@ const calculatedVignettes = computed(() => {
               "vignette_type." +
                 numberOfVignettes.value +
                 vignetteInfo.value.value.vignetteType.durationType.toLowerCase()
+                )+ (formData.value.multiples.length == 1 ? "" : (" x" +(
+              formData.value.multiples.length))
             ),
             numberOfMonths: numberOfVignettes.value,
             price: `${(
