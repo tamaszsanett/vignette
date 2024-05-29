@@ -182,7 +182,7 @@
                   v-model="orderData.value.invoiceName"
                   aria-describedby="name"
                 />
-                <button
+                <button type="button"
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
