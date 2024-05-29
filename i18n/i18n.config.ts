@@ -360,6 +360,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Read more"
+      }
     },
     de: {
       vignette_type: {
@@ -727,6 +730,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Mehr lesen"
+      }
     },
     sk: {
       vignette_type: {
@@ -1081,6 +1087,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Prečítajte si viac"
+      }
     },
     hr: {
       vignette_type: {
@@ -1435,6 +1444,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Čitaj više"
+      }
     },
     rs: {
       vignette_type: {
@@ -1789,6 +1801,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Opširnije"
+      }
     },
     ua: {
       vignette_type: {
@@ -2151,6 +2166,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Читати далі"
+      }
     },
     ro: {
       vignette_type: {
@@ -2509,6 +2527,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Detalii"
+      }
     },
     pl: {
       vignette_type: {
@@ -2861,6 +2882,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Czytaj więcej"
+      }
     },
     it: {
       vignette_type: {
@@ -3220,6 +3244,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Leggi di più"
+      }
     },
     nl: {
       vignette_type: {
@@ -3579,6 +3606,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Meer lezen"
+      }
     },
     cz: {
       vignette_type: {
@@ -3938,6 +3968,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Přečtěte si více"
+      }
     },
     hu: {
       vignette_type: {
@@ -4297,6 +4330,9 @@ export default defineI18nConfig(() => ({
         U365_28: "U",
         U365_29: "U",
       },
+      news_page: {
+        read_more_text: "Tovább olvasom"
+      }
     },
   },
 }));

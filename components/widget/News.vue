@@ -48,7 +48,7 @@
               class="btn primary-btn-outline mt-5 read-more-link"
               :title="item.title"
             >
-              Read more
+              {{ $t("news_page.read_more_text") }}
               <img
                 class="pl-2 news-img"
                 src="/assets/Content/new-site-content/arrowcircleup_icon.svg"
@@ -62,6 +62,7 @@
   </section>
 </template>
 <script setup lang="ts">
+const { t, locale } = useI18n();
 import type { NewsWidget, TopNewsContent } from "~/types/types";
 
 const props = defineProps({
@@ -74,5 +75,12 @@ const props = defineProps({
     required: true,
   },
 });
+
+const getImageSrc = (relativePath: string | URL) => {
+  if (process.server) {
+    return relativePath;
+  }
+  return new URL(relativePath, window.location.origin).href;
+};
 
 </script>
