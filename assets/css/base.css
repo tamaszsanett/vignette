@@ -12,6 +12,9 @@ body {
   @apply font-regular text-base-black;
 }
 
+.en-is-home-page .en-is-home-page-margin {@apply mx-auto}
+
+
 .p-component,
 .p-inputtext {
   font-family: "Roboto Condensed", system-ui, sans-serif;

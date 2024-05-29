@@ -1,9 +1,9 @@
 <template>
   <header v-if="menuWidget" class="w-full z-40 top-0 bg-secondary-black">
     <nav
-      class="mx-auto flex justify-between items-center p-4 text-white menu-wrapper max-w-[1245px]"
+      class="mx-auto flex justify-between items-center p-4 text-white menu-wrapper w-full max-w-[1245px]"
     >
-      <div class="flex justify-start items-center">
+      <div class="flex justify-start items-center w-full">
         <a v-if="menuWidget.logo" :href="`/${langSelection?.code}`">
           <img
             :src="menuWidget.logo.src"
@@ -11,7 +11,7 @@
             class="w-28 h-10 sm:w-[196px] sm:h-[69px] md:w-28 md:h-10 xl:w-[196px] xl:h-[69px]"
           />
         </a>
-        <div class="hidden md:flex items-center space-x-4 ml-5">
+        <div class="hidden md:flex items-center space-x-4 ml-2 mr-8">
           <a
             v-for="item in menuWidget.menu"
             :href="`/${currentLanguage}${item.url}`"
