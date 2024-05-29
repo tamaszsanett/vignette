@@ -361,110 +361,99 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Read more"
-      }
+        read_more_text: "Read more",
+      },
     },
     de: {
       vignette_type: {
-        D124: "D1 - 1 day",
-        D110: "D1 - 10 days",
-        D130: "D1 - 30 days",
-        D1365: "D1 - 1 year",
-        D1365_11: "Bács-Kiskun county",
-        D1365_12: "Baranya county",
-        D1365_13: "Békés county",
-        D1365_14: "Borsod-Abaúj-Zemplén county",
-        D1365_15: "Csongrád county",
-        D1365_16: "Fejér county",
-        D1365_17: "Győr-Moson-Sopron county",
-        D1365_18: "Hajdú-Bihar county",
-        D1365_19: "Heves county",
-        D1365_20: "Jász-Nagykun-Szolnok county",
-        D1365_21: "Komárom-Esztergom county",
-        D1365_23: "Pest county",
-        D1365_24: "Somogy county",
-        D1365_25: "Szabolcs-Szatmár-Bereg county",
-        D1365_26: "Tolna county",
-        D1365_27: "Vas county",
-        D1365_28: "Veszprém county",
-        D1365_29: "Zala county",
-        D224: "D2 - 1 day",
-        D210: "D2 - 10 days",
-        D230: "D2 - 30 days",
-        D2365: "D1 - 1 year",
-        D2365_11: "Bács-Kiskun county",
-        D2365_12: "Baranya county",
-        D2365_13: "Békés county",
-        D2365_14: "Borsod-Abaúj-Zemplén county",
-        D2365_15: "Csongrád county",
-        D2365_16: "Fejér county",
-        D2365_17: "Győr-Moson-Sopron county",
-        D2365_18: "Hajdú-Bihar county",
-        D2365_19: "Heves county",
-        D2365_20: "Jász-Nagykun-Szolnok county",
-        D2365_21: "Komárom-Esztergom county",
-        D2365_23: "Pest county",
-        D2365_24: "Somogy county",
-        D2365_25: "Szabolcs-Szatmár-Bereg county",
-        D2365_26: "Tolna county",
-        D2365_27: "Vas county",
-        D2365_28: "Veszprém county",
-        D2365_29: "Zala county",
-        D1M24: "D1 - 1 day",
-        D1M110: "D1 - 10 days",
-        D1M130: "D1 - 30 days",
-        D1M365: "D1 - 1 year",
-        D1M365_11: "Bács-Kiskun county",
-        D1M365_12: "Baranya county",
-        D1M365_13: "Békés county",
-        D1M365_14: "Borsod-Abaúj-Zemplén county",
-        D1M365_15: "Csongrád county",
-        D1M365_16: "Fejér county",
-        D1M365_17: "Győr-Moson-Sopron county",
-        D1M365_18: "Hajdú-Bihar county",
-        D1M365_19: "Heves county",
-        D1M365_20: "Jász-Nagykun-Szolnok county",
-        D1M365_21: "Komárom-Esztergom county",
-        D1M365_23: "Pest county",
-        D1M365_24: "Somogy county",
-        D1M365_25: "Szabolcs-Szatmár-Bereg county",
-        D1M365_26: "Tolna county",
-        D1M365_27: "Vas county",
-        D1M365_28: "Veszprém county",
-        D1M365_29: "Zala county",
-        U24: "U - 1 day",
-        U110: "U - 10 days",
-        U130: "U - 30 days",
-        U365: "U - 1 year",
-        U365_11: "Bács-Kiskun county",
-        U365_12: "Baranya county",
-        U365_13: "Békés county",
-        U365_14: "Borsod-Abaúj-Zemplén county",
-        U365_15: "Csongrád county",
-        U365_16: "Fejér county",
-        U365_17: "Győr-Moson-Sopron county",
-        U365_18: "Hajdú-Bihar county",
-        U365_19: "Heves county",
-        U365_20: "Jász-Nagykun-Szolnok county",
-        U365_21: "Komárom-Esztergom county",
-        U365_23: "Pest county",
-        U365_24: "Somogy county",
-        U365_25: "Szabolcs-Szatmár-Bereg county",
-        U365_26: "Tolna county",
-        U365_27: "Vas county",
-        U365_28: "Veszprém county",
-        U365_29: "Zala county",
+        D124: "D1 - 1 Tag",
+        D110: "D1 - 10 Tage",
+        D130: "D1 - 30 Tage",
+        D1365: "D1 - 1 Jahr",
+        D1365_11: "Komitat Bács-Kiskun",
+        D1365_12: "Komitat Baranya",
+        D1365_13: "Komitat Békés",
+        D1365_14: "Komitat Borsod-Abaúj-Zemplén",
+        D1365_15: "Komitat Csongrád",
+        D1365_16: "Komitat Fejér",
+        D1365_17: "Komitat Győr-Moson-Sopron",
+        D1365_18: "Komitat Hajdú-Bihar",
+        D1365_19: "Komitat Heves",
+        D1365_20: "Komitat Jász-Nagykun-Szolnok",
+        D1365_21: "Komitat Komárom-Esztergom",
+        D1365_23: "Komitat Pest",
+        D1365_24: "Komitat Somogy",
+        D1365_25: "Komitat Szabolcs-Szatmár-Bereg",
+        D1365_26: "Komitat Tolna",
+        D1365_27: "Komitat Vas",
+        D1365_28: "Komitat Veszprém",
+        D1365_29: "Komitat Zala",
+        D1M24: "D1M - 1 Tag",
+        D1M10: "D1M - 10 Tage",
+        D1M30: "D1M - 30 Tage",
+        D224: "D2 - 1 Tag",
+        D210: "D2 - 10 Tage",
+        D230: "D2 - 30 Tage",
+        D2365: "D1 - 1 Jahr",
+        D2365_11: "Komitat Bács-Kiskun",
+        D2365_12: "Komitat Baranya",
+        D2365_13: "Komitat Békés",
+        D2365_14: "Komitat Borsod-Abaúj-Zemplén",
+        D2365_15: "Komitat Csongrád",
+        D2365_16: "Komitat Fejér",
+        D2365_17: "Komitat Győr-Moson-Sopron",
+        D2365_18: "Komitat Hajdú-Bihar",
+        D2365_19: "Komitat Heves",
+        D2365_20: "Komitat Jász-Nagykun-Szolnok",
+        D2365_21: "Komitat Komárom-Esztergom",
+        D2365_23: "Komitat Pest",
+        D2365_24: "Komitat Somogy",
+        D2365_25: "Komitat Szabolcs-Szatmár-Bereg",
+        D2365_26: "Komitat Tolna",
+        D2365_27: "Komitat Vas",
+        D2365_28: "Komitat Veszprém",
+        D2365_29: "Komitat Zala",
+        U24: "U - 1 Tag",
+        U10: "U - 10 Tage",
+        U30: "U - 30 Tage",
+        U365: "U - 1 Jahr",
+        U365_11: "Komitat Bács-Kiskun",
+        U365_12: "Komitat Baranya",
+        U365_13: "Komitat Békés",
+        U365_14: "Komitat Borsod-Abaúj-Zemplén",
+        U365_15: "Komitat Csongrád",
+        U365_16: "Komitat Fejér",
+        U365_17: "Komitat Győr-Moson-Sopron",
+        U365_18: "Komitat Hajdú-Bihar",
+        U365_19: "Komitat Heves",
+        U365_20: "Komitat Jász-Nagykun-Szolnok",
+        U365_21: "Komitat Komárom-Esztergom",
+        U365_23: "Komitat Pest",
+        U365_24: "Komitat Somogy",
+        U365_25: "Komitat Szabolcs-Szatmár-Bereg",
+        U365_26: "Komitat Tolna",
+        U365_27: "Komitat Vas",
+        U365_28: "Komitat Veszprém",
+        U365_29: "Komitat Zala",
+        "1week": "1 Woche",
+        "1day": "1 Tag",
+        "1year": "1 Jahr",
+        "1month": "1 Monate",
+        "2month": "2 Monate",
+        "3month": "3 Monate",
+        "4month": "4 Monate",
+        "5month": "5 Monate",
       },
       type: {
-        empty_plate: "Das Ausfüllen der Registrierungsnummer ist Pflicht!",
-        plate_number_duplicated: "Plate number duplicated on same time",
+        empty_plate: "Das Ausfüllen des Kennzeichens ist Pflicht!",
+        plate_number_duplicated: "Kennzeichen zur gleichen Zeit dupliziert",
         invalid_plate:
-          "Das Nummernschild ist falsch. Es darf beispielsweise keinen Bindestrich enthalten oder entspricht nicht dem in Ihrem Land vertretenen Standard.",
-        plate_num_required: "Plate number required!",
-        error_selection: "Country is required!",
-        car_country: "Nationalitätszeichen",
-        licence_plate_number: "Nummernschild",
-        add_another_widget: "eine weitere Vignette hinzufügen",
+          "Das Nummernschild ist falsch. Es darf zum Beispiel keinen Bindestrich enthalten oder entspricht nicht der Norm deines Landes.",
+        plate_num_required: "Nummernschild erforderlich!",
+        error_selection: "Land ist erforderlich!",
+        car_country: "Land des Autos",
+        licence_plate_number: "Autokennzeichen",
+        add_another_widget: "weitere Vignette hinzufügen",
         next: "Nächste",
         back: "Zurück",
         selected_box_title: "Ausgewählte Vignetten",
@@ -473,11 +462,11 @@ export default defineI18nConfig(() => ({
         year: "Jahr",
         select_country_placeholder: "Wähle ein Land",
         number_of_month: "Wie viele Monate",
-        validity_period: "Gültigkeitszeitraum",
+        validity_period: "Gültigkeitsdauer",
         is_at_least_one_county_selected:
-          "Die Auswahl eines Landkreises ist zwingend erforderlich!",
-        plate_num_placeholder: "e.g. ABC123",
-        country_error: "Country required!",
+          "Die Auswahl eines Bundeslandes ist obligatorisch!",
+        plate_num_placeholder: "z.B. ABC123",
+        country_error: "Land ist erforderlich!",
         image: {
           alt_vignette: "Vignette",
           desktop_plate_num: "under-plate-number-line_de_DE.svg",
@@ -488,148 +477,157 @@ export default defineI18nConfig(() => ({
           mobile_confirm: "under-confirm-line_de_DE.svg",
         },
         title: {
-          year_11: "Landkreisregion",
+          year_11: "Landkreis Region",
           weekly: "Wöchentlich",
-          monthly: "Monatliche",
+          monthly: "Monatlich",
           annual: "Jährlich",
-          ten_days: "10 Tag",
+          ten_days: "10 Tage",
           daily: "Täglich",
-          one_day: "1 Tag alt",
-          after_title: "Nationalstraßenaufkleber",
+          one_day: "1 Tag",
+          after_title: "Nationale Autobahnvignette",
         },
         purchase_calculator: {
           title: "Ausgewählte Vignetten",
-          total: "Gesamt",
+          total: "Insgesamt",
+          one_day: "1 Tag",
+          currency: "€",
+          day: "Tag",
+          month: "Monat",
         },
       },
       billing: {
-        title: "Enter billing information",
-        phone: "Phone number",
+        title: "Rechnungsinformationen eingeben",
+        phone: "Telefon-Nummer",
         mail_tooltip_text:
-          "We will send the vignette confirmation to this address",
+          "Wir senden die Aufkleberbestätigung an diese Adresse",
         email: "E-mail",
-        phone_tooltip_text: "In case of connection problems",
-        invoice_request_title: "I would like a VAT invoice",
+        phone_tooltip_text: "Für den Fall von Verbindungsproblemen",
+        invoice_request_title: "Ich möchte eine Rechnung mit Mehrwertsteuer",
         request_title_tooltip_text:
-          "If you want an invoice, please check the I want an invoice option",
+          "Wenn Sie eine Rechnung wünschen, markieren Sie bitte die Option Ich möchte eine Rechnung",
         request_after_text1:
-          "If you want an invoice, please check the I want an invoice option. We are unable to issue an invoice afterwards.",
-        company: "Company",
-        private_person: "Private person",
-        checkbox_tooltip_text: "Your selection is mandatory",
-        company_name: "Company name",
+          "Wenn Sie eine Rechnung wünschen, kreuzen Sie bitte die Option Ich möchte eine Rechnung. Wir können danach keine Rechnung ausstellen.",
+        company: "Unternehmen ",
+        private_person: "Privatperson",
+        checkbox_tooltip_text: "Deine Auswahl ist obligatorisch",
+        company_name: "Name des Unternehmens",
         private_name: "Name",
-        name_tooltip_text: "Billing Name/Company Name",
-        country: "Country",
-        country_tooltip_text: "Billing Country",
-        zip_code: "Invoice ZIP code",
-        tax_number: "Tax Number",
-        city: "City",
-        address: "Address (street, number)",
-        tax_number_tooltip_text: "Filling in the tax number is mandatory!",
-        zip_code_tooltip_text: "Billing Zip Code",
-        city_tooltip_text: "Billing City",
-        address_tooltip_text: "Billing address (street, house number)",
-        company_name_placeholder: "Start writing for suggestions...",
-        zip_code_placeholder: "Start writing for suggestions...",
-        billing_type_required: "You must select a billing type!",
+        name_tooltip_text: "Rechnungsname/Firmenname",
+        country: "Land",
+        country_tooltip_text: "Land der Rechnungsstellung",
+        zip_code: "Postleitzahl der Rechnung",
+        tax_number: "Steuernummer",
+        city: "Stadt",
+        address: "Adresse (Straße, Hausnummer)",
+        tax_number_tooltip_text:
+          "Das Ausfüllen der Steuernummer ist obligatorisch!",
+        zip_code_tooltip_text: "Rechnungs-Postleitzahl",
+        city_tooltip_text: "Rechnungsstellung Stadt",
+        address_tooltip_text: "Rechnungsadresse (Straße, Hausnummer)",
+        company_name_placeholder:
+          "Beginnen Sie zu tippen, um Vorschläge zu erhalten...",
+        zip_code_placeholder:
+          "Beginnen Sie zu tippen, um Vorschläge zu erhalten...",
+        billing_type_required: "Sie müssen eine Rechnungsart auswählen!",
       },
       confirm: {
-        main_title: "Check the entered data",
-        phone_number: "Phone number:",
-        email_address: "E-mail address:",
+        main_title: "Überprüfe die eingegebenen Daten",
+        phone_number: "Telefonnummer:",
+        email_address: "E-Mail Adresse:",
         vignette_info: {
-          vignette_type_title: "Vignette type:",
-          plate_number: "Plate number:",
-          car_country: "Car country:",
-          validity_period: "Validity period:",
+          vignette_type_title: "Vignettenart:",
+          plate_number: "Nummernschild:",
+          car_country: "Land des Fahrzeugs:",
+          validity_period: "Gültigkeitsdauer:",
         },
         billing_info: {
-          title: "Billing information",
-          name_title: "Name / Company name:",
-          country: "Country:",
-          zip_code: "Zip code:",
-          city: "City:",
-          address: "Address (street, number):",
+          title: "Informationen zur Rechnungsstellung",
+          name_title: "Name / Firmenname:",
+          country: "Land:",
+          zip_code: "Postleitzahl:",
+          city: "Stadt:",
+          address: "Adresse (Straße, Hausnummer):",
         },
         price: {
-          price_title: "Vignette price:",
-          convenience_fee: "Convenience fee:",
-          total: "Total:",
+          price_title: "Vignettenpreis:",
+          convenience_fee: "Bereitstellungsgebühr:",
+          total: "Gesamt:",
           currency: "EUR",
         },
         errors: {
-          payment_required: "Payment method required!",
+          payment_required: "Zahlungsmethode erforderlich!",
           terms_error:
-            "Terms and Conditions and Privacy Statement are required!",
+            "Allgemeine Geschäftsbedingungen und Datenschutzbestimmungen sind erforderlich!",
         },
         payment: {
-          title: "Choice of payment method",
-          card_type_label_barion: "Bank card - Barion",
+          title: "Auswahl der Zahlungsmethode",
+          card_type_label_barion: "Bankkarte - Barion",
           barion_accordion_title:
-            "Payment takes place through Barion’s secure payment page.",
+            "Die Zahlung erfolgt über die sichere Zahlungsseite von Barion.",
           barion_desc:
-            "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
-          subscribe_label: "Subscribe vignette newsletter!",
-          terms_label: `I state that I have read and accepted the
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
-            as well as the
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Privacy Statement</a>
-            and I consent to the data management contained therein.`,
+            "Anstatt die Bankkartendaten auf der Barion-Zahlungsoberfläche einzugeben, kannst du auch die Zahlungsoption Barion Wallet, Apple Pay oder Google Pay wählen.",
+          subscribe_label: "Abonniere den Vignette-Newsletter!",
+          terms_label: `Ich erkläre, dass ich die Nutzungsbedingungen gelesen und akzeptiert habe.
+            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Allgemeine Vertragsbedingungen</a>
+            sowie die
+            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Datenschutzerklärung</a>
+            und erkläre mich mit der darin enthaltenen Datenverwaltung einverstanden. Ich akzeptiere die Nutzungsbedingungen.`,
           important_text:
-            "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
-          back: "Back",
-          order_vignette_btn_title: "Order vignette",
+            "Du kannst erst auf die Autobahn fahren, wenn du nach der Zahlung eine Bestätigung der erfolgreichen Vignettenvalidierung per E-Mail oder in deinem Browser erhalten hast.",
+          back: "Zurück",
+          order_vignette_btn_title: "Vignette bestellen",
         },
       },
       confirm_failed: {
-        title: "Vignette purchase failed!",
-        payment_result_text: "Payment result",
-        reorder_btn_title: "Reorder",
+        title: "Vignettenkauf fehlgeschlagen!",
+        payment_result_text: "Ergebnis der Zahlung",
+        reorder_btn_title: "Nachbestellung",
         card: {
-          contact_us_text: `If you think that your payment was successful, but the e-vignette
-          validation failed, please contact us!`,
-          important_text: `IMPORTANT: Successful financial completion does not automatically entitle you to use the motorway! You can only drive onto the highway if you have
-          a successful vignette after paying received confirmation of
-          validation by e-mail, or in your browser.`,
+          contact_us_text: `Wenn du denkst, dass deine Zahlung erfolgreich war, aber die Aufkleber
+          Validierung fehlgeschlagen ist, kontaktiere uns bitte!`,
+          important_text: `WICHTIG: Die Tatsache, dass die finanzielle Leistung erbracht wurde
+          erfüllt wurde, bedeutet nicht automatisch, dass du berechtigt bist, die
+          die Strecke zu benutzen! Du kannst nur auf die Autobahn fahren, wenn du
+          eine erfolgreiche Vignette hast, nachdem du eine Bestätigung der
+          Validierung per E-Mail oder in deinem Browser erhalten hast.`,
         },
       },
       confirm_successful: {
-        title: "Successful vignette purchase",
+        title: "Erfolgreiche Vignettenbestellungen",
         card: {
-          download_order_btn_title: "Download order summary",
-          ty_text: "Thank you for your purchase!",
-          info_text: "We will send you the purchase receipt by e-mail.",
-          spam_text: `ATTENTION: if you can't find our confirmation email, check your SPAM folder.`,
+          download_order_btn_title: "Bestellzusammenfassung herunterladen",
+          ty_text: "Wir danken Ihnen für Ihren Einkauf!",
+          info_text: " Wir senden dir den Kaufbeleg per E-Mail zu.",
+          spam_text: ` ACHTUNG: Wenn du den Benachrichtigungsbrief nicht finden kannst, suche nach im SPAM-Ordner deines Kontos.`,
         },
       },
       confirm_under_payment: {
-        title: "Transaction being processed",
+        title: "Transaktion wird bearbeitet",
         card: {
           refresh_text:
-            "To review the result, please refresh the page in some seconds!",
-          refresh_btn_title: "Refresh",
-          info_text: `Please check your mailbox. <br />We will send you confirmation
-            of the successful purchase and the validation of the vignette!`,
+            "Um das Ergebnis zu überprüfen, aktualisiere bitte die Seite in einigen Sekunden!",
+          refresh_btn_title: "Aktualisieren",
+          info_text: `Bitte überprüfe deinen Posteingang. <br />Wir werden dir eine Bestätigung
+          des erfolgreichen Kaufs und der Validierung der Vignette!`,
         },
       },
       global: {
         contact_data: {
-          title: "Customer Service:",
-          phone: "Phone: (36-1) 225-7603",
-          email_title: "E-mail:",
+          title: "Kundenservice:",
+          phone: "Telefon: (36-1) 225-7603",
+          email_title: "E-Mail",
           mail: "support[at]hungary-vignette.eu",
         },
         confirm_trid: {
-          trans_id: "Transaction identifier",
-          e_mail: "E-mail",
-          table_plate_num_title: "License plate number",
-          table_validity_period_title: "Validity period",
-          table_vignette_num_title: "Vignette number",
+          trans_id: "Transaktionskennzeichen",
+          e_mail: "E-Mail",
+          table_plate_num_title: "Kfz-Kennzeichen",
+          table_validity_period_title: "Gültigkeitsdauer",
+          table_vignette_num_title: "Vignettennummer",
           card_time_text: `<p>
-            <strong>Payment by bank card</strong> will take only a few
-            minutes.
-          </p>`,
+          <strong>Die Zahlung mit der Bankkarte</strong> dauert    nur ein paar
+          Minuten.
+        </p>`,
         },
       },
       resend: {
@@ -731,8 +729,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Mehr lesen"
-      }
+        read_more_text: "Read more",
+      },
     },
     sk: {
       vignette_type: {
@@ -1088,8 +1086,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Prečítajte si viac"
-      }
+        read_more_text: "Prečítajte si viac",
+      },
     },
     hr: {
       vignette_type: {
@@ -1224,8 +1222,7 @@ export default defineI18nConfig(() => ({
       billing: {
         title: "Unesite podatke o naplati",
         phone: "Broj telefona",
-        mail_tooltip_text:
-          "Poslat ćemo potvrdu vinjete za ovu adresu",
+        mail_tooltip_text: "Poslat ćemo potvrdu vinjete za ovu adresu",
         email: "E-pošta",
         phone_tooltip_text: "U slučaju problema s povezivanjem",
         invoice_request_title: "Želim račun s PDV-om",
@@ -1279,8 +1276,7 @@ export default defineI18nConfig(() => ({
         },
         errors: {
           payment_required: "Unesite način plaćanja!",
-          terms_error:
-            "Uvjeti i pravila te izjava o privatnosti su obavezni!",
+          terms_error: "Uvjeti i pravila te izjava o privatnosti su obavezni!",
         },
         payment: {
           title: "Odabir načina plaćanja",
@@ -1445,8 +1441,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Čitaj više"
-      }
+        read_more_text: "Čitaj više",
+      },
     },
     rs: {
       vignette_type: {
@@ -1581,8 +1577,7 @@ export default defineI18nConfig(() => ({
       billing: {
         title: "Unesite podatke za plaćanje",
         phone: "Broj telefona",
-        mail_tooltip_text:
-          "Poslaćemo potvrdu o kupovini vinjete na ovu adresu",
+        mail_tooltip_text: "Poslaćemo potvrdu o kupovini vinjete na ovu adresu",
         email: "Email",
         phone_tooltip_text: "U slučaju problema na vezi",
         invoice_request_title: "Želim račun sa PDV-om",
@@ -1802,8 +1797,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Opširnije"
-      }
+        read_more_text: "Opširnije",
+      },
     },
     ua: {
       vignette_type: {
@@ -1959,7 +1954,8 @@ export default defineI18nConfig(() => ({
         tax_number: "Ідентифікаціний податковий номер",
         city: "Місто",
         address: "Адреса (вулиця, номер будинку)",
-        tax_number_tooltip_text: "Заповнення індивідуального податкового номера обов'язкове!",
+        tax_number_tooltip_text:
+          "Заповнення індивідуального податкового номера обов'язкове!",
         zip_code_tooltip_text: "Поштовий індекс платника",
         city_tooltip_text: "Місто платника",
         address_tooltip_text: "Адреса платника (вулиця, номер будинку)",
@@ -2034,7 +2030,8 @@ export default defineI18nConfig(() => ({
         card: {
           download_order_btn_title: "Завантажити деталі замовлення",
           ty_text: "Thank you for your purchase!",
-          info_text: "Ми надішлемо вам квитанцію про покупку електронною поштою.",
+          info_text:
+            "Ми надішлемо вам квитанцію про покупку електронною поштою.",
           spam_text: ` УВАГА! Якщо ви не можете знайти лист-повідомлення, пошукайте
           його в теці «СПАМ» у вашому обліковому записі.`,
         },
@@ -2167,8 +2164,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Читати далі"
-      }
+        read_more_text: "Читати далі",
+      },
     },
     ro: {
       vignette_type: {
@@ -2269,7 +2266,8 @@ export default defineI18nConfig(() => ({
         select_country_placeholder: "Selectează o tară",
         number_of_month: "Câte luni",
         validity_period: "Perioada de valabilitate",
-        is_at_least_one_county_selected: "Selectarea unui județ este obligatorie!",
+        is_at_least_one_county_selected:
+          "Selectarea unui județ este obligatorie!",
         plate_num_placeholder: "de exemplu. ABC123",
         country_error: "Întroducerea ţării este necesară!",
         image: {
@@ -2528,8 +2526,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Detalii"
-      }
+        read_more_text: "Detalii",
+      },
     },
     pl: {
       vignette_type: {
@@ -2630,7 +2628,8 @@ export default defineI18nConfig(() => ({
         select_country_placeholder: "Wybierz kraj",
         number_of_month: "Ile miesięcy",
         validity_period: "Okres ważności",
-        is_at_least_one_county_selected: "Wybór jednego kraju jest obowiązkowy!",
+        is_at_least_one_county_selected:
+          "Wybór jednego kraju jest obowiązkowy!",
         plate_num_placeholder: "np. ABC123",
         country_error: "Wymagany kraj!",
         image: {
@@ -2664,8 +2663,7 @@ export default defineI18nConfig(() => ({
       billing: {
         title: "Wprowadź informacje rozliczeniowe",
         phone: "Numer telefonu",
-        mail_tooltip_text:
-          "Na ten adres wyślemy potwierdzenie naklejki.",
+        mail_tooltip_text: "Na ten adres wyślemy potwierdzenie naklejki.",
         email: "E-mail",
         phone_tooltip_text: "W przypadku problemów z połączeniem",
         invoice_request_title: "Chcę otrzymać fakturę VAT",
@@ -2685,7 +2683,8 @@ export default defineI18nConfig(() => ({
         tax_number: "Numer podatkowy",
         city: "Miasto",
         address: "Adres (ulica, numer)",
-        tax_number_tooltip_text: "Podanie numeru identyfikacji podatkowej jest obowiązkowe!",
+        tax_number_tooltip_text:
+          "Podanie numeru identyfikacji podatkowej jest obowiązkowe!",
         zip_code_tooltip_text: "Kod pocztowy faktury",
         city_tooltip_text: "Miasto rozliczeniowe",
         address_tooltip_text: "Adres rozliczeniowy (ulica, numer domu)",
@@ -2762,8 +2761,7 @@ export default defineI18nConfig(() => ({
       confirm_under_payment: {
         title: "Transakcja jest przetwarzana",
         card: {
-          refresh_text:
-            "Aby sprawdzić wynik, odśwież stronę za kilka sekund!",
+          refresh_text: "Aby sprawdzić wynik, odśwież stronę za kilka sekund!",
           refresh_btn_title: "Odśwież",
           info_text: `Sprawdź swoją skrzynkę pocztową. <br />Wyślemy Ci potwierdzenie pomyślnego zakupu i zatwierdzenia winiety!`,
         },
@@ -2883,8 +2881,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Czytaj więcej"
-      }
+        read_more_text: "Czytaj więcej",
+      },
     },
     it: {
       vignette_type: {
@@ -3245,8 +3243,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Leggi di più"
-      }
+        read_more_text: "Leggi di più",
+      },
     },
     nl: {
       vignette_type: {
@@ -3607,8 +3605,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Meer lezen"
-      }
+        read_more_text: "Meer lezen",
+      },
     },
     cz: {
       vignette_type: {
@@ -3969,8 +3967,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Přečtěte si více"
-      }
+        read_more_text: "Přečtěte si více",
+      },
     },
     hu: {
       vignette_type: {
@@ -4331,8 +4329,8 @@ export default defineI18nConfig(() => ({
         U365_29: "U",
       },
       news_page: {
-        read_more_text: "Tovább olvasom"
-      }
+        read_more_text: "Tovább olvasom",
+      },
     },
   },
 }));
