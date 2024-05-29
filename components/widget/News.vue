@@ -48,7 +48,7 @@
               class="btn primary-btn-outline mt-5 read-more-link"
               :title="item.title"
             >
-              {{ $t("news_page.read_more_text") }}
+              {{ t('news_page.read_more_text') }}
               <img
                 class="pl-2 news-img"
                 src="/assets/Content/new-site-content/arrowcircleup_icon.svg"
@@ -62,7 +62,22 @@
   </section>
 </template>
 <script setup lang="ts">
+const route = useRoute();
+const router = useRouter();
+import { useRoute } from "nuxt/app";
 const { t, locale } = useI18n();
+const currentLanguage = ref(locale);
+
+watch(
+  () => route.params.lang,
+  (newLang) => {
+    currentLanguage.value = Array.isArray(newLang)
+      ? newLang[0]
+      : newLang || "en";
+  },
+  { immediate: true }
+);
+
 import type { NewsWidget, TopNewsContent } from "~/types/types";
 
 const props = defineProps({
@@ -82,5 +97,7 @@ const getImageSrc = (relativePath: string | URL) => {
   }
   return new URL(relativePath, window.location.origin).href;
 };
+
+
 
 </script>
