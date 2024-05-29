@@ -11,7 +11,7 @@
             class="w-28 h-10 sm:w-[196px] sm:h-[69px] md:w-28 md:h-10 xl:w-[196px] xl:h-[69px]"
           />
         </a>
-        <div class="hidden md:flex space-x-4 ml-5">
+        <div class="hidden md:flex items-center space-x-4 ml-5">
           <a
             v-for="item in menuWidget.menu"
             :href="`/${currentLanguage}${item.url}`"
@@ -66,7 +66,8 @@
       </button>
       <transition name="slide">
         <div
-          v-if="isMobileMenuOpen" v-click-outside="closeMobileMenu"
+          v-if="isMobileMenuOpen"
+          v-click-outside="closeMobileMenu"
           class="text-white fixed h-screen left-0 top-0 w-full max-w-xs mx-auto bg-base-black p-4 z-30"
         >
           <div class="mt-5 flex flex-col items-start">
@@ -206,13 +207,11 @@ const closeMobileMenu = (): void => {
 };
 
 // Initialize langSelection based on the current language in the URL
-onMounted(() => {
-  const langCode = route.params.lang || "en"; // Default to 'en' if no language code is provided
-  const language = props.menuWidget.languageSelection.find(
-    (lang: { code: string | string[] }) => lang.code === langCode
-  );
-  langSelection.value = language || props.menuWidget.languageSelection[0]; // Default to the first language if the specified language is not found
-});
+const langCode = route.params.lang || "en"; // Default to 'en' if no language code is provided
+const language = props.menuWidget.languageSelection.find(
+  (lang: { code: string | string[] }) => lang.code === langCode
+);
+langSelection.value = language || props.menuWidget.languageSelection[0]; // Default to the first language if the specified language is not found
 </script>
 
 <style scoped>
