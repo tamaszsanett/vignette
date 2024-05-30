@@ -123,7 +123,7 @@ function downloadSummary() {
 }
 
 onNuxtReady(() => {
-  window.addEventListener("beforeunload", function () {
+  window.addEventListener("beforeunload", function (event) {
     if (!isDirty) {
       event.preventDefault();
       event.returnValue = "Are you sure to leave site?";
@@ -132,7 +132,6 @@ onNuxtReady(() => {
 
   SendEventsToGA4( props.purchaseData.value.trid, props.purchaseData.value.totalMargin);
 
-  loading.value = false;
 });
 
 function SendEventsToGA4(trid : number, totalMargin: number) {
@@ -204,6 +203,7 @@ function SendEventsToGA4(trid : number, totalMargin: number) {
 
 setTimeout(() => {
   isDirty = true;
+  loading.value = false;
 }, 1000);
 }
 
