@@ -22,7 +22,7 @@
                   {{ purchaseData.value.userEmail }}
                 </div>
               </div>
-              <div class="design-table w-full clear-both pt-[2px]">
+              <div class="design-table w-full clear-both pt-[2px]" v-if="!loading">
                 <table class="table table-condensed table-hover payment-progress-table">
                   <tbody>
                     <tr>
@@ -42,6 +42,9 @@
                     </tr>
                   </tbody>
                 </table>
+              </div>
+              <div v-if="loading" class="w-50 clear-both text-center my-2">
+                <ProgressSpinner></ProgressSpinner>
               </div>
               <div class="clear-both">
                 <section class="flex items-center flex-wrap my-5 gap-4 w-full">
@@ -70,6 +73,7 @@
 </template>
 
 <script setup lang="ts">
+import { ref, onMounted } from 'vue'
 import type { GetPurchaseResponse } from "~/types/types";
 import Card from "primevue/card";
 const { t, locale } = useI18n();
@@ -81,6 +85,8 @@ const orderId = useCookie("orderId");
 const vignetteTypeFromCookie = useCookie("vignetteType");
 const durationTypeCookie = useCookie("durationType");
 const categoryCookie = useCookie("category");
+
+const loading = ref(true);
 
 cartKey.value = null;
 orderId.value = null;
@@ -94,6 +100,8 @@ const props = defineProps({
     required: true,
   },
 });
+
+var isDirty = false;
 
 const sortedVignettes = computed(() => {
   return [...props.purchaseData.value.vignettes].sort((a, b) => {
@@ -115,7 +123,16 @@ function downloadSummary() {
 }
 
 onNuxtReady(() => {
+  window.addEventListener("beforeunload", function () {
+    if (!isDirty) {
+      event.preventDefault();
+      event.returnValue = "Are you sure to leave site?";
+    }
+  });
+
   SendEventsToGA4( props.purchaseData.value.trid, props.purchaseData.value.totalMargin);
+
+  loading.value = false;
 });
 
 function SendEventsToGA4(trid : number, totalMargin: number) {
@@ -143,7 +160,15 @@ function SendEventsToGA4(trid : number, totalMargin: number) {
     index++;
   }
 
+  //success oldal
+  gtag("event", "purchase", {
+    transaction_id: trid,
+    value: parsedMargin,
+    currency: currency,
+    items: vignettes
+  });
 
+  // rendszám megaádsa
   gtag("event", "add_to_cart", {
     currency: currency,
     value: parsedMargin,
@@ -156,17 +181,20 @@ function SendEventsToGA4(trid : number, totalMargin: number) {
     items: vignettes
   });
 
+  // confirm oldalra:
   gtag("event", "view_cart", {
     currency: currency,
     value: parsedMargin,
     items: vignettes
   });
 
+  /// matrica típus
   gtag("event", "view_item", {
     currency: currency,
     value: parsedMargin,
     items: vignettes
   });
+
 
   gtag("event", "begin_checkout", {
     currency: currency,
@@ -174,12 +202,9 @@ function SendEventsToGA4(trid : number, totalMargin: number) {
     items: vignettes
   });
 
-  gtag("event", "purchase", {
-    transaction_id: trid,
-    value: parsedMargin,
-    currency: currency,
-    items: vignettes
-  });
+setTimeout(() => {
+  isDirty = true;
+}, 1000);
 }
 
 </script>
