@@ -212,7 +212,7 @@
           </div>
           <Accordion :activeIndex="[0]" class="mt-4" v-if="paymentMethod">
             <AccordionTab
-              header="Payment takes place through Barion’s secure payment page."
+            :header="$t('confirm.payment.barion_accordion_title')"
             >
               <p class="m-0">
                 {{ $t("confirm.payment.barion_desc") }}
