@@ -370,8 +370,9 @@ const newsletterSubscription = ref(false);
 const datasAreCorrect = ref(false);
 
 const errorMessage = ref("");
+const config = useRuntimeConfig();
 
-const commmonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
+const commmonApiEndpoint = config.public.apiEndpoint.webshopEndpoint+ "/GetOrder";
 
 var orderData = await $fetch<GetOrderResponse>(
   `${commmonApiEndpoint}?OrderId=${orderId.value}`
@@ -415,7 +416,7 @@ async function sendForm() {
   }
 
   const submitOrderEndpoint =
-    "https://test-gw.voxpay.hu/Webshop.Vignette/PurchaseVignettesAnonymWithOrder";
+  config.public.apiEndpoint.vignetteEndpoint + "/PurchaseVignettesAnonymWithOrder";
   const response = await $fetch<PurchaseVignettesAnonymWithOrderResponse>(
     submitOrderEndpoint,
     {
@@ -480,7 +481,7 @@ const pageUri = computed(() => {
 });
 
 const apiEndpoint =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+config.public.apiEndpoint.widgets;
 const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
   "%2C",
   "%2F"

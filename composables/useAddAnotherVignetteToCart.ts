@@ -170,7 +170,8 @@ export async function useAddAnotherVignetteToCart(
       cartItems: items
     };
 
-    const apiEndpointBase = 'https://test-gw.voxpay.hu/Webshop.Common';
+    const config = useRuntimeConfig();
+    const apiEndpointBase = config.public.apiEndpoint.webshopEndpoint;
     try {
       const response = await fetch(apiEndpointBase+"/AddToCart", {
         method: 'POST',

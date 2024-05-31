@@ -203,6 +203,8 @@ import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import type { ApiResponse, ApiError, FormErrors } from "~/types/resend";
 
+const config = useRuntimeConfig();
+
 const currentLanguage = ref(locale);
 
 watch(
@@ -255,7 +257,7 @@ const sendResendConfirmation = async () => {
   loading.value = true; // Start loading
   try {
     const response = await $fetch<ApiResponse>(
-      "https://test-gw.voxpay.hu/Webshop.Vignette/ResendConfirmation",
+      config.public.apiEndpoint.vignetteEndpoint + "/ResendConfirmation",
       {
         method: "POST",
         headers: {
@@ -312,7 +314,7 @@ const pageUri = computed(() => {
 });
 
 const apiEndpoint =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+config.public.apiEndpoint.widgets;
 const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
   "%2C",
   "%2F"

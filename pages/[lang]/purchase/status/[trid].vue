@@ -45,8 +45,9 @@ const pageUri = computed(() => {
     return `${encodeURIComponent(slug)}`;
 });
 
+const config = useRuntimeConfig();
 const apiEndpoint =
-    "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+config.public.apiEndpoint.widgets;
 const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
     "%2C",
     "%2F"
@@ -72,7 +73,7 @@ const widgets = response.value.widgets.map((widget) => {
 /// ----------------- LOAD ORDER -----------------------
 
 
-const commmonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Vignette/GetPurchase";
+const commmonApiEndpoint = config.public.apiEndpoint.vignetteEndpoint + "/GetPurchase";
 
 var purchaseData = await $fetch<GetPurchaseResponse>(`${commmonApiEndpoint}?Trid=${route.params.trid}`);
 

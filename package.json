@@ -5,8 +5,8 @@
   "scripts": {
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "dev:test": "nuxt dev",
-    "dev:prod": "nuxt start",
+    "dev:test": "nuxt dev --dotenv .env.test",
+    "dev:prod": "nuxt dev --dotenv .env.prod",
     "test:build": "nuxt build --dotenv .env.test",
     "prod:build": "nuxt build --dotenv .env.prod",
     "generate": "nuxt generate"
