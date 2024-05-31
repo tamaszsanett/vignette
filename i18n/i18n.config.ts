@@ -634,9 +634,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "Die beim Kauf einer Autobahnvignette verwendete E-Mail-Adresse.",
         reg_num_tooltip_text: `Das amtliche Kennzeichen des Fahrzeugs, dessen Straßenzulassung Sie abfragen möchten. Es können nur englische ABC-Buchstaben und Zahlen verwendet werden (z. B. ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Ich erkläre, dass ich die Allgemeinen Vertragsbedingungen sowie die <a class="base-link" href="/privacy">Datenschutzerklärung </a> 
+        gelesen und akzeptiert habe und mit der darin enthaltenen Datenverwaltung einverstanden bin.`,
         resend_btn_title: "Bestätigung erneut senden",
         error_email_required: "Die E-Mail Adresse ist erforderlich!",
         error_plate_required: "Das Kennzeichen ist erforderlich!",
@@ -990,9 +989,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "E-mailová adresa použitá pri kúpe diaľničnej známky.",
         reg_num_tooltip_text: `Evidenčné číslo vozidla, o ktorého povolenie na používanie ciest žiadate. Môžu sa použiť len anglické písmená a číslice ABC (napr. ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Vyhlasujem, že som si prečítal Všeobecné zmluvné podmienky, ako aj 
+        <a class="base-link" href="/privacy"> Vyhlásenie o ochrane</a> osobných údajov a súhlasím so správou údajov v nich uvedených.`,
         resend_btn_title: "Opätovné zaslanie potvrdenia",
         error_email_required: "E-mailová adresa je povinná!",
         error_plate_required: "Vyžaduje sa číslo poznávacej značky!",
@@ -1343,9 +1341,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "E-mail adresa koja se koristi prilikom kupnje vinjete na autocesti.",
         reg_num_tooltip_text: `Registracijski broj vozila čija autorizacija koristi cestovnu upotrebu upitate. Mogu se koristiti samo engleska ABC slova i brojevi (npr. ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Izjavljujem da sam pročitao/la i da prihvaćam Opće uvjete ugovora kao i 
+        <a class="base-link" href="/privacy">Izjavu o privatnosti</a> te pristajem na rukovanje podacima sadržanim u njima.`,
         resend_btn_title: "Ponovno pošalji potvrdu",
         error_email_required: "Email adresa je obavezna!",
         error_plate_required: "Broj tablice je obavezan!",
@@ -1697,9 +1694,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "Adresa e-pošte koja se koristi prilikom kupovine autoputa Vinjeta.",
         reg_num_tooltip_text: `Registracioni broj vozila čiji je autorizacija korišćenja puta koja se pitate. Mogu se koristiti samo engleski ABC slova i brojevi (npr. ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Izjavljujem da sam pročitao i prihvatio Opšte odredbe i uslove ugovora, kao i 
+        <a class="base-link" href="/privacy">Izjavu o privatnosti</a> and i da sam saglasan sa upravljanjem podacima sadržanim u njima.`,
         resend_btn_title: "Ponovo poslati potvrdu",
         error_email_required: "Imejl adresa je obavezna!",
         error_plate_required: "Broj tablice je obavezan!",
@@ -2063,9 +2059,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "Адреса електронної пошти, яка була використана при купівлі автодорожньої віньєтки.",
         reg_num_tooltip_text: `Реєстраційний номер транспортного засобу, дозвіл на користування дорогами якого ви запитуєте. Можна використовувати лише англійські літери та цифри (наприклад, ABC123).`,
-        checkbox_label: `I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Я підтверджую, що прочитав і прийняв Загальні умови договору, а також 
+        <a class="base-link" href="/privacy">Заяву про конфіденційність</a> і даю згоду на обробку даних, що містяться в них.`,
         resend_btn_title: "Повторно надіслати підтвердження",
         error_email_required: "Адреса електронної пошти обов'язкова!",
         error_plate_required: "Необхідно ввести номерний знак!",
@@ -2424,9 +2419,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "Adresa de e-mail utilizată la achiziționarea unei viniete de autostradă.",
         reg_num_tooltip_text: `Numărul de înmatriculare al vehiculului a cărui autorizație de circulație rutieră o solicitați. Se pot folosi numai litere și numere ABC în limba engleză (de exemplu, ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Declar că am citit și am acceptat Termenii și condițiile generale de contract, precum și 
+        <a class="base-link" href="/privacy">Declarația de confidențialitate</a> și că sunt de acord cu gestionarea datelor conținute în acestea.`,
         resend_btn_title: "Trimite din nou confirmarea",
         error_email_required: "Adresa de e-mail este obligatorie!",
         error_plate_required: "Numărul de înmatriculare este obligatoriu!",
@@ -2778,9 +2772,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "Adres e-mail używany podczas zakupu winiety autostradowej.",
         reg_num_tooltip_text: `Numer rejestracyjny pojazdu, którego dotyczy wniosek o zezwolenie na korzystanie z dróg. Można używać wyłącznie angielskich liter ABC i cyfr (np. ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Oświadczam, że zapoznałem się i akceptuję Ogólne warunki umowy oraz 
+        <a class="base-link" href="/privacy">Oświadczenie o ochronie</a> prywatności i wyrażam zgodę na zarządzanie danymi w nich zawartymi.`,
         resend_btn_title: "Wyślij ponownie potwierdzenie",
         error_email_required: "Adres e-mail jest wymagany!",
         error_plate_required: "Numer rejestracyjny jest wymagany!",
@@ -3139,7 +3132,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "Indirizzo e-mail utilizzato per l'acquisto del bollino autostradale.",
         reg_num_tooltip_text: `Il numero di targa del veicolo di cui si chiede l'autorizzazione all'uso su strada. È possibile utilizzare solo lettere e numeri ABC inglesi (ad es. ABC123).`,
-        checkbox_label: ` Dichiaro di aver letto e accettato le Condizioni Generali di Contratto e l'Informativa sulla Privacy e acconsento alla gestione dei dati ivi contenuti.`,
+        checkbox_label: `Dichiaro di aver letto e accettato le Condizioni Generali di Contratto e 
+        <a class="base-link" href="/privacy">l'Informativa sulla Privacy</a> e acconsento alla gestione dei dati ivi contenuti.`,
         resend_btn_title: "Invia nuovamente la conferma",
         error_email_required: "L'indirizzo e-mail è obbligatorio!",
         error_plate_required: "Il numero di targa è richiesto!",
@@ -3497,9 +3491,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "E-mailadres dat wordt gebruikt bij de aankoop van een snelwegvignet.",
         reg_num_tooltip_text: `Het registratienummer van het voertuig waarvan je de weggebruiksvergunning opvraagt. Alleen Engelse ABC letters en cijfers kunnen worden gebruikt (bijv. ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Ik verklaar dat ik de Algemene Contractvoorwaarden en de 
+        <a class="base-link" href="/privacy">Privacyverklaring</a> heb gelezen en geaccepteerd en dat ik akkoord ga met het gegevensbeheer dat hierin is opgenomen.`,
         resend_btn_title: "Bevestiging opnieuw verzenden",
         error_email_required: "Het e-mailadres is vereist!",
         error_plate_required: "Het kenteken is vereist!",
@@ -3867,9 +3860,8 @@ export default defineI18nConfig(() => ({
         mail_tooltip_text:
           "E-mailová adresa použitá při nákupu dálniční známky.",
         reg_num_tooltip_text: `Registrační značka vozidla, na jehož povolení k provozu na pozemních komunikacích se dotazujete. Lze použít pouze anglická písmena a číslice ABC (např. ABC123).`,
-        checkbox_label: ` I declare that the <a class="base-link" href="/privacy">Privacy Statement</a>
-        I have read and accept it, I consent to the data processing included
-        in it.`,
+        checkbox_label: `Prohlašuji, že jsem si přečetl(a) a přijal(a) všeobecné smluvní podmínky a 
+        <a class="base-link" href="/privacy">prohlášení o ochraně osobních</a> údajů a souhlasím se správou údajů v nich obsažených.`,
         resend_btn_title: "Opětovné zaslání potvrzení",
         error_email_required: "E-mailová adresa je povinná!",
         error_plate_required: "Číslo SPZ je povinné!",
