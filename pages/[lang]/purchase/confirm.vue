@@ -528,4 +528,8 @@ function goHome() {
 }
 
 /// ----------------- /ROUTING -----------------------
+onMounted(() => {
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({'site_lang': currentLanguage});
+})
 </script>

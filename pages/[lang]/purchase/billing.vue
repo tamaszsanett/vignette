@@ -788,4 +788,9 @@ async function sendForm() {
 const goBack = () => {
   router.back();
 };
+
+onMounted(() => {
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({'site_lang': currentLanguage});
+})
 </script>
