@@ -2,18 +2,18 @@ import { config as dotenvConfig } from 'dotenv';
 import { apiEndpoints } from "./apiEndpoints";
 
 // set the NODE_ENV if not already set
-if (!process.env.NODE_ENV) {
-  process.env.NODE_ENV = 'development';
+if (!process.env.SITE_ENV) {
+  process.env.SITE_ENV = 'development';
 }
 
 // environment variables based on NODE_ENV
-const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : (process.env.NODE_ENV === 'test' ? '.env.test' : '.env');
+const envFile = process.env.SITE_ENV === 'production' ? '.env.prod' : (process.env.SITE_ENV === 'test' ? '.env.test' : '.env');
 dotenvConfig({ path: envFile });
 
-console.log(`Current NODE_ENV: ${process.env.NODE_ENV}`);
+console.log(`Current NODE_ENV: ${process.env.SITE_ENV}`);
 
 // environment based on the process.env.NODE_ENV
-const environment: 'test' | 'prod' = process.env.NODE_ENV === 'production' ? 'prod' : 'test';
+const environment: 'test' | 'prod' = process.env.SITE_ENV === 'production' ? 'prod' : 'test';
 
 console.log(`Selected environment: ${environment}`);
 

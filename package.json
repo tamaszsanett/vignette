@@ -5,11 +5,11 @@
   "scripts": {
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "dev:test": "cross-env NODE_ENV=development nuxt dev",
-    "dev:prod": "cross-env NODE_ENV=production nuxt start",
-    "test:build": "cross-env NODE_ENV=test nuxt build",
-    "prod:build": "cross-env NODE_ENV=production nuxt build",
-    "generate": "cross-env NODE_ENV=production nuxt generate"
+    "dev:test": "nuxt dev",
+    "dev:prod": "nuxt start",
+    "test:build": "nuxt build --dotenv .env.test",
+    "prod:build": "nuxt build --dotenv .env.prod",
+    "generate": "nuxt generate"
   },
   "dependencies": {
     "@nuxt/image": "^1.4.0",
