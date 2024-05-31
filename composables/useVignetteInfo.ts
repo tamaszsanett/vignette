@@ -10,7 +10,8 @@ export function useVignetteInfo() {
     return `${encodeURIComponent(route.params.category + "/" + route.params.type)}`;
   });
 
-  const apiEndpointInfo = "https://test-gw.voxpay.hu/Webshop.Vignette/GetVignetteInfo";
+  const config = useRuntimeConfig();
+  const apiEndpointInfo = config.public.apiEndpoint.vignetteEndpoint + "/GetVignetteInfo";
   
   // full URL for the API request
   const infoUrl = computed(() => {

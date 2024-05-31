@@ -467,7 +467,9 @@ if (cartKey.value == null) {
 //cartKey.value = "3fa85f64-5717-4562-b3fc-2c963f66afa8";
 // Betöltjük a korábbi order adatait, ha van order-id-nk.
 
-const commonApiEndpoint = "https://test-gw.voxpay.hu/Webshop.Common/GetOrder";
+
+const config = useRuntimeConfig();
+const commonApiEndpoint = config.public.apiEndpoint.webshopEndpoint+ "/GetOrder";
 
 /* let orderData = {
   value: {
@@ -558,7 +560,7 @@ const fetchCompanyNameSuggestions = async (
 
   if (!query || query.length < 2) return;
 
-  const companyNamesEndpoint = `https://test-gw.voxpay.hu/Webshop.Common/ListInvoiceAddressesByNamePart?InvoiceName=${query}`;
+  const companyNamesEndpoint = config.public.apiEndpoint.webshopEndpoint+ `/ListInvoiceAddressesByNamePart?InvoiceName=${query}`;
   try {
     const response = await fetch(companyNamesEndpoint);
     const data = (await response.json()) as InvoiceAddressResponse;
@@ -597,7 +599,7 @@ async function fetchPostalCodeSuggestions(event: PostalCodeChangeEvent) {
     return;
   }
 
-  const endpoint = `https://test-gw.voxpay.hu/Webshop.Common/ListCityByPostalCodePart?InvoicePostalCode=${query}`;
+  const endpoint = config.public.apiEndpoint.webshopEndpoint+ `/ListCityByPostalCodePart?InvoicePostalCode=${query}`;
   try {
     const response = await fetch(endpoint);
     const data = (await response.json()) as PostalCodeResponse;
@@ -655,7 +657,7 @@ const pageUri = computed(() => {
 });
 
 const apiEndpoint =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+config.public.apiEndpoint.widgets;
 const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
   "%2C",
   "%2F"
@@ -688,7 +690,7 @@ async function sendForm() {
   loading.value = true;
 
   const createOrderEndpoint =
-    "https://test-gw.voxpay.hu/Webshop.Common/CreateOrder";
+  config.public.apiEndpoint.webshopEndpoint+ "/CreateOrder";
   const response = await $fetch<GetOrderResponse>(createOrderEndpoint, {
     method: "POST",
     body: {

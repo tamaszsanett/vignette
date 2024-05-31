@@ -319,7 +319,7 @@ import { useUpdateCartItem } from "~/composables/useUpdateCartItem";
 const selectedCounties = ref<string[]>([]);
 const currentLanguage = ref(locale);
 const category = route.params.category;
-
+const config = useRuntimeConfig();
 // Get vignette info
 //vignette info
 const vignetteInfo = ref<VignetteInfoResponse | null>(null);
@@ -429,7 +429,7 @@ if (
 } else {
   // get items from cart
   const cart = await $fetch<GetCartResponse>(
-    `https://test-gw.voxpay.hu/Webshop.Common/GetCart?CartKey=${cartKey.value}&CultureKey=${currentLanguage.value}`
+    config.public.apiEndpoint.webshopEndpoint+ `/GetCart?CartKey=${cartKey.value}&CultureKey=${currentLanguage.value}`
   );
 
   if (
@@ -719,7 +719,7 @@ const isEuCountry = (country: any) =>
   ].includes(country.countryCode);
 
 const { validateAllPlates } = usePlateValidation(
-  "https://test-gw.voxpay.hu/Webshop.Vignette/ValidatePlateNumber"
+  config.public.apiEndpoint.vignetteEndpoint + "/ValidatePlateNumber"
 );
 
 const handleInputValidation = (index: number) => {
@@ -1044,8 +1044,9 @@ const pageUri = computed(() => {
 });
 
 //widgetdata loading
+
 const apiEndpoint =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+config.public.apiEndpoint.widgets;
 const url = `${apiEndpoint}?PageUri=${pageUri.value.replaceAll(
   "%2C",
   "%2F"
@@ -1126,7 +1127,7 @@ async function fetchEndDate(vignetteCode: string, validityStart: string) {
     validityStart,
     numberOfVignettes: numberOfVignettes.value,
   };
-  const apiEndpoint = "https://test-gw.voxpay.hu/Webshop.Vignette/CountEndDate";
+  const apiEndpoint = config.public.apiEndpoint.vignetteEndpoint + "/CountEndDate";
   try {
     const response = await fetch(apiEndpoint, {
       method: "POST",

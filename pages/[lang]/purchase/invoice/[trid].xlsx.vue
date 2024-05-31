@@ -1,6 +1,7 @@
 <template></template>
 <script setup>
 import { ref, onMounted } from 'vue'
+const config = useRuntimeConfig();
 
 const trid = ref(0)
 const res = ref(Blob);
@@ -8,7 +9,7 @@ const res = ref(Blob);
 const route = useRoute();
 trid.value = route.params.trid;
 
-res.value = await $fetch( `https://test-gw.voxpay.hu/Webshop.Vignette/GetCollectionInvoiceXlsx?Trid=${trid.value}`);
+res.value = await $fetch( config.public.apiEndpoint.vignetteEndpoint + `/GetCollectionInvoiceXlsx?Trid=${trid.value}`);
 
 onMounted(() => {
     const url = window.URL.createObjectURL(

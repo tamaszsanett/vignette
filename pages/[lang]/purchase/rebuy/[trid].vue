@@ -2,7 +2,7 @@
 <script lang="ts" setup>
 import type { GenerateOrderByTridResponse } from "~/types/types";
 import { ref, onMounted } from 'vue';
-
+const config = useRuntimeConfig();
 
 const trid = ref(0)
 
@@ -10,7 +10,7 @@ const route = useRoute();
 trid.value = route.params.trid;
 
 const submitOrderEndpoint =
-    "https://test-gw.voxpay.hu/Webshop.Vignette/GenerateOrderByTrid";
+config.public.apiEndpoint.vignetteEndpoint + "/GenerateOrderByTrid";
 const response = await $fetch<GenerateOrderByTridResponse>(
     submitOrderEndpoint,
     {

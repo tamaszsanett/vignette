@@ -10,7 +10,7 @@ if (!process.env.SITE_ENV) {
 const envFile = process.env.SITE_ENV === 'production' ? '.env.prod' : (process.env.SITE_ENV === 'test' ? '.env.test' : '.env');
 dotenvConfig({ path: envFile });
 
-console.log(`Current NODE_ENV: ${process.env.SITE_ENV}`);
+console.log(`Current SITE_ENV: ${process.env.SITE_ENV}`);
 
 // environment based on the process.env.NODE_ENV
 const environment: 'test' | 'prod' = process.env.SITE_ENV === 'production' ? 'prod' : 'test';
