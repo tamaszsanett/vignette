@@ -1,3 +1,23 @@
+import { config as dotenvConfig } from 'dotenv';
+import { apiEndpoints } from "./apiEndpoints";
+
+// set the NODE_ENV if not already set
+if (!process.env.NODE_ENV) {
+  process.env.NODE_ENV = 'development';
+}
+
+// environment variables based on NODE_ENV
+const envFile = process.env.NODE_ENV === 'production' ? '.env.prod' : (process.env.NODE_ENV === 'test' ? '.env.test' : '.env');
+dotenvConfig({ path: envFile });
+
+console.log(`Current NODE_ENV: ${process.env.NODE_ENV}`);
+
+// environment based on the process.env.NODE_ENV
+const environment: 'test' | 'prod' = process.env.NODE_ENV === 'production' ? 'prod' : 'test';
+
+console.log(`Selected environment: ${environment}`);
+
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
@@ -19,6 +39,12 @@ export default defineNuxtConfig({
     options: {
       scrollBehaviorType: 'smooth'
     }
+  },
+  runtimeConfig: {
+    public: {
+      apiEndpoint: apiEndpoints[environment],
+      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    },
   },
   routeRules: {
     "/": { redirect: { to: "/en", statusCode: 301 } },

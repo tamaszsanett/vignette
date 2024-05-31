@@ -40,10 +40,14 @@
 </template>
 
 <script setup lang="ts">
+import { useRuntimeConfig } from 'nuxt/app';
 const { t, locale } = useI18n();
 import { ref, computed, watch } from "vue";
 import { useAsyncData, useRoute } from "nuxt/app";
 
+const config = useRuntimeConfig();
+/* console.log(config.public.baseUrl); 
+ */
 const route = useRoute();
 const currentLanguage = ref(locale);
 watch(
@@ -90,8 +94,8 @@ const pageClass = computed(() => {
   }
 });
 
-const apiEndpoint =
-  "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri";
+const apiEndpoint = config.public.apiEndpoint.widgets; 
+
 const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
   "%2C",
   "%2F"
