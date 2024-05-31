@@ -936,6 +936,10 @@ const maxEndDate = computed(() => {
 
 //
 onMounted(async () => {
+
+  window.dataLayer = window.dataLayer || [];
+  window.dataLayer.push({'site_lang': currentLanguage});
+
   try {
     if (vignetteInfo.value) {
       var endDate = await fetchEndDate(

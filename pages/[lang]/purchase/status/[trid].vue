@@ -80,5 +80,8 @@ var purchaseData = await $fetch<GetPurchaseResponse>(`${commmonApiEndpoint}?Trid
 
 /// ----------------- /LOAD ORDER -----------------------
 
-
+onMounted(() => {
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({'site_lang': currentLanguage});
+})
 </script>

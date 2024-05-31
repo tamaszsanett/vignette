@@ -154,4 +154,9 @@ const widgets = response.value.widgets.map((widget) => {
     };
   }
 });
+
+onMounted(() => {
+window.dataLayer = window.dataLayer || [];
+window.dataLayer.push({'site_lang': currentLanguage});
+})
 </script>
