@@ -40,11 +40,12 @@
 </template>
 
 <script setup lang="ts">
+const { t, locale } = useI18n();
 import { ref, computed, watch } from "vue";
 import { useAsyncData, useRoute } from "nuxt/app";
 
 const route = useRoute();
-const currentLanguage = ref("en");
+const currentLanguage = ref(locale);
 watch(
   () => route.params.lang,
   (newLang) => {

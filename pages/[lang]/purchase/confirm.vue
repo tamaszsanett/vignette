@@ -346,7 +346,7 @@ const sortedCartItems = computed(() => {
 
 /// ----------------- LOAD LANGUAGE -----------------------
 
-const currentLanguage = ref("en");
+const currentLanguage = ref(locale);
 watch(
   () => route.params.lang,
   (newLang) => {

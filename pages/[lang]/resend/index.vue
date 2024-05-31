@@ -203,6 +203,18 @@ import Button from "primevue/button";
 import Dialog from "primevue/dialog";
 import type { ApiResponse, ApiError, FormErrors } from "~/types/resend";
 
+const currentLanguage = ref(locale);
+
+watch(
+  () => route.params.lang,
+  (newLang) => {
+    currentLanguage.value = Array.isArray(newLang)
+      ? newLang[0]
+      : newLang || "en";
+  },
+  { immediate: true }
+);
+
 const email = ref("");
 const reg_plate_num = ref("");
 const terms = ref(false);
@@ -288,18 +300,6 @@ const resetForm = () => {
   terms.value = false;
   dialogVisible.value = false; // Close dialog
 };
-
-const currentLanguage = ref("en");
-
-watch(
-  () => route.params.lang,
-  (newLang) => {
-    currentLanguage.value = Array.isArray(newLang)
-      ? newLang[0]
-      : newLang || "en";
-  },
-  { immediate: true }
-);
 
 const showSearch = computed(() => {
   return !!route.params.slug;

@@ -636,7 +636,7 @@ const selectedCountryPhonePrefix = ref(orderData.value?.phonePrefix);
 const numbers = ref(phonePrefixes);
 
 
-const currentLanguage = ref("en");
+const currentLanguage = ref(locale);
 watch(
   () => route.params.lang,
   (newLang) => {

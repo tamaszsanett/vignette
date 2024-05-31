@@ -29,7 +29,7 @@ import ConfirmPageUnderPayment from "~/components/widget/ConfirmPageUnderPayment
 const { t, locale } = useI18n();
 
 const route = useRoute();
-const currentLanguage = ref("en");
+const currentLanguage = ref(locale);
 watch(
     () => route.params.lang,
     (newLang) => {
