@@ -936,7 +936,7 @@ export default defineI18nConfig(() => ({
           important_text:
             "Na diaľnicu môžete vyraziť len vtedy, ak ste po zaplatení dostali e-mailom alebo v prehliadači potvrdenie o úspešnom overení platnosti diaľničnej známky.",
           back: "Späť",
-          order_vignette_btn_title: "Objednajte si diaľničnú známku",
+          order_vignette_btn_title: "Vinetky objednávková",
         },
       },
       confirm_failed: {
