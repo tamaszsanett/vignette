@@ -30,9 +30,9 @@
                     </div>
                 </section>
             </div>
-            <NuxtLink :to="{path: '/', hash: '#' + widget.buttonUrl}"
-                      class="btn primary-btn w-fit mx-auto"
-                      :title="widget.buttonText">
+            <NuxtLink :to="{ path: `/${locale}`, hash: `#${widget.buttonUrl}` }"
+                class="btn primary-btn w-fit mx-auto"
+                :title="widget.buttonText">
                 <span>{{ widget.buttonText }}</span>
             </NuxtLink>
         </div>
@@ -48,4 +48,6 @@
             required: true,
         }
     });
+
+    const { locale } = useI18n();
 </script>
