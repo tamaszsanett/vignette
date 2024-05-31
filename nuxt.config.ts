@@ -213,20 +213,22 @@ export default defineNuxtConfig({
   },
   
   gtag: {
-    id: 'G-X1MZEJ9MFM',
+    id: apiEndpoints[environment].gtag,
     initCommands: [
       // Setup up consent mode
       ['consent', 'default', {
-        ad_user_data: 'granted',
-        ad_personalization: 'granted',
-        ad_storage: 'granted',
-        analytics_storage: 'granted',
+        ad_user_data: 'denied',
+        ad_personalization: 'denied',
+        ad_storage: 'denied',
+        analytics_storage: 'denied',
+        functionality_storage: 'denied',
+        personalization_storage: 'denied',
         wait_for_update: 500,
       }]
     ]
   },
   gtm: {
-    id: 'GTM-NJKJX3PX',
+    id: apiEndpoints[environment].gtm,
     defer: false,
     compatibility: false,
     nonce: '2726c7f26c',

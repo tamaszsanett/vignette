@@ -3,10 +3,16 @@ export const apiEndpoints = {
     widgets:
       "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri",
     vignetteEndpoint: "https://test-gw.voxpay.hu/Webshop.Vignette",
+    webshopEndpoint: "https://test-gw.voxpay.hu/Webshop.Common",
+    gtm: "GTM-NJKJX3PX",
+    gtag: "G-X1MZEJ9MFM",
   },
   prod: {
     widgets:
-      "https://prod-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri",
-    vignetteEndpoint: "https://test-gw.voxpay.hu/Webshop.Vignette",
+      "https://gw.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri",
+    vignetteEndpoint: "https://gw.voxpay.hu/Webshop.Vignette",
+    webshopEndpoint: "https://gw.voxpay.hu/Webshop.Common",
+    gtm: "GTM-NJKJX3PX",
+    gtag: "G-X1MZEJ9MFM",
   },
 };
