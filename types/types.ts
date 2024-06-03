@@ -373,6 +373,7 @@ export type GenerateOrderByTridResponse = {
     orderId: string;
     cartId: string;
     redirectUri: string;
+    vignetteType: string;
   },
   isSuccess: boolean;
   error: {
