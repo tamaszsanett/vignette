@@ -791,6 +791,6 @@ const goBack = () => {
 
 onMounted(() => {
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({'site_lang': currentLanguage});
+window.dataLayer.push({'site_lang': currentLanguage.value});
 })
 </script>
