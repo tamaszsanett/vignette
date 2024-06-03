@@ -680,10 +680,27 @@ const widgets = response.value.widgets.map((widget) => {
 
 const loading = ref(false);
 
+const validatePostalCode = (country: string, postalCode: string): boolean => {
+  if (country === "Magyarország | Hungary" && postalCode.length !== 4) {
+    console.log("HUNGARY");
+    return false;
+  }
+  if (country !== "Magyarország | Hungary" && postalCode.length === 0) {
+    console.log("Another COUNTRY");
+    return false;
+  }
+  return true;
+};
+
 async function sendForm() {
 
   if (vatInvoiceChecked.value && companyOrPrivatePerson.value == "") {
     errorMessage.value = t("billing.billing_type_required");
+    return;
+  }
+
+  if (!validatePostalCode(selectedCountry.value, orderData.value.invoicePostalCode)) {
+    errorMessage.value = t("billing.invalid_postal_code");
     return;
   }
 
