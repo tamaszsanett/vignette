@@ -53,15 +53,14 @@
               v-model="orderData.value.userEmail"
               aria-describedby="email"
             />
-            <button
-              type="button"
+            <div
               class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
             >
               ?
               <span class="tooltiptext">{{
                 $t("billing.mail_tooltip_text")
               }}</span>
-            </button>
+            </div>
           </div>
         </section>
         <section class="flex flex-col gap-2">
@@ -101,15 +100,14 @@
               aria-describedby="phone-number"
               class="primary-input"
             />
-            <button
-              type="button"
+            <div
               class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
             >
               ?
               <span class="tooltiptext">{{
                 $t("billing.phone_tooltip_text")
               }}</span>
-            </button>
+            </div>
           </div>
         </section>
         <section class="card flex items-center gap-2">
@@ -121,12 +119,12 @@
           <label for="vatInvoice" class="primary-label text-xl">
             {{ $t("billing.invoice_request_title") }}
           </label>
-          <button type="button" class="tooltip btn primary-btn tooltip-wrapper">
+          <div class="tooltip btn primary-btn tooltip-wrapper">
             ?
             <span class="tooltiptext">{{
               $t("billing.request_title_tooltip_text")
             }}</span>
-          </button>
+          </div>
         </section>
         <section v-if="vatInvoiceChecked">
           <div class="flex items-center gap-4 justify-center mb-4">
@@ -155,15 +153,14 @@
                 >{{ $t("billing.private_person") }}</label
               >
             </div>
-            <button
-              type="button"
+            <div
               class="tooltip btn primary-btn tooltip-wrapper"
             >
               ?
               <span class="tooltiptext">{{
                 $t("billing.checkbox_tooltip_text")
               }}</span>
-            </button>
+            </div>
           </div>
           <div class="w-full flex flex-col gap-4" v-if="vatInvoiceChecked && companyOrPrivatePerson === 'company' || vatInvoiceChecked && companyOrPrivatePerson === 'privatePerson'">
             <!-- Section visible only when 'privatePerson' is selected -->
@@ -182,14 +179,14 @@
                   v-model="orderData.value.invoiceName"
                   aria-describedby="name"
                 />
-                <button type="button"
+                <div
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.name_tooltip_text")
                   }}</span>
-                </button>
+                </div>
               </div>
             </section>
             <!-- Section visible only when 'Company' is selected -->
@@ -209,14 +206,14 @@
                     field="companyName"
                     :placeholder="$t('billing.company_name_placeholder')"
                   />
-                  <button type="button"
+                  <div
                     class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                   >
                     ?
                     <span class="tooltiptext">{{
                       $t("billing.name_tooltip_text")
                     }}</span>
-                  </button>
+                  </div>
                 </div>
               </div>
             </section>
@@ -248,14 +245,14 @@
                     </div>
                   </template>
                 </Dropdown>
-                <button type="button"
+                <div
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.country_tooltip_text")
                   }}</span>
-                </button>
+                </div>
               </div>
             </section>
             <section class="flex flex-col gap-2" v-if="companyOrPrivatePerson === 'privatePerson'">
@@ -286,14 +283,14 @@
                     </div>
                   </template>
                 </Dropdown>
-                <button type="button"
+                <div
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.country_tooltip_text")
                   }}</span>
-                </button>
+                </div>
               </div>
             </section>
             <section
@@ -314,15 +311,14 @@
                   mask="99999999-9-99"
                   placeholder=""
                 />
-                <button
-                  type="button"
+                <div
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.tax_number_tooltip_text")
                   }}</span>
-                </button>
+                </div>
               </div>
             </section>
             <section class="flex flex-col gap-2">
@@ -339,15 +335,14 @@
                   @change="onPostalCodeSelection" field="label"
                   :placeholder="$t('billing.zip_code_placeholder')"
                 />
-                <button
-                  type="button"
+                <div
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.zip_code_tooltip_text")
                   }}</span>
-                </button>
+                </div>
               </div>
             </section>
             <section class="flex flex-col gap-2">
@@ -362,15 +357,14 @@
                   v-model="orderData.value.invoiceCity"
                   aria-describedby="city"
                 />
-                <button
-                  type="button"
+                <div
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.city_tooltip_text")
                   }}</span>
-                </button>
+                </div>
               </div>
             </section>
             <section class="flex flex-col gap-2">
@@ -385,15 +379,14 @@
                   v-model="orderData.value.invoiceStreetAddress"
                   aria-describedby="street"
                 />
-                <button
-                  type="button"
+                <div
                   class="tooltip btn primary-btn tooltip-wrapper tooltip-responsive-fix"
                 >
                   ?
                   <span class="tooltiptext">{{
                     $t("billing.address_tooltip_text")
                   }}</span>
-                </button>
+                </div>
               </div>
             </section>
           </div>

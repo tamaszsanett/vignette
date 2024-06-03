@@ -149,7 +149,6 @@ input:disabled {
 }
 
 .tooltip {
-  border-bottom: 1px dotted black;
   @apply relative inline-block top-0;
 }
 
