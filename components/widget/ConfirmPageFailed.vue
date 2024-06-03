@@ -29,7 +29,7 @@
                       <td><strong>{{ $t("global.confirm_trid.table_validity_period_title") }}</strong></td>
                       <td><strong>{{ $t("global.confirm_trid.table_vignette_num_title") }}</strong></td>
                     </tr>
-                    <tr v-for="vignette in sortedVignettes" :key="vignette.nmfrVignetteNumber" class="failed-order">
+                    <tr v-for="vignette in sortedVignettes" :key="vignette.nmfrVignetteNumber" :class="vignette.status == 'Ordered' ? 'success-order' : 'failed-order'">
                       <td>({{ vignette.countryCode }}) {{ vignette.plateNumber }}</td>
                       <td>{{ vignette.validFrom.substring(0, 10).replaceAll("-", ".") }} - {{ vignette.validTo?.substring(0, 10).replaceAll("-", ".") }}</td>
                       <td class="text-info">
