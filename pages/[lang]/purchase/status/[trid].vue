@@ -82,6 +82,6 @@ var purchaseData = await $fetch<GetPurchaseResponse>(`${commmonApiEndpoint}?Trid
 
 onMounted(() => {
 window.dataLayer = window.dataLayer || [];
-window.dataLayer.push({'site_lang': currentLanguage});
+window.dataLayer.push({'site_lang': currentLanguage.value});
 })
 </script>

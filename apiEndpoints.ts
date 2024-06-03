@@ -6,6 +6,7 @@ export const apiEndpoints = {
     webshopEndpoint: "https://test-gw.voxpay.hu/Webshop.Common",
     gtm: "GTM-NJKJX3PX",
     gtag: "G-X1MZEJ9MFM",
+    redirectUrl: "https://new-hungary-vignette.voxpay.hu/"
   },
   prod: {
     widgets:
@@ -14,5 +15,6 @@ export const apiEndpoints = {
     webshopEndpoint: "https://gw.voxpay.hu/Webshop.Common",
     gtm: "GTM-NJKJX3PX",
     gtag: "G-X1MZEJ9MFM",
+    redirectUrl: "https://new.hungary-vignette.eu/"
   },
 };

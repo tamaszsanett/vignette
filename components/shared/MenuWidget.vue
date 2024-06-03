@@ -18,9 +18,8 @@
             :key="item.url"
             :class="{ 'active-link': isActive(item.url) }"
             class="home"
-          >
-            {{ item.title }}
-          </a>
+            v-html="item.title"
+          ></a>
         </div>
       </div>
       <!-- Language Selector -->
