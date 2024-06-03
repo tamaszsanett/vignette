@@ -1,4 +1,5 @@
 <template>
+  <!-- NE töröld ki, kell a szerkesztőnek a főoldali h1-eknél -->
   <!-- <div class="max-w-[280px] max-w-title sm:max-w-[480px] lg:max-w-[630px] mx-auto"></div> -->
   <main :class="['container mx-auto px-4 lg:px-0 pt-6 mt-24', pageClass]">
     <template v-for="widget in widgets" :key="widget.widgetId">
