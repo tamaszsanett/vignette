@@ -24,14 +24,16 @@ const response = await $fetch<GenerateOrderByTridResponse>(
   onMounted(() => {
   if (response.value)
   {
-    console.log(response);
     const orderId = useCookie("orderId");
     orderId.value = response.value.orderId;
     const cartId = useCookie("cartKey");
     cartId.value = response.value.cartId;
+    
+    const vignetteTypeFromCookie = useCookie("vignetteType");
 
+    vignetteTypeFromCookie.value = response.value.vignetteType;
 
-    navigateTo(response.value.redirectUri);
+    navigateTo(response.value.redirectUri);  
   }
 });
 </script>
