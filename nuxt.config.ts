@@ -17,36 +17,9 @@ const environment: 'test' | 'prod' = process.env.SITE_ENV === 'production' ? 'pr
 
 console.log(`Selected environment: ${environment}`);
 
-
-// https://nuxt.com/docs/api/configuration/nuxt-config
-export default defineNuxtConfig({
-  devtools: { enabled: true },
-  css: [
-    "~/assets/css/main.css",
-    "primevue/resources/themes/aura-light-lime/theme.css",
-  ],
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
-  },
-  components: {
-    global: true,
-    dirs: ["~/components"],
-  },
-  router: {
-    options: {
-      scrollBehaviorType: 'smooth'
-    }
-  },
-  runtimeConfig: {
-    public: {
-      apiEndpoint: apiEndpoints[environment],
-      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
-    },
-  },
-  routeRules: {
+var routeRules = {};
+if (process.env.SITECODE == "hungary-vignette.eu") {
+  routeRules = {
     "/": { redirect: { to: "/en", statusCode: 301 } },
     "/404": { redirect: { to: "/en/404", statusCode: 301 } },
     "/en/customer-service": { redirect: { to: "/en/contact", statusCode: 301 } },
@@ -143,7 +116,42 @@ export default defineNuxtConfig({
     "/hungary-motorway-vignette-2024": { redirect: { to: "/en", statusCode: 301 } },
     "/ungarn-autobahnvignette-2024": { redirect: { to: "/de", statusCode: 301 } },
     "/madarska-vinjeta-2024-godine": { redirect: { to: "/hr", statusCode: 301 } },
+  };
+}
+else {
+
+}
+
+
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  devtools: { enabled: true },
+  css: [
+    "~/assets/css/main.css",
+    "primevue/resources/themes/aura-light-lime/theme.css",
+  ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
   },
+  components: {
+    global: true,
+    dirs: ["~/components"],
+  },
+  router: {
+    options: {
+      scrollBehaviorType: 'smooth'
+    }
+  },
+  runtimeConfig: {
+    public: {
+      apiEndpoint: apiEndpoints[environment],
+      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+    },
+  },
+  routeRules: routeRules,
   app: {
     head: {
       title: "Hungarian Motorway vignette sale online &#128663; 2023!",
