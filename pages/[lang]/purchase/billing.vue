@@ -680,7 +680,7 @@ const widgets = response.value.widgets.map((widget) => {
 
 const loading = ref(false);
 
-const validatePostalCode = (country: string, postalCode: string): boolean => {
+/* const validatePostalCode = (country: string, postalCode: string): boolean => {
   if (country === "Magyarország | Hungary" && postalCode.length !== 4) {
     console.log("HUNGARY");
     return false;
@@ -690,7 +690,7 @@ const validatePostalCode = (country: string, postalCode: string): boolean => {
     return false;
   }
   return true;
-};
+}; */
 
 async function sendForm() {
 
@@ -699,10 +699,10 @@ async function sendForm() {
     return;
   }
 
-  if (!validatePostalCode(selectedCountry.value, orderData.value.invoicePostalCode)) {
+/*   if (!validatePostalCode(selectedCountry.value, orderData.value.invoicePostalCode)) {
     errorMessage.value = t("billing.invalid_postal_code");
     return;
-  }
+  } */
 
   loading.value = true;
 
