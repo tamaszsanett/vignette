@@ -432,7 +432,7 @@ async function sendForm() {
         sourcePlatform: "web",
         sourceForm: "Standard",
         redirectURL:
-          "https://new-hungary-vignette.voxpay.hu/" +
+          config.public.apiEndpoint.redirectUrl +
           currentLanguage.value +
           "/purchase/status/" +
           orderData.value.trid,
