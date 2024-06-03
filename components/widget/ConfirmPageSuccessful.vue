@@ -135,22 +135,21 @@ onNuxtReady(() => {
 });
 
 function SendEventsToGA4(trid : number, totalMargin: number) {
+  const originalLocale = locale.value;
+  locale.value = 'en';
+  let currency = 'HUF';
+  const parsedMargin = parseInt(totalMargin.toString());
+  const vignettes = [];
+  let index = 0;
 
-  var currency = 'HUF';
-  var parsedMargin = parseInt(totalMargin.toString());
-  var vignettes = [];
-  var index = 0;
+  for (let i = 0; i < props.purchaseData.value.vignettes.length; i++) {
 
-  for (var i = 0; i < props.purchaseData.value.vignettes.length; i++) {
-    var item =
-    {
-      
+    let item = {
       item_id: props.purchaseData.value.vignettes[i].vignetteType,
-      item_name: t("vignette_type."+props.purchaseData.value.vignettes[i].vignetteType),
-      index: index,
-      item_brand: "Matrica",
-      item_category: t("category."+props.purchaseData.value.vignettes[i].vignetteType),
-      item_category2: t("duration_type."+props.purchaseData.value.vignettes[i].vignetteType),
+      item_name: t(`vignette_type.${props.purchaseData.value.vignettes[i].vignetteType}`, {}, 'en'),
+      item_brand: "Vignette",
+      item_category: t(`category.${props.purchaseData.value.vignettes[i].vignetteType}`, {}, 'en'),
+      item_category2: t(`vignette_type.${props.purchaseData.value.vignettes[i].vignetteType}`, {}, 'en'),
       price: props.purchaseData.value.vignettes[i].amount,
       quantity: 1
     };
@@ -205,6 +204,8 @@ setTimeout(() => {
   isDirty = true;
   loading.value = false;
 }, 1000);
+
+locale.value = originalLocale;
 }
 
 </script>
