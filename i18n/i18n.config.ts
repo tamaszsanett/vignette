@@ -3079,53 +3079,49 @@ export default defineI18nConfig(() => ({
         },
       },
       confirm_failed: {
-        title: "Vignette purchase failed!",
-        payment_result_text: "Payment result",
-        reorder_btn_title: "Reorder",
+        title: "L'acquisto della vignetta non è andato a buon fine!",
+        payment_result_text: "Risultato del pagamento",
+        reorder_btn_title: "Riordino",
         card: {
-          contact_us_text: `If you think that your payment was successful, but the e-vignette
-          validation failed, please contact us!`,
-          important_text: `IMPORTANT: Successful financial completion does not automatically entitle you to use the motorway! You can only drive onto the highway if you have
-          a successful vignette after paying received confirmation of
-          validation by e-mail, or in your browser.`,
+          contact_us_text: `Se pensate che il vostro pagamento sia andato a buon fine, ma la convalida dello vignette non è andata a buon fine, contattateci!`,
+          important_text: `IMPORTANTE: Il fatto che le prestazioni finanziarie siano state prestazione finanziaria non significa automaticamente che siete autorizzati a utilizzare la pista! È possibile accedere all'autostrada solo se si è in possesso di una una vignetta di successo dopo aver pagato ricevuto la conferma di convalida via e-mail o nel browser`,
         },
       },
       confirm_successful: {
-        title: "Successful vignette purchase",
+        title: "Ordini di vignette di successo",
         card: {
-          download_order_btn_title: "Download order summary",
+          download_order_btn_title: "Scarica il riepilogo dell'ordine",
           ty_text: "Grazie per l'acquisto!",
-          info_text: "We will send you the purchase receipt by e-mail.",
-          spam_text: `ATTENTION: if you can't find our confirmation email, check your SPAM folder.`,
+          info_text: "Vi invieremo la ricevuta d'acquisto via e-mail.",
+          spam_text: `ATTENZIONE: se non trovate la lettera di notifica, cercatela nella cartella SPAM del vostro account.`,
         },
       },
       confirm_under_payment: {
-        title: "Transaction being processed",
+        title: "Ordini della vignetta andati a buon fine",
         card: {
           refresh_text:
-            "To review the result, please refresh the page in some seconds!",
-          refresh_btn_title: "Refresh",
-          info_text: `Please check your mailbox. <br />We will send you confirmation
-            of the successful purchase and the validation of the vignette!`,
+            "Per rivedere il risultato, aggiornare la pagina dopo qualche secondo!",
+          refresh_btn_title: "Aggiornare",
+          info_text: `Per favore controlla la tua casella di posta.<br />Ti invieremo la conferma dell'acquisto avvenuto con successo e la validazione della vignetta!`,
         },
       },
       global: {
         contact_data: {
-          title: "Customer Service:",
-          phone: "Phone: (36-1) 225-7603",
+          title: "Assistenza clienti:",
+          phone: "Telefono: (36-1) 225-7603",
           email_title: "E-mail:",
           mail: "support[at]hungary-vignette.eu",
         },
         confirm_trid: {
-          trans_id: "Transaction identifier",
+          trans_id: "Identificatore della transazione",
           e_mail: "E-mail",
-          table_plate_num_title: "License plate number",
-          table_validity_period_title: "Validity period",
-          table_vignette_num_title: "Vignette number",
+          table_plate_num_title: "Numero di targa",
+          table_validity_period_title: "Periodo di validità",
+          table_vignette_num_title: "Numero della vignetta",
           card_time_text: `<p>
-            <strong>Payment by bank card</strong> will take only a few
-            minutes.
-          </p>`,
+          Il <strong>pagamento con carta bancaria</strong> richiederà solo pochi minuti
+          minuti.
+        </p>`,
         },
       },
       resend: {
