@@ -18,7 +18,7 @@ const environment: 'test' | 'prod' = process.env.SITE_ENV === 'production' ? 'pr
 console.log(`Selected environment: ${environment}`);
 
 var routeRules = {};
-if (process.env.SITECODE == "hungary-vignette.eu") {
+if (process.env.SITECODE == "www.hungary-vignette.eu") {
   routeRules = {
     "/": { redirect: { to: "/en", statusCode: 301 } },
     "/404": { redirect: { to: "/en/404", statusCode: 301 } },
@@ -31,6 +31,7 @@ if (process.env.SITECODE == "hungary-vignette.eu") {
     "/faq": { redirect: { to: "/en/faq", statusCode: 301 } },
     "/gtcc": { redirect: { to: "/en/gtcc", statusCode: 301 } },
     "/highway-vignette-prices-2023": { redirect: { to: "/en/highway-vignette-prices-2023", statusCode: 301 } },
+    "/highway-vignette-prices-2024": { redirect: { to: "/en/highway-vignette-prices-2024", statusCode: 301 } },
     "/information": { redirect: { to: "/en/vignette-info", statusCode: 301 } },
     "/en/information": { redirect: { to: "/en/vignette-info", statusCode: 301 } },
     "/news": { redirect: { to: "/en/news", statusCode: 301 } },
@@ -112,10 +113,15 @@ if (process.env.SITECODE == "hungary-vignette.eu") {
     "/vigneta-pentru-autostrada-din-ungaria-2024": { redirect: { to: "/ro", statusCode: 301 } },
     "/madarska-vinjeta-2024": { redirect: { to: "/sb", statusCode: 301 } },
     "/hongarije-autosnelwegvignet-2024": { redirect: { to: "/nl", statusCode: 301 } },
-    "/madarska-dialnicna-znamka-2024 ": { redirect: { to: "/sk", statusCode: 301 } },
+    "/madarska-dialnicna-znamka-2024": { redirect: { to: "/sk", statusCode: 301 } },
     "/hungary-motorway-vignette-2024": { redirect: { to: "/en", statusCode: 301 } },
     "/ungarn-autobahnvignette-2024": { redirect: { to: "/de", statusCode: 301 } },
     "/madarska-vinjeta-2024-godine": { redirect: { to: "/hr", statusCode: 301 } },
+    "/news/hungarian-motorway-vignettes-types-2024": { redirect: { to: "/en", statusCode: 301 }},
+    "/news/traveling-on-hungarian-motorways-is-worth-it-in-spring-too": { redirect: { to: "/en", statusCode: 301 }},
+    "/hungarian-motorway-vignettes-types-2": {redirect: { to: "/en", statusCode: 301 }},
+    "/sw.js": {redirect: { to: "/en", statusCode: 301 }},
+    "/sb": {redirect: { to: "/en", statusCode: 301 }}
   };
 }
 else {
@@ -192,7 +198,7 @@ export default defineNuxtConfig({
   },
   i18n: {
     vueI18n: './i18n/i18n.config.ts',
-    baseUrl: 'https://new-hungary-vignette.voxpay.hu/',
+    baseUrl: 'https://www.hungary-vignette.eu/',
     locales: [
       {
         code: 'en',
@@ -225,12 +231,12 @@ export default defineNuxtConfig({
     initCommands: [
       // Setup up consent mode
       ['consent', 'default', {
-        ad_user_data: 'denied',
-        ad_personalization: 'denied',
-        ad_storage: 'denied',
-        analytics_storage: 'denied',
-        functionality_storage: 'denied',
-        personalization_storage: 'denied',
+        ad_user_data: 'granted',
+        ad_personalization: 'granted',
+        ad_storage: 'granted',
+        analytics_storage: 'granted',
+        functionality_storage: 'granted',
+        personalization_storage: 'granted',
         wait_for_update: 500,
       }]
     ]

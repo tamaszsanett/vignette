@@ -449,7 +449,6 @@ async function sendForm() {
       "https://tools.ietf.org/html/rfc9110#section-15.5.1"
     ) {
       var errors = JSON.parse(response.error.message);
-      console.log(errors);
       
     } else {
       errorMessage.value = response.error.message;
@@ -503,7 +502,6 @@ const widgets = response.value.widgets.map((widget) => {
 });
 
 function goHome() {
-  console.log("goHome");
   const cartKey = useCookie("cartKey");
   const vignetteTypeFromCookie = useCookie("vignetteType");
   const durationTypeCookie = useCookie("durationType");

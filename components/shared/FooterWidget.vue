@@ -132,8 +132,4 @@ const props = defineProps({
     required: true,
   },
 });
-
-/* onMounted(() => {
-  console.log(props.menuWidget);
-}); */
 </script>

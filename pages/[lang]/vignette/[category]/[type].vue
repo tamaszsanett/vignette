@@ -747,7 +747,6 @@ watch(
         oldValues.length == newValues.length &&
         oldValues[index] != newValues[index]
       ) {
-        //console.log( newValues[index]?.countryCode);
         formData.value.multiples[index].countryCode = newValues[index]?.countryCode ?? "H";
         formData.value.multiples[index].selectionIsValid = false;
         updateCartItem(index);
@@ -795,15 +794,7 @@ watch(numberOfVignettes, (newValue, oldValue) => {
   if (newValue !== oldValue) {
     updateMonthEndDate();
     if (newValue > oldValue) {
-
-      //console.log(formData.value.multiples.length);
       let ton = formData.value.multiples.length;
-      //console.log(ton);
-      /* for (var i = ton-1; i > 0; i--)
-      {
-        console.log("remove: "+i);
-          remove(i);
-      }; */
       // add to cart
       useAddAnotherVignetteToCart(
           currentLanguage.value,
@@ -866,7 +857,6 @@ watch(selectedCounties, (newItems, oldItems) => {
 
 // ------------------------------- ADD/REMOVE/MODIFY vignette blocks ----------------------------------------
 const remove = (index: number) => {
-  //console.log(index);
   useRemoveVignetteFromCart(
     formData.value.multiples[index].itemKey,
     vignetteInfo.value?.value.vignetteType.durationType ?? "",
@@ -1182,7 +1172,6 @@ async function calculateEndDate(index: number): Promise<void> {
 
 function updateCartItem(index: number) {
   var item = formData.value.multiples[index];
-  //console.log(item);
   useUpdateCartItem(
     item.itemKey,
     item.countryCode,

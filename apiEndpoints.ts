@@ -15,6 +15,6 @@ export const apiEndpoints = {
     webshopEndpoint: "https://gw.voxpay.hu/Webshop.Common",
     gtm: "GTM-NJKJX3PX",
     gtag: "G-X1MZEJ9MFM",
-    redirectUrl: "https://new.hungary-vignette.eu/"
+    redirectUrl: "https://www.hungary-vignette.eu/"
   },
 };
