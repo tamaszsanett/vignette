@@ -101,7 +101,13 @@ const url = `${apiEndpoint}?PageUri=%2F${pageUri.value.replaceAll(
   "%2F"
 )}&Localization=${currentLanguage.value}`;
 
-const response = await $fetch<ApiResponse>(url);
+var response;
+var widgets;
+try {
+response = await $fetch<ApiResponse>(url);
+console.log(response);
+
+
 useSeoMeta({
   title: response.value.title,
   ogTitle: response.value.title,
@@ -144,7 +150,7 @@ useHead({
   ],
 });
 
-const widgets = response.value.widgets.map((widget) => {
+widgets = response.value.widgets.map((widget) => {
   if (widget.widgetType === "html") {
     return widget;
   } else {
@@ -154,6 +160,12 @@ const widgets = response.value.widgets.map((widget) => {
     };
   }
 });
+ }
+ catch (exception) {
+   console.log(exception);
+   navigateTo("/");
+ }
+
 
 onMounted(() => {
 window.dataLayer = window.dataLayer || [];

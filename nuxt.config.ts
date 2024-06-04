@@ -31,6 +31,7 @@ if (process.env.SITECODE == "www.hungary-vignette.eu") {
     "/faq": { redirect: { to: "/en/faq", statusCode: 301 } },
     "/gtcc": { redirect: { to: "/en/gtcc", statusCode: 301 } },
     "/highway-vignette-prices-2023": { redirect: { to: "/en/highway-vignette-prices-2023", statusCode: 301 } },
+    "/highway-vignette-prices-2024": { redirect: { to: "/en/highway-vignette-prices-2024", statusCode: 301 } },
     "/information": { redirect: { to: "/en/vignette-info", statusCode: 301 } },
     "/en/information": { redirect: { to: "/en/vignette-info", statusCode: 301 } },
     "/news": { redirect: { to: "/en/news", statusCode: 301 } },
@@ -119,7 +120,8 @@ if (process.env.SITECODE == "www.hungary-vignette.eu") {
     "/news/hungarian-motorway-vignettes-types-2024": { redirect: { to: "/en", statusCode: 301 }},
     "/news/traveling-on-hungarian-motorways-is-worth-it-in-spring-too": { redirect: { to: "/en", statusCode: 301 }},
     "/hungarian-motorway-vignettes-types-2": {redirect: { to: "/en", statusCode: 301 }},
-    "/sw.js": {redirect: { to: "/en", statusCode: 301 }}
+    "/sw.js": {redirect: { to: "/en", statusCode: 301 }},
+    "/sb": {redirect: { to: "/en", statusCode: 301 }}
   };
 }
 else {
