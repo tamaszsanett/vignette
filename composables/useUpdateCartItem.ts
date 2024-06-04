@@ -71,7 +71,6 @@ export async function useUpdateCartItem(
 
         var startStr = calcIsoDateStr(currentValidityStart);
         var endStr = calcIsoDateStr(currentValidityEnd)
-        console.log(startStr + " #> " + endStr);
 
         items[i - 1] = {
           cartKey: cartKey.value?.toString(),
@@ -137,8 +136,6 @@ export async function useUpdateCartItem(
     }
   }
 
-  console.log(items);
-
   for (let i = 0; i < items.length; i++) {
     if (items[i].cartItemKey) {
       
@@ -187,28 +184,20 @@ function addDays(date: Date, days: number) {
 
 
 function calcEndDate(startDate:Date, numberOfMonths: number) {
-  //console.log("-----------------start # calcEndDate");
   var validityEnd = startDate;
   let sdate = new Date(startDate);
-  //console.log(calcIsoDateStr(sdate));
 
   for (let i = 1; i<=numberOfMonths; i++) {
-    //console.log("numberOfMonths: " +i);
     var Syear = sdate.getFullYear();
     var Smonth= sdate.getMonth()+1;
     var Sday = sdate.getDate();
-
-    console.log("start : " + Syear +"|"+Smonth+"|"+Sday);
     
     var firstDayOfNextMonth = new Date(Syear, Smonth, 1);
-
-    console.log("firstDayOfNextMonth : " + firstDayOfNextMonth);
 
     var Nyear = firstDayOfNextMonth.getFullYear();
     var Nmonth = firstDayOfNextMonth.getMonth();
     
     var DayInTheNextMonth = new Date(Nyear, Nmonth+1, 0);
-    console.log("lastDayOfNextMonth : " + DayInTheNextMonth);
     var DaysInNextMonth = DayInTheNextMonth.getDate();
 
     var DayInNextMonth = DaysInNextMonth < Sday ? DaysInNextMonth : Sday
@@ -216,8 +205,6 @@ function calcEndDate(startDate:Date, numberOfMonths: number) {
     
     sdate.setDate(validityEnd.getDate()+1);
   }
-  //console.log("-----------------end # calcEndDate");
-  //console.log(calcIsoDateStr(validityEnd));
   return validityEnd;
 }
 

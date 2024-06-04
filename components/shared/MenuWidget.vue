@@ -188,6 +188,7 @@ const changeLanguage = (langCode: string, url: string): void => {
     langSelection.value = newLang;
   }
   url = url.replace("https://new-hungary-vignette.voxpay.hu", "");
+  url = url.replace("https://www.hungary-vignette.eu", "");
   if (url.startsWith("https")) {
     navigateTo(url, { external: true });
   } else {

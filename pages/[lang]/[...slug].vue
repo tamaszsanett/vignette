@@ -48,8 +48,6 @@ import { ref, computed, watch } from "vue";
 import { useAsyncData, useRoute } from "nuxt/app";
 
 const config = useRuntimeConfig();
-/* console.log(config.public.baseUrl); 
- */
 const route = useRoute();
 const currentLanguage = ref(locale);
 watch(

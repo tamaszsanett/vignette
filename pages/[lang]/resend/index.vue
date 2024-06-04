@@ -283,8 +283,6 @@ const sendResendConfirmation = async () => {
     if (!response.isSuccess) {
       throw new Error(response.error.message || "Unknown error");
     }
-
-    console.log("Confirmation resent successfully!");
   } catch (error) {
     dialogVisible.value = true;
     dialogSuccess.value = false;

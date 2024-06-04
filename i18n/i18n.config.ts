@@ -202,9 +202,9 @@ export default defineI18nConfig(() => ({
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
           terms_label: `I state that I have read and accepted the
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
             as well as the
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Privacy Statement</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Privacy Statement</a>
             and I consent to the data management contained therein.`,
           important_text:
             "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
@@ -566,9 +566,9 @@ export default defineI18nConfig(() => ({
             "Anstatt die Bankkartendaten auf der Barion-Zahlungsoberfläche einzugeben, kannst du auch die Zahlungsoption Barion Wallet, Apple Pay oder Google Pay wählen.",
           subscribe_label: "Abonniere den Vignette-Newsletter!",
           terms_label: `Ich erkläre, dass ich die Nutzungsbedingungen gelesen und akzeptiert habe.
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Allgemeine Vertragsbedingungen</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Allgemeine Vertragsbedingungen</a>
             sowie die
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Datenschutzerklärung</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Datenschutzerklärung</a>
             und erkläre mich mit der darin enthaltenen Datenverwaltung einverstanden. Ich akzeptiere die Nutzungsbedingungen.`,
           important_text:
             "Du kannst erst auf die Autobahn fahren, wenn du nach der Zahlung eine Bestätigung der erfolgreichen Vignettenvalidierung per E-Mail oder in deinem Browser erhalten hast.",
@@ -928,9 +928,9 @@ export default defineI18nConfig(() => ({
             "Namiesto zadávania údajov o bankovej karte v platobnom rozhraní Barion si môžete vybrať aj možnosť platby prostredníctvom peňaženky Barion, Apple Pay alebo Google Pay.",
           subscribe_label: "Prihláste sa na odber noviniek vignette!",
           terms_label: `Vyhlasujem, že som si prečítal a prijal
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Všeobecné zmluvné podmienky</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Všeobecné zmluvné podmienky</a>
             ako aj
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Vyhlásenie o ochrane osobných údajov</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Vyhlásenie o ochrane osobných údajov</a>
             a súhlasím so správou údajov v ňom uvedených. Súhlasím podmienky používania.`,
           important_text:
             "Na diaľnicu môžete vyraziť len vtedy, ak ste po zaplatení dostali e-mailom alebo v prehliadači potvrdenie o úspešnom overení platnosti diaľničnej známky.",
@@ -1280,9 +1280,9 @@ export default defineI18nConfig(() => ({
             "Umjesto unosa podataka o kartici na sućelju za plaćanje Barion, možete odabrati Barion novčanik, Apple Pay ili Google pay.",
           subscribe_label: "Pretplatite se na bilten o vinjetama!",
           terms_label: `Pročita/la sam i prihvaćam
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Opće uvjete i odredbe ugovora</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Opće uvjete i odredbe ugovora</a>
             isto kao i 
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Izjavu o privatnosti</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Izjavu o privatnosti</a>
             i pristajem na upravljanje podacima koji se nalaze u njemu. Prihvaćam uvjete korištenja.`,
           important_text:
             "Možete se voziti na autocesti samo ako ste nakon plaćanja e-poštom ili u pregledniku dobili potvrdu o uspješnoj validaciji vinjete.",
@@ -1633,9 +1633,9 @@ export default defineI18nConfig(() => ({
             "Umesto unošenja podataka o platnoj kartici na Barionovom platnom interfejsu, takođe možete odabrati opciju plaćanja putem Barion novčanika, Apple Pay-a ili Google Pay-a.",
           subscribe_label: "Pretplatite se na njuzleter o vinjetama!",
           terms_label: `Izjavljujem da sam pročitao/la i prihvatio/la
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Opšte uslove ugovora</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Opšte uslove ugovora</a>
             kao i
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Izjavu o privatnosti</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Izjavu o privatnosti</a>
             i pristajem na upravljanje podacima sadržanim u njima. Prihvatam uslove i odredbe korišćenja.`,
           important_text:
             "Vožnja autoputem je dozvoljena samo ukoliko nakon izvršene uplate na mejl i u pretraživaču dobijete potvrdu o uspešnoj validaciji vinjete.",
@@ -1989,9 +1989,9 @@ export default defineI18nConfig(() => ({
             "Замість того, щоб вводити дані банківської картки в інтерфейсі оплати Barion, ви також можете обрати варіант оплати за допомогою гаманця Barion, Apple Pay або Google Pay.",
           subscribe_label: "Підпишіться на розсилку інформації про віньєтки!",
           terms_label: `Я заявляю, що прочитав(-ла) та прийняв(-ла)
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Загальні умови Контракту</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Загальні умови Контракту</a>
             а також
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Положення про конфіденційність</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Положення про конфіденційність</a>
             і даю згоду на управління даними, що містяться в них. Я приймаю умови користування.`,
           important_text:
             "Ви можете виїжджати на швидкісну дорогу, лише якщо після оплати ви отримали підтвердження успішної перевірки віньєтки електронною поштою або у вашому браузері.",
@@ -2354,9 +2354,9 @@ export default defineI18nConfig(() => ({
             "Dacă nu vrei să introduci datele cardului bancar pe interfaţa de plată Barion, poţi alege şi opţiunea de plată cu portofel Barion, Apple Pay sau Google Pay.",
           subscribe_label: "Abonează-te la newsletter!",
           terms_label: `Declar că am citit și acceptat
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Termenii și condițiile generale ale contractului</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Termenii și condițiile generale ale contractului</a>
             precum și
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Declaratia de Condifenţialitate</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Declaratia de Condifenţialitate</a>
             și sunt de acord cu gestionarea datelor conform prevederilor din document. Accept termenii și condițiile de utilizare.`,
           important_text:
             "Utilizarea autostrăzii este permisă numai după efectuarea plăţii, şi recepţionarea confirmării validării cu succes a vignetei prin e-mail sau în browser.",
@@ -2714,9 +2714,9 @@ export default defineI18nConfig(() => ({
             "Zamiast wprowadzać dane karty bankowej w interfejsie płatności Barion, możesz również wybrać opcję płatności portfelem Barion, Apple Pay lub Google Pay.",
           subscribe_label: "Zapisz się do newslettera winiety!",
           terms_label: `Oświadczam, że przeczytałem i akceptuję
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Ogólne warunki umowy</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Ogólne warunki umowy</a>
             jak również
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Oświadczenie o ochronie prywatności</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Oświadczenie o ochronie prywatności</a>
             i wyrażam zgodę na zarządzanie danymi w nim zawartymi. Akceptuję warunki użytkowania.`,
           important_text:
             "Wjazd na autostradę jest możliwy tylko wtedy, gdy po dokonaniu płatności otrzymasz potwierdzenie pomyślnego zakupu winiety autostradowej pocztą elektroniczną lub w przeglądarce.",
@@ -3423,9 +3423,9 @@ export default defineI18nConfig(() => ({
             "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
           subscribe_label: "Subscribe vignette newsletter!",
           terms_label: `I state that I have read and accepted the
-            <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
+            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
             as well as the
-            <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Privacy Statement</a>
+            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Privacy Statement</a>
             and I consent to the data management contained therein.`,
           important_text:
             "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
@@ -4149,7 +4149,7 @@ export default defineI18nConfig(() => ({
           barion_desc:
             "A bankkártya adatok megadása helyett választhatja a Barion pénztárcát, az Apple Pay vagy a Google Pay fizetési lehetőséget is.",
           subscribe_label: "Iratkozzon fel a matrica hírlevélre!",
-          terms_label: `Kijelentem, hogy elolvastam és elfogadtam a <a class="whiteLink" href="https://new-hungary-vignette.voxpay.hu/en/gtcc" target="_blank">Általános Szerződési Feltételeket</a> valamint az <a class="whiteLink" target="_blank" href="https://new-hungary-vignette.voxpay.hu/en/privacy">Adatvédelmi Nyilatkozatot</a> és hozzájárulok az abban foglalt adatkezeléshez.`,
+          terms_label: `Kijelentem, hogy elolvastam és elfogadtam a <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">Általános Szerződési Feltételeket</a> valamint az <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Adatvédelmi Nyilatkozatot</a> és hozzájárulok az abban foglalt adatkezeléshez.`,
           important_text:
             "Csak akkor hajthat fel az autópályára, ha a fizetést követően e-mailben vagy böngészőben megkapta a matrica érvényesítéséről szóló visszaigazolást.",
           back: "Vissza",

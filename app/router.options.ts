@@ -7,7 +7,6 @@ export default <RouterConfig>{
     // ex: <NuxtLink to="#top"> To Top </ NuxtLink>
     if (to.hash) {
       // working test: 
-      // console.log('to.hash: ', to.hash);
       return {
         el: to.hash,
         behavior: 'smooth',
