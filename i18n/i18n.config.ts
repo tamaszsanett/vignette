@@ -3065,13 +3065,12 @@ export default defineI18nConfig(() => ({
           barion_desc:
             "Invece di inserire i dati della carta bancaria nell'interfaccia di pagamento Barion, è possibile scegliere l'opzione di pagamento Barion wallet, Apple Pay o Google Pay.",
           subscribe_label: "Iscriviti alla newsletter di vignette!",
-          terms_label: `Dichiaro di aver letto e  accettato il
-          <a class=“whiteLink” href=“https://www.new.hungary-vignette.eu/gtcc” target=“_blank”>
-          Condizioni generali e  Condizioni contrattuali</a> così come le
-          <a class=“whiteLink” target=“_blank”
-            href=“https://www.new.hungary-vignette.eu/privacy”
-            >Dichiarazione sulla privacy Dichiarazione</a>
-          e acconsento alla  gestione dei dati in essa contenuti. Accetto i termini e le  condizioni di utilizzo.`,
+          terms_label: `Dichiaro di aver letto e accettato il
+          <a class="whiteLink" href="https://www.new.hungary-vignette.eu/gtcc" target="_blank"> Condizioni generali e Condizioni contrattuali</a>così come le
+          <a class="whiteLink" target="_blank" href="https://www.new.hungary-vignette.eu/privacy">
+              Dichiarazione sulla privacy Dichiarazione
+          </a>
+          e acconsento alla gestione dei dati in essa contenuti. Accetto i termini e le condizioni di utilizzo.`,
           important_text:
             "È possibile accedere all'autostrada solo se, dopo il pagamento, si è ricevuta la conferma dell'avvenuta convalida della vignetta via e-mail o nel browser.",
           back: "Indietro",
