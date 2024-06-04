@@ -4,8 +4,8 @@ export const apiEndpoints = {
       "https://test-core.voxpay.hu/CMS.Public.Gateway/api/GetWidgetsByPageUri",
     vignetteEndpoint: "https://test-gw.voxpay.hu/Webshop.Vignette",
     webshopEndpoint: "https://test-gw.voxpay.hu/Webshop.Common",
-    gtm: "GTM-NJKJX3PX",
-    gtag: "G-X1MZEJ9MFM",
+    gtm: "GTM-NHDHXMRH",
+    gtag: "G-DLL1QKKQYW",
     redirectUrl: "https://new-hungary-vignette.voxpay.hu/"
   },
   prod: {
