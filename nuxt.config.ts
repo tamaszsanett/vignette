@@ -112,7 +112,7 @@ if (process.env.SITECODE == "www.hungary-vignette.eu") {
     "/vigneta-pentru-autostrada-din-ungaria-2024": { redirect: { to: "/ro", statusCode: 301 } },
     "/madarska-vinjeta-2024": { redirect: { to: "/sb", statusCode: 301 } },
     "/hongarije-autosnelwegvignet-2024": { redirect: { to: "/nl", statusCode: 301 } },
-    "/madarska-dialnicna-znamka-2024 ": { redirect: { to: "/sk", statusCode: 301 } },
+    "/madarska-dialnicna-znamka-2024": { redirect: { to: "/sk", statusCode: 301 } },
     "/hungary-motorway-vignette-2024": { redirect: { to: "/en", statusCode: 301 } },
     "/ungarn-autobahnvignette-2024": { redirect: { to: "/de", statusCode: 301 } },
     "/madarska-vinjeta-2024-godine": { redirect: { to: "/hr", statusCode: 301 } },
