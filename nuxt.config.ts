@@ -121,7 +121,13 @@ if (process.env.SITECODE == "www.hungary-vignette.eu") {
     "/news/traveling-on-hungarian-motorways-is-worth-it-in-spring-too": { redirect: { to: "/en", statusCode: 301 }},
     "/hungarian-motorway-vignettes-types-2": {redirect: { to: "/en", statusCode: 301 }},
     "/sw.js": {redirect: { to: "/en", statusCode: 301 }},
-    "/sb": {redirect: { to: "/en", statusCode: 301 }}
+    "/sb": {redirect: { to: "/en", statusCode: 301 }},
+    "/sk/vignette/D1/1month": {redirect: { to: "/sk/vignette/D1/monthly", statusCode: 301 }},
+    "/de/vignette/D1/1month": {redirect: { to: "/de/vignette/D1/monthly", statusCode: 301 }},
+    "/ro/vignette/D1/1month": {redirect: { to: "/ro/vignette/D1/monthly", statusCode: 301 }},
+    "/sk/vignette/D1/1monthly": {redirect: { to: "/sk/vignette/D1/monthly", statusCode: 301 }},
+    "/de/vignette/D1/1monthly": {redirect: { to: "/de/vignette/D1/monthly", statusCode: 301 }},
+    "/ro/vignette/D1/1monthly": {redirect: { to: "/ro/vignette/D1/monthly", statusCode: 301 }}
   };
 }
 else {
