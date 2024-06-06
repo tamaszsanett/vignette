@@ -105,7 +105,6 @@ var response;
 var widgets;
 try {
 response = await $fetch<ApiResponse>(url);
-console.log(response);
 
 
 useSeoMeta({
@@ -162,7 +161,6 @@ widgets = response.value.widgets.map((widget) => {
 });
  }
  catch (exception) {
-   console.log(exception);
    navigateTo("/");
  }
 

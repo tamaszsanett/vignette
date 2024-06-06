@@ -6,7 +6,8 @@ export function useWidgets() {
   const route = useRoute();
 
   // Initialize the language with a default value
-  const currentLanguage = ref('en');
+const { t, locale } = useI18n();
+const currentLanguage = ref(locale);
 
   // Update currentLanguage 
 

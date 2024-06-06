@@ -337,6 +337,18 @@ const categoryCookie = useCookie("category");
 
 const isEmptyCart = ref(true);
 
+
+
+watch(
+  () => route.params.lang,
+  (newLang) => {
+    currentLanguage.value = Array.isArray(newLang)
+      ? newLang[0]
+      : newLang || "en";
+  },
+  { immediate: true }
+);
+
 const isAtLeastOneCountySelected = computed(() => {
     return selectedCounties.value.length > 0;
   });
@@ -1094,16 +1106,6 @@ const widgets = response.value.widgets.map((widget) => {
     };
   }
 });
-
-watch(
-  () => route.params.lang,
-  (newLang) => {
-    currentLanguage.value = Array.isArray(newLang)
-      ? newLang[0]
-      : newLang || "en";
-  },
-  { immediate: true }
-);
 
 formData.value.multiples.forEach(async (item, index) => {
   if (item.startDate !== null) {

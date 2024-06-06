@@ -176,8 +176,6 @@ const props = defineProps({
   },
 });
 
-const { currentLanguage } = useWidgets();
-const langSelection = ref<LanguageSelectionItem>();
 
 const changeLanguage = (langCode: string, url: string): void => {
   currentLanguage.value = langCode;
@@ -195,6 +193,12 @@ const changeLanguage = (langCode: string, url: string): void => {
     navigateTo(url);
   }
 };
+
+const { currentLanguage } = useWidgets();
+const langSelection = ref<LanguageSelectionItem>();
+
+
+console.log(currentLanguage.value);
 
 const isActive = (url: string): boolean => route.path === url;
 
