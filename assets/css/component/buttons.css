@@ -115,3 +115,22 @@ button.greenButton {
 .p-inplace-display {
   @apply btn-sm primary-btn-outline border text-center;
 }
+
+.whiteLink {
+  -webkit-text-decoration: revert;
+  text-decoration: revert;
+  @apply text-white;
+}
+
+.del {
+  right: 100px;
+  top: 10px;
+  @apply text-base-black hover:text-base-green top-[10px] right-[100px] text-center w-8 h-8 text-2xl flex items-center justify-center rounded-[20px] border border-solid cursor-pointer;
+}
+
+.del::after {
+  display: inline-block;
+  content: "\00d7";
+  color: inherit;
+}
+

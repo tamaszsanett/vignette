@@ -1,0 +1,57 @@
+/* mainPageWhichVignetteBlock widget */
+.widget .mainPageWhichVignetteBlock {
+  @apply w-full px-4 lg:px-0;
+}
+
+.widget .mainPageWhichVignetteBlock h3 {
+  @apply text-sm my-3.5 font-normal mb-10;
+}
+
+.widget .mainPageWhichVignetteBlock > div:nth-child(2),
+.widget .mainPageWhichVignetteBlock > div:nth-child(3) {
+  @apply flex justify-center gap-8 md:gap-28 mb-4;
+}
+
+.col-12.bottom-footerL {
+  @apply mb-0;
+}
+
+.mainPageWhichVignetteBlock {
+  @apply w-full clear-both;
+}
+
+.mainPageWhichVignetteBlock {
+  @apply w-full lg:max-w-[900px] clear-both;
+}
+
+.mainPageWhichVignetteBlock > div:nth-child(2) .col-3,
+.mainPageWhichVignetteBlock > div:nth-child(3) .col-3 {
+  @apply w-full mb-4 md:flex md:items-center;
+}
+
+.mainPageWhichVignetteBlock > div:nth-child(2) .col-12,
+.mainPageWhichVignetteBlock > div:nth-child(3) .col-12 {
+  @apply md:w-auto;
+}
+
+.mainPageWhichVignetteBlock > div:first-child {
+  @apply mb-12;
+}
+
+.mainPageWhichVignetteBlock .line-text {
+  @apply mx-auto mb-2 md:ml-0 md:mb-0 block md:max-w-[170px];
+}
+
+.mainPageWhichVignetteBlock .title-desc {
+  @apply text-justify text-base block w-full max-w-[280px] md:max-w-[100%] mx-auto md:ml-10;
+}
+
+.line-text {
+  margin-block: -15px;
+  margin-inline: -25px;
+}
+
+.mainPageWhichVignetteBlock [class*=col-] {
+  float: left;
+  padding: 5px;
+}

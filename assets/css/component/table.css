@@ -1,0 +1,60 @@
+table {
+  box-shadow: 5px 5px 10px rgba(64, 64, 64, 0.2);
+  border-radius: 4px;
+  border: 0;
+}
+
+
+.design-table .failed-order {
+  @apply text-white bg-red font-bold !important;
+}
+
+.design-table .success-order {
+  @apply text-white bg-base-green font-bold !important;
+}
+
+.design-table {
+  @apply text-sm leading-5 font-bold w-full m-0 md:w-[80%] border-collapse text-base-black text-center;
+}
+
+.design-table td,
+.design-table th {
+  @apply p-2 border border-gray-border;
+}
+
+.design-table tr:nth-child(even) {
+  @apply bg-gray-border;
+}
+
+.design-table tr:nth-child(2n) {
+  @apply bg-gray-border;
+}
+
+.design-table td, .design-table th {
+  @apply border border-solid border-gray-border p-2;
+}
+
+.design-table tr:hover {
+  @apply bg-base-gray;
+}
+
+.design-table th {
+  @apply text-center leading-8 text-xl font-bold text-base-black bg-white py-3;
+}
+
+td {
+  border: 0;
+  padding: 10px 20px;
+}
+
+.design-table-full-width {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: center;
+  color: #1b1b1b;
+  width: 100%;
+  padding: 20px;
+  margin: 40px 0px;
+}

@@ -1,6 +1,6 @@
 @layer base {
   @font-face {
-    font-family: "Roboto Condensed Medium";
+    font-family: "RobotoCondensedMedium";
     src: url("/assets/fonts/subset-RobotoCondensed-Medium.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-Medium.eot?#iefix")
         format("embedded-opentype"),
@@ -15,7 +15,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Thin";
+    font-family: "RobotoCondensedThin";
     src: url("/assets/fonts/subset-RobotoCondensed-Thin.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-Thin.eot?#iefix")
         format("embedded-opentype"),
@@ -30,7 +30,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Semibold";
+    font-family: "RobotoCondensedSemibold";
     src: url("/assets/fonts/subset-RobotoCondensed-SemiBold.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-SemiBold.eot?#iefix")
         format("embedded-opentype"),
@@ -46,7 +46,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Light";
+    font-family: "RobotoCondensedLight";
     src: url("/assets/fonts/subset-RobotoCondensed-Light.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-Light.eot?#iefix")
         format("embedded-opentype"),
@@ -61,7 +61,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Exrabold";
+    font-family: "RobotoCondensedExrabold";
     src: url("/assets/fonts/subset-RobotoCondensed-ExtraBold.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-ExtraBold.eot?#iefix")
         format("embedded-opentype"),
@@ -78,7 +78,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Black";
+    font-family: "RobotoCondensedBlack";
     src: url("/assets/fonts/subset-RobotoCondensed-Black.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-Black.eot?#iefix")
         format("embedded-opentype"),
@@ -94,13 +94,13 @@
 
   @font-face {
     font-family: "RobotoCondensedRegular";
-    src: url("fonts/subset-RobotoCondensed-Regular.eot");
-    src: url("fonts/subset-RobotoCondensed-Regular.eot?#iefix")
+    src: url("/assets/fonts/subset-RobotoCondensed-Regular.eot");
+    src: url("/assets/fonts/subset-RobotoCondensed-Regular.eot?#iefix")
         format("embedded-opentype"),
-      url("fonts/subset-RobotoCondensed-Regular.woff2") format("woff2"),
-      url("fonts/subset-RobotoCondensed-Regular.woff") format("woff"),
-      url("fonts/subset-RobotoCondensed-Regular.ttf") format("truetype"),
-      url("fonts/subset-RobotoCondensed-Regular.svg#RobotoCondensed-Regular")
+      url("/assets/fonts/subset-RobotoCondensed-Regular.woff2") format("woff2"),
+      url("/assets/fonts/subset-RobotoCondensed-Regular.woff") format("woff"),
+      url("/assets/fonts/subset-RobotoCondensed-Regular.ttf") format("truetype"),
+      url("/assets/fonts/subset-RobotoCondensed-Regular.svg#RobotoCondensed-Regular")
         format("svg");
     font-weight: normal;
     font-style: normal;
@@ -108,7 +108,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Italic";
+    font-family: "RobotoCondensedItalic";
     src: url("/assets/fonts/subset-RobotoCondensed-Italic.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-Italic.eot?#iefix")
         format("embedded-opentype"),
@@ -123,7 +123,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Bold";
+    font-family: "RobotoCondensedBold";
     src: url("/assets/fonts/subset-RobotoCondensed-Bold.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-Bold.eot?#iefix")
         format("embedded-opentype"),
@@ -138,7 +138,7 @@
   }
 
   @font-face {
-    font-family: "Roboto Condensed Extralight";
+    font-family: "RobotoCondensedExtralight";
     src: url("/assets/fonts/subset-RobotoCondensed-ExtraLight.eot");
     src: url("/assets/fonts/subset-RobotoCondensed-ExtraLight.eot?#iefix")
         format("embedded-opentype"),

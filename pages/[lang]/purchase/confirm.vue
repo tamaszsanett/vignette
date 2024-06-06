@@ -45,7 +45,7 @@
         </div>
         <hr class="dashed-hr" />
         <div
-          class="text-sm lg:text-lg"
+          class="text-sm lg:text-lg mb-2"
           v-for="item in sortedCartItems"
         >
           <div class="flex items-center">

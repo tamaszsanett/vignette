@@ -26,6 +26,23 @@
   }
 }
 
+input[type=checkbox], input[type=checkbox]~div {
+  display: none;
+}
+
+input[type=checkbox]:checked~div {
+  display: block;
+}
+
+input[type="checkbox"] {
+  display: inline;
+}
+
+input[type="checkbox"] {
+  @apply accent-base-orange;
+}
+
+
 .primary-label {
   @apply text-base text-base-black mb-0 font-bold leading-none;
 }

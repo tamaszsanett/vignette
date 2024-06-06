@@ -1,0 +1,49 @@
+/*whyToBuyHere widget */
+
+.whyToBuyHere {
+  @apply text-center;
+}
+
+.whyToBuyHere.bottom-footerS {
+  @apply mb-0;
+}
+
+.why-buy-here .col-9 {
+  @apply w-full;
+}
+
+.whyToBuyHere > div {
+  grid-template-columns: minmax(auto, 310px);
+  @apply grid gap-5 justify-center;
+}
+
+.whyToBuyHere .whyToBuyHereElement {
+  background-image: url("/assets/content/miert_nalunk_vasarold_alap.svg");
+  @apply flex justify-center flex-col items-center h-[133px] bg-no-repeat rounded-lg bg-grad-base-orange;
+}
+
+.whyToBuyHere .whyToBuyHereElement {
+  @apply bg-center rounded-[5px];
+}
+
+.whyToBuyHere .whyToBuyHereElement > span {
+  width: 179px;
+  margin-top: 10px;
+  color: white;
+  line-height: 20px;
+  font-size: 14px;
+}
+
+@media all and (min-width: 540px) {
+  .whyToBuyHere > div {
+    grid-template-columns: minmax(auto, 310px) minmax(auto, 310px);
+  }
+}
+
+@media all and (min-width: 1100px) {
+  .whyToBuyHere > div {
+    grid-template-columns:
+      minmax(auto, 285px) minmax(auto, 285px) minmax(auto, 285px)
+      minmax(auto, 285px);
+  }
+}

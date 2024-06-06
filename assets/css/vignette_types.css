@@ -1,0 +1,232 @@
+/*vignetteTypes widget */
+.zeroPad {
+  padding-block-end: 0;
+  padding-block-start: 0;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow, .vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg>div {
+  position: relative;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .title-img-text {
+  left: -15px;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+.title-img-text {
+  display: block;
+  float: left;
+  margin-left: -42px;
+  margin-top: 56px;
+  padding-left: 35px;
+  padding-top: 6px;
+  position: relative;
+  text-align: left;
+  z-index: 7;
+}
+
+.title-img-text {
+  background: linear-gradient(0deg, #5ccc94, #8ccaae);
+  box-shadow: 5px 5px 22px rgba(10, 143, 79, .2);
+  height: 31px;
+  padding: 19px -14px;
+  vertical-align: middle;
+  width: 300px;
+  position: relative;
+  @apply font-bold text-white;
+}
+
+.title-img-text:before {
+  border-bottom: 17px solid transparent;
+  border-left: 10px solid #78caa3;
+  border-radius: 4px;
+  border-top: 18px solid transparent;
+  content: "";
+  height: 0;
+  margin-top: -8px;
+  position: absolute;
+  right: -9px;
+  width: 0;
+}
+
+.bg-vignette-type {
+  background: linear-gradient(176.47deg, #eeeef3 30.17%, rgba(238, 238, 243, 0) 97.09%);
+  border-radius: 5px;
+  margin: 10px;
+  padding: 12px 50px 0;
+}
+
+.vignetteTypesMainPage .col-9 {
+  @apply w-full max-w-[600px] lg:max-w-[840px] mx-auto px-4;
+}
+
+.vignetteTypesMainPageRow .titleImg img {
+  @apply w-[90px] h-[90px] lg:w-[110px] lg:h-[100px] md:top-4;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .vignetteTypeLabel {
+  @apply text-base sm:text-base lg:text-xl top-[47%] md:top-[65%];
+}
+
+.vignetteTypesMainPage .title-img-text {
+  @apply text-sm md:text-base lg:text-lg lg:leading-none h-12 md:max-h-[32px];
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .title-img-text {
+  @apply top-[25px] md:top-[50px];
+}
+
+.vignetteTypesMainPage h2 {
+  @apply py-8 my-0;
+}
+
+.purchasedVignetteText {
+  line-height: 16px;
+  margin: 0px;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.vignetteTypesMainPage .purchasedVignetteText {
+  font-size: 18px;
+  font-weight: unset;
+  line-height: 20px;
+}
+
+.title-img {
+  display: block;
+  float: left;
+  width: 30%;
+  text-align: center;
+  margin: 5px 0;
+  margin-bottom: -2px;
+}
+
+@media (max-width: 767px) {
+  .title-img {
+    margin: 0;
+    width: 100%;
+    margin-bottom: -6px;
+  }
+}
+
+
+.titleImg img {
+  z-index: 10;
+  position: relative;
+}
+
+.titleImg {
+  display: flex;
+  text-align: center;
+  margin: 5px 0;
+  margin-bottom: -97px;
+  margin-inline: -57px;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow {
+  margin-top: 50px;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow,
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg > div {
+  position: relative;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg {
+  position: absolute;
+  top: -55px;
+  left: -50px;
+  margin: 0;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .vignetteTypeLabel {
+  position: absolute;
+  z-index: 12;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+}
+
+.vignetteTypesMainPage .vignetteTypesMainPageRow .titleImg .title-img-text {
+  left: -15px;
+  margin-left: 0;
+  margin-top: 0;
+}
+
+@media only screen and (max-width: 768px) {
+ 
+  .vignetteTypesMainPage > div.col-9 {
+    width: 100%;
+  }
+
+  .vignetteTypesMainPage h1 {
+    margin-bottom: 2rem;
+  }
+
+  .vignetteTypesMainPage .titleImg {
+    left: -20px !important;
+  }
+
+  .vignetteTypesMainPage .vignetteTypeLabel {
+    width: 87px !important;
+  }
+
+  .vignetteTypesMainPage .vignetteTypesMainPageRow {
+    margin-top: 50px;
+  }
+
+  .vignetteTypesMainPage .titleImg .title-img-text {
+    width: 250px;
+    left: -55px !important;
+    top: 20px !important;
+    padding-left: 68px;
+    padding-top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .vignetteTypesMainPage .bg-vignette-type {
+    margin: 0 -12px 0 14px;
+    padding: 25px 15px 30px 15px;
+  }
+
+  .vignetteTypesMainPage .bg-vignette-type .purchasedVignetteText {
+    padding: 10px 0;
+  }
+
+  .vignetteTypesMainPage .titleImg {
+    margin-inline: 0;
+  }
+
+  .vignetteTypesMainPage .titleImg .title-img-text:before {
+    right: -14px;
+    border-top: 39px solid transparent;
+    border-bottom: 39px solid transparent;
+    border-left: 15px solid #78caa3;
+    margin-top: 0;
+  }
+
+  .vignetteTypesMainPage .titleImg .title-img-text span {
+    width: 100%;
+  }
+}
+
+@media only screen and (max-width: 380px) {
+
+  .vignetteTypesMainPage .vignetteTypeLabel {
+    left: calc(50%) !important;
+  }
+
+  .vignetteTypesMainPage .titleImg .title-img-text {
+    width: 180px;
+  }
+
+  .vignetteTypesMainPage .titleImg .title-img-text:before {
+    right: -14px;
+  }
+}

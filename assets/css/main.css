@@ -1,18 +1,30 @@
-/* tailwind components css */
+/* tailwind custom components css */
 @import "./component/typo.css";
 @import "./component/accordion.css";
 @import "./component/buttons.css";
 @import "./component/cards.css";
 @import "./component/forms.css";
+@import "./component/table.css";
 
+/* fonts  */
+@import "fonts.css";
+
+/* purchase flow  */
 @import "purchase.css";
+
+/* widgets  */
+@import "why_you_buy_here.css";
+@import "main_page_which_vignette_block.css";
+@import "vignette_types.css";
+@import "contact.css";
+@import "footer.css";
 
 /* tailwind custom base css */
 @import "base.css";
 
 /* old css  */
-@import "cms.css";
-
+/* @import "cms.css";
+ */
 /* primevue icons css  */
 @import 'primeicons/primeicons.css';
 

@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto px-2 lg:px-0 mt-48 under-payment">
+  <main class="container mx-auto px-2 lg:px-0 mt-32 lg:mt-40 under-payment">
     <form class="pb-10 max-w-[600px] mx-auto">
       <h1 class="purchase-h1">
         <span class="ml-2">{{ $t("confirm_under_payment.title") }}</span>

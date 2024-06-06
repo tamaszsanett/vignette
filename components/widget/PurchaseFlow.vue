@@ -1,6 +1,6 @@
 <template>
     <section v-if="widget.steps.length">
-        <h2 v-if="widget.mainTitle" class="h2 mb-0 text-center">{{ widget.mainTitle }}</h2>
+        <h2 v-if="widget.mainTitle" class="h2 mb-0 text-center py-0">{{ widget.mainTitle }}</h2>
         <div class="w-full">
             <div class="w-full">
                 <section class="w-full mb-5 flex flex-wrap justify-center gap-8 md:gap-y-24 md:gap-x-8 lg:gap-x-24 2xl:gap-x-52 relative">

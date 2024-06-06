@@ -13,7 +13,16 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        'sans': ['"RobotoCondensedRegular"', ...defaultTheme.fontFamily.sans],
+        sans: ['"RobotoCondensedRegular"', ...defaultTheme.fontFamily.sans],
+        'medium': ['"RobotoCondensedMedium", "sans-serif"'],
+        'semibold': ['"RobotoCondensedSemibold", "sans-serif"'],
+        'bold': ['"RobotoCondensedBold", "sans-serif"'],
+        'thin': ['"RobotoCondensedThin", "sans-serif"'],
+        'black': ['"RobotoCondensedBlack", "sans-serif"'],
+        'light': ['"RobotoCondensedLight", "sans-serif"'],
+        'extralight': ['"RobotoCondensedExtraLight", "sans-serif"'],
+        'extrabold': ['"RobotoCondensedExrabold", "sans-serif"'],
+        'italic': ['"RobotoCondensedItalic", "sans-serif"'],
       },
       colors: {
         "secondary-black": "#404040",
@@ -33,6 +42,7 @@ module.exports = {
         "gray": "#bfb7a7",
         "dark-gray": "#777",
         "grad-base-orange": "#f58220",
+        "gray-border": '#f5f5f5'
       },
     },
   },

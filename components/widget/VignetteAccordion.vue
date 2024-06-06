@@ -40,7 +40,7 @@
       </div>
       <div class="grid sm:grid-cols-2 gap-2 sm:gap-4">
         <NuxtLink v-for="(button, btnIndex) in item.buttons" :key="btnIndex" :to="button.url" class="btn min-h-14 pr-2" v-bind:class="{'primary-btn-outline ': !button.highlighted,  'primary-btn': button.highlighted}" :title="button.title">
-          <span class="w-full md:w-[60%] text-left">{{ button.title }}</span>
+          <span class="w-full md:w-[60%] text-left font-sans">{{ button.title }}</span>
           <img v-if="button.iconSrc" class="read-img w-[20px] h-[20px]" :src="button.iconSrc" :alt="button.iconAlt"/>
         </NuxtLink>
       </div>

@@ -22,7 +22,7 @@
           />
           <span
             v-if="item.title"
-            class="font-bold text-lg md:text-xl mx-4 text-base-orange w-100"
+            class="font-bold text-lg md:text-xl mx-4 text-base-orange w-full"
             >{{ item.title }}</span
           >
           <div class="">

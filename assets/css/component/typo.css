@@ -43,7 +43,7 @@
   }
 
   h2 {
-    @apply my-8;
+    @apply my-8 text-center;
   }
 
   .mainPageWhichVignetteBlock h3 {
@@ -60,10 +60,6 @@
 
   .news-lead {
     margin-bottom: 3rem;
-  }
-
-  h2 {
-    @apply my-8 text-center;
   }
 }
 
@@ -88,11 +84,11 @@ a,
 
 @layer base {
   p {
-    @apply text-base text-base-black my-4;
+    @apply text-base text-base-black my-4 font-sans;
   }
 
   .menu-wrapper a {
-    @apply text-white text-center text-sm sm:text-[11px] md:text-xs lg:text-sm hover:text-link-hover uppercase font-normal;
+    @apply text-white text-center text-sm sm:text-[11px] md:text-xs lg:text-sm hover:text-link-hover uppercase font-sans;
   }
 
   .footer-txt a {
@@ -122,4 +118,8 @@ a,
 
 .text-danger {
   @apply text-red;
+}
+
+.orange-h3 {
+  @apply text-base-orange leading-8 text-xl font-medium;
 }
