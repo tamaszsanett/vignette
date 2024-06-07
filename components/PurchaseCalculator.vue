@@ -1,5 +1,5 @@
 <template>
-  <section :class="['shadow bg-green text-white purchase-calculator text-center', bgClass]">
+  <section :class="['shadow rounded-[15px] bg-green text-white purchase-calculator text-center', bgClass]">
     <div class="w-full flex items-center justify-center py-4">
       <span>{{ title }}</span>
     </div>

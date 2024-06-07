@@ -32,6 +32,10 @@ b {
   box-shadow: 6.53571px 6.53571px 28.7571px rgba(10, 143, 79, 0.2);
 }
 
+.shadow-22 {
+  box-shadow: 5px 5px 22px rgba(64,64,64,.2);
+}
+
 .p-component,
 .p-inputtext {
   @apply font-sans;
