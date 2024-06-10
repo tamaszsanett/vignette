@@ -7,8 +7,8 @@
     "postinstall": "nuxt prepare",
     "dev:test": "nuxt dev --dotenv .env.test",
     "dev:prod": "nuxt dev --dotenv .env.prod",
-    "test:build": "nuxt build --dotenv .env.test",
-    "prod:build": "nuxt build --dotenv .env.prod",
+    "test:build": "npx nuxi build --preset=iis_node --dotenv .env.test",
+    "prod:build": "npx nuxi build --preset=iis_node --dotenv .env.prod",
     "generate": "nuxt generate"
   },
   "dependencies": {
@@ -25,6 +25,7 @@
     "nuxt-simple-robots": "^4.0.0-rc.14",
     "primeicons": "^6.0.1",
     "primevue": "^3.50.0",
+    "tw-colors": "^3.3.1",
     "vue": "^3.4.21",
     "vue-numerals": "^4.0.6",
     "vue-router": "^4.3.2",

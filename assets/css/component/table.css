@@ -13,6 +13,10 @@ table {
   @apply text-white bg-base-green font-bold !important;
 }
 
+.dark .design-table .success-order, .dark .design-table .failed-order {
+  @apply text-base-black !important;
+}
+
 .design-table {
   @apply text-sm leading-5 font-bold w-full m-0 md:w-[80%] border-collapse text-base-black text-center;
 }
@@ -48,13 +52,7 @@ td {
 }
 
 .design-table-full-width {
-  font-style: normal;
-  font-weight: 700;
-  font-size: 14px;
-  line-height: 20px;
-  text-align: center;
-  color: #1b1b1b;
-  width: 100%;
   padding: 20px;
   margin: 40px 0px;
+  @apply font-bold text-sm leading-5 text-center text-base-black w-full;
 }

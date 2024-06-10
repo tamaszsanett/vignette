@@ -244,7 +244,7 @@
             />
             <label
               for="DatasAreCorrect"
-              class="primary-label text-white text-sm font-normal"
+              class="primary-label text-sm font-normal"
               v-html="$t('confirm.payment.terms_label')"
             >
             </label>
@@ -280,7 +280,7 @@
         modal
         dismissableMask
         :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
-        class="max-w-sm w-full top-40 absolute rounded-md"
+        class="max-w-sm w-full top-40 absolute"
       >
         <template #header>
           <div class="inline-flex items-center gap-2 pb-2 border-b w-full">

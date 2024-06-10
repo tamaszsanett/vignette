@@ -16,13 +16,13 @@
         >
           <img
             v-if="item.iconSrc"
-            class="ml-3 sm:ml-[6.5rem] h-[50px] w-[50px] hidden md:flex"
+            class="faq-src"
             :src="item.iconSrc"
             :alt="item.iconAlt"
           />
           <span
             v-if="item.title"
-            class="font-bold text-lg md:text-xl mx-4 text-base-orange w-full"
+            class="faq-title"
             >{{ item.title }}</span
           >
           <div class="">

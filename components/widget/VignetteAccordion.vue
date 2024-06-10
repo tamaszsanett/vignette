@@ -7,19 +7,19 @@
         >
           <h1
            
-            class="ml-3 md:ml-[6.5rem] text-white my-0 lg:text-7xl"
+            class="accordion-pre-title"
           >
             {{ item.preTitle }}
           </h1>
           <img
             v-if="item.iconSrc"
-            class="ml-3 sm:ml-[6.5rem] h-[50px] w-[50px] hidden md:flex"
+            class="faq-src"
             :src="item.iconSrc"
             :alt="item.iconAlt"
           />
           <span
             v-if="item.title"
-            class="text-white text-sm md:text-lg font-medium mx-4"
+            class="accordion-title"
             >{{ item.title }}</span
           >
           <img

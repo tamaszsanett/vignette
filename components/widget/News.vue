@@ -12,7 +12,7 @@
       <div
         v-for="item in topNewsContent?.topNews.items"
         :key="item.id"
-        class="shadow-md drop-shadow-md hover:shadow-none transition-shadow text-white px-4 py-2 rounded-md relative"
+        class="news-item"
       >
         <div class="mb-4 flex flex-col justify-around">
           <NuxtLink :to="item.url" :title="item.title" :alt="item.title">

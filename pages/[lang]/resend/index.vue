@@ -118,7 +118,7 @@
         dismissableMask
         @hide="dialogSuccess ? resetForm() : (dialogVisible = false)"
         :breakpoints="{ '1199px': '75vw', '575px': '90vw' }"
-        class="max-w-sm w-full top-40 absolute rounded-md text-center"
+        class="max-w-sm w-full top-40 absolute text-center"
       >
         <template #header>
           <h2

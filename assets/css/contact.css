@@ -43,6 +43,10 @@
   @apply font-bold flex items-center text-base-black;
 }
 
+.dark .shadow-block-s {
+  background: linear-gradient(89.89deg, #303032 .59%, rgba(238, 238, 243, 0) 99.92%);
+}
+
 @media screen and (max-width: 768px) {
   .contactPage {
     padding: 0 5px;

@@ -4,6 +4,12 @@
   }
 }
 
+@media (prefers-color-scheme: light) {
+  .light body {
+     @apply bg-white;
+   }
+ }
+ 
 .my-4 .col-9.horizontal-set {
   width: 100%;
   clear: both;
@@ -16,7 +22,7 @@
 
 html,
 body {
-  @apply font-sans text-base-black;
+  @apply font-sans text-base-black bg-white;
 }
 
 strong,
@@ -41,6 +47,10 @@ b {
   @apply font-sans;
 }
 
+.dark .p-inputtext{
+  @apply text-base-black;
+}
+
 .bottom-footerL {
   @apply mb-8;
 }
@@ -62,6 +72,16 @@ b {
   .bg-green {
     background: linear-gradient(0deg, #5ccc94 0%, #8ccaae 100%);
   }
+}
+
+.dark .bg-green-grad  {
+  background: linear-gradient(30deg, #2d3430 0%, #9cd6be 100%);
+  @apply text-base-black;
+}
+
+.dark .bg-green {
+  background: linear-gradient(30deg, #2d3430 0%, #659f85 100%);
+  @apply text-base-black;
 }
 
 .footer-txt a {
@@ -284,3 +304,19 @@ mark {
   margin-bottom: 10px;
 }
 
+.dark .mainPageWhichVignetteBlock .line-text, 
+.dark .vignetteTypesMainPageRow .titleImg img, 
+.dark .flow-card > img, 
+.dark .faq-src, 
+.dark .gyik_img > img {
+  filter: brightness(100%) saturate(50%) invert(100%) sepia(10%) saturate(80%) hue-rotate(180deg) brightness(120%) contrast(126%);
+}
+
+/* NEWS  */
+.news-item {
+  @apply shadow-md drop-shadow-md hover:shadow-none transition-shadow text-white px-4 py-2 rounded-md relative;
+}
+
+.dark .news-item {
+  @apply shadow-base-green shadow-sm drop-shadow-sm hover:shadow-none transition-shadow;
+}

@@ -19,7 +19,13 @@
 
 .whyToBuyHere .whyToBuyHereElement {
   background-image: url("/assets/content/miert_nalunk_vasarold_alap.svg");
-  @apply flex justify-center flex-col items-center h-[133px] bg-no-repeat rounded-lg bg-grad-base-orange;
+  @apply flex justify-center flex-col items-center h-[133px] bg-no-repeat 
+  rounded-lg bg-grad-base-orange transition-all;
+}
+
+.dark .whyToBuyHere .whyToBuyHereElement {
+  background-image: none;
+  @apply bg-white text-base-black border border-base-black hover:border-link-hover transition-all;
 }
 
 .whyToBuyHere .whyToBuyHereElement {
@@ -29,10 +35,22 @@
 .whyToBuyHere .whyToBuyHereElement > span {
   width: 179px;
   margin-top: 10px;
-  color: white;
   line-height: 20px;
-  font-size: 14px;
+  @apply text-white text-sm;
 }
+
+.whyToBuyHere a .whyToBuyHereElement > span {
+  @apply hover:underline;
+}
+
+.dark .whyToBuyHere .whyToBuyHereElement > span {
+  @apply text-base-black;
+}
+
+.dark .whyToBuyHere a .whyToBuyHereElement:hover > span {
+  @apply text-link-hover transition-all hover:no-underline;
+}
+
 
 @media all and (min-width: 540px) {
   .whyToBuyHere > div {

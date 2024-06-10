@@ -15,6 +15,10 @@
     @apply bg-white text-base-orange hover:text-white hover:bg-base-orange border-base-orange focus:ring-base-orange;
   }
 
+  .dark .primary-btn-outline {
+    @apply text-base-black;
+  }
+
   .btn-disabled {
     @apply cursor-not-allowed bg-dark-gray border-none hover:bg-dark-gray !important;
   }
@@ -45,6 +49,10 @@
   @apply justify-around text-link-orange hover:text-white md:text-xl font-normal;
 }
 
+.dark .p-accordion .primary-btn-outline {
+  @apply hover:text-base-black;
+}
+
 .p-accordion .primary-btn {
   @apply justify-around md:text-xl font-normal;
 }
@@ -55,7 +63,15 @@
 }
 
 .greenButton {
-  @apply btn mx-auto bg-base-green text-white hover:text-base-green hover:bg-white border-none btn-box-shadow md:w-1/3 focus:ring-base-green;
+  @apply btn mx-auto border border-base-green bg-base-green text-white hover:text-base-green hover:bg-white btn-box-shadow md:w-1/3 focus:ring-base-green;
+}
+
+.dark .greenButton, .dark .primary-btn, 
+.dark [type="button"].primary-btn, .dark [type="submit"].primary-btn, 
+.dark a.primary-btn:hover
+.dark .btn-green[type='submit'], .dark .btn-green[type='button'], 
+.dark .btn-green, .dark .p-button.btn-green {
+  @apply text-base-black hover:border hover:border-base-black;
 }
 
 /* News  */
@@ -63,10 +79,18 @@
   filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(470%) hue-rotate(357deg) brightness(109%) contrast(101%);
 }
 
+.dark .primary-btn-outline .news-img {
+  filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(470%) hue-rotate(357deg) brightness(109%) contrast(101%);
+}
+
 .primary-btn-outline .read-img {
   filter: invert(54%) sepia(52%) saturate(1451%) hue-rotate(346deg)
     brightness(98%) contrast(96%);
   @apply relative right-0 md:right-10;
+}
+
+.dark .primary-btn-outline .read-img {
+  filter: none;
 }
 
 .primary-btn .read-img {
@@ -78,6 +102,10 @@
   filter: invert(54%) sepia(52%) saturate(1451%) hue-rotate(346deg)
     brightness(98%) contrast(96%);
   @apply relative text-white right-0 md:right-10;
+}
+
+.dark .primary-btn:hover .read-img {
+  @apply filter-none;
 }
 
 .stretched-link::after {
@@ -96,20 +124,20 @@
   @apply btn w-fit primary-btn-outline;
 }
 
+.dark .btn-orange {
+  @apply hover:text-base-black;
+}
+
 [type="button"].lang-btn {
   @apply flex items-center bg-white text-base-black rounded-[4px] text-sm px-2 py-1 font-medium hover:bg-transparent hover:text-white focus:ring-base-gray;
 }
 
-.p-dialog-footer {
-  @apply px-0 bg-base-black rounded-b-md;
+.dark [type="button"].lang-btn {
+  @apply hover:text-link-hover;
 }
 
 .p-dialog-header-icon.p-dialog-header-close.p-link {
   @apply absolute top-2 right-2;
-}
-
-button.greenButton {
-  background-color: rgb(92 204 148 / var(--tw-bg-opacity));
 }
 
 .p-inplace-display {

@@ -3,8 +3,37 @@
   background-image: linear-gradient(to right, rgba(238, 238, 243, 0), #fff);
 }
 
+.faq-title {
+  @apply font-bold text-lg md:text-xl mx-4 text-base-orange w-full;
+}
+
+.faq-src {
+  @apply ml-3 sm:ml-[6.5rem] h-[50px] w-[50px] hidden md:flex;
+}
+
+.dark .faq-title {
+  @apply text-base-black;
+}
+
+.dark .gray-grad-bg {
+  background-image: none;
+  @apply bg-white border border-base-black;
+}
+
 svg.p-icon.p-accordion-toggle-icon {
   @apply hidden;
+}
+
+.accordion-title {
+  @apply text-white text-sm md:text-lg font-medium mx-4;
+}
+
+.accordion-pre-title {
+  @apply ml-3 md:ml-[6.5rem] text-white my-0 lg:text-7xl;
+}
+
+.dark .accordion-title, .dark .accordion-pre-title {
+  @apply text-base-black;
 }
 
 .p-accordion-tab .orange-arrow::after {
@@ -14,10 +43,10 @@ svg.p-icon.p-accordion-toggle-icon {
   height: 0;
   border: 0.8em solid transparent;
   border-radius: 5px;
-  border-left-color: #f58c1f;
   transform-origin: 0 50%;
   transition: transform 0.25s;
   transform: rotate(90deg);
+  @apply border-l-base-orange;
 }
 
 .p-accordion-tab .green-arrow::after {
@@ -31,6 +60,10 @@ svg.p-icon.p-accordion-toggle-icon {
   transform-origin: 0 50%;
   transition: transform 0.25s;
   transform: rotate(90deg);
+}
+
+.dark .p-accordion-tab .green-arrow::after, .p-accordion-tab .orange-arrow::after {
+  border-left-color: #fff;
 }
 
 .p-accordion-tab .green-arrow {
@@ -66,21 +99,44 @@ svg.p-icon.p-accordion-toggle-icon {
 }
 
 .p-accordion .p-accordion-header .p-accordion-header-link {
-  @apply px-0 py-2 lg:py-3;
+  @apply px-0 py-0 my-2;
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link {
+  border-radius: 10px !important;
 }
 
 .p-accordion-content {
-  @apply px-0 sm:px-2 py-0;
+  @apply px-0 sm:px-2 py-0 bg-transparent;
 }
 
 .p-accordion-header-link.p-accordion-header-action {
   @apply px-0 py-2;
 }
 
+.p-dialog {
+  @apply rounded-2xl;
+}
+
 .p-dialog .p-dialog-content {
   padding: 0 1rem 1rem 1rem;
+  @apply bg-white text-base-black;
 }
 
 .p-dialog .p-dialog-header {
   padding: 1rem;
+  @apply bg-white text-base-black;
 }
+
+.p-dialog-footer {
+  @apply px-0 bg-base-black rounded-b-md;
+}
+
+.dark .p-dialog-footer {
+  @apply bg-base-gray;
+}
+
+
+/* .dark .p-dialog {
+  @apply bg-base-black;
+} */

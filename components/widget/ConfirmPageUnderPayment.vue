@@ -5,7 +5,7 @@
         <span class="ml-2">{{ $t("confirm_under_payment.title") }}</span>
       </h1>
       <div class="w-full md:max-w-[600px] mx-auto flex flex-col gap-2">
-        <Card class="mb-5 shadow-lg">
+        <Card class="mb-5 shadow-lg bg-white text-base-black">
           <template #content>
             <div class="payment-progress">
               <div class="w-full">
@@ -26,7 +26,7 @@
                   class="table table-condensed table-hover payment-progress-table"
                 >
                   <tbody>
-                    <tr>
+                    <tr class="bg-base-gray">
                       <td>
                         <strong>{{
                           $t("global.confirm_trid.table_plate_num_title")

@@ -171,7 +171,7 @@ export default defineNuxtConfig({
       viewport: "width=device-width, initial-scale=1",
       htmlAttrs: {
         lang: "en",
-        class: "scroll-smooth",
+        class: "scroll-smooth light",
       },
 
       

@@ -2,7 +2,7 @@
   .primary-input,
   .primary-select {
     @apply py-3 px-4 bg-white border-[0.5px] flex items-center text-base-black placeholder:text-zinc-300 leading-6
-    base-radius focus:outline-none text-lg w-full focus:box-shadow-16 focus:border-black focus:ring-1 transition-all duration-300 ease-in-out;
+    base-radius focus:outline-none text-lg w-full focus:box-shadow-16 focus:border-base-black focus:ring-1 transition-all duration-300 ease-in-out;
   }
 
   .primary-select {
@@ -27,11 +27,11 @@
 }
 
 input[type=checkbox], input[type=checkbox]~div {
-  display: none;
+  @apply hidden;
 }
 
 input[type=checkbox]:checked~div {
-  display: block;
+  @apply block;
 }
 
 input[type="checkbox"] {
@@ -41,7 +41,6 @@ input[type="checkbox"] {
 input[type="checkbox"] {
   @apply accent-base-orange;
 }
-
 
 .primary-label {
   @apply text-base text-base-black mb-0 font-bold leading-none;
@@ -59,8 +58,25 @@ input[type="checkbox"] {
   @apply pl-14;
 }
 
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+  @apply text-base-black;
+}
+
+.dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover, 
+.dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-focus {
+  @apply text-base-black bg-base-gray;
+}
+
 .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
   @apply bg-base-orange text-white;
+}
+
+.dark .p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+  @apply text-base-black;
+}
+
+.dark .p-dropdown-panel {
+  @apply bg-white;
 }
 
 .p-dropdown:not(.p-disabled).p-focus, .p-multiselect:not(.p-disabled).p-focus {
@@ -84,7 +100,11 @@ input[type="checkbox"] {
 }
 
 .p-datepicker {
-  @apply max-w-[300px];
+  @apply max-w-[300px] bg-white text-base-black;
+}
+
+.p-datepicker-header {
+  @apply bg-white text-base-black;
 }
 
 .p-datepicker td {
@@ -92,7 +112,7 @@ input[type="checkbox"] {
 }
 
 .p-datepicker table td > span {
-  @apply cursor-pointer;
+  @apply cursor-pointer text-base-black hover:text-base-green;
 }
 
 .p-datepicker-calendar {
@@ -105,6 +125,10 @@ input[type="checkbox"] {
 
 .p-datepicker table td > span.p-highlight {
     @apply bg-base-green text-white;
+}
+
+.dark .p-datepicker table td > span.p-highlight {
+  @apply text-base-black;
 }
 
 .p-datepicker-title {
@@ -176,9 +200,8 @@ input:disabled {
   z-index: 1;
   bottom: 25px;
   right: -10px;
-  font-weight: 700;
   @apply absolute z-10 rounded-md base-radius py-2 px-[2px] text-center text-xs bg-base-gray 
-  text-base-black w-auto h-auto max-w-[200px] min-w-[200px] shadow-xl;
+  text-base-black w-auto h-auto max-w-[200px] min-w-[200px] shadow-xl font-bold;
 }
 
 .tooltip .tooltiptext:after {
@@ -206,8 +229,16 @@ input:disabled {
   @apply text-left px-2 mb-2;
 }
 
-.payment-method .p-accordion-header, .payment-method .p-accordion-content  {
+.payment-method .p-accordion-content {
+  @apply px-0;
+}
+
+.payment-method .p-accordion-header, .payment-method .p-accordion-content p  {
   @apply base-radius;
+}
+ 
+.payment-method .p-accordion .p-accordion-header .p-accordion-header-link {
+  @apply base-radius bg-white;
 }
 
 .payment-method .p-accordion-header-action {

@@ -1,4 +1,5 @@
-const defaultTheme = require('tailwindcss/defaultTheme')
+const defaultTheme = require('tailwindcss/defaultTheme');
+const { createThemes } = require('tw-colors');
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -14,17 +15,22 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['"RobotoCondensedRegular"', ...defaultTheme.fontFamily.sans],
-        'medium': ['"RobotoCondensedMedium", "sans-serif"'],
-        'semibold': ['"RobotoCondensedSemibold", "sans-serif"'],
-        'bold': ['"RobotoCondensedBold", "sans-serif"'],
-        'thin': ['"RobotoCondensedThin", "sans-serif"'],
-        'black': ['"RobotoCondensedBlack", "sans-serif"'],
-        'light': ['"RobotoCondensedLight", "sans-serif"'],
-        'extralight': ['"RobotoCondensedExtraLight", "sans-serif"'],
-        'extrabold': ['"RobotoCondensedExrabold", "sans-serif"'],
-        'italic': ['"RobotoCondensedItalic", "sans-serif"'],
+        medium: ['"RobotoCondensedMedium", "sans-serif"'],
+        semibold: ['"RobotoCondensedSemibold", "sans-serif"'],
+        bold: ['"RobotoCondensedBold", "sans-serif"'],
+        thin: ['"RobotoCondensedThin", "sans-serif"'],
+        black: ['"RobotoCondensedBlack", "sans-serif"'],
+        light: ['"RobotoCondensedLight", "sans-serif"'],
+        extralight: ['"RobotoCondensedExtraLight", "sans-serif"'],
+        extrabold: ['"RobotoCondensedExtrabold", "sans-serif"'],
+        italic: ['"RobotoCondensedItalic", "sans-serif"'],
       },
-      colors: {
+    },
+  },
+  plugins: [
+    createThemes({
+      light: {
+        white: "white",
         "secondary-black": "#404040",
         "link-hover": "#f38d00",
         "base-black": "#1B1B1B",
@@ -34,17 +40,39 @@ module.exports = {
         "secondary-orange": "#F57D21",
         "faq-gray": "#efefef",
         "faq-title-gray": "#666",
-        "blue": "#2B3A97",
+        blue: "#2B3A97",
         "base-green": "#5CCC94",
         "base-inherit": "#00000000",
         "base-gray": "#e9e9e9",
-        "red": "#F25532",
-        "gray": "#bfb7a7",
+        red: "#F25532",
+        gray: "#bfb7a7",
         "dark-gray": "#777",
         "grad-base-orange": "#f58220",
-        "gray-border": '#f5f5f5'
+        "gray-border": '#f5f5f5',
+        "box-gray": "#F5F6F9",
       },
-    },
-  },
-  plugins: [],
-}
+      dark: {
+        white: "#464646",
+        "secondary-black": "#303030",
+        "link-hover": "#ffd9aa",
+        "base-black": "#fff",
+        "desc-gray": "#fff",
+        "base-orange": "#b57a47",
+        "link-orange": "#c4a892",
+        "secondary-orange": "#D4651A",
+        "faq-gray": "#cfcfcf",
+        "faq-title-gray": "#555",
+        blue: "#1B2A77",
+        "base-green": "#567e6a",
+        "base-inherit": "#00000000",
+        "base-gray": "#555",
+        red: "#fcaa98",
+        gray: "#9f9787",
+        "dark-gray": "#666",
+        "grad-base-orange": "#d4721a",
+        "gray-border": '#666',
+        "box-gray": "#333",
+      },
+    }),
+  ],
+};
