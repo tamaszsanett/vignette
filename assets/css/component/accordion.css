@@ -46,7 +46,7 @@ svg.p-icon.p-accordion-toggle-icon {
   transform-origin: 0 50%;
   transition: transform 0.25s;
   transform: rotate(90deg);
-  @apply border-l-base-orange;
+  border-left-color: #F58C1F;
 }
 
 .p-accordion-tab .green-arrow::after {
@@ -62,7 +62,7 @@ svg.p-icon.p-accordion-toggle-icon {
   transform: rotate(90deg);
 }
 
-.dark .p-accordion-tab .green-arrow::after, .p-accordion-tab .orange-arrow::after {
+.dark .p-accordion-tab .green-arrow::after, .dark .p-accordion-tab .orange-arrow::after {
   border-left-color: #fff;
 }
 
