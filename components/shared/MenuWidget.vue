@@ -48,7 +48,7 @@
         aria-label="Toggle menu"
       >
         <!-- Menu Icon -->
-        <svg
+        <svg class="toggle-icon"
           xmlns="http://www.w3.org/2000/svg"
           width="24"
           height="24"
@@ -67,9 +67,9 @@
         <div
           v-if="isMobileMenuOpen"
           v-click-outside="closeMobileMenu"
-          class="text-white fixed h-screen left-0 top-0 w-full max-w-xs mx-auto bg-base-black p-4 z-30"
+          class="sidebar"
         >
-          <div class="mt-5 flex flex-col items-start">
+          <div class="mt-5 flex flex-col items-start toggle-icon">
             <button
               class="self-end"
               @click="toggleMobileMenu"

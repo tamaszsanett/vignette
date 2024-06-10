@@ -45,6 +45,10 @@
   focus:bg-white focus:outline-none focus:text-base-black hover:text-base-green hover:border hover:border-base-green hover:bg-white;
 }
 
+.dark .monthType[type="button"] {
+  @apply text-base-black;
+}
+
 .monthType[type="button"]:hover {
   box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
 }
@@ -52,6 +56,10 @@
 .monthType[type="button"].focus {
   box-shadow: 5px 5px 22px rgb(10 143 79 / 20%);
   @apply bg-base-green text-white border-none;
+}
+
+.dark .monthType[type="button"].focus {
+  @apply text-base-black;
 }
 
 .p-dropdown-items-wrapper ul {

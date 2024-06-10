@@ -15,6 +15,21 @@
   clear: both;
 }
 
+.sidebar {
+  @apply text-white fixed h-screen left-0 top-0 w-full max-w-xs mx-auto bg-base-black p-4 z-30;
+}
+
+.toggle-icon {
+  @apply text-white;
+}
+
+.dark .toggle-icon {
+  @apply text-base-black;
+}
+
+.dark .sidebar {
+  @apply bg-secondary-black;
+}
 
 .vignettes {
   clear: both;
