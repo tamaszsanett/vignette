@@ -3,13 +3,13 @@
     @apply max-w-[375px] !important;
   }
 }
-
+/* system light mode
 @media (prefers-color-scheme: light) {
   .light body {
-     @apply bg-white;
-   }
- }
- 
+    @apply bg-white;
+  }
+} */
+
 .my-4 .col-9.horizontal-set {
   width: 100%;
   clear: both;
@@ -54,7 +54,7 @@ b {
 }
 
 .shadow-22 {
-  box-shadow: 5px 5px 22px rgba(64,64,64,.2);
+  box-shadow: 5px 5px 22px rgba(64, 64, 64, 0.2);
 }
 
 .p-component,
@@ -62,7 +62,7 @@ b {
   @apply font-sans;
 }
 
-.dark .p-inputtext{
+.dark .p-inputtext {
   @apply text-base-black;
 }
 
@@ -89,7 +89,7 @@ b {
   }
 }
 
-.dark .bg-green-grad  {
+.dark .bg-green-grad {
   background: linear-gradient(30deg, #2d3430 0%, #9cd6be 100%);
   @apply text-base-black;
 }
@@ -129,8 +129,9 @@ hr {
   width: 66.66%;
 }
 
-.half-width, .col-6 {
- @apply w-1/2;
+.half-width,
+.col-6 {
+  @apply w-1/2;
 }
 
 mark {
@@ -212,7 +213,7 @@ mark {
 }
 
 .red {
-  color: #F25532;
+  color: #f25532;
   margin-left: 1rem;
   font-family: "Roboto Condensed";
   font-size: 18px;
@@ -246,7 +247,13 @@ mark {
   border: none;
   height: 1px;
   background: #b4b4be;
-  background: repeating-linear-gradient(90deg, #b4b4be, #b4b4be 6px, transparent 6px, transparent 12px);
+  background: repeating-linear-gradient(
+    90deg,
+    #b4b4be,
+    #b4b4be 6px,
+    transparent 6px,
+    transparent 12px
+  );
 }
 
 .dashed-hr-2 {
@@ -281,17 +288,13 @@ mark {
   );
 }
 
-
-
 .greenText {
   @apply text-base-green;
 }
 
-
 .orange-h4-inline-none {
   margin: 20px 0;
 }
-
 
 .widget-content ul > li > a {
   display: block;
@@ -319,12 +322,13 @@ mark {
   margin-bottom: 10px;
 }
 
-.dark .mainPageWhichVignetteBlock .line-text, 
-.dark .vignetteTypesMainPageRow .titleImg img, 
-.dark .flow-card > img, 
-.dark .faq-src, 
+.dark .mainPageWhichVignetteBlock .line-text,
+.dark .vignetteTypesMainPageRow .titleImg img,
+.dark .flow-card > img,
+.dark .faq-src,
 .dark .gyik_img > img {
-  filter: brightness(100%) saturate(50%) invert(100%) sepia(10%) saturate(80%) hue-rotate(180deg) brightness(120%) contrast(126%);
+  filter: brightness(100%) saturate(50%) invert(100%) sepia(10%) saturate(80%)
+    hue-rotate(180deg) brightness(120%) contrast(126%);
 }
 
 /* NEWS  */

@@ -22,6 +22,7 @@
           ></a>
         </div>
       </div>
+      <ThemeSwitcher />
       <!-- Language Selector -->
       <div class="relative ml-auto">
         <Button
@@ -152,7 +153,6 @@
           </div>
         </template>
       </Dialog>
-      <ThemeSwitcher />
     </nav>
   </header>
 </template>

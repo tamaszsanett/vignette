@@ -1,7 +1,7 @@
 <template>
-  <div class="ml-2">
+  <div class="mx-3">
     <i
-      :class="['pi text-sm cursor-pointer', isDarkTheme ? 'pi-sun text-base-orange' : 'pi-moon']"
+      :class="['pi text-sm cursor-pointer p-2', isDarkTheme ? 'pi-sun text-base-orange' : 'pi-moon']"
       @click="toggleTheme"
     ></i>
   </div>
@@ -12,15 +12,15 @@ import { ref, onMounted, onUnmounted } from 'vue';
 
 const isDarkTheme = ref(false);
 
-const applyTheme = (): void => {
+/* const applyTheme = (): void => {
   const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)').matches;
   const theme = localStorage.getItem('theme') || (prefersDarkScheme ? 'dark' : 'light');
   document.documentElement.setAttribute('data-theme', theme);
   document.documentElement.classList.toggle('dark', theme === 'dark');
   document.documentElement.classList.toggle('light', theme === 'light');
-  document.documentElement.classList.remove('light'); // Remove the default light class
+  // document.documentElement.classList.remove('light'); // Remove the default light class
   isDarkTheme.value = theme === 'dark';
-};
+}; */
 
 const toggleTheme = (): void => {
   const currentTheme = document.documentElement.getAttribute('data-theme');
@@ -32,12 +32,12 @@ const toggleTheme = (): void => {
   isDarkTheme.value = newTheme === 'dark';
 };
 
-onMounted(() => {
+/* onMounted(() => {
   applyTheme();
   const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
   mediaQuery.addEventListener('change', applyTheme);
   onUnmounted(() => {
     mediaQuery.removeEventListener('change', applyTheme);
   });
-});
+}); */
 </script>
