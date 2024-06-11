@@ -2964,7 +2964,8 @@ export default defineI18nConfig(() => ({
         select_country_placeholder: "Selezionare un Paese",
         number_of_month: "Quanti mesi",
         validity_period: "Periodo di validità",
-        is_at_least_one_county_selected: "La selezione di un paese è obbligatoria!",
+        is_at_least_one_county_selected:
+          "La selezione di un paese è obbligatoria!",
         plate_num_placeholder: "es. ABC123",
         country_error: "Paese obbligatorio!",
         image: {
@@ -3019,7 +3020,8 @@ export default defineI18nConfig(() => ({
         tax_number: "Codice fiscale",
         city: "Città",
         address: "Indirizzo (via, numero)",
-        tax_number_tooltip_text: "La compilazione del codice fiscale è obbligatoria!",
+        tax_number_tooltip_text:
+          "La compilazione del codice fiscale è obbligatoria!",
         zip_code_tooltip_text: "Codice postale di fatturazione",
         city_tooltip_text: "Città di fatturazione",
         address_tooltip_text: "Indirizzo di fatturazione (via, numero civico)",
@@ -3303,29 +3305,30 @@ export default defineI18nConfig(() => ({
         "5month": "5 maanden",
       },
       type: {
-        empty_plate: "Plate number is required!",
+        empty_plate: "Het invullen van het registratienummer is verplicht!",
         plate_number_duplicated: "Plaatnummer gedupliceerd op dezelfde tijd",
         invalid_plate:
-          "The number plate is wrong. For example, it cannot contain a hyphen or does not meet the standard represented by your country.",
-        plate_num_required: "Plate number required!",
+          "De nummerplaat klopt niet. Het kan bijvoorbeeld geen koppelteken bevatten of voldoet niet aan de norm die uw land vertegenwoordigt.",
+        plate_num_required: "Kenteken vereist!",
         error_selection: "Land is vereist!",
-        car_country: "Car country",
-        licence_plate_number: "License plate number",
-        add_another_widget: "add another vignette",
-        next: "Next",
-        back: "Back",
-        selected_box_title: "Selected vignettes",
-        month: "month",
-        day: "day",
-        year: "year",
-        select_country_placeholder: "Select a Country",
-        number_of_month: "Number of month",
-        validity_period: "Validity period",
-        is_at_least_one_county_selected: "Choose at least one county!",
-        plate_num_placeholder: "e.g. ABC123",
-        country_error: "Country required!",
+        car_country: "Auto land",
+        licence_plate_number: "Nummerplaat",
+        add_another_widget: "voeg nog een vignet toe",
+        next: "Volgende",
+        back: "Terug",
+        selected_box_title: "Geselecteerde vignetten",
+        month: "maand",
+        day: "dag",
+        year: "jaar",
+        select_country_placeholder: "Selecteer een land",
+        number_of_month: "Aantal maand",
+        validity_period: "Geldigheidsperiode",
+        is_at_least_one_county_selected:
+          "Selectie van één provincie is verplicht!",
+        plate_num_placeholder: "bijv. ABC123",
+        country_error: "Land vereist",
         image: {
-          alt_vignette: "Vignette",
+          alt_vignette: "Vignet",
           desktop_plate_num: "under-plate-number-line_nl_NL.svg",
           mobile_plate_num: "under-plate-number-line_nl_NL.svg",
           desktop_billing: "under-invoice-data-line_nl_NL.svg",
@@ -3334,133 +3337,135 @@ export default defineI18nConfig(() => ({
           mobile_confirm: "under-confirm-line_nl_NL.svg",
         },
         title: {
-          year_11: "County region",
-          weekly: "Weekly",
-          monthly: "Monthly",
-          annual: "Annual",
-          ten_days: "10 day",
-          daily: "Daily",
-          one_day: "1-day",
-          after_title: "national highway vignette",
+          year_11: "Regio van de provincie",
+          weekly: "Wekelijks",
+          monthly: "Maandelijks",
+          annual: "Jaarlijks",
+          ten_days: "10 dagen",
+          daily: "Dagelijks",
+          one_day: "1-dag",
+          after_title: "nationale snelwegsticker",
         },
         purchase_calculator: {
-          title: "Selected vignettes",
-          total: "Total",
-          one_day: "1 day",
+          title: "Geselecteerde vignetten",
+          total: "Totaal",
+          one_day: "1 dag",
           currency: "€",
-          day: "day",
-          month: "month",
+          day: "dag",
+          month: "maand",
         },
       },
       billing: {
-        title: "Enter billing information",
-        phone: "Phone number",
-        mail_tooltip_text:
-          "We will send the vignette confirmation to this address",
+        title: "Factuurgegevens invoeren",
+        phone: "Telefoonnummer",
+        mail_tooltip_text: "We sturen de stickerbevestiging naar dit adres",
         email: "E-mail",
-        phone_tooltip_text: "In case of connection problems",
-        invoice_request_title: "I would like a VAT invoice",
+        phone_tooltip_text: "In geval van verbindingsproblemen",
+        invoice_request_title: "Ik wil graag een btw-factuur",
         request_title_tooltip_text:
-          "If you want an invoice, please check the I want an invoice option",
+          "Als je een factuur wilt, vink dan de optie Ik wil een factuur aann",
         request_after_text1:
-          "If you want an invoice, please check the I want an invoice option. We are unable to issue an invoice afterwards.",
-        company: "Company",
-        private_person: "Private person",
-        checkbox_tooltip_text: "Your selection is mandatory",
-        company_name: "Company name",
-        private_name: "Name",
-        name_tooltip_text: "Billing Name/Company Name",
-        country: "Country",
-        country_tooltip_text: "Billing Country",
-        zip_code: "Invoice ZIP code",
-        tax_number: "Tax Number",
-        city: "City",
-        address: "Address (street, number)",
-        tax_number_tooltip_text: "Filling in the tax number is mandatory!",
-        zip_code_tooltip_text: "Billing Zip Code",
-        city_tooltip_text: "Billing City",
-        address_tooltip_text: "Billing address (street, house number)",
+          "Als je een factuur wilt, vink dan de optie Ik wil een factuur aan. We kunnen achteraf geen factuur sturen.",
+        company: "Bedrijf",
+        private_person: "Particulier",
+        checkbox_tooltip_text: "Je selectie is verplicht",
+        company_name: "Bedrijfsnaam",
+        private_name: "Naam",
+        name_tooltip_text: "Factuurnaam/Bedrijfsnaam",
+        country: "Land",
+        country_tooltip_text: "Land facturatie",
+        zip_code: "Factuur postcode",
+        tax_number: "btw-nummer",
+        city: "Stad",
+        address: "Adres (straat, huisnummer)",
+        tax_number_tooltip_text:
+          "Het invullen van het registratienummer is verplicht!",
+        zip_code_tooltip_text: "Postcode voor factuur",
+        city_tooltip_text: "Factureringsstad",
+        address_tooltip_text: "Factuuradres (straat, huisnummer)",
         company_name_placeholder: "Begin met typen voor suggesties...",
         zip_code_placeholder: "Begin met typen voor suggesties...",
         billing_type_required: "Je moet een factureringstype selecteren!",
       },
       confirm: {
-        main_title: "Check the entered data",
-        phone_number: "Phone number:",
-        email_address: "E-mail address:",
+        main_title: "Controleer de ingevoerde gegevens",
+        phone_number: "Telefoonnummer:",
+        email_address: "E-mailadres:",
         vignette_info: {
-          vignette_type_title: "Vignette type:",
-          plate_number: "Plate number:",
-          car_country: "Car country:",
-          validity_period: "Validity period:",
+          vignette_type_title: "Type vignet:",
+          plate_number: "Plaatnummer:",
+          car_country: "Auto land:",
+          validity_period: "Geldigheidsperiode:",
         },
         billing_info: {
-          title: "Billing information",
-          name_title: "Name / Company name:",
-          country: "Country:",
+          title: "Factuurgegevens",
+          name_title: "Naam/Bedrijfsnaam:",
+          country: "Land:",
           zip_code: "Zip code:",
-          city: "City:",
-          address: "Address (street, number):",
+          city: "Stad:",
+          address: "Adres (straat, huisnummer):",
         },
         price: {
-          price_title: "Vignette price:",
-          convenience_fee: "Convenience fee:",
-          total: "Total:",
+          price_title: "Vignet prijs",
+          convenience_fee: "Servicetoeslag",
+          total: "Totaal:",
           currency: "EUR",
         },
         errors: {
-          payment_required: "Payment method required!",
+          payment_required: "Betaalmethode verplicht!",
           terms_error:
-            "Terms and Conditions and Privacy Statement are required!",
+            "Algemene voorwaarden en Privacy Statement zijn verplicht!",
         },
         payment: {
-          title: "Choice of payment method",
+          title: "Betalings methode",
           card_type_label_barion: "Bank card - Barion",
           barion_accordion_title:
             "Betaling vindt plaats via de beveiligde betalingspagina van Barion.",
           barion_desc:
-            "Instead of entering the bank card data on the Barion payment interface, you can also choose the Barion wallet, Apple Pay or Google Pay payment option.",
-          subscribe_label: "Subscribe vignette newsletter!",
-          terms_label: `I state that I have read and accepted the
-            <a class="whiteLink" href="https://www.hungary-vignette.eu/en/gtcc" target="_blank">General Terms and Conditions of Contract</a>
-            as well as the
-            <a class="whiteLink" target="_blank" href="https://www.hungary-vignette.eu/en/privacy">Privacy Statement</a>
-            and I consent to the data management contained therein.`,
+            " In plaats van de bankkaartgegevens in te voeren op de Barion-betaalinterface, kunt u ook kiezen voor de Barion-portemonnee, Apple Pay of Google Pay-betaaloptie.",
+          subscribe_label: "Abonneer u op de vignetnieuwsbrief!",
+          terms_label: `Ik verklaar dat ik de
+              <a class="whiteLink" href="https://www.new.hungary-vignette.eu/gtcc" target="_blank">Algemene contractvoorwaarden</a>
+              alsmede de
+              <a class="whiteLink" target="_blank" href="https://www.new.hungary-vignette.eu/privacy">Privacyverklaring</a>
+              en ik ga akkoord met het daarin opgenomen gegevensbeheer. Ik accepteer de condities en voorwaarden`,
           important_text:
-            "You can only drive onto the highway if, after payment, you have received a confirmation of successful vignette validation by e-mail or in your browser.",
-          back: "Back",
-          order_vignette_btn_title: "Order vignette",
+            "U kunt alleen de snelweg oprijden als u na betaling per e-mail of in uw browser een bevestiging van succesvolle vignetvalidatie heeft ontvangen.",
+          back: "Terug",
+          order_vignette_btn_title: "Vignetaankoop mislukt!",
         },
       },
       confirm_failed: {
-        title: "Vignette purchase failed!",
-        payment_result_text: "Payment result",
-        reorder_btn_title: "Reorder",
+        title: "Vignetaankoop mislukt!",
+        payment_result_text: "Betalingsresultaat",
+        reorder_btn_title: "Opnieuw Bestellen",
         card: {
-          contact_us_text: `If you think that your payment was successful, but the e-vignette
-          validation failed, please contact us!`,
-          important_text: `IMPORTANT: Successful financial completion does not automatically entitle you to use the motorway! You can only drive onto the highway if you have
-          a successful vignette after paying received confirmation of
-          validation by e-mail, or in your browser.`,
+          contact_us_text: `Als u denkt dat uw betaling is gelukt, maar de sticker
+          validatie mislukt, neem contact met ons op!`,
+          important_text: `BELANGRIJK: Het feit dat de financiële prestaties
+          voldaan betekent niet automatisch dat u recht heeft op
+          gebruik de baan! Je kunt alleen de snelweg oprijden als je
+          een succesvol vignet na betaling ontvangen bevestiging van
+          validatie per e-mail of in uw browser.`,
         },
       },
       confirm_successful: {
-        title: "Successful vignette purchase",
+        title: "Succesvolle vignetbestellingen",
         card: {
-          download_order_btn_title: "Download order summary",
+          download_order_btn_title: "Besteloverzicht downloaden",
           ty_text: "Hartelijk dank voor uw aankoop!",
-          info_text: "We will send you the purchase receipt by e-mail.",
-          spam_text: `ATTENTION: if you can't find our confirmation email, check your SPAM folder.`,
+          info_text: "Wij sturen u de aankoopbon per e-mail.",
+          spam_text: `LET OP: als u de kennisgevingsbrief niet kunt vinden, zoek dan naar in de SPAMMAP van je account.`,
         },
       },
       confirm_under_payment: {
-        title: "Transaction being processed",
+        title: "Transactie wordt verwerkt",
         card: {
           refresh_text:
-            "To review the result, please refresh the page in some seconds!",
-          refresh_btn_title: "Refresh",
-          info_text: `Please check your mailbox. <br />We will send you confirmation
-            of the successful purchase and the validation of the vignette!`,
+            "Vernieuw de pagina binnen enkele seconden om het resultaat te bekijken!",
+          refresh_btn_title: "Vernieuwen",
+          info_text: ` Controleer uw mailbox. <br />We sturen je een bevestiging
+          van de succesvolle aankoop en de validatie van het vignet!`,
         },
       },
       global: {
@@ -3473,13 +3478,13 @@ export default defineI18nConfig(() => ({
         confirm_trid: {
           trans_id: "Transaction identifier",
           e_mail: "E-mail",
-          table_plate_num_title: "License plate number",
-          table_validity_period_title: "Validity period",
-          table_vignette_num_title: "Vignette number",
-          card_time_text: `<p>
-            <strong>Payment by bank card</strong> will take only a few
-            minutes.
-          </p>`,
+          table_plate_num_title: "Nummerplaat",
+          table_validity_period_title: "Geldigheidsperiode",
+          table_vignette_num_title: "Vignetnummer",
+          card_time_text: ` <p>
+                  <strong>Betaling per bankkaart</strong> duurt slechts enkele
+                  minuten.
+                </p>`,
         },
       },
       resend: {
